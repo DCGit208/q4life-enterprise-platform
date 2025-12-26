@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Quote — Q4 Life Enterprise</title>
+    <link rel="stylesheet" href="assets/css/enterprise.css">
+    <style>
+        /* Quote Form Specific Styles */
+        .quote-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(at 40% 20%, rgba(139, 92, 246, 0.3) 0px, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .quote-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+        
+        .quote-hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .quote-hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .quote-form-container {
+            max-width: 900px;
+            margin: -3rem auto 5rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .quote-form-card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+            padding: 3rem;
+        }
+        
+        .progress-container {
+            margin-bottom: 3rem;
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #e5e7eb;
+            z-index: 1;
+        }
+        
+        .progress-line {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+            z-index: 2;
+        }
+        
+        .progress-step {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .progress-step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: 700;
+            color: #9ca3af;
+            transition: all 0.3s ease;
+        }
+        
+        .progress-step.active .progress-step-circle {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        
+        .progress-step.completed .progress-step-circle {
+            border-color: #10b981;
+            background: #10b981;
+            color: white;
+        }
+        
+        .progress-step-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-weight: 600;
+        }
+        
+        .progress-step.active .progress-step-label {
+            color: #667eea;
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+            animation: fadeInUp 0.4s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .step-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+        
+        .step-description {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 2.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+        
+        .form-label.required::after {
+            content: " *";
+            color: #ef4444;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-input.error,
+        .form-select.error,
+        .form-textarea.error {
+            border-color: #ef4444;
+        }
+        
+        .form-error {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        .form-error.show {
+            display: block;
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .radio-group {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .radio-option {
+            position: relative;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .radio-option:hover {
+            border-color: #667eea;
+            background: #f9fafb;
+        }
+        
+        .radio-option input[type="radio"] {
+            margin-top: 0.25rem;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .radio-option.selected {
+            border-color: #667eea;
+            background: #ede9fe;
+        }
+        
+        .radio-content {
+            flex: 1;
+        }
+        
+        .radio-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+        
+        .radio-description {
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox-option:hover {
+            border-color: #667eea;
+            background: #f9fafb;
+        }
+        
+        .checkbox-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .checkbox-option.selected {
+            border-color: #667eea;
+            background: #ede9fe;
+        }
+        
+        .checkbox-label {
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f3f4f6;
+        }
+        
+        .btn-back {
+            background: transparent;
+            color: #6b7280;
+            border: 2px solid #e5e7eb;
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-back:hover {
+            border-color: #9ca3af;
+            color: #111827;
+        }
+        
+        .btn-back:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-next {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-submit:hover {
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .success-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+        
+        .success-text {
+            font-size: 1.1rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 768px) {
+            .quote-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .quote-form-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .progress-steps {
+                display: none;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-enterprise">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Q4 Life</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#divisions">Divisions</a></li>
+                <li><a href="investors/index.html">Investors</a></li>
+                <li><a href="quote.html" class="nav-cta">Get Quote</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="quote-hero">
+        <div class="container">
+            <div class="quote-hero-content">
+                <h1>Request a Quote</h1>
+                <p>Tell us about your needs, and we'll provide a detailed proposal within 24 hours</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Form -->
+    <div class="quote-form-container">
+        <div class="quote-form-card">
+            <!-- Progress Indicator -->
+            <div class="progress-container">
+                <div class="progress-steps">
+                    <div class="progress-line" id="progressLine" style="width: 0%"></div>
+                    <div class="progress-step active" data-step="1">
+                        <div class="progress-step-circle">1</div>
+                        <div class="progress-step-label">Division</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="progress-step-circle">2</div>
+                        <div class="progress-step-label">Type</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="progress-step-circle">3</div>
+                        <div class="progress-step-label">Location</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="progress-step-circle">4</div>
+                        <div class="progress-step-label">Scale</div>
+                    </div>
+                    <div class="progress-step" data-step="5">
+                        <div class="progress-step-circle">5</div>
+                        <div class="progress-step-label">Services</div>
+                    </div>
+                    <div class="progress-step" data-step="6">
+                        <div class="progress-step-circle">6</div>
+                        <div class="progress-step-label">Budget</div>
+                    </div>
+                    <div class="progress-step" data-step="7">
+                        <div class="progress-step-circle">7</div>
+                        <div class="progress-step-label">Contact</div>
+                    </div>
+                </div>
+            </div>
+
+            <form id="quoteForm">
+                <!-- Step 1: Division Selection -->
+                <div class="form-step active" data-step="1">
+                    <h2 class="step-title">Which division are you interested in?</h2>
+                    <p class="step-description">Select the Q4 Life division that best matches your needs</p>
+                    
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="division" value="connect" required>
+                            <div class="radio-content">
+                                <div class="radio-title">🌐 Connect — Networking & Infrastructure</div>
+                                <div class="radio-description">Internet, Starlink, MikroTik, Community ISP, Off-Grid</div>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="division" value="consult">
+                            <div class="radio-content">
+                                <div class="radio-title">🏢 Consult — Strategic Consulting</div>
+                                <div class="radio-description">Business strategy, M&A advisory, market entry, operational improvement</div>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="division" value="construct">
+                            <div class="radio-content">
+                                <div class="radio-title">🏗️ Construct — Construction Services</div>
+                                <div class="radio-description">Commercial, residential, infrastructure, design-build</div>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="division" value="create">
+                            <div class="radio-content">
+                                <div class="radio-title">🎨 Create — Creative & Media</div>
+                                <div class="radio-description">Brand strategy, digital marketing, content production, social media</div>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="division" value="capital">
+                            <div class="radio-content">
+                                <div class="radio-title">💰 Capital — Business Development Company</div>
+                                <div class="radio-description">Private credit, mezzanine capital, structured finance</div>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="division" value="capabilities">
+                            <div class="radio-content">
+                                <div class="radio-title">📚 Capabilities — Workforce Development</div>
+                                <div class="radio-description">Training programs, certifications, leadership development</div>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="division" value="care">
+                            <div class="radio-content">
+                                <div class="radio-title">❤️ Care — Healthcare & Wellness</div>
+                                <div class="radio-description">Comprehensive wellness platforms, population health management</div>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="division" value="cultivate">
+                            <div class="radio-content">
+                                <div class="radio-title">🌾 Cultivate — Agriculture & Land</div>
+                                <div class="radio-description">Farm management, forestry, carbon credits, sustainable agriculture</div>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="division" value="concierge">
+                            <div class="radio-content">
+                                <div class="radio-title">✨ Concierge — Premium Lifestyle</div>
+                                <div class="radio-description">Lifestyle management, travel, events, personal services</div>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="division" value="curate">
+                            <div class="radio-content">
+                                <div class="radio-title">💎 Curate — Asset Management</div>
+                                <div class="radio-description">Private wealth, investment management, estate planning</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 2: Customer Type -->
+                <div class="form-step" data-step="2">
+                    <h2 class="step-title">What type of client are you?</h2>
+                    <p class="step-description">This helps us customize your proposal</p>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">Client Type</label>
+                        <select class="form-select" name="clientType" required>
+                            <option value="">Select client type...</option>
+                            <option value="enterprise">Enterprise/Large Corporation (500+ employees)</option>
+                            <option value="midmarket">Mid-Market Company (50-500 employees)</option>
+                            <option value="smb">Small Business (<50 employees)</option>
+                            <option value="startup">Startup/Early-Stage</option>
+                            <option value="government">Government/Public Sector</option>
+                            <option value="nonprofit">Nonprofit/NGO</option>
+                            <option value="individual">Individual/Family</option>
+                        </select>
+                        <div class="form-error">Please select a client type</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Industry</label>
+                        <select class="form-select" name="industry">
+                            <option value="">Select industry...</option>
+                            <option value="technology">Technology</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="finance">Finance/Banking</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="retail">Retail/E-commerce</option>
+                            <option value="real-estate">Real Estate</option>
+                            <option value="education">Education</option>
+                            <option value="hospitality">Hospitality/Tourism</option>
+                            <option value="agriculture">Agriculture</option>
+                            <option value="construction">Construction</option>
+                            <option value="energy">Energy/Utilities</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 3: Location -->
+                <div class="form-step" data-step="3">
+                    <h2 class="step-title">Where are you located?</h2>
+                    <p class="step-description">Service availability and pricing may vary by location</p>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">Country</label>
+                        <input type="text" class="form-input" name="country" placeholder="e.g., United States" required>
+                        <div class="form-error">Please enter your country</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">State/Province</label>
+                        <input type="text" class="form-input" name="state" placeholder="e.g., California" required>
+                        <div class="form-error">Please enter your state/province</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">City</label>
+                        <input type="text" class="form-input" name="city" placeholder="e.g., San Francisco" required>
+                        <div class="form-error">Please enter your city</div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Scale Details -->
+                <div class="form-step" data-step="4">
+                    <h2 class="step-title">Tell us about your scale</h2>
+                    <p class="step-description">This helps us right-size our proposal</p>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Number of Employees</label>
+                        <select class="form-select" name="employees">
+                            <option value="">Select range...</option>
+                            <option value="1-10">1-10</option>
+                            <option value="11-50">11-50</option>
+                            <option value="51-200">51-200</option>
+                            <option value="201-500">201-500</option>
+                            <option value="501-1000">501-1,000</option>
+                            <option value="1001-5000">1,001-5,000</option>
+                            <option value="5001+">5,001+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Annual Revenue</label>
+                        <select class="form-select" name="revenue">
+                            <option value="">Select range...</option>
+                            <option value="<1m">Less than $1M</option>
+                            <option value="1-5m">$1M - $5M</option>
+                            <option value="5-25m">$5M - $25M</option>
+                            <option value="25-100m">$25M - $100M</option>
+                            <option value="100-500m">$100M - $500M</option>
+                            <option value="500m+">$500M+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Project Urgency</label>
+                        <select class="form-select" name="urgency">
+                            <option value="">Select timeline...</option>
+                            <option value="immediate">Immediate (within 1 month)</option>
+                            <option value="1-3-months">1-3 months</option>
+                            <option value="3-6-months">3-6 months</option>
+                            <option value="6-12-months">6-12 months</option>
+                            <option value="exploring">Just exploring options</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 5: Specific Services -->
+                <div class="form-step" data-step="5">
+                    <h2 class="step-title">What services do you need?</h2>
+                    <p class="step-description">Select all that apply</p>
+                    
+                    <div class="checkbox-group" id="servicesCheckboxes">
+                        <!-- Services will be dynamically populated based on division -->
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 2rem;">
+                        <label class="form-label">Additional Details</label>
+                        <textarea class="form-textarea" name="serviceDetails" placeholder="Tell us more about your specific needs..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 6: Budget -->
+                <div class="form-step" data-step="6">
+                    <h2 class="step-title">What's your budget range?</h2>
+                    <p class="step-description">This helps us provide appropriate solution options</p>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Expected Budget</label>
+                        <select class="form-select" name="budget">
+                            <option value="">Select budget range...</option>
+                            <option value="<10k">Less than $10,000</option>
+                            <option value="10-25k">$10,000 - $25,000</option>
+                            <option value="25-50k">$25,000 - $50,000</option>
+                            <option value="50-100k">$50,000 - $100,000</option>
+                            <option value="100-250k">$100,000 - $250,000</option>
+                            <option value="250-500k">$250,000 - $500,000</option>
+                            <option value="500k-1m">$500,000 - $1M</option>
+                            <option value="1m+">$1M+</option>
+                            <option value="not-sure">Not sure yet</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Payment Preference</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="payment[]" value="monthly">
+                                <span class="checkbox-label">Monthly subscription</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="payment[]" value="annual">
+                                <span class="checkbox-label">Annual contract</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="payment[]" value="project">
+                                <span class="checkbox-label">Project-based</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="payment[]" value="flexible">
+                                <span class="checkbox-label">Flexible terms</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7: Contact Information -->
+                <div class="form-step" data-step="7">
+                    <h2 class="step-title">How can we reach you?</h2>
+                    <p class="step-description">We'll send your custom proposal within 24 hours</p>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">Full Name</label>
+                        <input type="text" class="form-input" name="fullName" placeholder="John Smith" required>
+                        <div class="form-error">Please enter your full name</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">Email Address</label>
+                        <input type="email" class="form-input" name="email" placeholder="john@company.com" required>
+                        <div class="form-error">Please enter a valid email address</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">Phone Number</label>
+                        <input type="tel" class="form-input" name="phone" placeholder="+1 (555) 123-4567" required>
+                        <div class="form-error">Please enter your phone number</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Company Name</label>
+                        <input type="text" class="form-input" name="company" placeholder="Acme Corporation">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Job Title</label>
+                        <input type="text" class="form-input" name="jobTitle" placeholder="CEO, CTO, Director, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-option" style="border: none; padding: 0;">
+                            <input type="checkbox" name="whatsapp" value="yes">
+                            <span class="checkbox-label">Contact me via WhatsApp for faster response</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Form Navigation -->
+                <div class="form-actions">
+                    <button type="button" class="btn-back" id="prevBtn" disabled>← Previous</button>
+                    <button type="button" class="btn-next" id="nextBtn">Next →</button>
+                    <button type="submit" class="btn-next btn-submit" id="submitBtn" style="display: none;">Submit Request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-enterprise">
+        <div class="container">
+            <p>&copy; 2025 Q4 Life. All rights reserved. | <a href="investors/index.html">Investor Relations</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Form state
+        let currentStep = 1;
+        const totalSteps = 7;
+        
+        // Service options for each division
+        const divisionServices = {
+            connect: [
+                'Community ISP Setup',
+                'Starlink Installation',
+                'MikroTik Configuration',
+                'Network Infrastructure',
+                'Off-Grid Solutions',
+                'Fiber Installation'
+            ],
+            consult: [
+                'Business Strategy',
+                'M&A Advisory',
+                'Market Entry',
+                'Operational Improvement',
+                'Digital Transformation',
+                'Financial Restructuring'
+            ],
+            construct: [
+                'Commercial Construction',
+                'Residential Building',
+                'Infrastructure Projects',
+                'Design-Build Services',
+                'Renovation/Remodeling',
+                'Project Management'
+            ],
+            create: [
+                'Brand Strategy',
+                'Digital Marketing',
+                'Content Production',
+                'Social Media Management',
+                'Website Design',
+                'Video Production'
+            ],
+            capital: [
+                'Venture Debt',
+                'Growth Equity',
+                'Mezzanine Financing',
+                'Bridge Loans',
+                'Private Credit',
+                'Special Situations'
+            ],
+            capabilities: [
+                'Technical Training',
+                'Leadership Development',
+                'Compliance Training',
+                'Bootcamp Programs',
+                'Corporate Programs',
+                'Certifications'
+            ],
+            care: [
+                'Population Health',
+                'Wellness Programs',
+                'Chronic Care Management',
+                'Mental Health Services',
+                'Telehealth Platform',
+                'Health Analytics'
+            ],
+            cultivate: [
+                'Farm Management',
+                'Forestry Operations',
+                'Carbon Credits',
+                'Precision Agriculture',
+                'Land Acquisition',
+                'Sustainability Consulting'
+            ],
+            concierge: [
+                'Lifestyle Management',
+                'Travel Planning',
+                'Event Planning',
+                'Property Management',
+                'Personal Services',
+                'Family Support'
+            ],
+            curate: [
+                'Wealth Management',
+                'Investment Advisory',
+                'Estate Planning',
+                'Tax Optimization',
+                'Alternative Investments',
+                'Family Office Services'
+            ]
+        };
+        
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            setupRadioOptions();
+            setupCheckboxOptions();
+            
+            // Division selection handler
+            document.querySelectorAll('input[name="division"]').forEach(radio => {
+                radio.addEventListener('change', updateServiceOptions);
+            });
+        });
+        
+        // Update progress indicator
+        function updateProgress() {
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progressLine').style.width = progress + '%';
+            
+            document.querySelectorAll('.progress-step').forEach((step, index) => {
+                const stepNum = index + 1;
+                step.classList.remove('active', 'completed');
+                
+                if (stepNum < currentStep) {
+                    step.classList.add('completed');
+                } else if (stepNum === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+        }
+        
+        // Radio option styling
+        function setupRadioOptions() {
+            document.querySelectorAll('.radio-option input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    this.closest('.radio-group').querySelectorAll('.radio-option').forEach(option => {
+                        option.classList.remove('selected');
+                    });
+                    if (this.checked) {
+                        this.closest('.radio-option').classList.add('selected');
+                    }
+                });
+            });
+        }
+        
+        // Checkbox option styling
+        function setupCheckboxOptions() {
+            document.querySelectorAll('.checkbox-option input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        this.closest('.checkbox-option').classList.add('selected');
+                    } else {
+                        this.closest('.checkbox-option').classList.remove('selected');
+                    }
+                });
+            });
+        }
+        
+        // Update service options based on division
+        function updateServiceOptions() {
+            const selectedDivision = document.querySelector('input[name="division"]:checked').value;
+            const services = divisionServices[selectedDivision] || [];
+            const container = document.getElementById('servicesCheckboxes');
+            
+            container.innerHTML = services.map(service => `
+                <label class="checkbox-option">
+                    <input type="checkbox" name="services[]" value="${service}">
+                    <span class="checkbox-label">${service}</span>
+                </label>
+            `).join('');
+            
+            setupCheckboxOptions();
+        }
+        
+        // Next button
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            if (validateCurrentStep()) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            }
+        });
+        
+        // Previous button
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+        
+        // Show specific step
+        function showStep(step) {
+            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+            document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+            
+            document.getElementById('prevBtn').disabled = step === 1;
+            
+            if (step === totalSteps) {
+                document.getElementById('nextBtn').style.display = 'none';
+                document.getElementById('submitBtn').style.display = 'block';
+            } else {
+                document.getElementById('nextBtn').style.display = 'block';
+                document.getElementById('submitBtn').style.display = 'none';
+            }
+            
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Validate current step
+        function validateCurrentStep() {
+            const currentFormStep = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+            const requiredInputs = currentFormStep.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredInputs.forEach(input => {
+                if (!input.value.trim() || (input.type === 'radio' && !currentFormStep.querySelector(`input[name="${input.name}"]:checked`))) {
+                    isValid = false;
+                    input.classList.add('error');
+                    const error = input.closest('.form-group')?.querySelector('.form-error');
+                    if (error) error.classList.add('show');
+                } else {
+                    input.classList.remove('error');
+                    const error = input.closest('.form-group')?.querySelector('.form-error');
+                    if (error) error.classList.remove('show');
+                }
+            });
+            
+            return isValid;
+        }
+        
+        // Form submission
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateCurrentStep()) {
+                // Collect form data
+                const formData = new FormData(this);
+                const data = {};
+                
+                formData.forEach((value, key) => {
+                    if (key.endsWith('[]')) {
+                        const cleanKey = key.replace('[]', '');
+                        if (!data[cleanKey]) data[cleanKey] = [];
+                        data[cleanKey].push(value);
+                    } else {
+                        data[key] = value;
+                    }
+                });
+                
+                console.log('Form submitted:', data);
+                
+                // Show success message
+                document.querySelector('.quote-form-card').innerHTML = `
+                    <div class="success-message">
+                        <div class="success-icon">✓</div>
+                        <h2 class="success-title">Request Received!</h2>
+                        <p class="success-text">
+                            Thank you for your interest in Q4 Life. We've received your request and our team 
+                            will review it carefully. You'll receive a detailed proposal within 24 hours at 
+                            <strong>${data.email}</strong>.
+                        </p>
+                        <p class="success-text">
+                            Reference Number: <strong>#${Math.random().toString(36).substr(2, 9).toUpperCase()}</strong>
+                        </p>
+                        <a href="index.html" class="btn-next">Return to Homepage</a>
+                    </div>
+                `;
+            }
+        });
+        
+        // Remove error styling on input
+        document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+                const error = this.closest('.form-group')?.querySelector('.form-error');
+                if (error) error.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>

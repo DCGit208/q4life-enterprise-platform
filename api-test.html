@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test - Q4Life Backend</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #f9fafb;
+        }
+        .test-box {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        .test-box h3 {
+            margin: 0 0 1rem 0;
+            color: #0a0e27;
+        }
+        button {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #0a0e27;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-right: 0.5rem;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        pre {
+            background: #0a0e27;
+            color: #10b981;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.875rem;
+        }
+        .success {
+            color: #10b981;
+            font-weight: 600;
+        }
+        .error {
+            color: #ef4444;
+            font-weight: 600;
+        }
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+        .status.connected {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status.disconnected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 Q4Life Backend API Test</h1>
+    <p>Testing connection to <strong>http://localhost:3001/api</strong></p>
+
+    <div class="test-box">
+        <h3>1. Health Check</h3>
+        <button onclick="testHealth()">Test /api/health</button>
+        <div id="healthResult"></div>
+    </div>
+
+    <div class="test-box">
+        <h3>2. Get Sectors</h3>
+        <button onclick="testSectors()">Test /api/marketplace/sectors</button>
+        <div id="sectorsResult"></div>
+    </div>
+
+    <div class="test-box">
+        <h3>3. Search Businesses</h3>
+        <button onclick="testSearch()">Test /api/marketplace/search</button>
+        <div id="searchResult"></div>
+    </div>
+
+    <div class="test-box">
+        <h3>4. User Registration</h3>
+        <button onclick="testRegister()">Test /api/auth/register</button>
+        <div id="registerResult"></div>
+    </div>
+
+    <script src="assets/js/api-config.js"></script>
+    <script>
+        async function testHealth() {
+            const result = document.getElementById('healthResult');
+            result.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const data = await apiCall(API_CONFIG.ENDPOINTS.HEALTH);
+                result.innerHTML = `
+                    <p class="success">✅ Backend Connected!</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                result.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+            }
+        }
+
+        async function testSectors() {
+            const result = document.getElementById('sectorsResult');
+            result.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const data = await apiCall(API_CONFIG.ENDPOINTS.MARKETPLACE_SECTORS);
+                result.innerHTML = `
+                    <p class="success">✅ Found ${data.sectors?.length || 0} sectors</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                result.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+            }
+        }
+
+        async function testSearch() {
+            const result = document.getElementById('searchResult');
+            result.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const data = await apiCall(API_CONFIG.ENDPOINTS.MARKETPLACE_SEARCH + '?sector=food-dining&limit=3');
+                result.innerHTML = `
+                    <p class="success">✅ Found ${data.businesses?.length || 0} businesses</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                result.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+            }
+        }
+
+        async function testRegister() {
+            const result = document.getElementById('registerResult');
+            result.innerHTML = '<p>Testing...</p>';
+            
+            const testUser = {
+                email: `test${Date.now()}@q4life.com`,
+                password: 'test123456',
+                firstName: 'Test',
+                lastName: 'User',
+                userType: 'customer'
+            };
+            
+            try {
+                const data = await apiCall(API_CONFIG.ENDPOINTS.REGISTER, {
+                    method: 'POST',
+                    body: JSON.stringify(testUser)
+                });
+                result.innerHTML = `
+                    <p class="success">✅ User registered successfully!</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                result.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+            }
+        }
+
+        // Auto-run health check on load
+        window.onload = () => testHealth();
+    </script>
+</body>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request a quote for Q4Life services — networking, technology, workforce, business development, and more.">
+    <title>Request Quote — Q4 Life Enterprise</title>
+    <link rel="stylesheet" href="assets/css/enterprise.css">
+    <style>
+        /* Quote Form Specific Styles */
+        .quote-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(at 40% 20%, rgba(139, 92, 246, 0.3) 0px, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .quote-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+        
+        .quote-hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .quote-hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .quote-form-container {
+            max-width: 900px;
+            margin: -3rem auto 5rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .quote-form-card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+            padding: 3rem;
+        }
+        
+        .progress-container {
+            margin-bottom: 3rem;
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #e5e7eb;
+            z-index: 1;
+        }
+        
+        .progress-line {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+            z-index: 2;
+        }
+        
+        .progress-step {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .progress-step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: 700;
+            color: #9ca3af;
+            transition: all 0.3s ease;
+        }
+        
+        .progress-step.active .progress-step-circle {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        
+        .progress-step.completed .progress-step-circle {
+            border-color: #10b981;
+            background: #10b981;
+            color: white;
+        }
+        
+        .progress-step-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-weight: 600;
+        }
+        
+        .progress-step.active .progress-step-label {
+            color: #667eea;
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+            animation: fadeInUp 0.4s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .step-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+        
+        .step-description {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 2.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+        
+        .form-label.required::after {
+            content: " *";
+            color: #ef4444;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-input.error,
+        .form-select.error,
+        .form-textarea.error {
+            border-color: #ef4444;
+        }
+        
+        .form-error {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        .form-error.show {
+            display: block;
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .radio-group {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .radio-option {
+            position: relative;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .radio-option:hover {
+            border-color: #667eea;
+            background: #f9fafb;
+        }
+        
+        .radio-option input[type="radio"] {
+            margin-top: 0.25rem;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .radio-option.selected {
+            border-color: #667eea;
+            background: #ede9fe;
+        }
+        
+        .radio-content {
+            flex: 1;
+        }
+        
+        .radio-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+        
+        .radio-description {
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox-option:hover {
+            border-color: #667eea;
+            background: #f9fafb;
+        }
+        
+        .checkbox-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .checkbox-option.selected {
+            border-color: #667eea;
+            background: #ede9fe;
+        }
+        
+        .checkbox-label {
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f3f4f6;
+        }
+        
+        .btn-back {
+            background: transparent;
+            color: #6b7280;
+            border: 2px solid #e5e7eb;
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-back:hover {
+            border-color: #9ca3af;
+            color: #111827;
+        }
+        
+        .btn-back:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-next {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-submit:hover {
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .success-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+        
+        .success-text {
+            font-size: 1.1rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 768px) {
+            .quote-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .quote-form-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .progress-steps {
+                display: none;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+        }
+        .radio-item.selected {
+            border-color: var(--color-primary);
+            background-color: rgba(81, 153, 168, 0.1);
+        }
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        .step-indicator {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--color-gray-600);
+            font-size: var(--text-sm);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav-container">
+                <a href="/" class="logo">Q4<span>LIFE</span></a>
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="/divisions.html" class="nav-link">Divisions</a></li>
+                    <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" style="padding: var(--space-12) 0;">
+        <div class="container">
+            <div class="hero-content">
+                <h1 style="color: white; font-size: var(--text-4xl);">Request a Quote</h1>
+                <p class="hero-subtitle" style="font-size: var(--text-lg);">
+                    Tell us about your needs, and we'll provide a detailed proposal within 24 hours.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE FORM -->
+    <section class="section">
+        <div class="container">
+            <div class="quote-form-container">
+                
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 14%;"></div>
+                </div>
+                
+                <div class="step-indicator" id="stepIndicator">Step 1 of 7</div>
+                
+                <form id="quoteForm" data-validate="true">
+                    
+                    <!-- STEP 1: Division Selection -->
+                    <div class="form-step active" data-step="1">
+                        <h2 style="margin-bottom: 2rem;">Which service are you interested in?</h2>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="division" value="connect" required>
+                                <div>
+                                    <strong>🌐 Connect — Networking & Infrastructure</strong>
+                                    <p style="margin: 0; font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Internet, Starlink, MikroTik, Community ISP, Off-Grid
+                                    </p>
+                                </div>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="division" value="technology">
+                                <div>
+                                    <strong>💻 Technology — Software & SaaS</strong>
+                                    <p style="margin: 0; font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Custom software, mobile apps, integrations, SaaS platforms
+                                    </p>
+                                </div>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="division" value="workforce">
+                                <div>
+                                    <strong>👥 Workforce — Development & Deployment</strong>
+                                    <p style="margin: 0; font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Training, certification, talent deployment, workforce management
+                                    </p>
+                                </div>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="division" value="business-development">
+                                <div>
+                                    <strong>💼 Business Development — Strategy & Advisory</strong>
+                                    <p style="margin: 0; font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Strategic planning, market entry, partnerships, compliance
+                                    </p>
+                                </div>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="division" value="other">
+                                <div>
+                                    <strong>Other Divisions</strong>
+                                    <p style="margin: 0; font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Q4 System, QoL-QoS, Audit, Security, IP, Marketing
+                                    </p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Customer Type -->
+                    <div class="form-step" data-step="2">
+                        <h2 style="margin-bottom: 2rem;">Who are you?</h2>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="customer_type" value="home" required>
+                                <div>
+                                    <strong>🏠 Home / Individual</strong>
+                                    <p style="margin: 0; font-size: var(--text-sm); color: var(--color-gray-600);">Personal use, work from home</p>
+                                </div>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="customer_type" value="small-business">
+                                <div>
+                                    <strong>🏢 Small Business / SME</strong>
+                                    <p style="margin: 0; font-size: var(--text-sm); color: var(--color-gray-600);">Office, restaurant, shop, clinic, school</p>
+                                </div>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="customer_type" value="corporate">
+                                <div>
+                                    <strong>🏦 Corporate / Enterprise</strong>
+                                    <p style="margin: 0; font-size: var(--text-sm); color: var(--color-gray-600);">Bank, large company, government, mission-critical</p>
+                                </div>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="customer_type" value="community">
+                                <div>
+                                    <strong>🏘️ Community / Estate</strong>
+                                    <p style="margin: 0; font-size: var(--text-sm); color: var(--color-gray-600);">Apartments, estates, villages, shared infrastructure</p>
+                                </div>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="customer_type" value="event">
+                                <div>
+                                    <strong>🎪 Event Organizer</strong>
+                                    <p style="margin: 0; font-size: var(--text-sm); color: var(--color-gray-600);">Conference, wedding, concert, temporary installation</p>
+                                </div>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="customer_type" value="offgrid">
+                                <div>
+                                    <strong>🏕️ Off-Grid / Remote</strong>
+                                    <p style="margin: 0; font-size: var(--text-sm); color: var(--color-gray-600);">Farm, campsite, research station, no reliable electricity</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Location & Site Details -->
+                    <div class="form-step" data-step="3">
+                        <h2 style="margin-bottom: 2rem;">Location & Site Details</h2>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="location">Location / Address</label>
+                            <input type="text" id="location" name="location" class="form-input" placeholder="City, country, or address" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="power_situation">Power Situation</label>
+                            <select id="power_situation" name="power_situation" class="form-select" required>
+                                <option value="">-- Select --</option>
+                                <option value="reliable">Reliable grid power (24/7)</option>
+                                <option value="intermittent">Intermittent power (outages)</option>
+                                <option value="generator">Generator only</option>
+                                <option value="solar">Solar system (existing)</option>
+                                <option value="none">No power (need off-grid solution)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="coverage_area">Coverage Area (square meters or description)</label>
+                            <input type="text" id="coverage_area" name="coverage_area" class="form-input" placeholder="e.g., 500 sqm, 2-story building, 5-acre farm">
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Scale & Requirements -->
+                    <div class="form-step" data-step="4">
+                        <h2 style="margin-bottom: 2rem;">Scale & Requirements</h2>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="users_count">Number of Users / Devices</label>
+                            <input type="number" id="users_count" name="users_count" class="form-input" placeholder="e.g., 50 users" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="buildings_count">Number of Buildings / Locations</label>
+                            <input type="number" id="buildings_count" name="buildings_count" class="form-input" placeholder="e.g., 1 building" value="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Primary Use Cases (Select all that apply)</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="use_cases[]" value="browsing">
+                                    <span>Web browsing & email</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="use_cases[]" value="video-calls">
+                                    <span>Video calls (Zoom, Teams)</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="use_cases[]" value="streaming">
+                                    <span>Streaming (HD/4K)</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="use_cases[]" value="cloud">
+                                    <span>Cloud services & backups</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="use_cases[]" value="pos">
+                                    <span>POS / Payment systems</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="use_cases[]" value="voip">
+                                    <span>VoIP phone systems</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5: Specific Needs (Conditional based on division) -->
+                    <div class="form-step" data-step="5">
+                        <h2 style="margin-bottom: 2rem;">Specific Needs</h2>
+                        
+                        <div class="form-group">
+                            <label class="form-label">What do you need? (Select all that apply)</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="needs[]" value="starlink">
+                                    <span>Starlink installation</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="needs[]" value="qos">
+                                    <span>QoS / Bandwidth management</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="needs[]" value="vlan">
+                                    <span>VLAN segmentation</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="needs[]" value="cctv">
+                                    <span>CCTV network integration</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="needs[]" value="solar">
+                                    <span>Solar power system</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="needs[]" value="captive-portal">
+                                    <span>Captive portal / Paid WiFi</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="needs[]" value="support">
+                                    <span>Ongoing support contract</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="needs[]" value="equipment">
+                                    <span>Equipment sales only</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="additional_details">Additional Details or Special Requirements</label>
+                            <textarea id="additional_details" name="additional_details" class="form-textarea" placeholder="Anything else we should know? Challenges, constraints, specific goals..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- STEP 6: Budget -->
+                    <div class="form-step" data-step="6">
+                        <h2 style="margin-bottom: 2rem;">Budget & Timeline</h2>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="budget">Budget Range (USD)</label>
+                            <select id="budget" name="budget" class="form-select" required>
+                                <option value="">-- Select --</option>
+                                <option value="under-1000">Under $1,000</option>
+                                <option value="1000-2500">$1,000 - $2,500</option>
+                                <option value="2500-5000">$2,500 - $5,000</option>
+                                <option value="5000-10000">$5,000 - $10,000</option>
+                                <option value="10000-25000">$10,000 - $25,000</option>
+                                <option value="25000-50000">$25,000 - $50,000</option>
+                                <option value="50000-plus">$50,000+</option>
+                                <option value="not-sure">Not sure / Need guidance</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="timeline">When do you need this completed?</label>
+                            <select id="timeline" name="timeline" class="form-select" required>
+                                <option value="">-- Select --</option>
+                                <option value="urgent">Urgent (Within 1 week)</option>
+                                <option value="1-month">Within 1 month</option>
+                                <option value="1-3-months">1-3 months</option>
+                                <option value="3-6-months">3-6 months</option>
+                                <option value="flexible">Flexible / Just exploring</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- STEP 7: Contact Information -->
+                    <div class="form-step" data-step="7">
+                        <h2 style="margin-bottom: 2rem;">Contact Information</h2>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="full_name">Full Name *</label>
+                            <input type="text" id="full_name" name="full_name" class="form-input" placeholder="John Doe" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+1 (555) 123-4567" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="company">Company / Organization (Optional)</label>
+                            <input type="text" id="company" name="company" class="form-input" placeholder="Acme Inc.">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-item" style="display: flex; align-items: flex-start;">
+                                <input type="checkbox" name="whatsapp_preferred" value="yes" style="margin-top: 0.25rem;">
+                                <span style="margin-left: 0.5rem;">
+                                    <strong>WhatsApp is my preferred contact method</strong>
+                                    <p style="margin: 0; font-size: var(--text-sm); color: var(--color-gray-600);">We'll reach out via WhatsApp for faster response</p>
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <div style="background-color: var(--color-gray-50); padding: 1.5rem; border-radius: var(--radius-md); margin-top: 2rem;">
+                            <h4 style="margin-bottom: 1rem;">What happens next?</h4>
+                            <ul style="margin-left: 1.5rem; color: var(--color-gray-700);">
+                                <li>We'll review your request within 24 hours</li>
+                                <li>A Q4Life specialist will contact you via your preferred method</li>
+                                <li>We'll schedule a site survey if needed (free for most projects)</li>
+                                <li>You'll receive a detailed proposal with pricing and timeline</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+                            ← Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" id="nextBtn">
+                            Next →
+                        </button>
+                        <button type="submit" class="btn btn-success btn-lg" id="submitBtn" style="display: none;">
+                            Submit Quote Request 🚀
+                        </button>
+                    </div>
+                    
+                </form>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="text-align: center; padding: 2rem 0;">
+                <p>&copy; 2025 Q4Life. Need help? <a href="https://wa.me/15551234567" style="color: var(--color-primary);">WhatsApp us: +1 (555) 123-4567</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/15551234567?text=Hello%20Q4Life!%20I%20have%20a%20question%20about%20the%20quote%20form." 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener"
+       aria-label="Contact us on WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-5.203 1.393 1.393-5.203-0.292-0.507c-1.224-2.162-1.87-4.588-1.87-7.07 0-7.467 6.067-13.533 13.533-13.533s13.533 6.067 13.533 13.533c0 7.467-6.067 13.533-13.533 13.533zM21.867 18.267c-0.373-0.187-2.2-1.093-2.547-1.213-0.347-0.12-0.6-0.187-0.853 0.187s-0.973 1.213-1.2 1.467c-0.213 0.253-0.44 0.28-0.813 0.093-0.373-0.187-1.573-0.587-3-1.867-1.107-0.987-1.853-2.2-2.067-2.573-0.213-0.373-0.027-0.573 0.16-0.76 0.173-0.16 0.373-0.44 0.56-0.653 0.187-0.213 0.253-0.373 0.373-0.627 0.12-0.253 0.067-0.467-0.027-0.653-0.093-0.187-0.853-2.053-1.173-2.8-0.307-0.733-0.613-0.627-0.853-0.64-0.213-0.013-0.467-0.013-0.72-0.013s-0.653 0.093-0.987 0.467c-0.333 0.373-1.293 1.253-1.293 3.067s1.32 3.573 1.507 3.813c0.187 0.253 2.587 4.013 6.293 5.573 0.88 0.373 1.56 0.6 2.093 0.773 0.88 0.28 1.68 0.24 2.32 0.147 0.707-0.107 2.2-0.893 2.507-1.76 0.307-0.867 0.307-1.613 0.213-1.76-0.093-0.147-0.347-0.24-0.72-0.427z"/>
+        </svg>
+    </a>
+
+    <script src="/assets/js/main.js"></script>
+    <script>
+        // Multi-step form logic
+        let currentStep = 1;
+        const totalSteps = 7;
+        
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const progressFill = document.getElementById('progressFill');
+        const stepIndicator = document.getElementById('stepIndicator');
+        
+        // Radio button selection visual feedback
+        document.querySelectorAll('.radio-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const radio = this.querySelector('input[type="radio"]');
+                const group = radio.getAttribute('name');
+                
+                // Remove selected class from all items in this group
+                document.querySelectorAll(`input[name="${group}"]`).forEach(r => {
+                    r.closest('.radio-item').classList.remove('selected');
+                });
+                
+                // Add selected class to clicked item
+                this.classList.add('selected');
+                radio.checked = true;
+            });
+        });
+        
+        function showStep(step) {
+            document.querySelectorAll('.form-step').forEach((s, index) => {
+                s.classList.remove('active');
+                if (index + 1 === step) {
+                    s.classList.add('active');
+                }
+            });
+            
+            // Update progress bar
+            const progress = (step / totalSteps) * 100;
+            progressFill.style.width = progress + '%';
+            
+            // Update step indicator
+            stepIndicator.textContent = `Step ${step} of ${totalSteps}`;
+            
+            // Show/hide buttons
+            prevBtn.style.display = step === 1 ? 'none' : 'inline-flex';
+            nextBtn.style.display = step === totalSteps ? 'none' : 'inline-flex';
+            submitBtn.style.display = step === totalSteps ? 'inline-flex' : 'none';
+            
+            // Scroll to top of form
+            document.querySelector('.quote-form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        function validateStep(step) {
+            const currentStepElement = document.querySelector(`.form-step[data-step="${step}"]`);
+            const requiredFields = currentStepElement.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (field.type === 'radio') {
+                    const radioGroup = currentStepElement.querySelectorAll(`input[name="${field.name}"]`);
+                    const isChecked = Array.from(radioGroup).some(r => r.checked);
+                    if (!isChecked) {
+                        isValid = false;
+                        radioGroup.forEach(r => r.closest('.radio-item').style.borderColor = 'var(--color-danger)');
+                    }
+                } else if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('error');
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+            
+            return isValid;
+        }
+        
+        nextBtn.addEventListener('click', function() {
+            if (validateStep(currentStep)) {
+                currentStep++;
+                showStep(currentStep);
+            } else {
+                alert('Please fill in all required fields before proceeding.');
+            }
+        });
+        
+        prevBtn.addEventListener('click', function() {
+            currentStep--;
+            showStep(currentStep);
+        });
+        
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateStep(currentStep)) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                if (data[key]) {
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            });
+            
+            console.log('Form submitted:', data);
+            
+            // In production, send to server
+            // For now, show success message
+            alert('Quote request submitted successfully! We\'ll contact you within 24 hours.');
+            
+            // Redirect to thank you page or homepage
+            window.location.href = '/thank-you.html';
+        });
+        
+        // Initialize
+        showStep(1);
+        
+        // Pre-fill division if URL parameter exists
+        const urlParams = new URLSearchParams(window.location.search);
+        const division = urlParams.get('division');
+        if (division) {
+            const divisionRadio = document.querySelector(`input[name="division"][value="${division}"]`);
+            if (divisionRadio) {
+                divisionRadio.checked = true;
+                divisionRadio.closest('.radio-item').classList.add('selected');
+            }
+        }
+        
+        const customerType = urlParams.get('type');
+        if (customerType) {
+            const typeRadio = document.querySelector(`input[name="customer_type"][value="${customerType}"]`);
+            if (typeRadio) {
+                typeRadio.checked = true;
+                typeRadio.closest('.radio-item').classList.add('selected');
+            }
+        }
+    </script>
+</body>
+</html>

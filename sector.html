@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Sector - Q4Life Marketplace</title>
+    <link rel="stylesheet" href="assets/css/enterprise.css">
+    <style>
+        .sector-header {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+        
+        .sector-icon-large {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .businesses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .business-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .business-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .business-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+        
+        .qol-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #0a0e27;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .business-info {
+            padding: 1.5rem;
+        }
+        
+        .filter-bar {
+            background: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 0.875rem 1.25rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #fbbf24;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav style="background: white; padding: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+            <a href="index.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <div style="font-size: 2rem;">🌟</div>
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: 800; color: #0a0e27;">Q4Life</div>
+                    <div style="font-size: 0.75rem; color: #f59e0b; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Allegro Marketplace</div>
+                </div>
+            </a>
+            <div style="display: flex; gap: 2rem; align-items: center;">
+                <a href="marketplace.html" style="color: #6b7280; text-decoration: none; font-weight: 600;">← Back to All Sectors</a>
+                <a href="business-portal.html" class="btn btn-primary" style="padding: 0.75rem 1.5rem;">Get Certified</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTOR HEADER -->
+    <section class="sector-header">
+        <div class="container">
+            <div class="sector-icon-large" id="sectorIcon">🏢</div>
+            <h1 style="color: #0a0e27; font-size: 3rem; margin-bottom: 0.5rem;" id="sectorName">Loading...</h1>
+            <p style="color: rgba(10, 14, 39, 0.8); font-size: 1.25rem;" id="sectorDescription"></p>
+            <div style="margin-top: 1.5rem; font-size: 1.5rem; font-weight: 700; color: #0a0e27;">
+                <span id="businessCount">0</span> QoL-Certified Businesses
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+        <div class="container">
+            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search businesses in this sector...">
+                <select id="locationFilter" style="padding: 0.875rem 1.25rem; border: 2px solid #e5e7eb; border-radius: 8px;">
+                    <option value="">All Locations</option>
+                    <option value="yaounde">Yaoundé</option>
+                    <option value="douala">Douala</option>
+                    <option value="bamenda">Bamenda</option>
+                </select>
+                <select id="qolFilter" style="padding: 0.875rem 1.25rem; border: 2px solid #e5e7eb; border-radius: 8px;">
+                    <option value="">All QoL Scores</option>
+                    <option value="800">800+ (Diamond)</option>
+                    <option value="700">700+ (Platinum)</option>
+                    <option value="600">600+ (Gold)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- BUSINESSES GRID -->
+    <section style="padding: 3rem 0; background: #f9fafb;">
+        <div class="container">
+            <div id="businessesGrid" class="businesses-grid">
+                <!-- Businesses loaded by JavaScript -->
+            </div>
+            
+            <div id="noResults" style="display: none; text-align: center; padding: 4rem 0;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">🔍</div>
+                <h3>No businesses found</h3>
+                <p style="color: #6b7280;">Try adjusting your filters or search terms</p>
+            </div>
+            
+            <div id="loading" style="text-align: center; padding: 4rem 0;">
+                <div style="font-size: 3rem;">⏳</div>
+                <p>Loading businesses...</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/api-config.js"></script>
+    <script>
+        // Get sector ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const sectorId = urlParams.get('id');
+        
+        // Sector data (same as marketplace)
+        const SECTORS = {
+            'food-dining': { name: 'Food & Dining', icon: '🍽️', description: 'Restaurants, cafes, catering, bakeries, food delivery', businessCount: 8420 },
+            'transportation': { name: 'Transportation & Logistics', icon: '🚗', description: 'Taxi services, car rental, logistics, delivery, moving', businessCount: 5680 },
+            'healthcare': { name: 'Healthcare & Wellness', icon: '🏥', description: 'Clinics, hospitals, wellness centers, fitness, nutrition', businessCount: 4320 },
+            'home-services': { name: 'Home Services', icon: '🏠', description: 'Cleaning, repairs, maintenance, landscaping, security', businessCount: 7890 },
+            'professional-services': { name: 'Professional Services', icon: '💼', description: 'Legal, accounting, consulting, HR, business services', businessCount: 3450 },
+            'education-training': { name: 'Education & Training', icon: '📚', description: 'Schools, tutoring, courses, vocational training', businessCount: 2980 },
+            'real-estate-property': { name: 'Real Estate & Property', icon: '🏢', description: 'Sales, rentals, property management', businessCount: 2150 },
+            'beauty-personal-care': { name: 'Beauty & Personal Care', icon: '💇', description: 'Salons, spas, cosmetics, beauty services', businessCount: 6720 },
+            'entertainment-events': { name: 'Entertainment & Events', icon: '🎉', description: 'Event planning, entertainment, venues', businessCount: 1890 },
+            'agriculture-farming': { name: 'Agriculture & Farming', icon: '🌾', description: 'Crop, livestock, fishing, agro-inputs', businessCount: 3260 },
+            'construction-engineering': { name: 'Construction & Engineering', icon: '🏗️', description: 'Building, renovation, engineering', businessCount: 4580 },
+            'technology-it': { name: 'Technology & IT Services', icon: '💻', description: 'Web, software, IT support, tech solutions', businessCount: 2740 },
+            'financial-services': { name: 'Financial Services', icon: '💰', description: 'Banking, insurance, investment, financial advisory', businessCount: 1680 },
+            'retail-shopping': { name: 'Retail & Shopping', icon: '🛍️', description: 'Supermarkets, stores, retail outlets', businessCount: 9840 },
+            'hospitality-tourism': { name: 'Hospitality & Tourism', icon: '🏨', description: 'Hotels, tours, travel agencies, tourism', businessCount: 2390 }
+        };
+        
+        // Load sector information
+        function loadSectorInfo() {
+            if (!sectorId || !SECTORS[sectorId]) {
+                window.location.href = 'marketplace.html';
+                return;
+            }
+            
+            const sector = SECTORS[sectorId];
+            document.getElementById('pageTitle').textContent = `${sector.name} - Q4Life Marketplace`;
+            document.getElementById('sectorIcon').textContent = sector.icon;
+            document.getElementById('sectorName').textContent = sector.name;
+            document.getElementById('sectorDescription').textContent = sector.description;
+            document.getElementById('businessCount').textContent = sector.businessCount.toLocaleString();
+        }
+        
+        // Load businesses from API
+        async function loadBusinesses() {
+            const searchTerm = document.getElementById('searchInput').value;
+            const location = document.getElementById('locationFilter').value;
+            const minQoL = document.getElementById('qolFilter').value;
+            
+            try {
+                // Build query string
+                let query = `?sector=${sectorId}`;
+                if (searchTerm) query += `&search=${encodeURIComponent(searchTerm)}`;
+                if (location) query += `&location=${location}`;
+                if (minQoL) query += `&minQoL=${minQoL}`;
+                
+                const data = await apiCall(API_CONFIG.ENDPOINTS.MARKETPLACE_SEARCH + query);
+                
+                displayBusinesses(data.businesses || []);
+            } catch (error) {
+                console.error('Error loading businesses:', error);
+                // Show mock data if API fails
+                displayMockBusinesses();
+            }
+        }
+        
+        // Display businesses
+        function displayBusinesses(businesses) {
+            const grid = document.getElementById('businessesGrid');
+            const loading = document.getElementById('loading');
+            const noResults = document.getElementById('noResults');
+            
+            loading.style.display = 'none';
+            
+            if (businesses.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+            
+            grid.innerHTML = businesses.map(business => `
+                <div class="business-card" onclick="viewBusiness('${business.id}')">
+                    <div class="business-image">
+                        ${SECTORS[sectorId].icon}
+                        <div class="qol-badge">
+                            ⭐ ${business.qolScore || 750}
+                        </div>
+                    </div>
+                    <div class="business-info">
+                        <h3 style="margin: 0 0 0.5rem 0; color: #0a0e27;">${business.businessName}</h3>
+                        <p style="color: #6b7280; margin: 0 0 0.75rem 0; font-size: 0.875rem;">${business.city || 'Yaoundé'}</p>
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: #fbbf24; font-weight: 600; margin-bottom: 0.75rem;">
+                            ⭐⭐⭐⭐⭐ <span style="color: #6b7280; font-weight: 400;">4.8 (${Math.floor(Math.random() * 200 + 50)} reviews)</span>
+                        </div>
+                        <p style="color: #4b5563; font-size: 0.875rem; margin: 0 0 1rem 0;">${business.description || 'Quality-certified business providing excellent services.'}</p>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <span style="background: #eff6ff; color: #1e40af; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">✓ Certified</span>
+                            <span style="background: #f0fdf4; color: #166534; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">🛡️ Verified</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Display mock businesses when API is unavailable
+        function displayMockBusinesses() {
+            const mockBusinesses = Array.from({length: 12}, (_, i) => ({
+                id: `biz-${i}`,
+                businessName: `${SECTORS[sectorId].name} Business ${i + 1}`,
+                city: ['Yaoundé', 'Douala', 'Bamenda'][i % 3],
+                qolScore: 600 + Math.floor(Math.random() * 250),
+                description: `A certified ${SECTORS[sectorId].name.toLowerCase()} business providing quality services.`
+            }));
+            
+            displayBusinesses(mockBusinesses);
+        }
+        
+        function viewBusiness(businessId) {
+            window.location.href = `business-detail.html?id=${businessId}`;
+        }
+        
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', debounce(loadBusinesses, 500));
+        document.getElementById('locationFilter').addEventListener('change', loadBusinesses);
+        document.getElementById('qolFilter').addEventListener('change', loadBusinesses);
+        
+        // Debounce helper
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        // Initialize
+        loadSectorInfo();
+        loadBusinesses();
+    </script>
+</body>
+</html>
