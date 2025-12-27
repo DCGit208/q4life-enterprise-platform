@@ -839,6 +839,459 @@ app.post('/api/commissions/calculate', authenticateToken, async (req, res) => {
     }
 });
 
+// ====================
+// NETWORK MANAGEMENT API
+// ====================
+
+// GET ADMIN NETWORK OVERVIEW
+app.get('/api/admin/network/overview', authenticateToken, async (req, res) => {
+    try {
+        if (req.user.userType !== 'admin') {
+            return res.status(403).json({ error: 'Admin access required' });
+        }
+
+        // Get total counts
+        const stats = await pool.query(`
+            SELECT 
+                (SELECT COUNT(*) FROM aggs WHERE status = 'active') as total_aags,
+                (SELECT COUNT(*) FROM affs WHERE status = 'active') as total_affs,
+                (SELECT COUNT(*) FROM customers WHERE status = 'active') as total_customers,
+                (SELECT COUNT(*) FROM businesses WHERE certification_status = 'active') as total_businesses,
+                (SELECT COALESCE(SUM(kit_price), 0) FROM customers WHERE status = 'active') as monthly_revenue,
+                (SELECT COALESCE(SUM(total_commissions_earned), 0) FROM affs) as total_aff_commissions,
+                (SELECT COALESCE(SUM(total_commissions_earned), 0) FROM aggs) as total_aag_commissions
+        `);
+
+        // Get customer breakdown by kit type
+        const kitBreakdown = await pool.query(`
+            SELECT 
+                patronage_kit,
+                COUNT(*) as count,
+                SUM(kit_price) as revenue
+            FROM customers
+            WHERE status = 'active'
+            GROUP BY patronage_kit
+            ORDER BY revenue DESC
+        `);
+
+        // Get top performing AAGs
+        const topAAGs = await pool.query(`
+            SELECT 
+                a.id,
+                u.first_name || ' ' || u.last_name as name,
+                u.email,
+                a.active_affiliates_count,
+                a.total_network_revenue,
+                a.total_commissions_earned,
+                a.status
+            FROM aggs a
+            JOIN users u ON a.user_id = u.id
+            WHERE a.status = 'active'
+            ORDER BY a.total_network_revenue DESC
+            LIMIT 10
+        `);
+
+        res.json({
+            stats: stats.rows[0],
+            kitBreakdown: kitBreakdown.rows,
+            topAAGs: topAAGs.rows
+        });
+    } catch (error) {
+        console.error('Network overview error:', error);
+        res.status(500).json({ error: 'Failed to load network overview' });
+    }
+});
+
+// GET ALL AAGs
+app.get('/api/admin/aags', authenticateToken, async (req, res) => {
+    try {
+        if (req.user.userType !== 'admin') {
+            return res.status(403).json({ error: 'Admin access required' });
+        }
+
+        const aags = await pool.query(`
+            SELECT 
+                a.id,
+                a.user_id,
+                u.email,
+                u.first_name || ' ' || u.last_name as name,
+                a.max_affiliates,
+                a.active_affiliates_count,
+                a.commission_rate,
+                a.override_rate,
+                a.total_network_revenue,
+                a.total_commissions_earned,
+                a.status,
+                a.created_at
+            FROM aggs a
+            JOIN users u ON a.user_id = u.id
+            ORDER BY a.total_network_revenue DESC
+        `);
+
+        res.json({ aags: aags.rows });
+    } catch (error) {
+        console.error('Get AAGs error:', error);
+        res.status(500).json({ error: 'Failed to load AAGs' });
+    }
+});
+
+// GET AAG DASHBOARD DATA
+app.get('/api/aag/dashboard', authenticateToken, async (req, res) => {
+    try {
+        if (req.user.userType !== 'agg') {
+            return res.status(403).json({ error: 'AAG access required' });
+        }
+
+        // Get AAG details
+        const aag = await pool.query(`
+            SELECT * FROM aggs WHERE user_id = $1
+        `, [req.user.userId]);
+
+        if (aag.rows.length === 0) {
+            return res.status(404).json({ error: 'AAG profile not found' });
+        }
+
+        const aagData = aag.rows[0];
+
+        // Get all affiliates under this AAG
+        const affiliates = await pool.query(`
+            SELECT 
+                a.id,
+                u.email,
+                u.first_name || ' ' || u.last_name as name,
+                a.active_customers_count,
+                a.max_customers,
+                a.total_sales,
+                a.total_commissions_earned,
+                a.referral_code,
+                a.status,
+                a.created_at
+            FROM affs a
+            JOIN users u ON a.user_id = u.id
+            WHERE a.agg_id = $1
+            ORDER BY a.total_sales DESC
+        `, [aagData.id]);
+
+        // Get customer count by affiliate
+        const customerStats = await pool.query(`
+            SELECT 
+                aff_id,
+                COUNT(*) as customer_count,
+                SUM(kit_price) as total_revenue
+            FROM customers
+            WHERE aff_id IN (SELECT id FROM affs WHERE agg_id = $1)
+            AND status = 'active'
+            GROUP BY aff_id
+        `, [aagData.id]);
+
+        // Calculate commissions for this month
+        const monthlyCommissions = await pool.query(`
+            SELECT COALESCE(SUM(amount), 0) as total
+            FROM commissions
+            WHERE recipient_id = $1
+            AND DATE_TRUNC('month', created_at) = DATE_TRUNC('month', CURRENT_DATE)
+        `, [req.user.userId]);
+
+        res.json({
+            aag: aagData,
+            affiliates: affiliates.rows,
+            customerStats: customerStats.rows,
+            monthlyCommissions: monthlyCommissions.rows[0].total
+        });
+    } catch (error) {
+        console.error('AAG dashboard error:', error);
+        res.status(500).json({ error: 'Failed to load dashboard' });
+    }
+});
+
+// GET AFF DASHBOARD DATA
+app.get('/api/aff/dashboard', authenticateToken, async (req, res) => {
+    try {
+        if (req.user.userType !== 'aff') {
+            return res.status(403).json({ error: 'AFF access required' });
+        }
+
+        // Get AFF details
+        const aff = await pool.query(`
+            SELECT * FROM affs WHERE user_id = $1
+        `, [req.user.userId]);
+
+        if (aff.rows.length === 0) {
+            return res.status(404).json({ error: 'AFF profile not found' });
+        }
+
+        const affData = aff.rows[0];
+
+        // Get all customers under this AFF
+        const customers = await pool.query(`
+            SELECT 
+                c.id,
+                u.email,
+                u.first_name || ' ' || u.last_name as name,
+                c.patronage_kit,
+                c.kit_price,
+                c.status,
+                c.subscription_start_date,
+                c.renewal_date,
+                c.lifetime_value
+            FROM customers c
+            JOIN users u ON c.user_id = u.id
+            WHERE c.aff_id = $1
+            ORDER BY c.kit_price DESC, c.created_at DESC
+        `, [affData.id]);
+
+        // Get revenue stats
+        const revenueStats = await pool.query(`
+            SELECT 
+                patronage_kit,
+                COUNT(*) as count,
+                SUM(kit_price) as revenue
+            FROM customers
+            WHERE aff_id = $1 AND status = 'active'
+            GROUP BY patronage_kit
+        `, [affData.id]);
+
+        // Get monthly commissions
+        const monthlyCommissions = await pool.query(`
+            SELECT COALESCE(SUM(amount), 0) as total
+            FROM commissions
+            WHERE recipient_id = $1
+            AND DATE_TRUNC('month', created_at) = DATE_TRUNC('month', CURRENT_DATE)
+        `, [req.user.userId]);
+
+        res.json({
+            aff: affData,
+            customers: customers.rows,
+            revenueStats: revenueStats.rows,
+            monthlyCommissions: monthlyCommissions.rows[0].total
+        });
+    } catch (error) {
+        console.error('AFF dashboard error:', error);
+        res.status(500).json({ error: 'Failed to load dashboard' });
+    }
+});
+
+// ADD NEW CUSTOMER (by AFF)
+app.post('/api/aff/customers', authenticateToken, async (req, res) => {
+    try {
+        if (req.user.userType !== 'aff') {
+            return res.status(403).json({ error: 'AFF access required' });
+        }
+
+        const { email, firstName, lastName, patronageKit } = req.body;
+
+        // Get AFF details
+        const aff = await pool.query('SELECT * FROM affs WHERE user_id = $1', [req.user.userId]);
+        if (aff.rows.length === 0) {
+            return res.status(404).json({ error: 'AFF profile not found' });
+        }
+
+        // Check if AFF has reached customer limit
+        if (aff.rows[0].active_customers_count >= aff.rows[0].max_customers) {
+            return res.status(400).json({ error: 'Customer limit reached (500 max)' });
+        }
+
+        // Determine kit price
+        const kitPrices = {
+            '25-std': 25,
+            '100-prem': 100,
+            '250-pro': 250,
+            '500-elite': 500,
+            '1k-ent': 1000
+        };
+        const kitPrice = kitPrices[patronageKit] || 25;
+
+        // Create user account
+        const tempPassword = Math.random().toString(36).slice(-8);
+        const passwordHash = await bcrypt.hash(tempPassword, 10);
+
+        const user = await pool.query(`
+            INSERT INTO users (email, password_hash, first_name, last_name, user_type, created_at)
+            VALUES ($1, $2, $3, $4, 'customer', NOW())
+            RETURNING id
+        `, [email, passwordHash, firstName, lastName]);
+
+        // Create customer record
+        const customer = await pool.query(`
+            INSERT INTO customers (user_id, aff_id, patronage_kit, kit_price, status, subscription_start_date, renewal_date)
+            VALUES ($1, $2, $3, $4, 'active', NOW(), NOW() + INTERVAL '1 month')
+            RETURNING *
+        `, [user.rows[0].id, aff.rows[0].id, patronageKit, kitPrice]);
+
+        // Calculate and record commission
+        const commissionAmount = kitPrice * (aff.rows[0].commission_rate / 100);
+        await pool.query(`
+            INSERT INTO commissions (transaction_type, recipient_id, recipient_type, customer_id, amount, commission_rate, status)
+            VALUES ('aff_direct', $1, 'aff', $2, $3, $4, 'pending')
+        `, [req.user.userId, customer.rows[0].id, commissionAmount, aff.rows[0].commission_rate]);
+
+        res.json({ 
+            customer: customer.rows[0],
+            tempPassword,
+            message: 'Customer added successfully. Send login credentials to customer.' 
+        });
+    } catch (error) {
+        console.error('Add customer error:', error);
+        res.status(500).json({ error: 'Failed to add customer' });
+    }
+});
+
+// ========================================
+// NETWORK DASHBOARD API ENDPOINTS
+// ========================================
+
+// Admin: Get complete network overview
+app.get('/api/admin/network/overview', authenticateToken, async (req, res) => {
+    try {
+        if (req.user.userType !== 'admin') {
+            return res.status(403).json({ error: 'Admin access required' });
+        }
+
+        const stats = await pool.query(`
+            SELECT 
+                (SELECT COUNT(*) FROM aggs WHERE status = 'active') as active_aags,
+                (SELECT COUNT(*) FROM affs WHERE status = 'active') as active_affs,
+                (SELECT COUNT(*) FROM customers WHERE status = 'active') as active_customers,
+                (SELECT SUM(kit_price) FROM customers WHERE status = 'active') as monthly_recurring_revenue,
+                (SELECT SUM(total_commissions_earned) FROM aggs) as total_agg_commissions,
+                (SELECT SUM(total_commissions_earned) FROM affs) as total_aff_commissions
+        `);
+
+        res.json(stats.rows[0]);
+    } catch (error) {
+        console.error('Network overview error:', error);
+        res.status(500).json({ error: 'Failed to get network overview' });
+    }
+});
+
+// Admin: Get all AAGs with their network stats
+app.get('/api/admin/aags', authenticateToken, async (req, res) => {
+    try {
+        if (req.user.userType !== 'admin') {
+            return res.status(403).json({ error: 'Admin access required' });
+        }
+
+        const aags = await pool.query(`
+            SELECT a.*, u.email, u.first_name, u.last_name,
+                   a.active_affiliates_count,
+                   a.total_network_revenue,
+                   a.total_commissions_earned,
+                   (SELECT COUNT(*) FROM customers c 
+                    JOIN affs af ON c.aff_id = af.id 
+                    WHERE af.agg_id = a.id AND c.status = 'active') as total_customers
+            FROM aggs a
+            JOIN users u ON a.user_id = u.id
+            ORDER BY a.total_network_revenue DESC
+        `);
+
+        res.json(aags.rows);
+    } catch (error) {
+        console.error('Get AAGs error:', error);
+        res.status(500).json({ error: 'Failed to get AAGs' });
+    }
+});
+
+// AAG: Get own dashboard stats
+app.get('/api/aag/dashboard', authenticateToken, async (req, res) => {
+    try {
+        const aag = await pool.query('SELECT * FROM aggs WHERE user_id = $1', [req.user.userId]);
+        
+        if (aag.rows.length === 0) {
+            return res.status(404).json({ error: 'AAG profile not found' });
+        }
+
+        const stats = await pool.query(`
+            SELECT 
+                (SELECT COUNT(*) FROM affs WHERE agg_id = $1 AND status = 'active') as active_affs,
+                (SELECT COUNT(*) FROM customers c 
+                 JOIN affs af ON c.aff_id = af.id 
+                 WHERE af.agg_id = $1 AND c.status = 'active') as total_customers,
+                (SELECT SUM(af.total_sales) FROM affs af WHERE af.agg_id = $1) as total_network_sales,
+                (SELECT SUM(amount) FROM commissions WHERE recipient_id = $2 AND status = 'paid') as total_commissions_paid
+        `, [aag.rows[0].id, req.user.userId]);
+
+        res.json({ aag: aag.rows[0], stats: stats.rows[0] });
+    } catch (error) {
+        console.error('AAG dashboard error:', error);
+        res.status(500).json({ error: 'Failed to get dashboard' });
+    }
+});
+
+// AAG: Get all their affiliates
+app.get('/api/aag/affiliates', authenticateToken, async (req, res) => {
+    try {
+        const aag = await pool.query('SELECT id FROM aggs WHERE user_id = $1', [req.user.userId]);
+        
+        if (aag.rows.length === 0) {
+            return res.status(404).json({ error: 'AAG profile not found' });
+        }
+
+        const affiliates = await pool.query(`
+            SELECT af.*, u.email, u.first_name, u.last_name,
+                   af.active_customers_count,
+                   af.total_sales,
+                   af.total_commissions_earned
+            FROM affs af
+            JOIN users u ON af.user_id = u.id
+            WHERE af.agg_id = $1
+            ORDER BY af.total_sales DESC
+        `, [aag.rows[0].id]);
+
+        res.json(affiliates.rows);
+    } catch (error) {
+        console.error('Get affiliates error:', error);
+        res.status(500).json({ error: 'Failed to get affiliates' });
+    }
+});
+
+// AFF: Get own dashboard stats
+app.get('/api/aff/dashboard', authenticateToken, async (req, res) => {
+    try {
+        const aff = await pool.query('SELECT * FROM affs WHERE user_id = $1', [req.user.userId]);
+        
+        if (aff.rows.length === 0) {
+            return res.status(404).json({ error: 'AFF profile not found' });
+        }
+
+        const stats = await pool.query(`
+            SELECT 
+                (SELECT COUNT(*) FROM customers WHERE aff_id = $1 AND status = 'active') as active_customers,
+                (SELECT SUM(kit_price) FROM customers WHERE aff_id = $1 AND status = 'active') as monthly_revenue,
+                (SELECT SUM(amount) FROM commissions WHERE recipient_id = $2 AND status = 'paid') as total_commissions_paid,
+                (SELECT SUM(amount) FROM commissions WHERE recipient_id = $2 AND status = 'pending') as pending_commissions
+        `, [aff.rows[0].id, req.user.userId]);
+
+        res.json({ aff: aff.rows[0], stats: stats.rows[0] });
+    } catch (error) {
+        console.error('AFF dashboard error:', error);
+        res.status(500).json({ error: 'Failed to get dashboard' });
+    }
+});
+
+// AFF: Get all their customers
+app.get('/api/aff/customers', authenticateToken, async (req, res) => {
+    try {
+        const aff = await pool.query('SELECT id FROM affs WHERE user_id = $1', [req.user.userId]);
+        
+        if (aff.rows.length === 0) {
+            return res.status(404).json({ error: 'AFF profile not found' });
+        }
+
+        const customers = await pool.query(`
+            SELECT c.*, u.email, u.first_name, u.last_name
+            FROM customers c
+            JOIN users u ON c.user_id = u.id
+            WHERE c.aff_id = $1
+            ORDER BY c.created_at DESC
+        `, [aff.rows[0].id]);
+
+        res.json(customers.rows);
+    } catch (error) {
+        console.error('Get customers error:', error);
+        res.status(500).json({ error: 'Failed to get customers' });
+    }
+});
+
 // START SERVER
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

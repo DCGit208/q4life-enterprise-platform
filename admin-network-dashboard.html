@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Overview - Q4Life Admin</title>
+    <link rel="stylesheet" href="assets/css/enterprise.css">
+    <style>
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin: 0.5rem 0;
+        }
+        .stat-label {
+            color: #64748b;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            text-align: left;
+            padding: 0.75rem;
+            border-bottom: 2px solid #e2e8f0;
+            color: #475569;
+            font-weight: 600;
+        }
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        tr:hover {
+            background: #f8fafc;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .status-active { background: #dcfce7; color: #166534; }
+        .status-inactive { background: #fee2e2; color: #991b1b; }
+        .kit-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .kit-std { background: #dbeafe; color: #1e40af; }
+        .kit-prem { background: #e0e7ff; color: #4338ca; }
+        .kit-pro { background: #fce7f3; color: #9f1239; }
+        .kit-elite { background: #fef3c7; color: #92400e; }
+        .kit-ent { background: #d1fae5; color: #065f46; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav-container">
+                <a href="index.html" class="logo">Q4<span class="logo-accent">Life</span></a>
+                <ul class="nav-menu">
+                    <li><a href="admin-dashboard.html" class="nav-link">Business Admin</a></li>
+                    <li><a href="admin-network-dashboard.html" class="nav-link" style="font-weight: 600;">Network Overview</a></li>
+                    <li><a href="#" class="btn btn-outline" onclick="logout()">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" style="padding: 2rem 1rem; max-width: 1400px;">
+        <div style="margin-bottom: 2rem;">
+            <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">Network Overview</h1>
+            <p style="color: #64748b;">Monitor your 500K+ customer network across 20 AAGs and 1,000 Affiliates</p>
+        </div>
+
+        <!-- Network Stats -->
+        <div class="network-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total AAGs</div>
+                <div class="stat-value" id="totalAAGs">--</div>
+                <div style="color: #10b981; font-size: 0.875rem;">Max: 20</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Affiliates</div>
+                <div class="stat-value" id="totalAFFs">--</div>
+                <div style="color: #10b981; font-size: 0.875rem;">Max: 1,000</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Active Customers</div>
+                <div class="stat-value" id="totalCustomers">--</div>
+                <div style="color: #10b981; font-size: 0.875rem;">Max: 500,000</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Certified Businesses</div>
+                <div class="stat-value" id="totalBusinesses">--</div>
+                <div style="color: #64748b; font-size: 0.875rem;">Marketplace</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Monthly Revenue (MRR)</div>
+                <div class="stat-value" id="monthlyRevenue">--</div>
+                <div style="color: #64748b; font-size: 0.875rem;">Patronage Kits</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">AFF Commissions</div>
+                <div class="stat-value" id="affCommissions">--</div>
+                <div style="color: #64748b; font-size: 0.875rem;">10% of sales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">AAG Overrides</div>
+                <div class="stat-value" id="aagCommissions">--</div>
+                <div style="color: #64748b; font-size: 0.875rem;">2% of network</div>
+            </div>
+        </div>
+
+        <!-- Kit Breakdown -->
+        <div class="table-container">
+            <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Patronage Kit Distribution</h2>
+            <table id="kitBreakdownTable">
+                <thead>
+                    <tr>
+                        <th>Kit Tier</th>
+                        <th>Active Customers</th>
+                        <th>Monthly Revenue</th>
+                        <th>% of Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="4" style="text-align: center; padding: 2rem;">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Top AAGs -->
+        <div class="table-container">
+            <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Top Performing AAGs</h2>
+            <table id="topAAGsTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Active AFFs</th>
+                        <th>Network Revenue</th>
+                        <th>Total Commissions</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="8" style="text-align: center; padding: 2rem;">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="assets/js/api-config.js"></script>
+    <script>
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+            window.location.href = 'login.php';
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        function formatNumber(num) {
+            return new Intl.NumberFormat('en-US').format(num);
+        }
+
+        async function loadNetworkOverview() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/admin/network/overview`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.status === 403) {
+                    alert('Admin access required');
+                    window.location.href = 'login.php';
+                    return;
+                }
+
+                const data = await response.json();
+
+                // Update stats
+                document.getElementById('totalAAGs').textContent = data.stats.total_aags;
+                document.getElementById('totalAFFs').textContent = formatNumber(data.stats.total_affs);
+                document.getElementById('totalCustomers').textContent = formatNumber(data.stats.total_customers);
+                document.getElementById('totalBusinesses').textContent = formatNumber(data.stats.total_businesses);
+                document.getElementById('monthlyRevenue').textContent = formatCurrency(data.stats.monthly_revenue);
+                document.getElementById('affCommissions').textContent = formatCurrency(data.stats.total_aff_commissions);
+                document.getElementById('aagCommissions').textContent = formatCurrency(data.stats.total_aag_commissions);
+
+                // Render kit breakdown
+                renderKitBreakdown(data.kitBreakdown, data.stats.monthly_revenue);
+
+                // Render top AAGs
+                renderTopAAGs(data.topAAGs);
+
+            } catch (error) {
+                console.error('Error loading network overview:', error);
+                alert('Failed to load network data');
+            }
+        }
+
+        function renderKitBreakdown(kits, totalRevenue) {
+            const tbody = document.querySelector('#kitBreakdownTable tbody');
+            const kitNames = {
+                '25-std': '25-Standard',
+                '100-prem': '100-Premium',
+                '250-pro': '250-Professional',
+                '500-elite': '500-Elite',
+                '1k-ent': '1K-Enterprise'
+            };
+
+            if (kits.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 2rem;">No customers yet</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = kits.map(kit => {
+                const percentage = totalRevenue > 0 ? ((kit.revenue / totalRevenue) * 100).toFixed(1) : 0;
+                return `
+                    <tr>
+                        <td><span class="kit-badge kit-${kit.patronage_kit.split('-')[1]}">${kitNames[kit.patronage_kit]}</span></td>
+                        <td>${formatNumber(kit.count)}</td>
+                        <td>${formatCurrency(kit.revenue)}</td>
+                        <td>${percentage}%</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function renderTopAAGs(aags) {
+            const tbody = document.querySelector('#topAAGsTable tbody');
+
+            if (aags.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 2rem;">No AAGs yet</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = aags.map((aag, index) => `
+                <tr>
+                    <td><strong>#${index + 1}</strong></td>
+                    <td>${aag.name}</td>
+                    <td>${aag.email}</td>
+                    <td>${aag.active_affiliates_count} / 50</td>
+                    <td>${formatCurrency(aag.total_network_revenue)}</td>
+                    <td>${formatCurrency(aag.total_commissions_earned)}</td>
+                    <td><span class="status-badge status-${aag.status}">${aag.status}</span></td>
+                    <td><a href="aag-details.html?id=${aag.id}" class="btn btn-sm" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">View Details</a></td>
+                </tr>
+            `).join('');
+        }
+
+        function logout() {
+            localStorage.removeItem('authToken');
+            window.location.href = 'login.php';
+        }
+
+        // Load data on page load
+        loadNetworkOverview();
+    </script>
+</body>
+</html>
