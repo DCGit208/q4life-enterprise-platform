@@ -522,6 +522,323 @@ function requireAdmin(req, res, next) {
     next();
 }
 
+// ====================
+// NETWORK MANAGEMENT APIs
+// ====================
+
+// AAG Dashboard - Get AAG overview and affiliates
+app.get('/api/aag/dashboard', authenticateToken, async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        
+        // Get AAG info
+        const aagQuery = await pool.query(`
+            SELECT a.*, u.name, u.email, u.company_name
+            FROM aggs a
+            JOIN users u ON a.user_id = u.user_id
+            WHERE u.user_id = $1
+        `, [userId]);
+        
+        if (aagQuery.rows.length === 0) {
+            return res.status(404).json({ error: 'AAG not found' });
+        }
+        
+        const aag = aagQuery.rows[0];
+        
+        // Get all affiliates for this AAG
+        const affsQuery = await pool.query(`
+            SELECT 
+                af.aff_id,
+                u.name,
+                u.email,
+                af.referral_code,
+                af.rank,
+                af.active_clients_count,
+                af.monthly_revenue,
+                af.commission_rate,
+                af.status,
+                af.created_at
+            FROM affs af
+            JOIN users u ON af.user_id = u.user_id
+            WHERE af.agg_id = $1
+            ORDER BY af.monthly_revenue DESC
+        `, [aag.agg_id]);
+        
+        // Calculate commission earned this month
+        const commissionQuery = await pool.query(`
+            SELECT SUM(amount) as total
+            FROM commission_records
+            WHERE agg_id = $1 
+            AND commission_type = 'override'
+            AND created_at >= DATE_TRUNC('month', CURRENT_DATE)
+        `, [aag.agg_id]);
+        
+        const commission = commissionQuery.rows[0].total || 0;
+        
+        res.json({
+            name: aag.name || aag.company_name,
+            activeAffiliates: aag.active_affiliates_count,
+            maxAffiliates: aag.max_affiliates,
+            totalClients: aag.total_network_clients,
+            monthlyRevenue: parseFloat(aag.monthly_revenue || 0),
+            commissionEarned: parseFloat(commission),
+            tier: aag.tier,
+            affiliates: affsQuery.rows.map(aff => ({
+                id: aff.aff_id,
+                name: aff.name,
+                email: aff.email,
+                referralCode: aff.referral_code,
+                rank: aff.rank,
+                activeClients: aff.active_clients_count,
+                monthlyRevenue: parseFloat(aff.monthly_revenue || 0),
+                commissionRate: parseFloat(aff.commission_rate),
+                status: aff.status,
+                joinedDate: aff.created_at
+            }))
+        });
+    } catch (error) {
+        console.error('AAG Dashboard error:', error);
+        res.status(500).json({ error: 'Failed to load dashboard' });
+    }
+});
+
+// AFF Dashboard - Get AFF overview and clients
+app.get('/api/aff/dashboard', authenticateToken, async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        
+        // Get AFF info
+        const affQuery = await pool.query(`
+            SELECT af.*, u.name, u.email
+            FROM affs af
+            JOIN users u ON af.user_id = u.user_id
+            WHERE u.user_id = $1
+        `, [userId]);
+        
+        if (affQuery.rows.length === 0) {
+            return res.status(404).json({ error: 'Affiliate not found' });
+        }
+        
+        const aff = affQuery.rows[0];
+        
+        // Get all clients for this AFF
+        const clientsQuery = await pool.query(`
+            SELECT 
+                c.customer_id,
+                u.name,
+                u.email,
+                c.patronage_kit,
+                c.monthly_fee,
+                c.status,
+                c.created_at,
+                c.renewal_date,
+                c.lifetime_value
+            FROM customers c
+            JOIN users u ON c.user_id = u.user_id
+            WHERE c.aff_id = $1
+            ORDER BY c.created_at DESC
+        `, [aff.aff_id]);
+        
+        // Calculate commission earned this month
+        const commissionQuery = await pool.query(`
+            SELECT SUM(amount) as total
+            FROM commission_records
+            WHERE aff_id = $1 
+            AND commission_type = 'direct'
+            AND created_at >= DATE_TRUNC('month', CURRENT_DATE)
+        `, [aff.aff_id]);
+        
+        const commission = commissionQuery.rows[0].total || 0;
+        
+        // Count new clients this month
+        const newClientsQuery = await pool.query(`
+            SELECT COUNT(*) as count
+            FROM customers
+            WHERE aff_id = $1
+            AND created_at >= DATE_TRUNC('month', CURRENT_DATE)
+        `, [aff.aff_id]);
+        
+        const newClients = parseInt(newClientsQuery.rows[0].count || 0);
+        
+        // Calculate kit distribution
+        const kitDistQuery = await pool.query(`
+            SELECT patronage_kit, COUNT(*) as count
+            FROM customers
+            WHERE aff_id = $1 AND status = 'active'
+            GROUP BY patronage_kit
+        `, [aff.aff_id]);
+        
+        const kitDistribution = {};
+        kitDistQuery.rows.forEach(row => {
+            kitDistribution[row.patronage_kit] = parseInt(row.count);
+        });
+        
+        res.json({
+            name: aff.name,
+            rank: aff.rank,
+            referralCode: aff.referral_code,
+            referralLink: `https://q4-life.com/join?ref=${aff.referral_code}`,
+            activeClients: aff.active_clients_count,
+            maxClients: aff.max_clients,
+            monthlyRevenue: parseFloat(aff.monthly_revenue || 0),
+            commissionEarned: parseFloat(commission),
+            commissionRate: parseFloat(aff.commission_rate),
+            newClients: newClients,
+            revenueGrowth: 15.2, // TODO: Calculate actual growth
+            commissionChange: parseFloat(commission) * 0.15, // TODO: Calculate actual change
+            clients: clientsQuery.rows.map(client => ({
+                id: client.customer_id,
+                name: client.name,
+                email: client.email,
+                kit: client.patronage_kit,
+                fee: parseFloat(client.monthly_fee),
+                commission: parseFloat(client.monthly_fee) * parseFloat(aff.commission_rate) / 100,
+                joined: client.created_at,
+                status: client.status,
+                renewalDate: client.renewal_date,
+                lifetimeValue: parseFloat(client.lifetime_value || 0)
+            })),
+            kitDistribution: kitDistribution
+        });
+    } catch (error) {
+        console.error('AFF Dashboard error:', error);
+        res.status(500).json({ error: 'Failed to load dashboard' });
+    }
+});
+
+// Admin Network Overview
+app.get('/api/admin/network-stats', authenticateToken, requireAdmin, async (req, res) => {
+    try {
+        // Get AAG stats
+        const aagStats = await pool.query(`
+            SELECT 
+                COUNT(*) as total_aags,
+                SUM(active_affiliates_count) as total_affs,
+                SUM(total_network_clients) as total_clients,
+                SUM(monthly_revenue) as total_revenue
+            FROM aggs
+        `);
+        
+        // Get commission stats
+        const commissionStats = await pool.query(`
+            SELECT 
+                SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) as pending_commissions,
+                SUM(CASE WHEN status = 'paid' THEN amount ELSE 0 END) as paid_commissions
+            FROM commission_records
+            WHERE created_at >= DATE_TRUNC('month', CURRENT_DATE)
+        `);
+        
+        // Get top performers
+        const topAggs = await pool.query(`
+            SELECT 
+                a.agg_id,
+                u.name,
+                u.company_name,
+                a.active_affiliates_count,
+                a.total_network_clients,
+                a.monthly_revenue,
+                a.tier
+            FROM aggs a
+            JOIN users u ON a.user_id = u.user_id
+            ORDER BY a.monthly_revenue DESC
+            LIMIT 10
+        `);
+        
+        const topAffs = await pool.query(`
+            SELECT 
+                af.aff_id,
+                u.name,
+                af.rank,
+                af.active_clients_count,
+                af.monthly_revenue
+            FROM affs af
+            JOIN users u ON af.user_id = u.user_id
+            ORDER BY af.monthly_revenue DESC
+            LIMIT 10
+        `);
+        
+        res.json({
+            totalAggs: parseInt(aagStats.rows[0].total_aags || 0),
+            maxAags: 20,
+            totalAffs: parseInt(aagStats.rows[0].total_affs || 0),
+            maxAffs: 1000,
+            totalClients: parseInt(aagStats.rows[0].total_clients || 0),
+            maxClients: 500000,
+            monthlyRevenue: parseFloat(aagStats.rows[0].total_revenue || 0),
+            pendingCommissions: parseFloat(commissionStats.rows[0].pending_commissions || 0),
+            paidCommissions: parseFloat(commissionStats.rows[0].paid_commissions || 0),
+            topAggs: topAggs.rows.map(agg => ({
+                id: agg.agg_id,
+                name: agg.name || agg.company_name,
+                affiliates: agg.active_affiliates_count,
+                clients: agg.total_network_clients,
+                revenue: parseFloat(agg.monthly_revenue || 0),
+                tier: agg.tier
+            })),
+            topAffs: topAffs.rows.map(aff => ({
+                id: aff.aff_id,
+                name: aff.name,
+                rank: aff.rank,
+                clients: aff.active_clients_count,
+                revenue: parseFloat(aff.monthly_revenue || 0)
+            }))
+        });
+    } catch (error) {
+        console.error('Network stats error:', error);
+        res.status(500).json({ error: 'Failed to load network statistics' });
+    }
+});
+
+// Calculate commissions on payment
+app.post('/api/commissions/calculate', authenticateToken, async (req, res) => {
+    try {
+        const { transactionId, customerId, amount } = req.body;
+        
+        // Get customer and their AFF
+        const customerQuery = await pool.query(`
+            SELECT c.aff_id, af.agg_id, af.commission_rate as aff_rate, ag.commission_rate as agg_rate
+            FROM customers c
+            JOIN affs af ON c.aff_id = af.aff_id
+            JOIN aggs ag ON af.agg_id = ag.agg_id
+            WHERE c.customer_id = $1
+        `, [customerId]);
+        
+        if (customerQuery.rows.length === 0) {
+            return res.status(404).json({ error: 'Customer not found' });
+        }
+        
+        const { aff_id, agg_id, aff_rate, agg_rate } = customerQuery.rows[0];
+        
+        // Calculate commissions
+        const affCommission = amount * (parseFloat(aff_rate) / 100);
+        const aggCommission = amount * (parseFloat(agg_rate) / 100);
+        
+        // Record AFF commission (direct)
+        await pool.query(`
+            INSERT INTO commission_records 
+            (transaction_id, aff_id, commission_type, amount, rate, status)
+            VALUES ($1, $2, 'direct', $3, $4, 'pending')
+        `, [transactionId, aff_id, affCommission, aff_rate]);
+        
+        // Record AAG commission (override)
+        await pool.query(`
+            INSERT INTO commission_records 
+            (transaction_id, agg_id, commission_type, amount, rate, status)
+            VALUES ($1, $2, 'override', $3, $4, 'pending')
+        `, [transactionId, agg_id, aggCommission, agg_rate]);
+        
+        res.json({
+            success: true,
+            affCommission: affCommission,
+            aggCommission: aggCommission,
+            total: affCommission + aggCommission
+        });
+    } catch (error) {
+        console.error('Commission calculation error:', error);
+        res.status(500).json({ error: 'Failed to calculate commissions' });
+    }
+});
+
 // START SERVER
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

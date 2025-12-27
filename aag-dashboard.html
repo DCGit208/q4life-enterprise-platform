@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAG Dashboard | Q4Life Network Management</title>
+    <link rel="stylesheet" href="assets/css/enterprise.css">
+    <style>
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+            background: #f5f7fa;
+        }
+        
+        .sidebar {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 2rem 1.5rem;
+        }
+        
+        .sidebar-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-nav a {
+            display: block;
+            padding: 0.875rem 1rem;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin: 0.5rem 0;
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        .stat-change {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        
+        .stat-change.positive { color: #10b981; }
+        .stat-change.negative { color: #ef4444; }
+        
+        .content-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background: #f8fafc;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        th {
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .status-inactive {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .rank-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1e40af;
+        }
+        
+        .btn-sm {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+        }
+        
+        .progress-bar {
+            height: 0.5rem;
+            background: #e2e8f0;
+            border-radius: 9999px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+            transition: width 0.3s;
+        }
+        
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                Q4<span style="color: #60a5fa">Life</span> AAG
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="active" onclick="showSection('overview')">📊 Overview</a>
+                <a href="#" onclick="showSection('affiliates')">👥 My Affiliates</a>
+                <a href="#" onclick="showSection('network')">🌐 Client Network</a>
+                <a href="#" onclick="showSection('commissions')">💰 Commissions</a>
+                <a href="#" onclick="showSection('analytics')">📈 Analytics</a>
+                <a href="#" onclick="showSection('recruitment')">➕ Recruit AFFs</a>
+                <a href="#" onclick="showSection('settings')">⚙️ Settings</a>
+                <a href="index.html">🏠 Home</a>
+                <a href="#" onclick="logout()">🚪 Logout</a>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <div style="margin-bottom: 2rem;">
+                <h1 style="font-size: 2rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">Welcome, <span id="aagName">Loading...</span></h1>
+                <p style="color: #64748b;">Manage your network of affiliates and track performance</p>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Active Affiliates</div>
+                    <div class="stat-value"><span id="activeAffs">0</span> / 50</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="affsProgress" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">Total Client Network</div>
+                    <div class="stat-value" id="totalClients">0</div>
+                    <div class="stat-change positive">↑ <span id="clientGrowth">0</span> this month</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">Monthly Revenue</div>
+                    <div class="stat-value">$<span id="monthlyRevenue">0</span></div>
+                    <div class="stat-change positive">↑ <span id="revenueGrowth">0%</span> vs last month</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">Commission Earned (MTD)</div>
+                    <div class="stat-value">$<span id="commissionEarned">0</span></div>
+                    <div class="stat-change positive">Next payout: <span id="nextPayout">Jan 1</span></div>
+                </div>
+            </div>
+            
+            <!-- Affiliates Section -->
+            <div id="affiliatesSection" class="content-card">
+                <div class="card-header">
+                    <h2 class="card-title">My Affiliates Performance</h2>
+                    <button class="btn btn-primary btn-sm" onclick="recruitAffiliate()">+ Recruit New AFF</button>
+                </div>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Affiliate</th>
+                                <th>Referral Code</th>
+                                <th>Rank</th>
+                                <th>Active Clients</th>
+                                <th>Monthly Revenue</th>
+                                <th>Commission Rate</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="affiliatesTable">
+                            <tr>
+                                <td colspan="8" style="text-align: center; padding: 2rem; color: #94a3b8;">
+                                    Loading affiliates...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Top Performers -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h2 class="card-title">Top Performing Affiliates This Month</h2>
+                </div>
+                
+                <div id="topPerformers">
+                    <!-- Will be populated by JS -->
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="assets/js/api-config.js"></script>
+    <script>
+        let aagData = null;
+        
+        // Load AAG dashboard data
+        async function loadDashboard() {
+            try {
+                const token = localStorage.getItem('authToken');
+                if (!token) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                // Get AAG data
+                const response = await fetch(`${API_BASE_URL}/aag/dashboard`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!response.ok) throw new Error('Failed to load dashboard');
+                
+                aagData = await response.json();
+                renderDashboard(aagData);
+            } catch (error) {
+                console.error('Dashboard load error:', error);
+                // Show demo data for now
+                loadDemoData();
+            }
+        }
+        
+        function loadDemoData() {
+            aagData = {
+                name: 'Demo Agency',
+                activeAffiliates: 12,
+                maxAffiliates: 50,
+                totalClients: 3847,
+                monthlyRevenue: 89234,
+                commissionEarned: 8923,
+                clientGrowth: 156,
+                revenueGrowth: 12.5,
+                affiliates: [
+                    {id: 1, name: 'John Smith', code: 'AFF-001', rank: 'Elite', clients: 487, revenue: 12340, rate: 20, status: 'active'},
+                    {id: 2, name: 'Sarah Johnson', code: 'AFF-002', rank: 'Master', clients: 421, revenue: 10525, rate: 20, status: 'active'},
+                    {id: 3, name: 'Michael Brown', code: 'AFF-003', rank: 'Senior', clients: 398, revenue: 9950, rate: 18, status: 'active'},
+                    {id: 4, name: 'Emily Davis', code: 'AFF-004', rank: 'Senior', clients: 356, revenue: 8900, rate: 18, status: 'active'},
+                    {id: 5, name: 'David Wilson', code: 'AFF-005', rank: 'Associate', clients: 234, revenue: 5850, rate: 15, status: 'active'}
+                ]
+            };
+            renderDashboard(aagData);
+        }
+        
+        function renderDashboard(data) {
+            // Update header
+            document.getElementById('aagName').textContent = data.name;
+            
+            // Update stats
+            document.getElementById('activeAffs').textContent = data.activeAffiliates;
+            document.getElementById('affsProgress').style.width = ((data.activeAffiliates / data.maxAffiliates) * 100) + '%';
+            document.getElementById('totalClients').textContent = data.totalClients.toLocaleString();
+            document.getElementById('clientGrowth').textContent = data.clientGrowth;
+            document.getElementById('monthlyRevenue').textContent = data.monthlyRevenue.toLocaleString();
+            document.getElementById('revenueGrowth').textContent = data.revenueGrowth.toFixed(1) + '%';
+            document.getElementById('commissionEarned').textContent = data.commissionEarned.toLocaleString();
+            
+            // Render affiliates table
+            renderAffiliatesTable(data.affiliates);
+            renderTopPerformers(data.affiliates.slice(0, 3));
+        }
+        
+        function renderAffiliatesTable(affiliates) {
+            const tbody = document.getElementById('affiliatesTable');
+            
+            if (!affiliates || affiliates.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 2rem; color: #94a3b8;">No affiliates yet. Start recruiting!</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = affiliates.map(aff => `
+                <tr>
+                    <td>
+                        <div style="font-weight: 600;">${aff.name}</div>
+                        <div style="font-size: 0.875rem; color: #64748b;">${aff.email || ''}</div>
+                    </td>
+                    <td><span class="rank-badge">${aff.code}</span></td>
+                    <td><span class="rank-badge">${aff.rank}</span></td>
+                    <td>
+                        <div>${aff.clients} / 500</div>
+                        <div class="progress-bar" style="width: 100px;">
+                            <div class="progress-fill" style="width: ${(aff.clients/500)*100}%"></div>
+                        </div>
+                    </td>
+                    <td style="font-weight: 600;">$${aff.revenue.toLocaleString()}</td>
+                    <td>${aff.rate}%</td>
+                    <td><span class="status-badge status-${aff.status}">${aff.status}</span></td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="viewAffiliate('${aff.id}')">View</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        function renderTopPerformers(topAffs) {
+            const container = document.getElementById('topPerformers');
+            container.innerHTML = topAffs.map((aff, index) => `
+                <div class="metric-row">
+                    <div>
+                        <div style="font-weight: 600; color: #1e293b;">${index + 1}. ${aff.name}</div>
+                        <div style="font-size: 0.875rem; color: #64748b;">${aff.clients} clients • ${aff.rank}</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-weight: 700; color: #2563eb;">$${aff.revenue.toLocaleString()}</div>
+                        <div style="font-size: 0.875rem; color: #64748b;">revenue</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function viewAffiliate(affId) {
+            alert('Viewing affiliate details for ID: ' + affId + '\n\nThis will show:\n- All their clients\n- Performance metrics\n- Commission breakdown\n- Client retention rate');
+        }
+        
+        function recruitAffiliate() {
+            alert('Recruit New Affiliate\n\nThis will open a form to:\n- Generate unique referral code\n- Set commission rate\n- Assign rank\n- Send invitation email');
+        }
+        
+        function showSection(section) {
+            alert('Navigating to: ' + section + '\n\nThis section will show detailed information about ' + section);
+        }
+        
+        function logout() {
+            localStorage.removeItem('authToken');
+            window.location.href = 'index.html';
+        }
+        
+        // Load dashboard on page load
+        loadDashboard();
+    </script>
+</body>
+</html>

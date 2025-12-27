@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFF Dashboard | Q4Life Affiliate Portal</title>
+    <link rel="stylesheet" href="assets/css/enterprise.css">
+    <style>
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+            background: #f5f7fa;
+        }
+        
+        .sidebar {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            padding: 2rem 1.5rem;
+        }
+        
+        .sidebar-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-nav a {
+            display: block;
+            padding: 0.875rem 1rem;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #8b5cf6;
+            margin: 0.5rem 0;
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        .stat-change {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        
+        .stat-change.positive { color: #10b981; }
+        .stat-change.negative { color: #ef4444; }
+        
+        .content-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        
+        .referral-box {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .referral-code {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 1rem 0;
+            letter-spacing: 0.1em;
+        }
+        
+        .referral-link {
+            background: rgba(255,255,255,0.15);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background: #f8fafc;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        th {
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .status-inactive {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .kit-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .kit-std { background: #e0e7ff; color: #3730a3; }
+        .kit-prem { background: #dbeafe; color: #1e40af; }
+        .kit-pro { background: #fef3c7; color: #92400e; }
+        .kit-elite { background: #fce7f3; color: #831843; }
+        .kit-ent { background: #f3e8ff; color: #6b21a8; }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #8b5cf6;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #7c3aed;
+        }
+        
+        .btn-sm {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+        }
+        
+        .progress-bar {
+            height: 0.5rem;
+            background: #e2e8f0;
+            border-radius: 9999px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8b5cf6 0%, #a78bfa 100%);
+            transition: width 0.3s;
+        }
+        
+        .rank-display {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .rank-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .rank-subtitle {
+            color: #78350f;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                Q4<span style="color: #c4b5fd">Life</span> AFF
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="active">📊 Dashboard</a>
+                <a href="#clients">👥 My Clients</a>
+                <a href="#commissions">💰 Commissions</a>
+                <a href="#recruitment">➕ Recruit Clients</a>
+                <a href="#tools">🛠️ Marketing Tools</a>
+                <a href="#training">📚 Training</a>
+                <a href="#settings">⚙️ Settings</a>
+                <a href="index.html">🏠 Home</a>
+                <a href="#" onclick="logout()">🚪 Logout</a>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <div style="margin-bottom: 2rem;">
+                <h1 style="font-size: 2rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">Welcome, <span id="affName">Loading...</span></h1>
+                <p style="color: #64748b;">Grow your client base and earn commissions</p>
+            </div>
+            
+            <!-- Rank Display -->
+            <div class="rank-display" id="rankDisplay">
+                <div class="rank-title" id="rankTitle">SENIOR AFFILIATE</div>
+                <div class="rank-subtitle">Next rank: Master (450 clients)</div>
+            </div>
+            
+            <!-- Referral Box -->
+            <div class="referral-box">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.125rem;">Your Referral Code</h3>
+                <div class="referral-code" id="referralCode">LOADING...</div>
+                <div class="referral-link">
+                    <span id="referralLink">https://q4-life.com/join?ref=...</span>
+                    <button class="btn btn-sm" style="background: white; color: #8b5cf6;" onclick="copyReferralLink()">Copy Link</button>
+                </div>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Active Clients</div>
+                    <div class="stat-value"><span id="activeClients">0</span> / 500</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="clientsProgress" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">Monthly Revenue</div>
+                    <div class="stat-value">$<span id="monthlyRevenue">0</span></div>
+                    <div class="stat-change positive">↑ <span id="revenueGrowth">0%</span> vs last month</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">Commission Earned (MTD)</div>
+                    <div class="stat-value">$<span id="commissionEarned">0</span></div>
+                    <div class="stat-change positive">↑ $<span id="commissionChange">0</span> this month</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">New Clients (This Month)</div>
+                    <div class="stat-value" id="newClients">0</div>
+                    <div class="stat-change positive">Goal: 20 new clients</div>
+                </div>
+            </div>
+            
+            <!-- Clients Section -->
+            <div id="clientsSection" class="content-card">
+                <div class="card-header">
+                    <h2 class="card-title">My Clients</h2>
+                    <button class="btn btn-primary btn-sm" onclick="shareReferralLink()">+ Share Referral Link</button>
+                </div>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Client Name</th>
+                                <th>Patronage Kit</th>
+                                <th>Monthly Fee</th>
+                                <th>Your Commission</th>
+                                <th>Joined Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientsTable">
+                            <tr>
+                                <td colspan="7" style="text-align: center; padding: 2rem; color: #94a3b8;">
+                                    Loading clients...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Kit Distribution -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h2 class="card-title">Client Distribution by Kit</h2>
+                </div>
+                <div id="kitDistribution">
+                    <!-- Will be populated by JS -->
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="assets/js/api-config.js"></script>
+    <script>
+        let affData = null;
+        
+        // Load AFF dashboard data
+        async function loadDashboard() {
+            try {
+                const token = localStorage.getItem('authToken');
+                if (!token) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                // Get AFF data
+                const response = await fetch(`${API_BASE_URL}/aff/dashboard`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!response.ok) throw new Error('Failed to load dashboard');
+                
+                affData = await response.json();
+                renderDashboard(affData);
+            } catch (error) {
+                console.error('Dashboard load error:', error);
+                // Show demo data for now
+                loadDemoData();
+            }
+        }
+        
+        function loadDemoData() {
+            affData = {
+                name: 'Demo Affiliate',
+                rank: 'Senior',
+                referralCode: 'AFF-DEMO-001',
+                referralLink: 'https://q4-life.com/join?ref=AFF-DEMO-001',
+                activeClients: 387,
+                maxClients: 500,
+                monthlyRevenue: 42340,
+                commissionEarned: 8468,
+                commissionRate: 20,
+                newClients: 23,
+                revenueGrowth: 15.2,
+                commissionChange: 1250,
+                clients: [
+                    {id: 1, name: 'Alice Johnson', kit: '250-pro', fee: 250, commission: 50, joined: '2024-12-01', status: 'active'},
+                    {id: 2, name: 'Bob Smith', kit: '100-prem', fee: 100, commission: 20, joined: '2024-12-05', status: 'active'},
+                    {id: 3, name: 'Carol White', kit: '500-elite', fee: 500, commission: 100, joined: '2024-12-10', status: 'active'},
+                    {id: 4, name: 'David Brown', kit: '25-std', fee: 25, commission: 5, joined: '2024-12-15', status: 'active'},
+                    {id: 5, name: 'Emma Davis', kit: '1k-ent', fee: 1000, commission: 200, joined: '2024-12-20', status: 'active'}
+                ],
+                kitDistribution: {
+                    '25-std': 147,
+                    '100-prem': 132,
+                    '250-pro': 78,
+                    '500-elite': 24,
+                    '1k-ent': 6
+                }
+            };
+            renderDashboard(affData);
+        }
+        
+        function renderDashboard(data) {
+            // Update header
+            document.getElementById('affName').textContent = data.name;
+            document.getElementById('rankTitle').textContent = data.rank.toUpperCase() + ' AFFILIATE';
+            
+            // Update referral info
+            document.getElementById('referralCode').textContent = data.referralCode;
+            document.getElementById('referralLink').textContent = data.referralLink;
+            
+            // Update stats
+            document.getElementById('activeClients').textContent = data.activeClients;
+            document.getElementById('clientsProgress').style.width = ((data.activeClients / data.maxClients) * 100) + '%';
+            document.getElementById('monthlyRevenue').textContent = data.monthlyRevenue.toLocaleString();
+            document.getElementById('revenueGrowth').textContent = data.revenueGrowth.toFixed(1) + '%';
+            document.getElementById('commissionEarned').textContent = data.commissionEarned.toLocaleString();
+            document.getElementById('commissionChange').textContent = data.commissionChange.toLocaleString();
+            document.getElementById('newClients').textContent = data.newClients;
+            
+            // Render clients table
+            renderClientsTable(data.clients);
+            renderKitDistribution(data.kitDistribution);
+        }
+        
+        function renderClientsTable(clients) {
+            const tbody = document.getElementById('clientsTable');
+            
+            if (!clients || clients.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 2rem; color: #94a3b8;">No clients yet. Start recruiting!</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = clients.map(client => {
+                const kitClass = client.kit.split('-')[1];
+                return `
+                    <tr>
+                        <td>
+                            <div style="font-weight: 600;">${client.name}</div>
+                            <div style="font-size: 0.875rem; color: #64748b;">${client.email || ''}</div>
+                        </td>
+                        <td><span class="kit-badge kit-${kitClass}">${client.kit.toUpperCase()}</span></td>
+                        <td style="font-weight: 600;">$${client.fee.toLocaleString()}</td>
+                        <td style="font-weight: 600; color: #10b981;">$${client.commission.toLocaleString()}</td>
+                        <td>${new Date(client.joined).toLocaleDateString()}</td>
+                        <td><span class="status-badge status-${client.status}">${client.status}</span></td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" onclick="viewClient('${client.id}')">View</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        function renderKitDistribution(distribution) {
+            const container = document.getElementById('kitDistribution');
+            const total = Object.values(distribution).reduce((a, b) => a + b, 0);
+            
+            const kitNames = {
+                '25-std': 'Standard ($25)',
+                '100-prem': 'Premium ($100)',
+                '250-pro': 'Professional ($250)',
+                '500-elite': 'Elite ($500)',
+                '1k-ent': 'Enterprise ($1000)'
+            };
+            
+            container.innerHTML = Object.entries(distribution).map(([kit, count]) => {
+                const percentage = ((count / total) * 100).toFixed(1);
+                return `
+                    <div style="margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="font-weight: 600;">${kitNames[kit]}</span>
+                            <span style="color: #64748b;">${count} clients (${percentage}%)</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${percentage}%"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function copyReferralLink() {
+            const link = document.getElementById('referralLink').textContent;
+            navigator.clipboard.writeText(link);
+            alert('Referral link copied to clipboard!\n\n' + link);
+        }
+        
+        function shareReferralLink() {
+            const link = document.getElementById('referralLink').textContent;
+            const code = document.getElementById('referralCode').textContent;
+            alert(`Share Your Referral Link:\n\n${link}\n\nYour Code: ${code}\n\nShare via:\n- Email\n- Social Media\n- Text Message\n- QR Code`);
+        }
+        
+        function viewClient(clientId) {
+            alert('Viewing client details for ID: ' + clientId);
+        }
+        
+        function logout() {
+            localStorage.removeItem('authToken');
+            window.location.href = 'index.html';
+        }
+        
+        // Load dashboard on page load
+        loadDashboard();
+    </script>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Overview - Admin Dashboard | Q4Life</title>
+    <link rel="stylesheet" href="assets/css/enterprise.css">
+    <style>
+        body {
+            margin: 0;
+            background: #f5f7fa;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: white;
+            padding: 2rem 1.5rem;
+        }
+        
+        .sidebar-logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+        }
+        
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: 0.875rem 1rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
+        }
+        
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .page-header {
+            margin-bottom: 2rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            color: #64748b;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-meta {
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+        
+        .stat-progress {
+            margin-top: 1rem;
+        }
+        
+        .progress-bar {
+            height: 0.5rem;
+            background: #e2e8f0;
+            border-radius: 9999px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+            transition: width 0.3s;
+        }
+        
+        .content-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background: #f8fafc;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        th {
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .tier-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .tier-standard { background: #e0e7ff; color: #3730a3; }
+        .tier-premium { background: #fef3c7; color: #92400e; }
+        .tier-elite { background: #fce7f3; color: #831843; }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #fbbf24;
+            color: #0a0e27;
+        }
+        
+        .btn-primary:hover {
+            background: #f59e0b;
+        }
+        
+        .btn-sm {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+        }
+        
+        .revenue-display {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .chart-placeholder {
+            height: 300px;
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                Q4<span style="color: #fbbf24">Life</span> Admin
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="active">📊 Network Overview</a>
+                <a href="#aags">🏢 AAGs Management</a>
+                <a href="#affs">👥 Affiliates (AFFs)</a>
+                <a href="#clients">🎯 Clients</a>
+                <a href="#commissions">💰 Commissions</a>
+                <a href="#revenue">📈 Revenue Analytics</a>
+                <a href="#recruitment">➕ Recruitment</a>
+                <a href="admin-dashboard.html">⚙️ Business Admin</a>
+                <a href="index.html">🏠 Home</a>
+                <a href="#" onclick="logout()">🚪 Logout</a>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Network Overview</h1>
+                <p class="page-subtitle">Real-time monitoring of your 500K client network</p>
+            </div>
+            
+            <!-- Primary Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">AFFILIATE AGENTS (AAGs)</div>
+                    <div class="stat-value"><span id="totalAags">0</span><span style="color: #cbd5e1; font-size: 1.5rem;">/20</span></div>
+                    <div class="stat-meta">Capacity: <span id="aagCapacity">0%</span></div>
+                    <div class="stat-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="aagProgress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">AFFILIATES (AFFs)</div>
+                    <div class="stat-value"><span id="totalAffs">0</span><span style="color: #cbd5e1; font-size: 1.5rem;">/1,000</span></div>
+                    <div class="stat-meta">Capacity: <span id="affCapacity">0%</span></div>
+                    <div class="stat-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="affProgress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">TOTAL CLIENTS</div>
+                    <div class="stat-value"><span id="totalClients">0</span><span style="color: #cbd5e1; font-size: 1.5rem;">/500K</span></div>
+                    <div class="stat-meta">Capacity: <span id="clientCapacity">0%</span></div>
+                    <div class="stat-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="clientProgress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">MONTHLY REVENUE</div>
+                    <div class="revenue-display">$<span id="monthlyRevenue">0</span></div>
+                    <div class="stat-meta">ARR: $<span id="arrProjection">0</span></div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">COMMISSIONS (MTD)</div>
+                    <div class="stat-value">$<span id="pendingCommissions">0</span></div>
+                    <div class="stat-meta" style="color: #10b981;">Paid: $<span id="paidCommissions">0</span></div>
+                </div>
+            </div>
+            
+            <!-- Revenue Potential -->
+            <div class="content-card" style="background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 20%); border: none;">
+                <h2 style="font-size: 1.5rem; font-weight: 800; color: #0a0e27; margin-bottom: 1rem;">💡 Revenue Potential at Full Capacity</h2>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+                    <div>
+                        <div style="font-size: 0.875rem; color: #78350f; margin-bottom: 0.5rem;">Projected MRR</div>
+                        <div style="font-size: 2rem; font-weight: 800; color: #0a0e27;">$71M</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.875rem; color: #78350f; margin-bottom: 0.5rem;">Projected ARR</div>
+                        <div style="font-size: 2rem; font-weight: 800; color: #0a0e27;">$852M</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.875rem; color: #78350f; margin-bottom: 0.5rem;">Total Commissions</div>
+                        <div style="font-size: 2rem; font-weight: 800; color: #0a0e27;">$21.3M</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.875rem; color: #78350f; margin-bottom: 0.5rem;">Net Revenue</div>
+                        <div style="font-size: 2rem; font-weight: 800; color: #0a0e27;">$49.7M</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Top AAGs -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h2 class="card-title">Top Performing AAGs</h2>
+                    <button class="btn btn-primary btn-sm" onclick="viewAllAags()">View All AAGs</button>
+                </div>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>AAG Name</th>
+                                <th>Active AFFs</th>
+                                <th>Total Clients</th>
+                                <th>Monthly Revenue</th>
+                                <th>Tier</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topAggsTable">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 2rem; color: #94a3b8;">
+                                    Loading top performers...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Top AFFs -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h2 class="card-title">Top Performing Affiliates</h2>
+                    <button class="btn btn-primary btn-sm" onclick="viewAllAffs()">View All AFFs</button>
+                </div>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Affiliate Name</th>
+                                <th>Rank</th>
+                                <th>Active Clients</th>
+                                <th>Monthly Revenue</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topAffsTable">
+                            <tr>
+                                <td colspan="5" style="text-align: center; padding: 2rem; color: #94a3b8;">
+                                    Loading top performers...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="assets/js/api-config.js"></script>
+    <script>
+        let networkData = null;
+        
+        // Load network overview
+        async function loadNetworkOverview() {
+            try {
+                const token = localStorage.getItem('authToken');
+                if (!token) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                // Get network stats
+                const response = await fetch(`${API_BASE_URL}/admin/network-stats`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!response.ok) throw new Error('Failed to load network stats');
+                
+                networkData = await response.json();
+                renderNetworkOverview(networkData);
+            } catch (error) {
+                console.error('Network overview error:', error);
+                // Load demo data for now
+                loadDemoData();
+            }
+        }
+        
+        function loadDemoData() {
+            networkData = {
+                totalAggs: 8,
+                maxAggs: 20,
+                totalAffs: 342,
+                maxAffs: 1000,
+                totalClients: 87423,
+                maxClients: 500000,
+                monthlyRevenue: 8934234,
+                pendingCommissions: 1234567,
+                paidCommissions: 2345678,
+                topAggs: [
+                    {id: 1, name: 'Elite Marketing Group', affiliates: 48, clients: 18234, revenue: 2456789, tier: 'elite'},
+                    {id: 2, name: 'Premier Partners LLC', affiliates: 42, clients: 15678, revenue: 1987654, tier: 'premium'},
+                    {id: 3, name: 'Success Network Inc', affiliates: 38, clients: 12456, revenue: 1567890, tier: 'premium'},
+                    {id: 4, name: 'Growth Agency Co', affiliates: 35, clients: 11234, revenue: 1345678, tier: 'standard'},
+                    {id: 5, name: 'Impact Associates', affiliates: 32, clients: 9876, revenue: 1123456, tier: 'standard'}
+                ],
+                topAffs: [
+                    {id: 1, name: 'Sarah Johnson', rank: 'Elite', clients: 487, revenue: 89234},
+                    {id: 2, name: 'Michael Chen', rank: 'Master', clients: 456, revenue: 78456},
+                    {id: 3, name: 'Jennifer Davis', rank: 'Master', clients: 423, revenue: 67890},
+                    {id: 4, name: 'Robert Wilson', rank: 'Senior', clients: 398, revenue: 56789},
+                    {id: 5, name: 'Emily Brown', rank: 'Senior', clients: 376, revenue: 45678}
+                ]
+            };
+            renderNetworkOverview(networkData);
+        }
+        
+        function renderNetworkOverview(data) {
+            // Update AAG stats
+            document.getElementById('totalAags').textContent = data.totalAggs;
+            const aagCapacity = ((data.totalAggs / data.maxAggs) * 100).toFixed(1);
+            document.getElementById('aagCapacity').textContent = aagCapacity + '%';
+            document.getElementById('aagProgress').style.width = aagCapacity + '%';
+            
+            // Update AFF stats
+            document.getElementById('totalAffs').textContent = data.totalAffs.toLocaleString();
+            const affCapacity = ((data.totalAffs / data.maxAffs) * 100).toFixed(1);
+            document.getElementById('affCapacity').textContent = affCapacity + '%';
+            document.getElementById('affProgress').style.width = affCapacity + '%';
+            
+            // Update Client stats
+            document.getElementById('totalClients').textContent = data.totalClients.toLocaleString();
+            const clientCapacity = ((data.totalClients / data.maxClients) * 100).toFixed(1);
+            document.getElementById('clientCapacity').textContent = clientCapacity + '%';
+            document.getElementById('clientProgress').style.width = clientCapacity + '%';
+            
+            // Update Revenue
+            const revenueM = (data.monthlyRevenue / 1000000).toFixed(1);
+            document.getElementById('monthlyRevenue').textContent = revenueM + 'M';
+            const arr = (data.monthlyRevenue * 12 / 1000000).toFixed(1);
+            document.getElementById('arrProjection').textContent = arr + 'M';
+            
+            // Update Commissions
+            const pendingM = (data.pendingCommissions / 1000000).toFixed(2);
+            document.getElementById('pendingCommissions').textContent = pendingM + 'M';
+            const paidM = (data.paidCommissions / 1000000).toFixed(2);
+            document.getElementById('paidCommissions').textContent = paidM + 'M';
+            
+            // Render tables
+            renderTopAggsTable(data.topAggs);
+            renderTopAffsTable(data.topAffs);
+        }
+        
+        function renderTopAggsTable(aggs) {
+            const tbody = document.getElementById('topAggsTable');
+            
+            if (!aggs || aggs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 2rem; color: #94a3b8;">No AAGs found</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = aggs.map(agg => `
+                <tr>
+                    <td>
+                        <div style="font-weight: 600;">${agg.name}</div>
+                    </td>
+                    <td>${agg.affiliates}/50</td>
+                    <td style="font-weight: 600;">${agg.clients.toLocaleString()}</td>
+                    <td style="font-weight: 600; color: #10b981;">$${(agg.revenue / 1000).toFixed(0)}K</td>
+                    <td><span class="tier-badge tier-${agg.tier}">${agg.tier.toUpperCase()}</span></td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="viewAag('${agg.id}')">View</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        function renderTopAffsTable(affs) {
+            const tbody = document.getElementById('topAffsTable');
+            
+            if (!affs || affs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem; color: #94a3b8;">No affiliates found</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = affs.map(aff => `
+                <tr>
+                    <td>
+                        <div style="font-weight: 600;">${aff.name}</div>
+                    </td>
+                    <td><span class="tier-badge tier-${aff.rank.toLowerCase()}">${aff.rank.toUpperCase()}</span></td>
+                    <td>${aff.clients}/500</td>
+                    <td style="font-weight: 600; color: #10b981;">$${aff.revenue.toLocaleString()}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="viewAff('${aff.id}')">View</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        function viewAllAags() {
+            alert('Viewing all 20 AAGs with filters and search');
+        }
+        
+        function viewAllAffs() {
+            alert('Viewing all 1000 AFFs with filters and search');
+        }
+        
+        function viewAgg(aggId) {
+            alert('Viewing AAG details and network for ID: ' + aggId);
+        }
+        
+        function viewAff(affId) {
+            alert('Viewing AFF details and clients for ID: ' + affId);
+        }
+        
+        function logout() {
+            localStorage.removeItem('authToken');
+            window.location.href = 'index.html';
+        }
+        
+        // Load overview on page load
+        loadNetworkOverview();
+    </script>
+</body>
+</html>
