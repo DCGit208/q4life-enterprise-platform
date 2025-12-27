@@ -20,7 +20,7 @@ jobs:
           server: ftp.btheducationgroup.com
           username: btheducationgrouporg
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /q4-life.com/
+          server-dir: /q4lifecom/
           exclude: |
             **/.git*
             **/.git*/**
