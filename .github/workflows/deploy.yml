@@ -1,0 +1,40 @@
+name: Deploy to FTP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to iPage FTP
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.btheducationgroup.com
+          username: btheducationgrouporg
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /q4-life.com/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/backend/**
+            **/.DS_Store
+            **/test-*.sh
+            **/test-*.js
+            **/*.md
+            **/ARCHITECTURE.md
+            **/DEPLOYMENT_GUIDE.md
+            **/IMPLEMENTATION_*.md
+            **/PHASE*.md
+            **/PROJECT_README.md
+            **/QUICK_START*.md
+            **/STATUS_REPORT.md
+            **/push-to-github.sh
