@@ -82,7 +82,10 @@
         }
         
         .hero {
-            background: linear-gradient(135deg, #065f46 0%, #047857 70%);
+            background: linear-gradient(135deg, rgba(6, 95, 70, 0.95) 0%, rgba(4, 120, 87, 0.95) 70%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%230f172a" width="1200" height="800"/><circle cx="100" cy="100" r="2" fill="white" opacity="0.8"/><circle cx="250" cy="150" r="1.5" fill="white" opacity="0.6"/><circle cx="400" cy="80" r="1" fill="white" opacity="0.9"/><circle cx="600" cy="200" r="2" fill="white" opacity="0.7"/><circle cx="800" cy="120" r="1.5" fill="white" opacity="0.8"/><circle cx="1000" cy="180" r="1" fill="white" opacity="0.9"/><circle cx="150" cy="300" r="1" fill="white" opacity="0.7"/><circle cx="350" cy="350" r="1.5" fill="white" opacity="0.8"/><circle cx="550" cy="280" r="1" fill="white" opacity="0.6"/><circle cx="750" cy="320" r="2" fill="white" opacity="0.9"/><circle cx="950" cy="360" r="1" fill="white" opacity="0.7"/><circle cx="200" cy="500" r="1.5" fill="white" opacity="0.8"/><circle cx="450" cy="550" r="1" fill="white" opacity="0.9"/><circle cx="700" cy="480" r="2" fill="white" opacity="0.6"/><circle cx="900" cy="520" r="1" fill="white" opacity="0.8"/><circle cx="300" cy="650" r="1" fill="white" opacity="0.7"/><circle cx="500" cy="700" r="1.5" fill="white" opacity="0.9"/><circle cx="850" cy="680" r="1" fill="white" opacity="0.8"/></svg>');
+            background-size: cover;
+            background-position: center;
             padding: 6rem 0 4rem;
             text-align: center;
             position: relative;
@@ -96,8 +99,48 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 50%, rgba(52, 211, 153, 0.15) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(52, 211, 153, 0.2) 0%, transparent 50%);
+        }
+        
+        .download-section {
+            background: rgba(16, 185, 129, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            transition: all 0.3s;
+            margin: 0.5rem;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+        }
+        
+        .share-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+        
+        .share-btn:hover {
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
         }
         
         .hero-content { position: relative; z-index: 1; }

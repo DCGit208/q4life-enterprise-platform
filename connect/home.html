@@ -82,7 +82,10 @@
         }
         
         .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 70%);
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(30, 64, 175, 0.95) 70%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%230f172a" width="1200" height="800"/><circle cx="100" cy="100" r="2" fill="white" opacity="0.8"/><circle cx="250" cy="150" r="1.5" fill="white" opacity="0.6"/><circle cx="400" cy="80" r="1" fill="white" opacity="0.9"/><circle cx="600" cy="200" r="2" fill="white" opacity="0.7"/><circle cx="800" cy="120" r="1.5" fill="white" opacity="0.8"/><circle cx="1000" cy="180" r="1" fill="white" opacity="0.9"/><circle cx="150" cy="300" r="1" fill="white" opacity="0.7"/><circle cx="350" cy="350" r="1.5" fill="white" opacity="0.8"/><circle cx="550" cy="280" r="1" fill="white" opacity="0.6"/><circle cx="750" cy="320" r="2" fill="white" opacity="0.9"/><circle cx="950" cy="360" r="1" fill="white" opacity="0.7"/><circle cx="200" cy="500" r="1.5" fill="white" opacity="0.8"/><circle cx="450" cy="550" r="1" fill="white" opacity="0.9"/><circle cx="700" cy="480" r="2" fill="white" opacity="0.6"/><circle cx="900" cy="520" r="1" fill="white" opacity="0.8"/><circle cx="300" cy="650" r="1" fill="white" opacity="0.7"/><circle cx="500" cy="700" r="1.5" fill="white" opacity="0.9"/><circle cx="850" cy="680" r="1" fill="white" opacity="0.8"/></svg>');
+            background-size: cover;
+            background-position: center;
             padding: 6rem 0 4rem;
             text-align: center;
             position: relative;
@@ -96,8 +99,48 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 50%, rgba(96, 165, 250, 0.15) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(96, 165, 250, 0.2) 0%, transparent 50%);
+        }
+        
+        .download-section {
+            background: rgba(59, 130, 246, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s;
+            margin: 0.5rem;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+        
+        .share-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+        
+        .share-btn:hover {
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
         }
         
         .hero-content { position: relative; z-index: 1; }
@@ -467,6 +510,21 @@
             <span class="badge">🏠 RESIDENTIAL STARLINK</span>
             <h1>High-Speed Internet<br>For Your Home</h1>
             <p>Permanent Starlink installation with professional setup, mesh WiFi, and ongoing support. Stream, work, and connect without limits.</p>
+            
+            <div class="download-section" style="margin-top: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <h3 style="color: #60a5fa; margin-bottom: 1rem; font-size: 1.25rem;">
+                    <i class="fas fa-home"></i> Get the Full Brochure
+                </h3>
+                <p style="color: #cbd5e1; margin-bottom: 1.5rem;">Download or share our residential Starlink installation guide</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                    <a href="/assets/downloads/home-internet-flyer.pdf" download class="download-btn">
+                        <i class="fas fa-download"></i> Download PDF Flyer
+                    </a>
+                    <a href="https://wa.me/?text=Check%20out%20Q4-LIFE%20Home%20Internet%20-%20Permanent%20Starlink%20Installation%20%F0%9F%8F%A0%0A%0AProfessional%20setup%20starting%20at%20%24150%0A%0Ahttps%3A%2F%2Fq4-life.com%2Fconnect%2Fhome" target="_blank" class="download-btn share-btn">
+                        <i class="fab fa-whatsapp"></i> Share via WhatsApp
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
