@@ -356,12 +356,87 @@
         }
         .whatsapp-float:hover { transform: scale(1.1); }
         
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
         @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
             .plans-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
+            
+            .plan-card {
+                padding: 1.5rem;
+            }
+            
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                display: flex;
+            }
+            
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            
+            .info-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .modal-content {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+                max-height: 85vh;
+            }
+            
+            .btn {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            footer [style*="grid"] {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
     </style>
@@ -372,7 +447,10 @@
     <div class="container">
         <nav>
             <a href="/" class="logo">Q4<span>Life</span></a>
-            <div class="nav-links">
+            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
                 <a href="/divisions/connect-enterprise.html#plans">All Plans</a>
                 <a href="/divisions/power.html">Power</a>
                 <a href="https://wa.me/237691498369" class="btn btn-primary">
@@ -635,6 +713,10 @@
 </a>
 
 <script>
+function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('active');
+}
+
 function openBooking(plan, price) {
     document.getElementById('selectedPlan').value = plan;
     document.getElementById('selectedPrice').value = price;
