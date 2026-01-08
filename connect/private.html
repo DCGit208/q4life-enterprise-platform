@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Connect™ - Premium Temporary Connectivity | Q4Life</title>
+    <meta name="description" content="Fully managed Starlink deployments for VIPs, executives, and high-profile events. 24 hours to monthly service with power backup.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: #8b5cf6;
+            text-decoration: none;
+        }
+        .logo span { color: #a78bfa; }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #8b5cf6; }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 70%);
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(167, 139, 250, 0.15) 0%, transparent 50%);
+        }
+        
+        .hero-content { position: relative; z-index: 1; }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+        
+        .badge-premium { background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); color: white; }
+        .badge-elite { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); color: #78350f; }
+        
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .plan-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-8px);
+            border-color: #8b5cf6;
+            box-shadow: 0 30px 80px rgba(139, 92, 246, 0.3);
+        }
+        
+        .plan-card.featured {
+            border: 3px solid #8b5cf6;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4);
+        }
+        
+        .plan-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .plan-subtitle {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .duration {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .features-list li {
+            padding: 0.75rem 0;
+            color: #cbd5e1;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+        
+        .features-list li i {
+            color: #8b5cf6;
+            margin-top: 0.25rem;
+        }
+        
+        .best-for {
+            background: rgba(139, 92, 246, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #8b5cf6;
+        }
+        
+        .best-for strong {
+            color: #a78bfa;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .booking-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .booking-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border-radius: 12px;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            background: rgba(30, 41, 59, 0.5);
+            color: white;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8b5cf6;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 35px;
+            text-decoration: none;
+            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        
+        @media (max-width: 768px) {
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="/" class="logo">Q4<span>Life</span></a>
+            <div class="nav-links">
+                <a href="/divisions/connect-enterprise.html#plans">All Plans</a>
+                <a href="/divisions/power.html">Power</a>
+                <a href="https://wa.me/237691498369" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="container">
+            <span class="badge badge-premium">⭐ PRIVATE CONNECT™</span>
+            <h1>Premium Temporary<br>Connectivity Deployment</h1>
+            <p>Fully managed Starlink systems with power backup for VIPs, executives, and mission-critical operations. Private. Discreet. Guaranteed.</p>
+        </div>
+    </div>
+</section>
+
+<section style="padding: 4rem 0;">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: white;">Select Your Service Level</h2>
+            <p style="font-size: 1.125rem; color: #94a3b8;">7 tiers designed for different mission profiles</p>
+        </div>
+        
+        <div class="plans-grid">
+            <!-- PLAN 1: QUICK DEPLOY -->
+            <div class="plan-card">
+                <h3>Starlink Quick Deploy™</h3>
+                <p class="plan-subtitle">"Internet Only. No Backup."</p>
+                
+                <span class="price">180K-250K</span>
+                <span class="duration">FCFA / 24 Hours</span>
+                
+                <div class="best-for">
+                    <strong>Best For:</strong>
+                    Short meetings, pop-ups with grid power
+                </div>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Starlink setup & configuration</li>
+                    <li><i class="fas fa-check-circle"></i> Internet testing</li>
+                    <li><i class="fas fa-check-circle"></i> Basic handover</li>
+                    <li><i class="fas fa-times-circle" style="color: #64748b;"></i> No power backup</li>
+                    <li><i class="fas fa-times-circle" style="color: #64748b;"></i> No standby support</li>
+                </ul>
+                
+                <button onclick="openBooking('Quick Deploy', '180,000-250,000')" class="btn btn-primary" style="width: 100%;">
+                    Book This Service
+                </button>
+            </div>
+            
+            <!-- PLAN 2: ASSIST -->
+            <div class="plan-card">
+                <h3>Starlink Assist™</h3>
+                <p class="plan-subtitle">"Internet + Technical Support"</p>
+                
+                <span class="price">280K-350K</span>
+                <span class="duration">FCFA / 24 Hours</span>
+                
+                <div class="best-for">
+                    <strong>Best For:</strong>
+                    Events, presentations, temporary offices
+                </div>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Starlink setup</li>
+                    <li><i class="fas fa-check-circle"></i> Network optimization</li>
+                    <li><i class="fas fa-check-circle"></i> Remote technical support</li>
+                    <li><i class="fas fa-times-circle" style="color: #64748b;"></i> No battery backup</li>
+                </ul>
+                
+                <button onclick="openBooking('Starlink Assist', '280,000-350,000')" class="btn btn-primary" style="width: 100%;">
+                    Book This Service
+                </button>
+            </div>
+            
+            <!-- PLAN 3: CONTINUITY -->
+            <div class="plan-card">
+                <h3>Starlink Continuity™</h3>
+                <p class="plan-subtitle">"Internet + Short Backup"</p>
+                
+                <span class="price">450K-600K</span>
+                <span class="duration">FCFA / 24 Hours</span>
+                
+                <div class="best-for">
+                    <strong>Best For:</strong>
+                    Worried about 1-4 hour outages
+                </div>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Starlink setup</li>
+                    <li><i class="fas fa-check-circle"></i> Portable battery backup (1-4hr)</li>
+                    <li><i class="fas fa-check-circle"></i> Power stability protection</li>
+                    <li><i class="fas fa-check-circle"></i> Remote support</li>
+                </ul>
+                
+                <button onclick="openBooking('Continuity', '450,000-600,000')" class="btn btn-primary" style="width: 100%;">
+                    Book This Service
+                </button>
+            </div>
+            
+            <!-- PLAN 4: STANDARD (FEATURED) -->
+            <div class="plan-card featured">
+                <span class="badge badge-premium">⭐ PREMIUM BASELINE</span>
+                <h3>Private Connect™ Standard</h3>
+                <p class="plan-subtitle">"Managed Internet + Reliable Backup"</p>
+                
+                <span class="price">650K-850K</span>
+                <span class="duration">FCFA / 24 Hours</span>
+                
+                <div class="best-for">
+                    <strong>Best For:</strong>
+                    VIP visits, executive meetings, private events
+                </div>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Dedicated Starlink system</li>
+                    <li><i class="fas fa-check-circle"></i> 8-12 hours battery backup</li>
+                    <li><i class="fas fa-check-circle"></i> Clean cable & power management</li>
+                    <li><i class="fas fa-check-circle"></i> Priority remote support</li>
+                </ul>
+                
+                <button onclick="openBooking('Standard', '650,000-850,000')" class="btn btn-primary" style="width: 100%;">
+                    Book This Service
+                </button>
+            </div>
+            
+            <!-- PLAN 5: PLUS -->
+            <div class="plan-card">
+                <h3>Private Connect™ Plus</h3>
+                <p class="plan-subtitle">"Extended Coverage + Recharge"</p>
+                
+                <span class="price">1.5M-2.8M</span>
+                <span class="duration">FCFA / 48-72 Hours</span>
+                
+                <div class="best-for">
+                    <strong>Best For:</strong>
+                    Retreats, estate visits, weekend events
+                </div>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Starlink system</li>
+                    <li><i class="fas fa-check-circle"></i> Expanded battery capacity</li>
+                    <li><i class="fas fa-check-circle"></i> Solar recharge capability</li>
+                    <li><i class="fas fa-check-circle"></i> Monitoring & support</li>
+                </ul>
+                
+                <button onclick="openBooking('Plus', '1,500,000-2,800,000')" class="btn btn-primary" style="width: 100%;">
+                    Book This Service
+                </button>
+            </div>
+            
+            <!-- PLAN 6: PRO -->
+            <div class="plan-card">
+                <h3>Private Connect™ Pro</h3>
+                <p class="plan-subtitle">"Off-Grid Ready"</p>
+                
+                <span class="price">3.5M-5.5M</span>
+                <span class="duration">FCFA / 1 Week</span>
+                
+                <div class="best-for">
+                    <strong>Best For:</strong>
+                    Off-grid stays, private estates, field operations
+                </div>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Dedicated Starlink deployment</li>
+                    <li><i class="fas fa-check-circle"></i> Large battery bank</li>
+                    <li><i class="fas fa-check-circle"></i> Solar input configured</li>
+                    <li><i class="fas fa-check-circle"></i> System redundancy planning</li>
+                    <li><i class="fas fa-check-circle"></i> Priority support</li>
+                </ul>
+                
+                <button onclick="openBooking('Pro (1 Week)', '3,500,000-5,500,000')" class="btn btn-primary" style="width: 100%;">
+                    Book This Service
+                </button>
+            </div>
+            
+            <!-- PLAN 7: ELITE -->
+            <div class="plan-card" style="border-color: #fbbf24;">
+                <span class="badge badge-elite">👑 ELITE</span>
+                <h3>Private Connect™ Elite</h3>
+                <p class="plan-subtitle">"Zero Downtime. No Compromises."</p>
+                
+                <span class="price" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">6M+</span>
+                <span class="duration">FCFA / Custom Duration</span>
+                
+                <div class="best-for">
+                    <strong>Best For:</strong>
+                    High-profile individuals, long-term operations, zero-tolerance missions
+                </div>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Dedicated Starlink(s)</li>
+                    <li><i class="fas fa-check-circle"></i> Full off-grid power architecture</li>
+                    <li><i class="fas fa-check-circle"></i> Redundancy options</li>
+                    <li><i class="fas fa-check-circle"></i> Discreet installation</li>
+                    <li><i class="fas fa-check-circle"></i> Priority response & SLA</li>
+                    <li><i class="fas fa-check-circle"></i> Optional: Dual-Starlink, VPN, on-site technician</li>
+                </ul>
+                
+                <button onclick="openBooking('Elite', 'Custom')" class="btn btn-primary" style="width: 100%; background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);">
+                    Request Consultation
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BOOKING MODAL -->
+<div id="bookingModal" class="booking-modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeBooking()">×</button>
+        <h2 style="margin-bottom: 2rem; color: white;">Book Your Service</h2>
+        
+        <form id="bookingForm">
+            <div class="form-group">
+                <label>Selected Plan</label>
+                <input type="text" id="selectedPlan" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label>Estimated Price</label>
+                <input type="text" id="selectedPrice" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label>Your Name *</label>
+                <input type="text" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label>WhatsApp Number *</label>
+                <input type="tel" name="phone" placeholder="+237..." required>
+            </div>
+            
+            <div class="form-group">
+                <label>Deployment Location *</label>
+                <select name="location" required>
+                    <option value="">Select Location</option>
+                    <option>Bamenda</option>
+                    <option>Douala</option>
+                    <option>Yaoundé</option>
+                    <option>Other (specify in notes)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Deployment Date & Time *</label>
+                <input type="datetime-local" name="deployment" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Special Requirements</label>
+                <textarea name="notes" rows="3" placeholder="Any specific needs, access requirements, or questions..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.125rem; padding: 1.125rem;">
+                <i class="fab fa-whatsapp"></i> Confirm via WhatsApp
+            </button>
+        </form>
+    </div>
+</div>
+
+<a href="https://wa.me/237691498369" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+function openBooking(plan, price) {
+    document.getElementById('selectedPlan').value = plan;
+    document.getElementById('selectedPrice').value = price + ' FCFA';
+    document.getElementById('bookingModal').classList.add('active');
+}
+
+function closeBooking() {
+    document.getElementById('bookingModal').classList.remove('active');
+}
+
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const plan = document.getElementById('selectedPlan').value;
+    const price = document.getElementById('selectedPrice').value;
+    
+    const message = `PRIVATE CONNECT™ BOOKING
+
+Plan: ${plan}
+Price: ${price}
+
+Name: ${formData.get('name')}
+Phone: ${formData.get('phone')}
+Location: ${formData.get('location')}
+Deployment: ${formData.get('deployment')}
+Notes: ${formData.get('notes')}`;
+    
+    const whatsappUrl = `https://wa.me/237691498369?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    closeBooking();
+});
+
+// Close modal on outside click
+document.getElementById('bookingModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeBooking();
+    }
+});
+</script>
+
+<footer style="background: #0f172a; color: #e2e8f0; padding: 4rem 0 2rem; border-top: 1px solid rgba(139, 92, 246, 0.2);">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+            <div>
+                <a href="/" class="logo" style="display: block; margin-bottom: 1rem;">Q4<span>Life</span></a>
+                <p style="color: #94a3b8; line-height: 1.7; margin-bottom: 1.5rem;">Premium connectivity solutions for VIPs, executives, and mission-critical operations across Cameroon.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="https://wa.me/237691498369" style="width: 40px; height: 40px; background: rgba(139, 92, 246, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #8b5cf6; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#8b5cf6'; this.style.color='white'" onmouseout="this.style.background='rgba(139, 92, 246, 0.2)'; this.style.color='#8b5cf6'">
+                        <i class="fab fa-whatsapp" style="font-size: 1.25rem;"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 style="color: white; margin-bottom: 1rem; font-size: 1.125rem;">Connect Plans</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.75rem;"><a href="/connect/private.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='#94a3b8'">Private Connect™</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/connect/community.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='#94a3b8'">Community Connect™</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/connect/home.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='#94a3b8'">Home Internet</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/divisions/connect-enterprise.html#plans" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='#94a3b8'">All Plans</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: white; margin-bottom: 1rem; font-size: 1.125rem;">Other Divisions</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.75rem;"><a href="/divisions/connect-enterprise.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='#94a3b8'">Connect Enterprise</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/divisions/power.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='#94a3b8'">Power Solutions</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='#94a3b8'">Q4Life Home</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: white; margin-bottom: 1rem; font-size: 1.125rem;">Contact</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.75rem; color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fab fa-whatsapp" style="color: #8b5cf6;"></i>
+                        <a href="https://wa.me/237691498369" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='#94a3b8'">+237 691 498 369</a>
+                    </li>
+                    <li style="margin-bottom: 0.75rem; color: #94a3b8; display: flex; align-items: start; gap: 0.5rem;">
+                        <i class="fas fa-map-marker-alt" style="color: #8b5cf6; margin-top: 0.25rem;"></i>
+                        <span>Bamenda, Douala, Yaoundé<br>Cameroon</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="border-top: 1px solid rgba(139, 92, 246, 0.2); padding-top: 2rem; text-align: center;">
+            <p style="color: #64748b; font-size: 0.875rem;">&copy; 2026 Q4Life. Premium connectivity solutions for discerning clients.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

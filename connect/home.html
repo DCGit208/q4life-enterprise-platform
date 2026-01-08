@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Internet - Residential Starlink | Q4Life</title>
+    <meta name="description" content="Permanent residential Starlink internet installations with professional setup and ongoing support.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: #8b5cf6;
+            text-decoration: none;
+        }
+        .logo span { color: #a78bfa; }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #8b5cf6; }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 70%);
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(96, 165, 250, 0.15) 0%, transparent 50%);
+        }
+        
+        .hero-content { position: relative; z-index: 1; }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+        
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .plan-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-8px);
+            border-color: #3b82f6;
+            box-shadow: 0 30px 80px rgba(59, 130, 246, 0.3);
+        }
+        
+        .plan-card.featured {
+            border: 3px solid #3b82f6;
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.4);
+        }
+        
+        .plan-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .plan-subtitle {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .duration {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .features-list li {
+            padding: 0.75rem 0;
+            color: #cbd5e1;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+        
+        .features-list li i {
+            color: #3b82f6;
+            margin-top: 0.25rem;
+        }
+        
+        .info-section {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .info-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .info-section ul {
+            list-style: none;
+        }
+        
+        .info-section li {
+            padding: 0.75rem 0;
+            color: #cbd5e1;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .process-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin: 0 auto 1rem;
+            color: white;
+        }
+        
+        .process-step h3 {
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .booking-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .booking-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border-radius: 12px;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            background: rgba(30, 41, 59, 0.5);
+            color: white;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 35px;
+            text-decoration: none;
+            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        
+        @media (max-width: 768px) {
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="/" class="logo">Q4<span>Life</span></a>
+            <div class="nav-links">
+                <a href="/divisions/connect-enterprise.html#plans">All Plans</a>
+                <a href="/divisions/power.html">Power</a>
+                <a href="https://wa.me/237691498369" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="container">
+            <span class="badge">🏠 RESIDENTIAL STARLINK</span>
+            <h1>High-Speed Internet<br>For Your Home</h1>
+            <p>Permanent Starlink installation with professional setup, mesh WiFi, and ongoing support. Stream, work, and connect without limits.</p>
+        </div>
+    </div>
+</section>
+
+<section style="padding: 4rem 0;">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: white;">Residential Plans</h2>
+            <p style="font-size: 1.125rem; color: #94a3b8;">One-time setup + monthly subscription</p>
+        </div>
+        
+        <div class="plans-grid">
+            <!-- BASIC PLAN -->
+            <div class="plan-card">
+                <h3>Starlink Basic</h3>
+                <p class="plan-subtitle">"Get started with satellite internet"</p>
+                
+                <span class="price">$150</span>
+                <span class="duration">Setup Fee (One-Time)</span>
+                
+                <div style="background: rgba(59, 130, 246, 0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid #3b82f6;">
+                    <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Then:</strong>
+                    <span style="font-size: 1.5rem; font-weight: 700; color: white;">$50-75/month</span>
+                    <span style="display: block; color: #94a3b8; margin-top: 0.5rem;">Starlink subscription (paid to Starlink)</span>
+                </div>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Starlink dish installation</li>
+                    <li><i class="fas fa-check-circle"></i> WiFi router setup</li>
+                    <li><i class="fas fa-check-circle"></i> Cable management</li>
+                    <li><i class="fas fa-check-circle"></i> Network testing</li>
+                    <li><i class="fas fa-check-circle"></i> 1 month support included</li>
+                </ul>
+                
+                <button onclick="openBooking('Starlink Basic', '$150 setup + $50-75/mo')" class="btn btn-primary" style="width: 100%;">
+                    Request Installation
+                </button>
+            </div>
+            
+            <!-- PREMIUM PLAN (FEATURED) -->
+            <div class="plan-card featured">
+                <span class="badge">⭐ RECOMMENDED</span>
+                <h3>Starlink Premium</h3>
+                <p class="plan-subtitle">"Complete home coverage"</p>
+                
+                <span class="price">$300</span>
+                <span class="duration">Setup Fee (One-Time)</span>
+                
+                <div style="background: rgba(59, 130, 246, 0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid #3b82f6;">
+                    <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Then:</strong>
+                    <span style="font-size: 1.5rem; font-weight: 700; color: white;">$75-150/month</span>
+                    <span style="display: block; color: #94a3b8; margin-top: 0.5rem;">Starlink subscription (paid to Starlink)</span>
+                </div>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Professional Starlink installation</li>
+                    <li><i class="fas fa-check-circle"></i> Mesh WiFi system (3-5 nodes)</li>
+                    <li><i class="fas fa-check-circle"></i> Whole-home coverage</li>
+                    <li><i class="fas fa-check-circle"></i> Cable concealment</li>
+                    <li><i class="fas fa-check-circle"></i> Network optimization</li>
+                    <li><i class="fas fa-check-circle"></i> 3 months priority support</li>
+                </ul>
+                
+                <button onclick="openBooking('Starlink Premium', '$300 setup + $75-150/mo')" class="btn btn-primary" style="width: 100%;">
+                    Request Installation
+                </button>
+            </div>
+            
+            <!-- POWER+ PLAN -->
+            <div class="plan-card">
+                <h3>Starlink Power+</h3>
+                <p class="plan-subtitle">"Never go offline"</p>
+                
+                <span class="price">$600+</span>
+                <span class="duration">Setup Fee (One-Time)</span>
+                
+                <div style="background: rgba(59, 130, 246, 0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid #3b82f6;">
+                    <strong style="color: #60a5fa; display: block; margin-bottom: 0.5rem;">Then:</strong>
+                    <span style="font-size: 1.5rem; font-weight: 700; color: white;">$150-200/month</span>
+                    <span style="display: block; color: #94a3b8; margin-top: 0.5rem;">Starlink subscription + power system</span>
+                </div>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Premium Starlink installation</li>
+                    <li><i class="fas fa-check-circle"></i> Mesh WiFi system</li>
+                    <li><i class="fas fa-check-circle"></i> Battery backup (4-8hr runtime)</li>
+                    <li><i class="fas fa-check-circle"></i> Automatic power switching</li>
+                    <li><i class="fas fa-check-circle"></i> Solar charging option</li>
+                    <li><i class="fas fa-check-circle"></i> 6 months priority support</li>
+                </ul>
+                
+                <button onclick="openBooking('Starlink Power+', '$600+ setup + $150-200/mo')" class="btn btn-primary" style="width: 100%;">
+                    Request Installation
+                </button>
+            </div>
+        </div>
+        
+        <!-- INSTALLATION PROCESS -->
+        <div class="info-section">
+            <h2 style="text-align: center; margin-bottom: 3rem;"><i class="fas fa-tools"></i> Installation Process</h2>
+            
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h3>Site Survey</h3>
+                    <p>We visit your location to assess sky visibility, power access, and optimal mounting position.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h3>Equipment Order</h3>
+                    <p>You order your Starlink kit directly from Starlink.com. We guide you through the process.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h3>Professional Installation</h3>
+                    <p>Our technicians mount the dish, run cables, set up WiFi, and test everything thoroughly.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h3>Training & Handover</h3>
+                    <p>We show you how to monitor performance, troubleshoot issues, and manage your network.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQS -->
+        <div class="info-section">
+            <h2><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+            <ul>
+                <li>
+                    <i class="fas fa-satellite-dish" style="color: #3b82f6; font-size: 1.5rem;"></i>
+                    <div>
+                        <strong style="color: white;">Do I need to buy Starlink hardware?</strong><br>
+                        Yes. You order the Starlink kit ($599) directly from Starlink.com. We install it for you.
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-clock" style="color: #3b82f6; font-size: 1.5rem;"></i>
+                    <div>
+                        <strong style="color: white;">How long does installation take?</strong><br>
+                        Basic setup: 2-4 hours. Premium with mesh WiFi: 4-6 hours. Power+ systems: Full day.
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-signal" style="color: #3b82f6; font-size: 1.5rem;"></i>
+                    <div>
+                        <strong style="color: white;">What speeds can I expect?</strong><br>
+                        Starlink delivers 50-200 Mbps download, 10-20 Mbps upload. Sufficient for streaming, work, and gaming.
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-wrench" style="color: #3b82f6; font-size: 1.5rem;"></i>
+                    <div>
+                        <strong style="color: white;">What's included in support?</strong><br>
+                        Remote troubleshooting, network optimization tips, and guidance on Starlink subscription issues.
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-cloud-sun" style="color: #3b82f6; font-size: 1.5rem;"></i>
+                    <div>
+                        <strong style="color: white;">Does weather affect Starlink?</strong><br>
+                        Heavy rain/storms may cause brief slowdowns, but Starlink works in most weather conditions.
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- CTA -->
+        <div style="text-align: center; margin: 4rem 0;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;">Ready to Get Started?</h2>
+            <p style="font-size: 1.125rem; color: #94a3b8; margin-bottom: 2rem;">
+                Contact us for a free site survey and installation quote
+            </p>
+            <a href="https://wa.me/237691498369" class="btn btn-primary" style="font-size: 1.125rem; padding: 1.125rem 3rem;">
+                <i class="fab fa-whatsapp"></i> Request Site Survey
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- BOOKING MODAL -->
+<div id="bookingModal" class="booking-modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeBooking()">×</button>
+        <h2 style="margin-bottom: 2rem; color: white;">Request Installation</h2>
+        
+        <form id="bookingForm">
+            <div class="form-group">
+                <label>Selected Plan</label>
+                <input type="text" id="selectedPlan" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label>Pricing</label>
+                <input type="text" id="selectedPrice" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label>Your Name *</label>
+                <input type="text" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label>WhatsApp Number *</label>
+                <input type="tel" name="phone" placeholder="+237..." required>
+            </div>
+            
+            <div class="form-group">
+                <label>Installation Address *</label>
+                <textarea name="address" rows="3" required placeholder="Full address including city..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Preferred Installation Date</label>
+                <input type="date" name="installation_date">
+            </div>
+            
+            <div class="form-group">
+                <label>Do you already own Starlink equipment?</label>
+                <select name="has_equipment">
+                    <option value="no">No - I need to order</option>
+                    <option value="yes">Yes - I have it</option>
+                    <option value="ordering">Ordering now</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Additional Notes</label>
+                <textarea name="notes" rows="3" placeholder="Building type, roof access, special requirements..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.125rem; padding: 1.125rem;">
+                <i class="fab fa-whatsapp"></i> Request Site Survey
+            </button>
+        </form>
+    </div>
+</div>
+
+<a href="https://wa.me/237691498369" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+function openBooking(plan, price) {
+    document.getElementById('selectedPlan').value = plan;
+    document.getElementById('selectedPrice').value = price;
+    document.getElementById('bookingModal').classList.add('active');
+}
+
+function closeBooking() {
+    document.getElementById('bookingModal').classList.remove('active');
+}
+
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const plan = document.getElementById('selectedPlan').value;
+    const price = document.getElementById('selectedPrice').value;
+    
+    const message = `RESIDENTIAL STARLINK INSTALLATION REQUEST
+
+Plan: ${plan}
+Pricing: ${price}
+
+Name: ${formData.get('name')}
+Phone: ${formData.get('phone')}
+Address: ${formData.get('address')}
+Preferred Date: ${formData.get('installation_date')}
+Has Equipment: ${formData.get('has_equipment')}
+Notes: ${formData.get('notes')}`;
+    
+    const whatsappUrl = `https://wa.me/237691498369?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    closeBooking();
+});
+
+// Close modal on outside click
+document.getElementById('bookingModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeBooking();
+    }
+});
+</script>
+
+<footer style="background: #0f172a; color: #e2e8f0; padding: 4rem 0 2rem; border-top: 1px solid rgba(59, 130, 246, 0.2);">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+            <div>
+                <a href="/" class="logo" style="display: block; margin-bottom: 1rem;">Q4<span>Life</span></a>
+                <p style="color: #94a3b8; line-height: 1.7; margin-bottom: 1.5rem;">Professional residential Starlink installations with whole-home coverage and ongoing support.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="https://wa.me/237691498369" style="width: 40px; height: 40px; background: rgba(59, 130, 246, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #3b82f6; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#3b82f6'; this.style.color='white'" onmouseout="this.style.background='rgba(59, 130, 246, 0.2)'; this.style.color='#3b82f6'">
+                        <i class="fab fa-whatsapp" style="font-size: 1.25rem;"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 style="color: white; margin-bottom: 1rem; font-size: 1.125rem;">Connect Plans</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.75rem;"><a href="/connect/private.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#94a3b8'">Private Connect™</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/connect/community.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#94a3b8'">Community Connect™</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/connect/home.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#94a3b8'">Home Internet</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/divisions/connect-enterprise.html#plans" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#94a3b8'">All Plans</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: white; margin-bottom: 1rem; font-size: 1.125rem;">Other Divisions</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.75rem;"><a href="/divisions/connect-enterprise.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#94a3b8'">Connect Enterprise</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/divisions/power.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#94a3b8'">Power Solutions</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#94a3b8'">Q4Life Home</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: white; margin-bottom: 1rem; font-size: 1.125rem;">Contact</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.75rem; color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fab fa-whatsapp" style="color: #3b82f6;"></i>
+                        <a href="https://wa.me/237691498369" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#94a3b8'">+237 691 498 369</a>
+                    </li>
+                    <li style="margin-bottom: 0.75rem; color: #94a3b8; display: flex; align-items: start; gap: 0.5rem;">
+                        <i class="fas fa-map-marker-alt" style="color: #3b82f6; margin-top: 0.25rem;"></i>
+                        <span>Bamenda, Douala, Yaoundé<br>Cameroon</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="border-top: 1px solid rgba(59, 130, 246, 0.2); padding-top: 2rem; text-align: center;">
+            <p style="color: #64748b; font-size: 0.875rem;">&copy; 2026 Q4Life. Professional Starlink installations you can trust.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
