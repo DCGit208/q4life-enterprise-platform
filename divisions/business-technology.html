@@ -67,6 +67,57 @@
         }
 
         .nav-links a:hover { color: #2563eb; }
+        
+        /* Dropdown Menu */
+        .nav-links li {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            min-width: 240px;
+            border-radius: 12px;
+            padding: 12px 0;
+            margin-top: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            list-style: none;
+        }
+        
+        .nav-links li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+        
+        .dropdown-menu a:hover {
+            background: rgba(37, 99, 235, 0.1);
+            color: #3b82f6;
+            padding-left: 24px;
+        }
+        
+        .dropdown-menu i {
+            font-size: 1.1rem;
+            width: 20px;
+        }
 
         .hamburger {
             display: none;
@@ -1107,7 +1158,14 @@
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../index.html#services">All Divisions</a></li>
+                <li>
+                    <a href="../index.html#services">All Divisions</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="power.html"><i class="fas fa-bolt"></i> Power Solutions</a></li>
+                        <li><a href="connect.html"><i class="fas fa-wifi"></i> Internet & Network</a></li>
+                        <li><a href="business-technology.html"><i class="fas fa-laptop-code"></i> Business Technology</a></li>
+                    </ul>
+                </li>
                 <li><a href="power.html">Power Solutions</a></li>
                 <li><a href="connect.html">Internet & Network</a></li>
                 <li><a href="https://wa.me/237691498369" target="_blank">Get Quote</a></li>

@@ -229,6 +229,60 @@
         table tbody tr:last-child td:first-child { border-radius: 0 0 0 12px; }
         table tbody tr:last-child td:last-child { border-radius: 0 0 12px 0; }
         
+        /* DROPDOWN MENU */
+        header nav {
+            position: relative;
+        }
+        .nav-item {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            min-width: 240px;
+            border-radius: 12px;
+            padding: 12px 0;
+            margin-top: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            list-style: none;
+        }
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu li {
+            display: block;
+        }
+        .dropdown-menu a {
+            display: flex !important;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+            transition: all 0.2s;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+        }
+        .dropdown-menu a:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea !important;
+            padding-left: 24px !important;
+        }
+        .dropdown-menu i {
+            font-size: 1.1rem;
+            width: 20px;
+        }
+        
         /* MOBILE HAMBURGER MENU */
         .mobile-menu-btn {
             display: none;
@@ -308,7 +362,14 @@
             <span></span>
         </button>
         <nav id="navMenu" style="display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap;">
-            <a href="../index.html#services" style="color: #64748b; text-decoration: none; font-weight: 500;">Services</a>
+            <span class="nav-item">
+                <a href="../index.html#services" style="color: #64748b; text-decoration: none; font-weight: 500;">Services</a>
+                <ul class="dropdown-menu">
+                    <li><a href="power.html"><i class="fas fa-bolt"></i> Power Solutions</a></li>
+                    <li><a href="connect.html"><i class="fas fa-wifi"></i> Internet & Network</a></li>
+                    <li><a href="business-technology.html"><i class="fas fa-laptop-code"></i> Business Technology</a></li>
+                </ul>
+            </span>
             <a href="connect.html" style="color: #64748b; text-decoration: none; font-weight: 500;">Internet</a>
             <a href="power.html" style="color: #667eea; text-decoration: none; font-weight: 600;">Power</a>
             <a href="../about.html" style="color: #64748b; text-decoration: none; font-weight: 500;">About</a>
