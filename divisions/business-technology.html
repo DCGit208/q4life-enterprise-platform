@@ -5,15 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Technology Services | Q4 Life - Complete IT Solutions</title>
     <meta name="description" content="Your complete business technology partner. From email to enterprise software - one reliable team for all your IT needs.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
+        html { scroll-behavior: smooth; }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: #2d3748;
             background: #ffffff;
         }
+        
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
 
         /* Navigation */
         .nav {
@@ -67,97 +75,320 @@
             background: none;
             border: none;
             cursor: pointer;
+            z-index: 1001;
+            padding: 8px;
         }
 
         .hamburger span {
-            width: 25px;
-            height: 2px;
+            width: 28px;
+            height: 3px;
             background: #2563eb;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
+        
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        /* Hero */
+        /* Hero - Premium with Imagery */
         .hero {
             margin-top: 75px;
             position: relative;
-            height: 600px;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600&h=900&fit=crop') center/cover;
+            min-height: 100vh;
+            overflow: hidden;
+            background: 
+                linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 50%, rgba(30, 58, 138, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop') center/cover;
+            background-attachment: fixed;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.25) 0%, transparent 50%),
+                url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&h=1080&fit=crop') center/cover;
+            opacity: 0.15;
+            mix-blend-mode: screen;
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.25; }
+        }
+        
+        /* Floating Shapes - Enhanced */
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+            animation: float 25s ease-in-out infinite;
+        }
+        
+        .hero-shape:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+            top: -15%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+        
+        .hero-shape:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #60a5fa 0%, transparent 70%);
+            bottom: -15%;
+            right: -10%;
+            animation-delay: 8s;
+        }
+        
+        .hero-shape:nth-child(3) {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #93c5fd 0%, transparent 70%);
+            top: 30%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(40px, -40px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+        
+        /* Geometric Grid Overlay */
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(96, 165, 250, 0.03) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(96, 165, 250, 0.03) 2px, transparent 2px);
+            background-size: 60px 60px;
+            opacity: 0.6;
+        }
+        
+        /* Tech Pattern Overlay */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M30 0l30 30-30 30L0 30z" fill="%233b82f6" fill-opacity="0.02"/%3E%3C/svg%3E');
+            opacity: 0.3;
         }
 
         .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
+            z-index: 10;
+            padding: 150px 40px 100px;
             text-align: center;
             color: white;
-            max-width: 1000px;
-            width: 100%;
-            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .persona-tags {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease-out 0.3s both;
         }
 
         .persona-tag {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 10px 20px;
-            border-radius: 25px;
-            color: white;
-            font-size: 0.9rem;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 14px 28px;
+            border-radius: 30px;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.95rem;
+            font-weight: 500;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .persona-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transition: left 0.6s;
+        }
+        
+        .persona-tag:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(37, 99, 235, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        
+        .persona-tag:hover::before {
+            left: 100%;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            line-height: 1.2;
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            font-weight: 800;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            color: #ffffff;
+            animation: fadeInUp 1s ease-out 0.5s both;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(37, 99, 235, 0.3);
         }
 
         .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 40px;
-            opacity: 0.95;
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: 50px;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            animation: fadeInUp 1s ease-out 0.7s both;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .cta-buttons {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
             flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.9s both;
         }
 
         .btn {
-            padding: 15px 35px;
-            border-radius: 6px;
+            padding: 18px 42px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            font-size: 1.05rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn:hover::before {
+            width: 400px;
+            height: 400px;
         }
 
         .btn-primary {
-            background: #2563eb;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: white;
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.5);
+            border: 2px solid transparent;
         }
 
-        .btn-primary:hover { background: #1d4ed8; }
+        .btn-primary:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(37, 99, 235, 0.6);
+        }
 
         .btn-outline {
-            background: transparent;
-            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
             color: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
         .btn-outline:hover {
-            background: white;
-            color: #2563eb;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            z-index: 10;
+        }
+        
+        .scroll-indicator i {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
         }
 
         /* Container */
@@ -231,20 +462,43 @@
         .service-card {
             background: white;
             border: 1px solid #e5e7eb;
-            border-radius: 10px;
+            border-radius: 16px;
             overflow: hidden;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .service-card:hover {
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
+            transform: translateY(-8px);
+            border-color: #3b82f6;
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
         .service-image {
             width: 100%;
-            height: 220px;
+            height: 240px;
             object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-card:hover .service-image {
+            transform: scale(1.05);
         }
 
         .service-content {
@@ -279,10 +533,12 @@
 
         /* Stats Bar */
         .stats-bar {
-            background: #f9fafb;
-            padding: 60px 40px;
-            margin: 80px 0;
-            border-radius: 10px;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 80px 40px;
+            margin: 100px 0;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.1);
         }
 
         .stats-grid {
@@ -313,16 +569,35 @@
         }
 
         .package {
-            background: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
             border: 2px solid #e5e7eb;
-            border-radius: 10px;
+            border-radius: 16px;
             padding: 40px;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .package:hover::before {
+            opacity: 1;
         }
 
         .package:hover {
-            border-color: #2563eb;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-color: #3b82f6;
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
+            transform: translateY(-5px);
         }
 
         .package.featured {
@@ -387,7 +662,14 @@
 
         .two-col img {
             width: 100%;
-            border-radius: 10px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .two-col img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
         }
 
         .two-col h2 {
@@ -454,12 +736,327 @@
             min-height: 120px;
         }
 
+        /* Client Logos Section */
+        .clients-section {
+            background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+            padding: 80px 40px;
+            margin: 100px 0 0 0;
+        }
+        
+        .client-logos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 40px;
+            align-items: center;
+            justify-items: center;
+            max-width: 1200px;
+            margin: 50px auto 0;
+            opacity: 0.7;
+        }
+        
+        .client-logo {
+            font-size: 2rem;
+            color: #4b5563;
+            transition: all 0.3s;
+        }
+        
+        .client-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin: 60px 0;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-left: 4px solid #3b82f6;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 8rem;
+            color: rgba(59, 130, 246, 0.03);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(37, 99, 235, 0.15);
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            color: #4b5563;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .author-info h4 {
+            color: #1f2937;
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+        
+        .author-info p {
+            color: #6b7280;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            padding: 100px 40px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .final-cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .final-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .final-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .final-cta .cta-buttons {
+            gap: 25px;
+        }
+        
+        .final-cta .btn-outline {
+            border-color: white;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .trust-indicators {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .trust-item i {
+            font-size: 1.3rem;
+        }
+        
         /* Footer */
         footer {
-            background: #1f2937;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
             color: white;
-            padding: 50px 40px;
-            text-align: center;
+            padding: 80px 40px 40px;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .footer-column p {
+            color: #94a3b8;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-links a:hover {
+            color: #3b82f6;
+        }
+        
+        .footer-links i {
+            font-size: 0.85rem;
+            width: 16px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3b82f6;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .partner-badges {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+        
+        .partner-badge {
+            background: rgba(255,255,255,0.05);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .partner-badge i {
+            color: #3b82f6;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-bottom p {
+            color: #64748b;
+            margin: 0;
+        }
+        
+        .footer-bottom-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .footer-bottom-links a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .footer-bottom-links a:hover {
+            color: #3b82f6;
+        }
+        
+        @media (max-width: 968px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+        }
+        
+        @media (max-width: 640px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .final-cta h2 { font-size: 2rem; }
+            .final-cta p { font-size: 1.1rem; }
+            .trust-indicators { gap: 20px; }
         }
 
         /* Mobile */
@@ -467,23 +1064,37 @@
             .nav-container { padding: 0 20px; }
             .nav-links {
                 position: fixed;
-                top: 75px;
-                left: 0;
-                right: 0;
-                background: white;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 350px;
+                height: 100vh;
+                background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
                 flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                transform: translateY(-200%);
-                transition: transform 0.3s;
+                padding: 5rem 2rem 2rem;
+                gap: 15px;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
             }
-            .nav-links.active { transform: translateY(0); }
+            .nav-links.active { right: 0; }
+            .nav-links li { width: 100%; }
+            .nav-links a {
+                color: white;
+                font-size: 1.1rem;
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
             .hamburger { display: flex; }
             .hero { height: 500px; }
             .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .persona-tags { font-size: 0.8rem; }
             .two-col { grid-template-columns: 1fr; }
             .service-grid { grid-template-columns: 1fr; }
             .packages-grid { grid-template-columns: 1fr; }
+            .container { padding: 60px 20px; }
         }
     </style>
 </head>
@@ -496,25 +1107,44 @@
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#services">All Divisions</a></li>
+                <li><a href="power.html">Power Solutions</a></li>
+                <li><a href="connect.html">Internet & Network</a></li>
                 <li><a href="../about.html">About</a></li>
-                <li><a href="../contact-us.html">Contact</a></li>
+                <li><a href="https://wa.me/237691498369" target="_blank">Get Quote</a></li>
             </ul>
         </div>
     </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <section class="hero">
+        <div class="hero-shape"></div>
+        <div class="hero-shape"></div>
+        <div class="hero-shape"></div>
+        <div class="hero-grid"></div>
+        
         <div class="hero-content">
             <div class="persona-tags">
-                <div class="persona-tag">SME Owners: Who can handle our email, website, IT support?</div>
-                <div class="persona-tag">Operations Managers: Need reliable vendor for recurring tech needs</div>
-                <div class="persona-tag">CEOs: One partner for multiple IT requirements</div>
+                <div class="persona-tag">🏢 SME Owners: Who can handle our email, website, IT support?</div>
+                <div class="persona-tag">⚙️ Operations Managers: Need reliable vendor for recurring tech needs</div>
+                <div class="persona-tag">👔 CEOs: One partner for multiple IT requirements</div>
             </div>
             <h1>Complete Business Technology Solutions</h1>
-            <p>From professional email to enterprise software. One reliable partner for all your technology needs.</p>
+            <p>From professional email to enterprise software. One reliable partner for all your technology needs. Transform your business with world-class IT infrastructure.</p>
             <div class="cta-buttons">
-                <a href="#services" class="btn btn-primary">Explore Services</a>
-                <a href="#quote-form" class="btn btn-outline">Get Quote</a>
+                <a href="#services" class="btn btn-primary">
+                    <span>Explore Services</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#quote-form" class="btn btn-outline">
+                    <span>Get Free Quote</span>
+                    <i class="fas fa-comments"></i>
+                </a>
             </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
@@ -558,7 +1188,7 @@
                     <div class="service-content">
                         <h3>Professional Email & Collaboration</h3>
                         <p>Custom business email with Microsoft 365 or Google Workspace. Build credibility with professional addresses.</p>
-                        <span class="price-range">From 5,000 FCFA/user/month</span>
+                        <span class="price-range">From $8/user/month</span>
                         <a href="business-technology/email-collaboration.html" class="btn btn-primary">Learn More →</a>
                     </div>
                 </div>
@@ -568,7 +1198,7 @@
                     <div class="service-content">
                         <h3>Website & Digital Presence</h3>
                         <p>Professional websites, e-commerce stores, and online presence. Mobile-responsive and SEO-optimized.</p>
-                        <span class="price-range">From 150,000 FCFA</span>
+                        <span class="price-range">From $250</span>
                         <a href="business-technology/website-digital-presence.html" class="btn btn-primary">Learn More →</a>
                     </div>
                 </div>
@@ -578,7 +1208,7 @@
                     <div class="service-content">
                         <h3>IT Support & Help Desk</h3>
                         <p>Remote and on-site technical support. Keep your team productive with reliable IT assistance.</p>
-                        <span class="price-range">From 50,000 FCFA/month</span>
+                        <span class="price-range">From $85/month</span>
                         <a href="business-technology/it-support.html" class="btn btn-primary">Learn More →</a>
                     </div>
                 </div>
@@ -592,7 +1222,7 @@
                     <div class="service-content">
                         <h3>Business Software Solutions</h3>
                         <p>CRM, accounting, inventory, and ERP systems. Streamline operations with the right software.</p>
-                        <span class="price-range">From 200,000 FCFA</span>
+                        <span class="price-range">From $335</span>
                         <a href="business-technology/business-software.html" class="btn btn-primary">Learn More →</a>
                     </div>
                 </div>
@@ -602,7 +1232,7 @@
                     <div class="service-content">
                         <h3>Cloud Infrastructure & Hosting</h3>
                         <p>Secure cloud storage, VPS hosting, and dedicated servers. Scalable infrastructure for your business.</p>
-                        <span class="price-range">From 75,000 FCFA/month</span>
+                        <span class="price-range">From $125/month</span>
                         <a href="business-technology/cloud-infrastructure.html" class="btn btn-primary">Learn More →</a>
                     </div>
                 </div>
@@ -612,7 +1242,7 @@
                     <div class="service-content">
                         <h3>Network & Security Setup</h3>
                         <p>Office network design, Wi-Fi setup, firewalls, and security cameras. Protect your business.</p>
-                        <span class="price-range">From 350,000 FCFA</span>
+                        <span class="price-range">From $585</span>
                         <a href="business-technology/network-security.html" class="btn btn-primary">Learn More →</a>
                     </div>
                 </div>
@@ -626,7 +1256,7 @@
                     <div class="service-content">
                         <h3>Custom Software Development</h3>
                         <p>Mobile apps, POS systems, inventory management, and bespoke business applications.</p>
-                        <span class="price-range">From 3,000,000 FCFA</span>
+                        <span class="price-range">From $5,000</span>
                         <a href="business-technology/software-development.html" class="btn btn-primary">Learn More →</a>
                     </div>
                 </div>
@@ -636,7 +1266,7 @@
                     <div class="service-content">
                         <h3>Data Analytics & Business Intelligence</h3>
                         <p>Executive dashboards, automated reporting, and data-driven insights for better decisions.</p>
-                        <span class="price-range">From 800,000 FCFA</span>
+                        <span class="price-range">From $1,335</span>
                         <a href="business-technology/data-analytics.html" class="btn btn-primary">Learn More →</a>
                     </div>
                 </div>
@@ -646,7 +1276,7 @@
                     <div class="service-content">
                         <h3>IT Consulting & Strategy</h3>
                         <p>Technology roadmaps, infrastructure audits, and digital transformation consulting.</p>
-                        <span class="price-range">From 300,000 FCFA/day</span>
+                        <span class="price-range">From $500/day</span>
                         <a href="business-technology/it-consulting.html" class="btn btn-primary">Learn More →</a>
                     </div>
                 </div>
@@ -661,7 +1291,7 @@
         <div class="packages-grid">
             <div class="package">
                 <h3>Startup Tech Kit</h3>
-                <div class="price">120,000 FCFA</div>
+                <div class="price">$200</div>
                 <p style="color: #6b7280; margin-bottom: 20px;">per month</p>
                 <ul>
                     <li>Professional email (5 users)</li>
@@ -676,7 +1306,7 @@
             <div class="package featured">
                 <div class="featured-label">MOST POPULAR</div>
                 <h3>Growth Business Suite</h3>
-                <div class="price">350,000 FCFA</div>
+                <div class="price">$585</div>
                 <p style="color: #6b7280; margin-bottom: 20px;">per month</p>
                 <ul>
                     <li>Professional email (15 users)</li>
@@ -718,6 +1348,46 @@
                     <li>Proven track record with 50+ businesses</li>
                     <li>Scalable solutions that grow with you</li>
                 </ul>
+            </div>
+        </div>
+        
+        <div class="section-header" style="margin-top: 120px;">
+            <h2>Trusted by Businesses Across Industries</h2>
+            <p>See what our clients say about partnering with Q4 Life for their technology needs.</p>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p>"Q4 Life transformed our IT infrastructure completely. From email migration to network setup, they handled everything seamlessly. Our productivity has increased by 40%."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JM</div>
+                    <div class="author-info">
+                        <h4>Jean-Marc Kouam</h4>
+                        <p>Operations Director, Manufacturing Firm</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p>"Finally, one reliable partner for all our tech needs. Their 24/7 support is a game-changer. We've saved over $20,000 annually by consolidating vendors."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SA</div>
+                    <div class="author-info">
+                        <h4>Sarah Ndi</h4>
+                        <p>CEO, Hospitality Group</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p>"Their custom software development exceeded expectations. The POS system they built has streamlined our entire retail operation. Worth every penny."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">DT</div>
+                    <div class="author-info">
+                        <h4>David Tanyi</h4>
+                        <p>Owner, Retail Chain</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -764,21 +1434,158 @@
                     <textarea name="message"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px;">Submit Request</button>
-                <p style="text-align: center; margin-top: 20px; color: #6b7280;">Or WhatsApp us: <a href="https://wa.me/237677604100?text=Hi%2C%20I%20need%20business%20technology%20services" target="_blank" style="color: #2563eb; font-weight: 600;">+237 677 604 100</a></p>
+                <p style="text-align: center; margin-top: 20px; color: #6b7280;"><a href="https://wa.me/237677604100?text=Hi%2C%20I%20need%20business%20technology%20services" target="_blank" style="color: #2563eb; font-weight: 600; text-decoration: none;">💬 Contact via WhatsApp</a></p>
             </form>
+        </div>
+    </div>
+    
+    <div class="clients-section">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 50px;">
+                <h2>Technology Partners We Work With</h2>
+                <p>Delivering solutions powered by world-class technology platforms</p>
+            </div>
+            <div class="client-logos">
+                <div class="client-logo" title="Microsoft Partner"><i class="fab fa-microsoft"></i> Microsoft</div>
+                <div class="client-logo" title="Google Partner"><i class="fab fa-google"></i> Google</div>
+                <div class="client-logo" title="Amazon AWS"><i class="fab fa-aws"></i> AWS</div>
+                <div class="client-logo" title="Cisco"><i class="fas fa-network-wired"></i> Cisco</div>
+                <div class="client-logo" title="HP Enterprise"><i class="fas fa-server"></i> HPE</div>
+                <div class="client-logo" title="Dell Technologies"><i class="fas fa-laptop"></i> Dell</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="final-cta">
+        <div class="final-cta-content">
+            <h2>Ready to Transform Your Business Technology?</h2>
+            <p>Join 50+ successful businesses who trust Q4 Life as their complete technology partner. Schedule a free consultation today.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/237691498369?text=I'd%20like%20to%20schedule%20a%20technology%20consultation" target="_blank" class="btn btn-primary">Schedule Free Consultation</a>
+                <a href="#services" class="btn btn-outline">View All Services</a>
+            </div>
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>No Commitment Required</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-clock"></i>
+                    <span>24-Hour Response Time</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-award"></i>
+                    <span>100% Satisfaction Guarantee</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Q4 Life Business Technology Division. All rights reserved.</p>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Q4 Life Technology</h3>
+                    <p>Your complete business technology partner. From professional email to enterprise software - one reliable team for all your IT needs.</p>
+                    <div class="partner-badges">
+                        <div class="partner-badge"><i class="fab fa-microsoft"></i> Microsoft Partner</div>
+                        <div class="partner-badge"><i class="fab fa-google"></i> Google Partner</div>
+                        <div class="partner-badge"><i class="fab fa-aws"></i> AWS Certified</div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://wa.me/237691498369" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:info@q4life.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#foundation"><i class="fas fa-chevron-right"></i> Professional Email</a></li>
+                        <li><a href="#foundation"><i class="fas fa-chevron-right"></i> Website Design</a></li>
+                        <li><a href="#foundation"><i class="fas fa-chevron-right"></i> IT Support</a></li>
+                        <li><a href="#growth"><i class="fas fa-chevron-right"></i> Business Software</a></li>
+                        <li><a href="#growth"><i class="fas fa-chevron-right"></i> Cloud Hosting</a></li>
+                        <li><a href="#growth"><i class="fas fa-chevron-right"></i> Network Security</a></li>
+                        <li><a href="#enterprise"><i class="fas fa-chevron-right"></i> Software Development</a></li>
+                        <li><a href="#enterprise"><i class="fas fa-chevron-right"></i> Data Analytics</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="../about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="../index.html#services"><i class="fas fa-chevron-right"></i> All Divisions</a></li>
+                        <li><a href="power.html"><i class="fas fa-chevron-right"></i> Power Solutions</a></li>
+                        <li><a href="connect.html"><i class="fas fa-chevron-right"></i> Internet & Network</a></li>
+                        <li><a href="../contact-us.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        <li><a href="#quote-form"><i class="fas fa-chevron-right"></i> Request Quote</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/237691498369" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Support</a></li>
+                        <li><a href="tel:+237691498369"><i class="fas fa-phone"></i> Call Us</a></li>
+                        <li><a href="mailto:info@q4life.com"><i class="fas fa-envelope"></i> info@q4life.com</a></li>
+                        <li style="color: #94a3b8; padding-left: 24px; margin-top: 15px;"><i class="fas fa-clock" style="margin-right: 8px;"></i> 24/7 Support Available</li>
+                        <li style="color: #94a3b8; padding-left: 24px;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Douala & Yaoundé, Cameroon</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Q4 Life Business Technology Division. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">SLA Agreement</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script>
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+        const navLinkItems = navLinks.querySelectorAll('a');
         
-        hamburger.addEventListener('click', () => {
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        hamburger.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking nav links
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+        
+        // Close menu on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+        
+        // Close menu on window resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
         });
 
         function showTier(tier) {
