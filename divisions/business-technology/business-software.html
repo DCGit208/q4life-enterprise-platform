@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Software Solutions | Q4 Life</title>
+    <meta name="description" content="CRM, accounting, ERP, and inventory management software. From 200,000 FCFA. Streamline your operations.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #2d3748; background: #ffffff; }
+        .nav { position: fixed; top: 0; left: 0; right: 0; background: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; height: 75px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: #2563eb; text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #4b5563; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a:hover { color: #2563eb; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+        .hamburger span { width: 25px; height: 2px; background: #2563eb; }
+        .hero { margin-top: 75px; position: relative; height: 500px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&h=900&fit=crop') center/cover; }
+        .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; max-width: 900px; width: 100%; padding: 0 20px; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 1.3rem; margin-bottom: 35px; opacity: 0.95; }
+        .price-tag { display: inline-block; background: #2563eb; color: white; padding: 12px 35px; border-radius: 6px; font-weight: 600; font-size: 1.2rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 40px; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 700; color: #1f2937; margin-bottom: 15px; }
+        .section-header p { font-size: 1.1rem; color: #6b7280; max-width: 700px; margin: 0 auto; }
+        .software-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin: 60px 0; }
+        .software-card { background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 40px; transition: all 0.3s; }
+        .software-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-5px); }
+        .software-card h3 { font-size: 1.5rem; color: #1f2937; margin-bottom: 15px; }
+        .software-card p { color: #6b7280; line-height: 1.7; margin-bottom: 20px; }
+        .software-card .price-range { color: #2563eb; font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 20px; }
+        .btn { display: inline-block; background: #2563eb; color: white; padding: 12px 30px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.2s; }
+        .btn:hover { background: #1d4ed8; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin: 80px 0; }
+        .two-col img { width: 100%; border-radius: 8px; }
+        .two-col h2 { font-size: 2rem; color: #1f2937; margin-bottom: 20px; }
+        .two-col ul { list-style: none; margin: 25px 0; }
+        .two-col ul li { padding: 12px 0; color: #4b5563; position: relative; padding-left: 30px; }
+        .two-col ul li:before { content: '→'; position: absolute; left: 0; color: #2563eb; font-weight: 700; }
+        .cta-section { background: #f9fafb; padding: 80px 40px; text-align: center; border-radius: 8px; margin: 80px 0; }
+        .cta-section h2 { font-size: 2.5rem; color: #1f2937; margin-bottom: 20px; }
+        .cta-section p { font-size: 1.2rem; color: #6b7280; margin-bottom: 35px; }
+        .btn-large { padding: 16px 40px; font-size: 1.1rem; margin: 0 10px; }
+        .btn-outline { background: white; border: 2px solid #2563eb; color: #2563eb; }
+        .btn-outline:hover { background: #2563eb; color: white; }
+        footer { background: #1f2937; color: white; padding: 40px; text-align: center; }
+        .back-link { text-align: center; margin: 60px 0; }
+        .back-link a { color: #2563eb; text-decoration: none; font-weight: 600; }
+        @media (max-width: 768px) { .nav-container { padding: 0 20px; } .nav-links { position: fixed; top: 75px; left: 0; right: 0; background: white; flex-direction: column; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transform: translateY(-200%); transition: transform 0.3s; } .nav-links.active { transform: translateY(0); } .hamburger { display: flex; } .hero { height: 400px; } .hero h1 { font-size: 2rem; } .two-col, .software-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">Q4 Life</a>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../business-technology.html">Services</a></li>
+                <li><a href="../../contact-us.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Business Software Solutions</h1>
+            <p>CRM, accounting, inventory, and ERP systems. Streamline operations with the right software for your business.</p>
+            <div class="price-tag">From 600,000 FCFA</div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="section-header">
+            <h2>Software for Every Business Function</h2>
+            <p>We implement, configure, and support the software your business needs to operate efficiently</p>
+        </div>
+
+        <div class="software-grid">
+            <div class="software-card">
+                <h3>CRM Systems</h3>
+                <p>Customer relationship management to track sales, leads, contacts, and customer interactions.</p>
+                <span class="price-range">600K - 1.5M FCFA implementation + 50K-150K/month support</span>
+                <a href="../business-technology.html#quote-form" class="btn">Learn More</a>
+            </div>
+
+            <div class="software-card">
+                <h3>Accounting Software</h3>
+                <p>Invoicing, expense tracking, financial reporting, and tax compliance automation.</p>
+                <span class="price-range">800K - 2.2M FCFA implementation + 60K-200K/month support</span>
+                <a href="../business-technology.html#quote-form" class="btn">Learn More</a>
+            </div>
+
+            <div class="software-card">
+                <h3>Project Management</h3>
+                <p>Task assignment, team collaboration, timeline tracking, and project delivery tools.</p>
+                <span class="price-range">400K - 1M FCFA implementation + 35K-120K/month support</span>
+                <a href="../business-technology.html#quote-form" class="btn">Learn More</a>
+            </div>
+
+            <div class="software-card">
+                <h3>ERP Systems</h3>
+                <p>Complete enterprise resource planning for finance, inventory, HR, and operations.</p>
+                <span class="price-range">4M - 12M FCFA implementation + 250K-600K/month support</span>
+                <a href="../business-technology.html#quote-form" class="btn">Learn More</a>
+            </div>
+
+            <div class="software-card">
+                <h3>HR & Payroll</h3>
+                <p>Employee management, attendance tracking, payroll processing, and leave management.</p>
+                <span class="price-range">1M - 3M FCFA implementation + 80K-250K/month support</span>
+                <a href="../business-technology.html#quote-form" class="btn">Learn More</a>
+            </div>
+
+            <div class="software-card">
+                <h3>Inventory Management</h3>
+                <p>Stock tracking, reorder alerts, warehouse management, and purchase order automation.</p>
+                <span class="price-range">800K - 2M FCFA implementation + 70K-180K/month support</span>
+                <a href="../business-technology.html#quote-form" class="btn">Learn More</a>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div>
+                <h2>Our Implementation Process</h2>
+                <ul>
+                    <li>Requirements analysis and software selection</li>
+                    <li>Custom configuration for your workflows</li>
+                    <li>Data migration from existing systems</li>
+                    <li>Team training and documentation</li>
+                    <li>Ongoing support and updates</li>
+                    <li>Integration with other business tools</li>
+                </ul>
+            </div>
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop" alt="Business software">
+        </div>
+
+        <div class="cta-section">
+            <h2>Find the Right Software</h2>
+            <p>Let us recommend and implement the perfect software for your business needs.</p>
+            <a href="../business-technology.html#quote-form" class="btn btn-large">Request Consultation</a>
+            <a href="https://wa.me/237677604100?text=Hi%2C%20I%20need%20business%20software" target="_blank" class="btn btn-outline btn-large">WhatsApp Us</a>
+        </div>
+
+        <div class="back-link">
+            <a href="../business-technology.html">← Back to All Services</a>
+        </div>
+    </div>
+
+    <footer><p>&copy; 2026 Q4 Life Business Technology Division. All rights reserved.</p></footer>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+    </script>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Email & Collaboration Services | Q4 Life</title>
+    <meta name="description" content="Professional business email solutions with Microsoft 365 and Google Workspace. From 5,000 FCFA/user/month.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #2563eb;
+        }
+
+        /* Hero with Image */
+        .hero {
+            margin-top: 75px;
+            position: relative;
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1600&h=900&fit=crop') center/cover;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            opacity: 0.95;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 35px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Pricing Table */
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .plan {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 40px;
+            transition: box-shadow 0.3s;
+        }
+
+        .plan:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .plan.featured {
+            border: 2px solid #2563eb;
+            position: relative;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            right: 30px;
+            background: #2563eb;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .plan h3 {
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .plan .price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin: 20px 0 10px;
+        }
+
+        .plan .period {
+            color: #6b7280;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .plan ul {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .plan ul li {
+            padding: 10px 0;
+            color: #4b5563;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .plan ul li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Feature Grid with Images */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .feature p {
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        /* Two Column Section */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin: 80px 0;
+        }
+
+        .two-col img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .two-col h2 {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .two-col ul {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .two-col ul li {
+            padding: 12px 0;
+            color: #4b5563;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .two-col ul li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #f9fafb;
+            padding: 80px 40px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-bottom: 35px;
+        }
+
+        .btn-large {
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            margin: 0 10px;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 2px solid #2563eb;
+            color: #2563eb;
+        }
+
+        .btn-outline:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* FAQ */
+        .faq {
+            max-width: 900px;
+            margin: 80px auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 30px 0;
+        }
+
+        .faq-item h3 {
+            font-size: 1.2rem;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .faq-item p {
+            color: #6b7280;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .back-link {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .back-link a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-container { padding: 0 20px; }
+            .nav-links {
+                position: fixed;
+                top: 75px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                transform: translateY(-200%);
+                transition: transform 0.3s;
+            }
+            .nav-links.active { transform: translateY(0); }
+            .hamburger { display: flex; }
+            .hero { height: 400px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.1rem; }
+            .two-col { grid-template-columns: 1fr; }
+            .pricing-table { grid-template-columns: 1fr; }
+            .container { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">Q4 Life</a>
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../business-technology.html">Services</a></li>
+                <li><a href="../../contact-us.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Professional Business Email</h1>
+            <p>Custom email addresses that build credibility. Microsoft 365 & Google Workspace with 24/7 support.</p>
+            <div class="price-tag">From 15,000 FCFA/user/month</div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="section-header">
+            <h2>Email Solutions for Your Business</h2>
+            <p>Professional email hosting with enterprise-grade security, reliability, and collaboration tools</p>
+        </div>
+
+        <div class="pricing-table">
+            <div class="plan">
+                <h3>Microsoft 365 Basic</h3>
+                <div class="price">15,000 FCFA</div>
+                <span class="period">per user/month + 8,000 FCFA one-time setup</span>
+                <ul>
+                    <li>Custom email (@yourcompany.cm)</li>
+                    <li>50GB mailbox storage</li>
+                    <li>Web and mobile apps</li>
+                    <li>Calendar & contacts sync</li>
+                    <li>Microsoft Teams included</li>
+                    <li>99.9% uptime SLA</li>
+                    <li>Professional setup & migration</li>
+                    <li>1 hour training session</li>
+                </ul>
+                <a href="../business-technology.html#quote-form" class="btn">Get Started</a>
+            </div>
+
+            <div class="plan featured">
+                <div class="featured-badge">RECOMMENDED</div>
+                <h3>Microsoft 365 Standard</h3>
+                <div class="price">25,000 FCFA</div>
+                <span class="period">per user/month + 15,000 FCFA one-time setup</span>
+                <ul>
+                    <li>Everything in Basic, plus:</li>
+                    <li>Desktop Office apps (Word, Excel, PowerPoint)</li>
+                    <li>1TB OneDrive cloud storage</li>
+                    <li>Advanced security features</li>
+                    <li>SharePoint for team collaboration</li>
+                    <li>Priority technical support</li>
+                    <li>Full data migration included</li>
+                    <li>2 hours training session</li>
+                </ul>
+                <a href="../business-technology.html#quote-form" class="btn">Get Started</a>
+            </div>
+
+            <div class="plan">
+                <h3>Google Workspace</h3>
+                <div class="price">18,000 FCFA</div>
+                <span class="period">per user/month + 10,000 FCFA one-time setup</span>
+                <ul>
+                    <li>Custom Gmail (@yourcompany.cm)</li>
+                    <li>30GB cloud storage</li>
+                    <li>Google Meet video conferencing</li>
+                    <li>Docs, Sheets, Slides</li>
+                    <li>Shared calendars</li>
+                    <li>Mobile device management</li>
+                </ul>
+                <a href="../business-technology.html#quote-form" class="btn">Get Started</a>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div>
+                <h2>Why Professional Email Matters</h2>
+                <p style="color: #6b7280; margin-bottom: 20px;">Your email address is often the first impression clients have of your business. A professional email builds trust and credibility.</p>
+                <ul>
+                    <li>Build trust with clients using your company domain</li>
+                    <li>Enhanced security with enterprise-grade protection</li>
+                    <li>Access from any device - desktop, mobile, tablet</li>
+                    <li>Automatic backup and 99.9% uptime guarantee</li>
+                    <li>Team collaboration with shared calendars</li>
+                    <li>Professional support available 24/7</li>
+                </ul>
+            </div>
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop" alt="Team collaboration">
+        </div>
+
+        <div class="section-header" style="margin-top: 100px;">
+            <h2>Complete Email Migration Service</h2>
+            <p>We handle everything from setup to training. Your team will be up and running in 24 hours.</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" class="feature-image" alt="Email setup">
+                <h3>Domain Setup</h3>
+                <p>We configure your domain for email hosting with proper DNS records and security settings.</p>
+            </div>
+
+            <div class="feature">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop" class="feature-image" alt="Data migration">
+                <h3>Email Migration</h3>
+                <p>Transfer all existing emails, contacts, and calendars from your old system seamlessly.</p>
+            </div>
+
+            <div class="feature">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" class="feature-image" alt="Team training">
+                <h3>Team Training</h3>
+                <p>2 hours of hands-on training for your team on email, calendar, and collaboration tools.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="section-header">
+                <h2>Common Questions</h2>
+            </div>
+            
+            <div class="faq-item">
+                <h3>What if I don't have a domain name yet?</h3>
+                <p>No problem. We'll register a .cm domain for your business at 15,000 FCFA/year. We handle everything including registration and setup.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can you migrate emails from Gmail or Yahoo?</h3>
+                <p>Yes. We migrate all your existing emails, contacts, and calendars from any email provider at no additional charge.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How long does setup take?</h3>
+                <p>Most setups are completed within 24 hours. We schedule migrations during off-hours to minimize disruption to your business.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What kind of support do you provide?</h3>
+                <p>24/7 support via WhatsApp and phone. We respond to issues within 4 hours during business days. All technical problems are handled by our team.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I add or remove users anytime?</h3>
+                <p>Yes. Add users as your team grows or remove them when needed. You only pay for active email accounts each month.</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Get Professional Email Today</h2>
+            <p>Setup in 24 hours. No technical expertise required. Cancel anytime.</p>
+            <a href="../business-technology.html#quote-form" class="btn btn-large">Request Quote</a>
+            <a href="https://wa.me/237677604100?text=Hi%2C%20I%20need%20business%20email%20setup" target="_blank" class="btn btn-outline btn-large">WhatsApp Us</a>
+        </div>
+
+        <div class="back-link">
+            <a href="../business-technology.html">← Back to All Services</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Q4 Life Business Technology Division. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

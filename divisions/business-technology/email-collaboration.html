@@ -1,0 +1,2667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Email & Collaboration | Q4 Life Business Technology</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #8b5cf6;
+            --dark: #0f172a;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-600: #475569;
+            --gray-900: #0f172a;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            line-height: 1.6; 
+            color: var(--gray-900); 
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .nav { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            z-index: 1000;
+        }
+        .nav-container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 0 48px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            height: 80px; 
+        }
+        .logo { 
+            font-size: 1.75rem; 
+            font-weight: 800; 
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+        .nav-links { display: flex; list-style: none; gap: 40px; align-items: center; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--gray-600); 
+            font-weight: 600; 
+            font-size: 0.95rem;
+            transition: color 0.3s; 
+        }
+        .nav-links a:hover { color: var(--primary); }
+        
+        /* Hero */
+        .hero { 
+            margin-top: 80px; 
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 64, 175, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920&h=1080&fit=crop') center/cover;
+            padding: 100px 48px 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+            animation: heroGlow 8s ease-in-out infinite;
+        }
+        @keyframes heroGlow {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
+        }
+        .hero h1 { 
+            font-size: 4rem; 
+            font-weight: 900; 
+            margin-bottom: 24px; 
+            letter-spacing: -2px;
+        }
+        .hero .lead { 
+            font-size: 1.5rem; 
+            opacity: 0.95; 
+            margin-bottom: 16px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero .sub-lead {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 48px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-cta {
+            display: inline-flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-hero-primary {
+            padding: 20px 48px;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.15rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .btn-hero-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+        .trust-badges {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        .trust-badge span {
+            font-size: 1.2rem;
+        }
+        
+        .container { 
+            max-width: 1300px; 
+            margin: 60px auto;
+            padding: 80px 60px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Package Selector - STAR FEATURE */
+        .package-section {
+            background: white;
+            padding: 80px 60px;
+            max-width: 1300px;
+            margin: 60px auto;
+            border-radius: 24px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+        .section-header { 
+            text-align: center; 
+            margin-bottom: 60px;
+        }
+        .section-header::before {
+            content: attr(data-number);
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+        .section-header .label {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .section-header h2 { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+        .section-header p { 
+            font-size: 1.25rem; 
+            color: var(--gray-600); 
+            max-width: 700px; 
+            margin: 0 auto;
+        }
+        
+        /* Problem/Solution Section - Split Design */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            background: white;
+            padding: 80px 60px;
+            margin: 60px auto;
+            max-width: 1300px;
+            border-radius: 24px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+        .split-content h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 28px;
+            color: var(--dark);
+            letter-spacing: -1px;
+        }
+        .split-content p {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .problem-list {
+            margin-top: 32px;
+        }
+        .problem-item {
+            display: flex;
+            align-items: start;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: var(--gray-50);
+            border-radius: 12px;
+            border-left: 4px solid #ef4444;
+        }
+        .problem-item .icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .problem-item .text {
+            font-size: 1.05rem;
+            color: var(--gray-900);
+            font-weight: 500;
+        }
+        .solution-list {
+            margin-top: 32px;
+        }
+        .solution-item {
+            display: flex;
+            align-items: start;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
+            border-radius: 12px;
+            border-left: 4px solid var(--success);
+        }
+        .solution-item .icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .solution-item .text {
+            font-size: 1.05rem;
+            color: var(--gray-900);
+            font-weight: 500;
+        }
+        .split-visual {
+            position: relative;
+        }
+        .split-visual img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        .split-visual::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 24px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .package-card {
+            background: white;
+            border-radius: 24px;
+            padding: 48px 36px;
+            border: 3px solid var(--gray-100);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.05), transparent);
+            transition: left 0.5s;
+        }
+        .package-card:hover::before {
+            left: 100%;
+        }
+        .package-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.25);
+            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.02) 0%, rgba(139, 92, 246, 0.02) 100%);
+        }
+        .package-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+            border-color: var(--primary);
+        }
+        .package-card.featured:hover {
+            transform: translateY(-12px) scale(1.08);
+            box-shadow: 0 35px 90px rgba(37, 99, 235, 0.3);
+        }
+        .popular-badge {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 24px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4); }
+            50% { box-shadow: 0 4px 25px rgba(37, 99, 235, 0.6); }
+        }
+        .package-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+            margin-top: 8px;
+        }
+        .package-users {
+            color: var(--gray-600);
+            font-size: 1.05rem;
+            margin-bottom: 24px;
+        }
+        .package-price {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .package-price small {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gray-600);
+        }
+        .package-note {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 32px;
+            font-style: italic;
+        }
+        .package-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+        .package-features li {
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            color: var(--gray-900);
+            font-size: 1rem;
+        }
+        .package-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .btn-package {
+            width: 100%;
+            padding: 18px 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .calculator-section .btn-package {
+            background: white;
+            color: var(--primary);
+        }
+        .calculator-section .btn-package:hover {
+            background: var(--gray-100);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+        .btn-package::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .btn-package:hover::before {
+            left: 100%;
+        }
+        .btn-package:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.5);
+        }
+        .btn-package-outline {
+            background: white;
+            color: var(--primary);
+            border: 3px solid var(--primary);
+        }
+        .btn-package-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Interactive Calculator */
+        .calculator-section {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            padding: 80px 60px;
+            color: white;
+            max-width: 1300px;
+            margin: 60px auto;
+            border-radius: 24px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+        .calculator-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInScale 0.6s ease-out;
+        }
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .calculator-form {
+            display: grid;
+            gap: 32px;
+        }
+        .form-group {
+            display: grid;
+            gap: 12px;
+        }
+        .form-group label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+        }
+        .form-group select,
+        .form-group input {
+            padding: 16px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+        .form-group select option {
+            background: var(--dark);
+            color: white;
+        }
+        .calculator-result {
+            margin-top: 40px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+        }
+        .result-row:last-child {
+            border-bottom: none;
+            padding-top: 24px;
+            margin-top: 16px;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .result-row.total {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #60a5fa;
+        }
+        .calculator-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .calculator-actions .btn-package {
+            flex: 1;
+        }
+        
+        /* Provider Combo Cards */
+        .combo-section {
+            padding: 80px 60px;
+            background: white;
+            max-width: 1300px;
+            margin: 60px auto;
+            border-radius: 24px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+        .combo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+        .combo-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid var(--gray-100);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .combo-card.recommended {
+            border-color: var(--primary);
+            box-shadow: 0 15px 50px rgba(37, 99, 235, 0.15);
+        }
+        .combo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+        }
+        .combo-header {
+            padding: 32px 36px 24px;
+            background: linear-gradient(135deg, var(--gray-50) 0%, white 100%);
+            border-bottom: 2px solid var(--gray-100);
+            position: relative;
+        }
+        .combo-card.recommended .combo-header {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(139, 92, 246, 0.05) 100%);
+        }
+        .combo-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .combo-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        .combo-subtitle {
+            color: var(--gray-600);
+            font-size: 1.05rem;
+        }
+        .combo-body {
+            padding: 32px 36px;
+        }
+        .combo-includes {
+            margin-bottom: 32px;
+        }
+        .combo-includes h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        .combo-includes ul {
+            list-style: none;
+        }
+        .combo-includes li {
+            padding: 10px 0;
+            padding-left: 32px;
+            position: relative;
+            color: var(--gray-600);
+        }
+        .combo-includes li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .combo-pricing {
+            background: var(--gray-50);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+        .combo-pricing-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 1.05rem;
+        }
+        .combo-pricing-row.total {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            padding-top: 16px;
+            margin-top: 16px;
+            border-top: 2px solid var(--gray-200);
+        }
+        
+        /* Process Timeline */
+        .timeline-section {
+            background: white;
+            padding: 80px 60px;
+            max-width: 1300px;
+            margin: 60px auto;
+            border-radius: 24px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+            position: relative;
+        }
+        .timeline-grid::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            z-index: 0;
+        }
+        .timeline-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .timeline-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            margin: 0 auto 24px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+        .timeline-desc {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .timeline-duration {
+            margin-top: 12px;
+            display: inline-block;
+            padding: 6px 16px;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 60px;
+            background: white;
+            max-width: 1300px;
+            margin: 60px auto;
+            border-radius: 24px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+        .faq-grid {
+            display: grid;
+            gap: 20px;
+            max-width: 900px;
+            margin: 60px auto 0;
+        }
+        .faq-item {
+            background: white;
+            border: 2px solid var(--gray-100);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+        .faq-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .faq-question::before {
+            content: '❓';
+            font-size: 1.5rem;
+        }
+        .faq-answer {
+            color: var(--gray-600);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            padding-left: 40px;
+        }
+        .faq-answer::before {
+            content: '✅ ';
+            color: var(--success);
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100());
+            padding: 100px 60px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .final-cta h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .final-cta p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            margin-bottom: 48px;
+            position: relative;
+        }
+        .final-cta-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 60px 40px;
+        }
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: white;
+        }
+        .footer-brand p {
+            color: var(--gray-400);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .footer-section h4 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+        .footer-section ul li a {
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: var(--gray-400);
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            footer { padding: 60px 20px 30px; }
+        }
+        
+        /* Value Proposition Cards */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+        .value-card {
+            background: white;
+            padding: 48px 36px;
+            border-radius: 24px;
+            border: 1px solid var(--gray-100);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        .value-card .icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            display: block;
+        }
+        .value-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        .value-card p {
+            color: var(--gray-600);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        /* Provider Comparison Cards */
+        .provider-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            margin-top: 60px;
+        }
+        .provider-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--gray-100);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+        }
+        .provider-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .provider-card:hover::after {
+            opacity: 1;
+        }
+        .provider-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.2);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%);
+        }
+        .provider-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(37, 99, 235, 0.25);
+            border-color: var(--primary);
+        }
+        .provider-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+        .provider-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .provider-content {
+            padding: 28px;
+        }
+        .provider-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        .provider-tagline {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+        .provider-storage {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        .provider-features {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+        .provider-features li {
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--gray-600);
+        }
+        .provider-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+        
+        /* Comparison Table */
+        .comparison-toggle {
+            text-align: center;
+            margin-top: 60px;
+        }
+        .btn-compare {
+            padding: 18px 48px;
+            background: white;
+            color: var(--primary);
+            border: 3px solid var(--primary);
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-compare:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+        .comparison-table-section {
+            margin-top: 80px;
+            display: none;
+        }
+        .comparison-table-section.active {
+            display: block;
+            animation: slideDown 0.5s ease-out;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 3000px;
+            }
+        }
+        .comparison-table {
+            width: 100%;
+            margin-top: 40px;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: white;
+            padding: 24px 16px;
+            font-weight: 800;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+        .comparison-table th:first-child {
+            border-radius: 16px 0 0 0;
+        }
+        .comparison-table th:last-child {
+            border-radius: 0 16px 0 0;
+        }
+        .comparison-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: 0.95rem;
+            color: var(--gray-600);
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        .comparison-table .category-row td {
+            background: var(--gray-50);
+            font-weight: 800;
+            color: var(--dark);
+            padding: 20px 16px;
+            font-size: 1.1rem;
+        }
+        .comparison-check {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .comparison-cross {
+            color: #ef4444;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .recommended-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 8px;
+        }
+        
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 40px 20px;
+            animation: fadeIn 0.3s ease-out;
+        }
+        .modal-overlay.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 20px auto;
+            position: relative;
+            animation: slideUp 0.4s ease-out;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.3);
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            background: var(--gray-100);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        .modal-close:hover {
+            background: var(--primary);
+            color: white;
+            transform: rotate(90deg);
+        }
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 60px 48px 48px;
+            border-radius: 24px 24px 0 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .modal-header h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .modal-header .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        .modal-body {
+            padding: 48px;
+        }
+        .modal-section {
+            margin-bottom: 48px;
+        }
+        .modal-section h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .modal-section h3::before {
+            content: '';
+            width: 4px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 2px;
+        }
+        .pricing-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .tier-card {
+            background: var(--gray-50);
+            padding: 32px 24px;
+            border-radius: 16px;
+            border: 2px solid var(--gray-100);
+            transition: all 0.3s;
+        }
+        .tier-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        .tier-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        .tier-price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .tier-price small {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray-600);
+        }
+        .tier-storage {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            margin-bottom: 16px;
+        }
+        .tier-features {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+        .tier-features li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--gray-600);
+        }
+        .tier-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+        .feature-matrix {
+            margin-top: 24px;
+        }
+        .feature-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 16px;
+            padding: 16px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .feature-row:last-child {
+            border-bottom: none;
+        }
+        .feature-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        .feature-value {
+            color: var(--gray-600);
+        }
+        .verdict-box {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 32px;
+        }
+        .verdict-box h4 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+        .verdict-box p {
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .verdict-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .verdict-stat {
+            text-align: center;
+        }
+        .verdict-stat .label {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .verdict-stat .value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 18px 48px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .package-grid { grid-template-columns: 1fr; }
+            .combo-grid { grid-template-columns: 1fr; }
+            .timeline-grid { grid-template-columns: repeat(2, 1fr); }
+            .timeline-grid::before { display: none; }
+            .value-grid { grid-template-columns: 1fr; }
+            .provider-grid { grid-template-columns: repeat(2, 1fr); }
+            .split-section { grid-template-columns: 1fr; gap: 40px; }
+            .split-section[style*="rtl"] { direction: ltr !important; }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; line-height: 1.2; }
+            .hero .lead { font-size: 1.1rem; }
+            .hero .sub-lead { font-size: 0.95rem; }
+            .trust-badges { flex-direction: column; gap: 12px; }
+            .section-header h2 { font-size: 2rem; }
+            .section-header p { font-size: 1rem; }
+            .timeline-grid { grid-template-columns: 1fr; gap: 40px; }
+            .timeline-grid::before { display: none; }
+            .container { padding: 40px 20px; margin: 30px 20px; }
+            .package-section, .calculator-section, .combo-section, .timeline-section, .faq-section { padding: 40px 20px; margin: 30px 20px; }
+            .final-cta { padding: 60px 20px; }
+            .split-content h3 { font-size: 1.75rem; }
+            .split-visual img { height: 250px; }
+            .package-grid { grid-template-columns: 1fr; gap: 24px; }
+            .value-grid { grid-template-columns: 1fr; gap: 24px; }
+            .provider-grid { grid-template-columns: 1fr; gap: 20px; }
+            .combo-grid { grid-template-columns: 1fr; gap: 24px; }
+            .nav-links { display: none; }
+            .final-cta h2 { font-size: 2rem; }
+            .final-cta p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">Q4 Life</a>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../business-technology.html">Services</a></li>
+                <li><a href="../../contact-us.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Professional Email Systems<br>Designed, Secured & Managed</h1>
+        <p class="lead">Stop treating email like commodity storage. Get enterprise-grade communication infrastructure with expert management.</p>
+        <p class="sub-lead">Email is infrastructure, not a product. Choose your provider. We handle everything else. Go live in 2-5 days.</p>
+        <div class="hero-cta">
+            <a href="#packages" class="btn-hero-primary">🚀 Choose Your Package</a>
+        </div>
+        <div class="trust-badges">
+            <div class="trust-badge"><span>⚡</span> Setup in 2-5 days</div>
+            <div class="trust-badge"><span>✓</span> No long-term contracts</div>
+            <div class="trust-badge"><span>💯</span> 30-day money-back</div>
+            <div class="trust-badge"><span>🎯</span> Free consultation included</div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Split Sections -->
+    <div class="container">
+        <div class="split-section">
+            <div class="split-content">
+                <h3>The Email Problem</h3>
+                <p><strong>Email isn't just messaging.</strong> It's your business identity, legal record, collaboration platform, and trust layer.</p>
+                <div class="problem-list">
+                    <div class="problem-item">
+                        <span class="icon">⚠️</span>
+                        <span class="text">Businesses buy email like commodity storage</span>
+                    </div>
+                    <div class="problem-item">
+                        <span class="icon">⚠️</span>
+                        <span class="text">Security is configured incorrectly or left open</span>
+                    </div>
+                    <div class="problem-item">
+                        <span class="icon">⚠️</span>
+                        <span class="text">Data loss, breaches, and compliance failures</span>
+                    </div>
+                    <div class="problem-item">
+                        <span class="icon">⚠️</span>
+                        <span class="text">No governance, backup, or recovery strategy</span>
+                    </div>
+                </div>
+            </div>
+            <div class="split-visual">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop" alt="Email security">
+            </div>
+        </div>
+
+        <div class="split-section" style="direction: rtl;">
+            <div class="split-content" style="direction: ltr;">
+                <h3>The Q4Life Difference</h3>
+                <p><strong>We manage communication as a strategic asset,</strong> not a commodity service.</p>
+                <div class="solution-list">
+                    <div class="solution-item">
+                        <span class="icon">✓</span>
+                        <span class="text">Architecture & provider selection tailored to your business</span>
+                    </div>
+                    <div class="solution-item">
+                        <span class="icon">✓</span>
+                        <span class="text">Zero-downtime migrations with complete data integrity</span>
+                    </div>
+                    <div class="solution-item">
+                        <span class="icon">✓</span>
+                        <span class="text">Enterprise-grade security, governance, and compliance</span>
+                    </div>
+                    <div class="solution-item">
+                        <span class="icon">✓</span>
+                        <span class="text">Continuous monitoring, optimization, and accountability</span>
+                    </div>
+                </div>
+            </div>
+            <div class="split-visual" style="direction: ltr;">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop" alt="Strategic planning">
+            </div>
+        </div>
+    </div>
+
+    <!-- Five Pillars of Managed Communication -->
+    <div class="container">
+        <div class="section-header">
+            <span class="label">What We Deliver</span>
+            <h2>Five Pillars of Managed Communication</h2>
+            <p>Comprehensive management across security, governance, continuity, lifecycle, and monitoring</p>
+        </div>
+
+        <div class="value-grid">
+            <div class="value-card">
+                <span class="icon">🔐</span>
+                <h4>Security & Trust</h4>
+                <p>SPF, DKIM, DMARC configuration, anti-phishing, MFA enforcement, and encryption protocols</p>
+            </div>
+            <div class="value-card">
+                <span class="icon">🧠</span>
+                <h4>Governance & Control</h4>
+                <p>User management, role-based access, departmental policies, and centralized administration</p>
+            </div>
+            <div class="value-card">
+                <span class="icon">🔁</span>
+                <h4>Continuity & Recovery</h4>
+                <p>Automated backups, retention policies, disaster recovery, and business continuity planning</p>
+            </div>
+            <div class="value-card">
+                <span class="icon">🔄</span>
+                <h4>Lifecycle Management</h4>
+                <p>Onboarding, offboarding, migrations, storage optimization, and access reviews</p>
+            </div>
+            <div class="value-card">
+                <span class="icon">📊</span>
+                <h4>Monitoring & Oversight</h4>
+                <p>Health checks, usage analytics, security monitoring, and quarterly system reviews</p>
+            </div>
+            <div class="value-card">
+                <span class="icon">🎯</span>
+                <h4>Strategic Consulting</h4>
+                <p>Technology roadmaps, compliance support, audit assistance, and long-term planning</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Provider Agnostic Selection -->
+    <div id="providers" class="container">
+        <div class="section-header">
+            <span class="label">Provider Agnostic</span>
+            <h2>Choose Your Email Engine</h2>
+            <p>We partner with best-in-class providers. You choose the platform. We design and manage the system.</p>
+        </div>
+
+        <div class="provider-grid">
+            <div class="provider-card featured" onclick="openProviderModal('zoho')">
+                <span class="provider-badge">Recommended</span>
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" class="provider-image" alt="Zoho">
+                <div class="provider-content">
+                    <div class="provider-name">Zoho Workplace</div>
+                    <div class="provider-tagline">Best value for most businesses</div>
+                    <div class="provider-storage">5-100 GB per user</div>
+                    <ul class="provider-features">
+                        <li>Full office suite included</li>
+                        <li>Strong admin controls</li>
+                        <li>Privacy-focused (no ads)</li>
+                        <li>Excellent pricing</li>
+                    </ul>
+                    <p style="text-align: center; margin-top: 20px; color: var(--primary); font-weight: 700; font-size: 0.95rem;">Click for detailed pricing →</p>
+                </div>
+            </div>
+
+            <div class="provider-card" onclick="openProviderModal('microsoft')">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop" class="provider-image" alt="Microsoft 365">
+                <div class="provider-content">
+                    <div class="provider-name">Microsoft 365</div>
+                    <div class="provider-tagline">Enterprise compliance & trust</div>
+                    <div class="provider-storage">50 GB + 1 TB OneDrive</div>
+                    <ul class="provider-features">
+                        <li>Exchange email standard</li>
+                        <li>Teams integration</li>
+                        <li>Advanced security</li>
+                        <li>Audit & compliance tools</li>
+                    </ul>
+                    <p style="text-align: center; margin-top: 20px; color: var(--primary); font-weight: 700; font-size: 0.95rem;">Click for detailed pricing →</p>
+                </div>
+            </div>
+
+            <div class="provider-card" onclick="openProviderModal('google')">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop" class="provider-image" alt="Google">
+                <div class="provider-content">
+                    <div class="provider-name">Google Workspace</div>
+                    <div class="provider-tagline">Familiar & collaborative</div>
+                    <div class="provider-storage">30 GB+ per user</div>
+                    <ul class="provider-features">
+                        <li>Gmail interface</li>
+                        <li>Real-time collaboration</li>
+                        <li>Fast onboarding</li>
+                        <li>Mobile-first design</li>
+                    </ul>
+                    <p style="text-align: center; margin-top: 20px; color: var(--primary); font-weight: 700; font-size: 0.95rem;">Click for detailed pricing →</p>
+                </div>
+            </div>
+
+            <div class="provider-card" onclick="openProviderModal('proton')">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop" class="provider-image" alt="Proton">
+                <div class="provider-content">
+                    <div class="provider-name">Proton Mail</div>
+                    <div class="provider-tagline">Maximum privacy</div>
+                    <div class="provider-storage">15-500 GB per user</div>
+                    <ul class="provider-features">
+                        <li>End-to-end encryption</li>
+                        <li>Swiss privacy laws</li>
+                        <li>Zero-access architecture</li>
+                        <li>Confidential operations</li>
+                    </ul>
+                    <p style="text-align: center; margin-top: 20px; color: var(--primary); font-weight: 700; font-size: 0.95rem;">Click for detailed pricing →</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison-toggle">
+            <button class="btn-compare" onclick="toggleComparison()">📊 Compare All Providers Side-by-Side</button>
+        </div>
+        
+        <div class="comparison-table-section" id="comparisonTable">
+            <div class="section-header">
+                <span class="label">Full Comparison</span>
+                <h2>Provider Comparison Matrix</h2>
+                <p>Comprehensive side-by-side analysis of all four email providers</p>
+            </div>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature / Provider</th>
+                        <th>Zoho Workplace <span class="recommended-badge">Recommended</span></th>
+                        <th>Microsoft 365</th>
+                        <th>Google Workspace</th>
+                        <th>Proton Mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="category-row">
+                        <td colspan="5">💰 PRICING (per user/month)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Entry Level</strong></td>
+                        <td>$1 (Mail Lite)</td>
+                        <td>$6 (Business Basic)</td>
+                        <td>$6 (Business Starter)</td>
+                        <td>$4 (Mail Plus)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mid-Tier</strong></td>
+                        <td>$3 (Mail Premium)</td>
+                        <td>$12.50 (Business Standard)</td>
+                        <td>$12 (Business Standard)</td>
+                        <td>$10 (Unlimited)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Enterprise</strong></td>
+                        <td>$9 (Workplace)</td>
+                        <td>$22+ (Business Premium/E3)</td>
+                        <td>$18 (Business Plus)</td>
+                        <td>$13 (Visionary)</td>
+                    </tr>
+                    <tr class="category-row">
+                        <td colspan="5">💾 STORAGE & CAPACITY</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email Storage</strong></td>
+                        <td>5 GB - 100 GB</td>
+                        <td>50 GB + 1 TB Drive</td>
+                        <td>30 GB - Pooled</td>
+                        <td>15 GB - 500 GB</td>
+                    </tr>
+                    <tr>
+                        <td><strong>File Storage</strong></td>
+                        <td>5 GB - Unlimited</td>
+                        <td>1 TB OneDrive</td>
+                        <td>Pooled (30GB-5TB)</td>
+                        <td>500 GB Drive</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Attachment Size</strong></td>
+                        <td>250 MB</td>
+                        <td>150 MB</td>
+                        <td>25 MB (50 GB Drive)</td>
+                        <td>25 MB</td>
+                    </tr>
+                    <tr class="category-row">
+                        <td colspan="5">🔐 SECURITY FEATURES</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Two-Factor Auth</strong></td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td><span class="comparison-check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>End-to-End Encryption</strong></td>
+                        <td>Optional (add-on)</td>
+                        <td>In transit only</td>
+                        <td>In transit only</td>
+                        <td><span class="comparison-check">✓</span> Native</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Advanced Threat Protection</strong></td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td><span class="comparison-check">✓</span> Best-in-class</td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td><span class="comparison-check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Loss Prevention</strong></td>
+                        <td>Basic</td>
+                        <td><span class="comparison-check">✓</span> Advanced</td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Compliance Certifications</strong></td>
+                        <td>ISO, GDPR, SOC 2</td>
+                        <td>ISO, HIPAA, SOC 2, FedRAMP</td>
+                        <td>ISO, HIPAA, SOC 2</td>
+                        <td>GDPR, Swiss Privacy</td>
+                    </tr>
+                    <tr class="category-row">
+                        <td colspan="5">🛠️ ADMINISTRATION & CONTROL</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Admin Console</strong></td>
+                        <td><span class="comparison-check">✓</span> Excellent</td>
+                        <td><span class="comparison-check">✓</span> Best</td>
+                        <td><span class="comparison-check">✓</span> Excellent</td>
+                        <td><span class="comparison-check">✓</span> Good</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Group Policies</strong></td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td><span class="comparison-check">✓</span> Advanced</td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td>Limited</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Audit Logs</strong></td>
+                        <td><span class="comparison-check">✓</span> 6 months</td>
+                        <td><span class="comparison-check">✓</span> Unlimited</td>
+                        <td><span class="comparison-check">✓</span> 6-10 months</td>
+                        <td>Limited</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mobile Device Management</strong></td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td><span class="comparison-check">✓</span> Advanced</td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td>Basic</td>
+                    </tr>
+                    <tr class="category-row">
+                        <td colspan="5">🤝 COLLABORATION TOOLS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Office Suite</strong></td>
+                        <td><span class="comparison-check">✓</span> Zoho Suite</td>
+                        <td><span class="comparison-check">✓</span> Microsoft Office</td>
+                        <td><span class="comparison-check">✓</span> Google Docs/Sheets</td>
+                        <td><span class="comparison-cross">✗</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Video Conferencing</strong></td>
+                        <td><span class="comparison-check">✓</span> Zoho Meeting</td>
+                        <td><span class="comparison-check">✓</span> Microsoft Teams</td>
+                        <td><span class="comparison-check">✓</span> Google Meet</td>
+                        <td><span class="comparison-cross">✗</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chat/Messaging</strong></td>
+                        <td><span class="comparison-check">✓</span> Zoho Cliq</td>
+                        <td><span class="comparison-check">✓</span> Teams Chat</td>
+                        <td><span class="comparison-check">✓</span> Google Chat</td>
+                        <td><span class="comparison-cross">✗</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Calendar Sharing</strong></td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td><span class="comparison-check">✓</span></td>
+                        <td><span class="comparison-check">✓</span></td>
+                    </tr>
+                    <tr class="category-row">
+                        <td colspan="5">🎯 Q4LIFE MIGRATION ASSESSMENT</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Migration Complexity</strong></td>
+                        <td>Low (2-3 days)</td>
+                        <td>Medium (4-5 days)</td>
+                        <td>Low (2-3 days)</td>
+                        <td>Medium (3-4 days)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Learning Curve</strong></td>
+                        <td>Low</td>
+                        <td>Medium (Teams/Office)</td>
+                        <td>Very Low (Familiar)</td>
+                        <td>Low</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Q4Life Confidence</strong></td>
+                        <td>95% - Proven Choice</td>
+                        <td>90% - Enterprise Standard</td>
+                        <td>92% - Popular & Easy</td>
+                        <td>85% - Security Focused</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Best For</strong></td>
+                        <td>SMEs, Admin Teams, Cost-Conscious</td>
+                        <td>Corporations, Finance, Compliance</td>
+                        <td>Startups, Marketing, Remote Teams</td>
+                        <td>Legal, Healthcare, Confidential</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- PHASE 1: Package Selector -->
+    <section class="package-section" id="packages">
+        <div class="section-header">
+            <span class="label">Choose Your Service Level</span>
+            <h2>Complete Email Management Packages</h2>
+            <p>Provider subscription + Q4Life setup + ongoing management in one simple package</p>
+        </div>
+
+        <div class="package-grid">
+            <!-- Essential Package -->
+            <div class="package-card">
+                <div class="package-name">Essential</div>
+                <div class="package-users">Perfect for 5-15 users</div>
+                <div class="package-price">From $450<small>/month</small></div>
+                <div class="package-note">+ $600 one-time setup</div>
+                
+                <ul class="package-features">
+                    <li>Provider of your choice (Zoho recommended)</li>
+                    <li>Complete migration service</li>
+                    <li>Basic security hardening</li>
+                    <li>Business hours monitoring</li>
+                    <li>4-hour response time</li>
+                    <li>Email & chat support</li>
+                    <li>Documentation & guides</li>
+                    <li>Monthly system reports</li>
+                </ul>
+                
+                <button class="btn-package btn-package-outline" onclick="selectPackage('essential', 10, 450)">Get Started with Essential</button>
+            </div>
+
+            <!-- Professional Package (FEATURED) -->
+            <div class="package-card featured">
+                <div class="popular-badge">⭐ MOST POPULAR</div>
+                <div class="package-name">Professional</div>
+                <div class="package-users">Perfect for 16-50 users</div>
+                <div class="package-price">From $850<small>/month</small></div>
+                <div class="package-note">+ $1,000 one-time setup</div>
+                
+                <ul class="package-features">
+                    <li>Everything in Essential, plus:</li>
+                    <li>Advanced security & compliance</li>
+                    <li>24/7 monitoring & alerts</li>
+                    <li>2-hour priority response</li>
+                    <li>Phone + priority support</li>
+                    <li>Live training session (2 hours)</li>
+                    <li>Quarterly business reviews</li>
+                    <li>Backup & disaster recovery</li>
+                </ul>
+                
+                <button class="btn-package" onclick="selectPackage('professional', 30, 850)">Get Started with Professional</button>
+            </div>
+
+            <!-- Premium Package -->
+            <div class="package-card">
+                <div class="package-name">Premium</div>
+                <div class="package-users">Perfect for 51+ users</div>
+                <div class="package-price">From $1,500<small>/month</small></div>
+                <div class="package-note">+ Custom setup quote</div>
+                
+                <ul class="package-features">
+                    <li>Everything in Professional, plus:</li>
+                    <li>Maximum security protocols</li>
+                    <li>Dedicated account manager</li>
+                    <li>30-minute SLA response</li>
+                    <li>On-site training available</li>
+                    <li>Advanced compliance reporting</li>
+                    <li>Custom integrations</li>
+                    <li>White-glove service</li>
+                </ul>
+                
+                <button class="btn-package btn-package-outline" onclick="contactForPremium()">Contact for Premium</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHASE 2: Interactive Calculator -->
+    <section class="calculator-section" id="calculator">
+        <div class="section-header">
+            <span class="label" style="background: rgba(255, 255, 255, 0.15); color: white;">Calculate Your Cost</span>
+            <h2 style="color: white;">Get Your Exact Pricing in Seconds</h2>
+            <p style="color: rgba(255, 255, 255, 0.9);">See exactly what you'll pay with our transparent pricing calculator</p>
+        </div>
+
+        <div class="calculator-container">
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="provider">Choose Your Email Provider</label>
+                    <select id="provider" onchange="calculatePrice()">
+                        <option value="zoho">Zoho Workplace ($3/user/month) - Recommended</option>
+                        <option value="microsoft">Microsoft 365 ($12.50/user/month)</option>
+                        <option value="google">Google Workspace ($12/user/month)</option>
+                        <option value="proton">Proton Mail ($10/user/month)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="users">Number of Users</label>
+                    <input type="number" id="users" value="30" min="5" max="500" onchange="calculatePrice()" style="width: 100%;">
+                </div>
+
+                <div class="form-group">
+                    <label for="tier">Q4Life Service Tier</label>
+                    <select id="tier" onchange="calculatePrice()">
+                        <option value="essential">Essential (5-15 users) - $400/month</option>
+                        <option value="professional" selected>Professional (16-50 users) - $700/month</option>
+                        <option value="premium">Premium (51+ users) - $1,500/month</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="calculator-result" id="result">
+                <div class="result-row">
+                    <span>Provider Cost:</span>
+                    <strong id="providerCost">$90/month</strong>
+                </div>
+                <div class="result-row">
+                    <span>Q4Life Management:</span>
+                    <strong id="q4lifeCost">$700/month</strong>
+                </div>
+                <div class="result-row">
+                    <span>Setup Fee (One-time):</span>
+                    <strong id="setupCost">$1,000</strong>
+                </div>
+                <div class="result-row total">
+                    <span>First Year Total:</span>
+                    <strong id="totalCost">$10,480</strong>
+                </div>
+                <div class="result-row" style="border-top: none; padding-top: 8px; margin-top: 8px; font-size: 0.95rem; opacity: 0.8;">
+                    <span>Ongoing Monthly:</span>
+                    <strong id="monthlyCost">$790/month</strong>
+                </div>
+            </div>
+
+            <div class="calculator-actions">
+                <button class="btn-package" onclick="getQuoteWhatsApp()">💬 Get This Quote on WhatsApp</button>
+                <button class="btn-package btn-package-outline" onclick="getQuoteEmail()">📧 Email Me This Quote</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHASE 3: Provider Combo Cards -->
+    <section class="combo-section">
+        <div class="section-header">
+            <span class="label">Complete Bundles</span>
+            <h2>Provider + Q4Life Management Packages</h2>
+            <p>Pre-configured combinations for the fastest setup. Click to learn more.</p>
+        </div>
+
+        <div class="combo-grid">
+            <!-- Zoho Combo -->
+            <div class="combo-card recommended" onclick="openProviderModal('zoho')">
+                <div class="combo-header">
+                    <div class="combo-badge">⭐ RECOMMENDED</div>
+                    <div class="combo-title">Zoho + Q4Life Professional</div>
+                    <div class="combo-subtitle">Best value for most SMEs</div>
+                </div>
+                <div class="combo-body">
+                    <div class="combo-includes">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li>Zoho Mail Premium ($3/user)</li>
+                            <li>Full office suite (Writer, Sheet, Show)</li>
+                            <li>Q4Life Professional management</li>
+                            <li>Complete migration & setup</li>
+                            <li>24/7 monitoring & support</li>
+                            <li>Advanced security hardening</li>
+                        </ul>
+                    </div>
+                    <div class="combo-pricing">
+                        <div class="combo-pricing-row">
+                            <span>Example: 30 users</span>
+                            <span></span>
+                        </div>
+                        <div class="combo-pricing-row">
+                            <span>Zoho Provider:</span>
+                            <strong>$90/month</strong>
+                        </div>
+                        <div class="combo-pricing-row">
+                            <span>Q4Life Management:</span>
+                            <strong>$700/month</strong>
+                        </div>
+                        <div class="combo-pricing-row">
+                            <span>Setup (one-time):</span>
+                            <strong>$1,000</strong>
+                        </div>
+                        <div class="combo-pricing-row total">
+                            <span>Total Monthly:</span>
+                            <strong>$790</strong>
+                        </div>
+                    </div>
+                    <button class="btn-package" onclick="event.stopPropagation(); selectCombo('zoho', 'professional')">Choose This Combo</button>
+                </div>
+            </div>
+
+            <!-- Microsoft Combo -->
+            <div class="combo-card" onclick="openProviderModal('microsoft')">
+                <div class="combo-header">
+                    <div class="combo-badge">ENTERPRISE</div>
+                    <div class="combo-title">Microsoft 365 + Q4Life</div>
+                    <div class="combo-subtitle">For compliance-focused organizations</div>
+                </div>
+                <div class="combo-body">
+                    <div class="combo-includes">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li>Microsoft 365 Business Standard</li>
+                            <li>Exchange + Teams + Office apps</li>
+                            <li>Q4Life Professional management</li>
+                            <li>Advanced threat protection</li>
+                            <li>Compliance & audit support</li>
+                            <li>Azure AD integration</li>
+                        </ul>
+                    </div>
+                    <div class="combo-pricing">
+                        <div class="combo-pricing-row">
+                            <span>Example: 30 users</span>
+                            <span></span>
+                        </div>
+                        <div class="combo-pricing-row">
+                            <span>Microsoft Provider:</span>
+                            <strong>$375/month</strong>
+                        </div>
+                        <div class="combo-pricing-row">
+                            <span>Q4Life Management:</span>
+                            <strong>$700/month</strong>
+                        </div>
+                        <div class="combo-pricing-row">
+                            <span>Setup (one-time):</span>
+                            <strong>$1,200</strong>
+                        </div>
+                        <div class="combo-pricing-row total">
+                            <span>Total Monthly:</span>
+                            <strong>$1,075</strong>
+                        </div>
+                    </div>
+                    <button class="btn-package" onclick="event.stopPropagation(); selectCombo('microsoft', 'professional')">Choose This Combo</button>
+                </div>
+            </div>
+
+            <!-- Google Combo -->
+            <div class="combo-card" onclick="openProviderModal('google')">
+                <div class="combo-header">
+                    <div class="combo-badge">STARTUP</div>
+                    <div class="combo-title">Google Workspace + Q4Life</div>
+                    <div class="combo-subtitle">Fast setup for growing teams</div>
+                </div>
+                <div class="combo-body">
+                    <div class="combo-includes">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li>Google Workspace Business Standard</li>
+                            <li>Gmail + Drive + Meet + Docs</li>
+                            <li>Q4Life Professional management</li>
+                            <li>Real-time collaboration tools</li>
+                            <li>Mobile-first experience</li>
+                            <li>Fast migration & training</li>
+                        </ul>
+                    </div>
+                    <div class="combo-pricing">
+                        <div class="combo-pricing-row">
+                            <span>Example: 30 users</span>
+                            <span></span>
+                        </div>
+                        <div class="combo-pricing-row">
+                            <span>Google Provider:</span>
+                            <strong>$360/month</strong>
+                        </div>
+                        <div class="combo-pricing-row">
+                            <span>Q4Life Management:</span>
+                            <strong>$700/month</strong>
+                        </div>
+                        <div class="combo-pricing-row">
+                            <span>Setup (one-time):</span>
+                            <strong>$1,000</strong>
+                        </div>
+                        <div class="combo-pricing-row total">
+                            <span>Total Monthly:</span>
+                            <strong>$1,060</strong>
+                        </div>
+                    </div>
+                    <button class="btn-package" onclick="event.stopPropagation(); selectCombo('google', 'professional')">Choose This Combo</button>
+                </div>
+            </div>
+
+            <!-- Proton Combo -->
+            <div class="combo-card" onclick="openProviderModal('proton')">
+                <div class="combo-header">
+                    <div class="combo-badge">SECURITY</div>
+                    <div class="combo-title">Proton Mail + Q4Life</div>
+                    <div class="combo-subtitle">Maximum privacy & encryption</div>
+                </div>
+                <div class="combo-body">
+                    <div class="combo-includes">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li>Proton Mail Unlimited</li>
+                            <li>End-to-end encryption</li>
+                            <li>Q4Life Professional management</li>
+                            <li>Swiss privacy protection</li>
+                            <li>Zero-access architecture</li>
+                            <li>Confidential communications</li>
+                        </ul>
+                    </div>
+                    <div class="combo-pricing">
+                        <div class="combo-pricing-row">
+                            <span>Example: 30 users</span>
+                            <span></span>
+                        </div>
+                        <div class="combo-pricing-row">
+                            <span>Proton Provider:</span>
+                            <strong>$300/month</strong>
+                        </div>
+                        <div class="combo-pricing-row">
+                            <span>Q4Life Management:</span>
+                            <strong>$700/month</strong>
+                        </div>
+                        <div class="combo-pricing-row">
+                            <span>Setup (one-time):</span>
+                            <strong>$1,100</strong>
+                        </div>
+                        <div class="combo-pricing-row total">
+                            <span>Total Monthly:</span>
+                            <strong>$1,000</strong>
+                        </div>
+                    </div>
+                    <button class="btn-package" onclick="event.stopPropagation(); selectCombo('proton', 'professional')">Choose This Combo</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHASE 4: Process Timeline -->
+    <section class="timeline-section">
+        <div class="section-header">
+            <span class="label">Simple 4-Step Process</span>
+            <h2>Your Journey to Professional Email</h2>
+            <p>From first contact to go-live in 2-5 days. Here's exactly what happens.</p>
+        </div>
+
+        <div class="timeline-grid">
+            <div class="timeline-step">
+                <div class="timeline-number">1</div>
+                <div class="timeline-title">Free Consultation</div>
+                <div class="timeline-desc">15-30 minute discovery call to assess your needs and recommend the perfect solution</div>
+                <div class="timeline-duration">Same Day</div>
+            </div>
+
+            <div class="timeline-step">
+                <div class="timeline-number">2</div>
+                <div class="timeline-title">Receive Proposal</div>
+                <div class="timeline-desc">Clear pricing, timeline, and deliverables. No surprises. Review and approve at your pace.</div>
+                <div class="timeline-duration">24 Hours</div>
+            </div>
+
+            <div class="timeline-step">
+                <div class="timeline-number">3</div>
+                <div class="timeline-title">Setup & Migration</div>
+                <div class="timeline-desc">We handle DNS, security, migration, and testing. You approve milestones. Zero downtime.</div>
+                <div class="timeline-duration">2-5 Days</div>
+            </div>
+
+            <div class="timeline-step">
+                <div class="timeline-number">4</div>
+                <div class="timeline-title">Go Live + Support</div>
+                <div class="timeline-desc">Your team starts using professional email. We monitor 24/7 and provide ongoing optimization.</div>
+                <div class="timeline-duration">Ongoing</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHASE 5: FAQ Section -->
+    <section class="faq-section">
+        <div class="section-header">
+            <span class="label">Common Questions</span>
+            <h2>Everything You Need to Know</h2>
+            <p>Quick answers to help you make an informed decision</p>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question">Can I cancel anytime?</div>
+                <div class="faq-answer">Yes, 30-day notice required. No long-term contracts or cancellation fees.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What if we outgrow our plan?</div>
+                <div class="faq-answer">Upgrade or downgrade anytime. Changes are prorated and take effect immediately.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Do we own the email accounts?</div>
+                <div class="faq-answer">100% yours. You own all accounts, data, and domains. We're the manager, not the owner.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What happens if Q4Life stops service?</div>
+                <div class="faq-answer">Full documentation + 60-day transition support included. Your accounts continue working independently.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How fast can we go live?</div>
+                <div class="faq-answer">2-5 days average from proposal acceptance. Some migrations can be completed in 24-48 hours.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is there a money-back guarantee?</div>
+                <div class="faq-answer">Yes, 30-day money-back on monthly management fees if you're not satisfied with our service.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Do you handle compliance requirements?</div>
+                <div class="faq-answer">Professional and Premium tiers include compliance support for GDPR, HIPAA, SOC 2, and industry regulations.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What's included in ongoing management?</div>
+                <div class="faq-answer">24/7 monitoring, security updates, user onboarding/offboarding, backup verification, quarterly reviews, and unlimited support.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHASE 6: Final CTA -->
+    <section class="final-cta">
+        <h2>Ready to Get Professional Email?</h2>
+        <p>Join 50+ businesses who trust Q4Life with their communication infrastructure</p>
+        <div class="final-cta-buttons">
+            <a href="https://wa.me/237677604100?text=Hi%20Q4Life!%20I'm%20ready%20to%20get%20started%20with%20professional%20email%20management.%20Can%20we%20schedule%20a%20free%20consultation?" target="_blank" class="btn-hero-primary">
+                💬 Start Free Consultation
+            </a>
+            <button class="btn-hero-primary" style="background: rgba(37, 99, 235, 0.9); color: white; border: 3px solid rgba(37, 99, 235, 0.6);" onclick="document.getElementById('calculator').scrollIntoView({behavior: 'smooth'})">
+                🧮 Calculate My Cost First
+            </button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Q4 Life</h3>
+                <p>Professional IT services and business technology solutions designed to help your organization thrive in the digital age.</p>
+                <p><strong>Email:</strong> info@q4life.com<br>
+                <strong>Phone:</strong> +1 (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="email-collaboration.html">Email & Collaboration</a></li>
+                    <li><a href="business-software.html">Business Software</a></li>
+                    <li><a href="../business-technology.html">All Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../../contact-us.html">Contact</a></li>
+                    <li><a href="../../index.html">Home</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="../../contact-us.html">Get Help</a></li>
+                    <li><a href="#packages">Pricing</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Q4 Life. All rights reserved. | <a href="#" style="color: var(--gray-400);">Privacy Policy</a> | <a href="#" style="color: var(--gray-400);">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Modal Overlays -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-header" id="modalHeader"></div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // Provider data for modals
+        const providerData = {
+            zoho: {
+                name: 'Zoho Workplace',
+                tagline: 'Best value for most businesses',
+                color: '#2563eb',
+                tiers: [
+                    { name: 'Mail Lite', price: '$1', storage: '5 GB', features: ['Ad-free email', 'Mobile apps', 'Email hosting', 'Basic security'] },
+                    { name: 'Mail Premium', price: '$3', storage: '50 GB', features: ['Everything in Lite', 'eDiscovery', 'Email recall', 'S/MIME encryption'] },
+                    { name: 'Workplace', price: '$9', storage: '100 GB + 1 TB Drive', features: ['Full office suite', 'Video conferencing', 'Team chat', 'Advanced admin'] }
+                ],
+                features: [
+                    { label: 'Privacy Focus', value: 'No ads, no data mining - privacy-first approach' },
+                    { label: 'Admin Controls', value: 'Excellent administration console with detailed controls' },
+                    { label: 'Office Suite', value: 'Full productivity suite included (Writer, Sheet, Show)' },
+                    { label: 'Migration Support', value: 'Built-in migration tools from Gmail, Outlook, Exchange' },
+                    { label: 'Uptime SLA', value: '99.9% guaranteed uptime' },
+                    { label: 'Support', value: '24/7 email + phone support on premium plans' }
+                ],
+                verdict: {
+                    title: 'Q4Life Recommendation',
+                    text: 'Zoho Workplace is our top recommendation for 60-70% of SME clients. Exceptional value, strong privacy commitment, robust admin tools, and comprehensive office suite make it ideal for businesses seeking cost-effective professional email without compromising on features or security.',
+                    stats: [
+                        { label: 'Migration Time', value: '2-3 days' },
+                        { label: 'Confidence Level', value: '95%' },
+                        { label: 'Client Satisfaction', value: '4.8/5' }
+                    ]
+                }
+            },
+            microsoft: {
+                name: 'Microsoft 365',
+                tagline: 'Enterprise compliance & trust',
+                color: '#0078d4',
+                tiers: [
+                    { name: 'Business Basic', price: '$6', storage: '50 GB + 1 TB', features: ['Exchange email', 'Teams', 'Web Office apps', 'SharePoint'] },
+                    { name: 'Business Standard', price: '$12.50', storage: '50 GB + 1 TB', features: ['Everything in Basic', 'Desktop Office apps', 'Advanced security', 'Bookings'] },
+                    { name: 'Business Premium', price: '$22', storage: '50 GB + 1 TB', features: ['Everything in Standard', 'Advanced threat protection', 'Device management', 'Azure AD Premium'] }
+                ],
+                features: [
+                    { label: 'Industry Standard', value: 'Exchange is the gold standard for corporate email' },
+                    { label: 'Compliance', value: 'HIPAA, SOC 2, ISO 27001, FedRAMP certified' },
+                    { label: 'Security', value: 'Best-in-class threat protection and DLP' },
+                    { label: 'Integration', value: 'Seamless with Windows, Active Directory, Azure' },
+                    { label: 'Collaboration', value: 'Microsoft Teams, SharePoint, OneDrive included' },
+                    { label: 'Support', value: '24/7 phone + web support with SLA' }
+                ],
+                verdict: {
+                    title: 'Q4Life Recommendation',
+                    text: 'Microsoft 365 is the enterprise choice for organizations requiring robust compliance, advanced security, and deep integration with Microsoft ecosystems. Ideal for finance, healthcare, legal, and corporations with audit requirements. Higher cost justified by comprehensive features and industry trust.',
+                    stats: [
+                        { label: 'Migration Time', value: '4-5 days' },
+                        { label: 'Confidence Level', value: '90%' },
+                        { label: 'Enterprise Adoption', value: '70%' }
+                    ]
+                }
+            },
+            google: {
+                name: 'Google Workspace',
+                tagline: 'Familiar & collaborative',
+                color: '#ea4335',
+                tiers: [
+                    { name: 'Business Starter', price: '$6', storage: '30 GB pooled', features: ['Gmail', 'Meet (100 participants)', 'Drive', 'Docs/Sheets/Slides'] },
+                    { name: 'Business Standard', price: '$12', storage: '2 TB pooled', features: ['Everything in Starter', 'Meet (150 participants)', 'Recording', 'Enhanced security'] },
+                    { name: 'Business Plus', price: '$18', storage: '5 TB pooled', features: ['Everything in Standard', 'Meet (500 participants)', 'Advanced security', 'Vault retention'] }
+                ],
+                features: [
+                    { label: 'User Experience', value: 'Most familiar interface - everyone knows Gmail' },
+                    { label: 'Collaboration', value: 'Real-time document collaboration best-in-class' },
+                    { label: 'Mobile First', value: 'Exceptional mobile apps and offline capability' },
+                    { label: 'AI Features', value: 'Smart Compose, priority inbox, spam filtering' },
+                    { label: 'Search', value: 'Google\'s powerful search across all content' },
+                    { label: 'Support', value: '24/7 email, chat, phone support' }
+                ],
+                verdict: {
+                    title: 'Q4Life Recommendation',
+                    text: 'Google Workspace excels for startups, creative teams, and distributed organizations prioritizing collaboration and ease of use. Minimal learning curve, excellent mobile experience, and powerful real-time collaboration make onboarding fast and adoption high.',
+                    stats: [
+                        { label: 'Migration Time', value: '2-3 days' },
+                        { label: 'Confidence Level', value: '92%' },
+                        { label: 'User Adoption', value: '95%' }
+                    ]
+                }
+            },
+            proton: {
+                name: 'Proton Mail',
+                tagline: 'Maximum privacy & security',
+                color: '#6d4aff',
+                tiers: [
+                    { name: 'Mail Plus', price: '$4', storage: '15 GB', features: ['End-to-end encryption', '10 email addresses', 'Custom domain', 'Priority support'] },
+                    { name: 'Unlimited', price: '$10', storage: '500 GB', features: ['Everything in Plus', 'Proton VPN', 'Proton Drive', 'Proton Calendar'] },
+                    { name: 'Visionary', price: '$13', storage: '500 GB', features: ['Everything in Unlimited', '6 users', 'Priority support', 'Early access'] }
+                ],
+                features: [
+                    { label: 'Zero-Access Encryption', value: 'End-to-end encrypted - Proton cannot read your emails' },
+                    { label: 'Swiss Privacy', value: 'Protected by Swiss privacy laws - strongest in the world' },
+                    { label: 'No Tracking', value: 'No ads, no tracking, no data mining of any kind' },
+                    { label: 'Anonymous Sign-up', value: 'Can create accounts without phone verification' },
+                    { label: 'Open Source', value: 'Independently audited open-source code' },
+                    { label: 'Support', value: 'Priority support for paid plans' }
+                ],
+                verdict: {
+                    title: 'Q4Life Recommendation',
+                    text: 'Proton Mail is the choice for organizations where confidentiality is paramount: legal firms, healthcare, NGOs, journalists, and security-conscious businesses. Trade-off is limited collaboration features, but unmatched privacy makes it essential for sensitive communications.',
+                    stats: [
+                        { label: 'Migration Time', value: '3-4 days' },
+                        { label: 'Confidence Level', value: '85%' },
+                        { label: 'Security Rating', value: 'A+' }
+                    ]
+                }
+            }
+        };
+
+        function openProviderModal(provider) {
+            const data = providerData[provider];
+            const modal = document.getElementById('modalOverlay');
+            const header = document.getElementById('modalHeader');
+            const body = document.getElementById('modalBody');
+
+            // Build header
+            header.innerHTML = `
+                <h2>${data.name}</h2>
+                <p class="tagline">${data.tagline}</p>
+            `;
+
+            // Build body
+            body.innerHTML = `
+                <div class="modal-section">
+                    <h3>Pricing Tiers</h3>
+                    <p style="color: var(--gray-600); margin-bottom: 24px; font-style: italic;">
+                        Pricing as of January 2026. Paid directly to ${data.name}. Q4Life management fees are separate.
+                    </p>
+                    <div class="pricing-tiers">
+                        ${data.tiers.map(tier => `
+                            <div class="tier-card">
+                                <div class="tier-name">${tier.name}</div>
+                                <div class="tier-price">${tier.price}<small>/user/month</small></div>
+                                <div class="tier-storage">${tier.storage}</div>
+                                <ul class="tier-features">
+                                    ${tier.features.map(f => `<li>${f}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Key Features & Capabilities</h3>
+                    <div class="feature-matrix">
+                        ${data.features.map(feature => `
+                            <div class="feature-row">
+                                <div class="feature-label">${feature.label}</div>
+                                <div class="feature-value">${feature.value}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="verdict-box">
+                    <h4>${data.verdict.title}</h4>
+                    <p>${data.verdict.text}</p>
+                    <div class="verdict-stats">
+                        ${data.verdict.stats.map(stat => `
+                            <div class="verdict-stat">
+                                <div class="label">${stat.label}</div>
+                                <div class="value">${stat.value}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Total Cost of Ownership Example</h3>
+                    <p style="color: var(--gray-600); margin-bottom: 24px;">
+                        30-user organization migrating to ${data.name} with Q4Life management:
+                    </p>
+                    <div class="feature-matrix">
+                        <div class="feature-row">
+                            <div class="feature-label">Provider Subscription (30 users)</div>
+                            <div class="feature-value">${calculateProviderCostForModal(data.tiers[1].price)} USD/month</div>
+                        </div>
+                        <div class="feature-row">
+                            <div class="feature-label">Q4Life Management (SME Tier)</div>
+                            <div class="feature-value">$700 USD/month</div>
+                        </div>
+                        <div class="feature-row">
+                            <div class="feature-label">Q4Life Setup (One-time)</div>
+                            <div class="feature-value">$500 - $700 USD</div>
+                        </div>
+                        <div class="feature-row" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%); font-weight: 700;">
+                            <div class="feature-label">First Year Total</div>
+                            <div class="feature-value" style="color: var(--primary); font-size: 1.3rem;">${calculateFirstYearForModal(data.tiers[1].price)} USD</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 48px;">
+                    <a href="https://wa.me/237677604100?text=Request%20quote%20for%20${encodeURIComponent(data.name)}" target="_blank" class="btn-primary">Request Custom Quote for ${data.name}</a>
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (!event || event.target.id === 'modalOverlay') {
+                document.getElementById('modalOverlay').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function toggleComparison() {
+            const table = document.getElementById('comparisonTable');
+            table.classList.toggle('active');
+            
+            if (table.classList.contains('active')) {
+                table.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function calculateProviderCostForModal(priceStr) {
+            const price = parseFloat(priceStr.replace('$', ''));
+            return (price * 30).toFixed(0);
+        }
+
+        function calculateFirstYearForModal(priceStr) {
+            const monthlyProvider = parseFloat(priceStr.replace('$', '')) * 30;
+            const monthlyQ4Life = 700;
+            const setup = 600;
+            return ((monthlyProvider + monthlyQ4Life) * 12 + setup).toFixed(0);
+        }
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Provider pricing data
+        const providerPricing = {
+            zoho: { perUser: 3, name: 'Zoho' },
+            microsoft: { perUser: 12.5, name: 'Microsoft 365' },
+            google: { perUser: 12, name: 'Google' },
+            proton: { perUser: 10, name: 'Proton' }
+        };
+
+        const tierPricing = {
+            essential: { monthly: 400, setup: 600, name: 'Essential' },
+            professional: { monthly: 700, setup: 1000, name: 'Professional' },
+            premium: { monthly: 1500, setup: 1500, name: 'Premium' }
+        };
+
+        // Calculate pricing
+        function calculatePrice() {
+            const provider = document.getElementById('provider').value;
+            const users = parseInt(document.getElementById('users').value);
+            const tier = document.getElementById('tier').value;
+
+            const providerCost = providerPricing[provider].perUser * users;
+            const q4lifeCost = tierPricing[tier].monthly;
+            const setupCost = tierPricing[tier].setup;
+            const monthlyTotal = providerCost + q4lifeCost;
+            const firstYearTotal = (monthlyTotal * 12) + setupCost;
+
+            document.getElementById('providerCost').textContent = `$${providerCost}/month`;
+            document.getElementById('q4lifeCost').textContent = `$${q4lifeCost}/month`;
+            document.getElementById('setupCost').textContent = `$${setupCost}`;
+            document.getElementById('monthlyCost').textContent = `$${monthlyTotal}/month`;
+            document.getElementById('totalCost').textContent = `$${firstYearTotal.toLocaleString()}`;
+        }
+
+        // Get quote via WhatsApp
+        function getQuoteWhatsApp() {
+            const provider = document.getElementById('provider').value;
+            const providerName = providerPricing[provider].name;
+            const users = document.getElementById('users').value;
+            const tier = document.getElementById('tier').value;
+            const tierName = tierPricing[tier].name;
+            const monthlyTotal = document.getElementById('monthlyCost').textContent;
+            const firstYear = document.getElementById('totalCost').textContent;
+
+            const message = `Hi Q4Life! I used your pricing calculator:%0A%0A- Provider: ${providerName}%0A- Users: ${users}%0A- Service Tier: ${tierName}%0A- Monthly Total: ${monthlyTotal}%0A- First Year Total: ${firstYear}%0A%0AI'd like to schedule a consultation and receive a formal proposal.`;
+            
+            window.open(`https://wa.me/237677604100?text=${message}`, '_blank');
+        }
+
+        // Get quote via email
+        function getQuoteEmail() {
+            const provider = document.getElementById('provider').value;
+            const providerName = providerPricing[provider].name;
+            const users = document.getElementById('users').value;
+            const tier = document.getElementById('tier').value;
+            const tierName = tierPricing[tier].name;
+            const monthlyTotal = document.getElementById('monthlyCost').textContent;
+            const firstYear = document.getElementById('totalCost').textContent;
+
+            const subject = 'Email Management Quote Request';
+            const body = `Hi Q4Life,%0A%0AI used your pricing calculator and would like to receive a formal proposal:%0A%0AProvider: ${providerName}%0ANumber of Users: ${users}%0AService Tier: ${tierName}%0AMonthly Total: ${monthlyTotal}%0AFirst Year Total: ${firstYear}%0A%0APlease contact me to discuss next steps.%0A%0AThank you!`;
+            
+            window.location.href = `mailto:info@q4-life.com?subject=${subject}&body=${body}`;
+        }
+
+        // Select package
+        function selectPackage(tier, defaultUsers, monthlyPrice) {
+            const tierNames = { essential: 'Essential', professional: 'Professional', premium: 'Premium' };
+            const message = `Hi Q4Life! I'm interested in:%0A%0A- Package: ${tierNames[tier]}%0A- Estimated Users: ${defaultUsers}%0A- Estimated Monthly: $${monthlyPrice}%0A%0APlease send me a formal proposal and let's schedule a consultation.`;
+            window.open(`https://wa.me/237677604100?text=${message}`, '_blank');
+        }
+
+        // Contact for premium
+        function contactForPremium() {
+            const message = `Hi Q4Life! I'm interested in the Premium package for 50+ users.%0A%0APlease contact me to discuss custom requirements and pricing.`;
+            window.open(`https://wa.me/237677604100?text=${message}`, '_blank');
+        }
+
+        // Select combo
+        function selectCombo(provider, tier) {
+            const providerNames = { zoho: 'Zoho', microsoft: 'Microsoft 365', google: 'Google Workspace', proton: 'Proton Mail' };
+            const message = `Hi Q4Life! I'd like to get started with:%0A%0A- Combo: ${providerNames[provider]} + Q4Life ${tier}%0A- Example I saw: 30 users%0A%0APlease send me a proposal for my specific user count.`;
+            window.open(`https://wa.me/237677604100?text=${message}`, '_blank');
+        }
+
+        // Initialize calculator
+        calculatePrice();
+    </script>
+</body>
+</html>

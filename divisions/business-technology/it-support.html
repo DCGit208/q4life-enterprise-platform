@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Support & Help Desk Services | Q4 Life</title>
+    <meta name="description" content="Remote and on-site IT support for businesses. From 50,000 FCFA/month. Keep your team productive with reliable technical assistance.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #2d3748; background: #ffffff; }
+        .nav { position: fixed; top: 0; left: 0; right: 0; background: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; height: 75px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: #2563eb; text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #4b5563; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a:hover { color: #2563eb; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+        .hamburger span { width: 25px; height: 2px; background: #2563eb; }
+        .hero { margin-top: 75px; position: relative; height: 500px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&h=900&fit=crop') center/cover; }
+        .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; max-width: 900px; width: 100%; padding: 0 20px; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 1.3rem; margin-bottom: 35px; opacity: 0.95; }
+        .price-tag { display: inline-block; background: #2563eb; color: white; padding: 12px 35px; border-radius: 6px; font-weight: 600; font-size: 1.2rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 40px; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 700; color: #1f2937; margin-bottom: 15px; }
+        .section-header p { font-size: 1.1rem; color: #6b7280; max-width: 700px; margin: 0 auto; }
+        .pricing-table { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin: 60px 0; }
+        .plan { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 40px; transition: box-shadow 0.3s; }
+        .plan:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .plan.featured { border: 2px solid #2563eb; position: relative; }
+        .featured-badge { position: absolute; top: -12px; right: 30px; background: #2563eb; color: white; padding: 6px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+        .plan h3 { font-size: 1.5rem; color: #1f2937; margin-bottom: 10px; }
+        .plan .price { font-size: 2.2rem; font-weight: 700; color: #2563eb; margin: 20px 0 10px; }
+        .plan .period { color: #6b7280; margin-bottom: 25px; display: block; }
+        .plan ul { list-style: none; margin: 25px 0; }
+        .plan ul li { padding: 10px 0; color: #4b5563; position: relative; padding-left: 25px; }
+        .plan ul li:before { content: '✓'; position: absolute; left: 0; color: #10b981; font-weight: 700; }
+        .btn { display: inline-block; background: #2563eb; color: white; padding: 12px 30px; border-radius: 6px; text-decoration: none; font-weight: 600; margin-top: 15px; transition: background 0.2s; }
+        .btn:hover { background: #1d4ed8; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 60px 0; }
+        .feature { background: #f9fafb; padding: 30px; border-radius: 8px; }
+        .feature h3 { font-size: 1.2rem; color: #1f2937; margin-bottom: 12px; }
+        .feature p { color: #6b7280; line-height: 1.7; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin: 80px 0; }
+        .two-col img { width: 100%; border-radius: 8px; }
+        .two-col h2 { font-size: 2rem; color: #1f2937; margin-bottom: 20px; }
+        .two-col ul { list-style: none; margin: 25px 0; }
+        .two-col ul li { padding: 12px 0; color: #4b5563; position: relative; padding-left: 30px; }
+        .two-col ul li:before { content: '→'; position: absolute; left: 0; color: #2563eb; font-weight: 700; }
+        .cta-section { background: #f9fafb; padding: 80px 40px; text-align: center; border-radius: 8px; margin: 80px 0; }
+        .cta-section h2 { font-size: 2.5rem; color: #1f2937; margin-bottom: 20px; }
+        .cta-section p { font-size: 1.2rem; color: #6b7280; margin-bottom: 35px; }
+        .btn-large { padding: 16px 40px; font-size: 1.1rem; margin: 0 10px; }
+        .btn-outline { background: white; border: 2px solid #2563eb; color: #2563eb; }
+        .btn-outline:hover { background: #2563eb; color: white; }
+        footer { background: #1f2937; color: white; padding: 40px; text-align: center; }
+        .back-link { text-align: center; margin: 60px 0; }
+        .back-link a { color: #2563eb; text-decoration: none; font-weight: 600; }
+        @media (max-width: 768px) { .nav-container { padding: 0 20px; } .nav-links { position: fixed; top: 75px; left: 0; right: 0; background: white; flex-direction: column; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transform: translateY(-200%); transition: transform 0.3s; } .nav-links.active { transform: translateY(0); } .hamburger { display: flex; } .hero { height: 400px; } .hero h1 { font-size: 2rem; } .two-col { grid-template-columns: 1fr; } .pricing-table { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">Q4 Life</a>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../business-technology.html">Services</a></li>
+                <li><a href="../../contact-us.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>IT Support & Help Desk</h1>
+            <p>Remote and on-site technical support. Keep your team productive with reliable IT assistance available when you need it.</p>
+            <div class="price-tag">From 120,000 FCFA/month</div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="section-header">
+            <h2>IT Support Plans</h2>
+            <p>Flexible support packages for businesses of all sizes. Pay only for what you need.</p>
+        </div>
+
+        <div class="pricing-table">
+            <div class="plan">
+                <h3>Basic Support</h3>
+                <div class="price">120,000 FCFA</div>
+                <span class="period">per month (1-5 users)</span>
+                <ul>
+                    <li>1-5 users covered</li>
+                    <li>8×5 support (business hours)</li>
+                    <li>Remote assistance only</li>
+                    <li>Email & phone support</li>
+                    <li>4-hour response time</li>
+                    <li>Monthly system checkup</li>
+                </ul>
+                <a href="../business-technology.html#quote-form" class="btn">Get Started</a>
+            </div>
+
+            <div class="plan featured">
+                <div class="featured-badge">RECOMMENDED</div>
+                <h3>Business Support</h3>
+                <div class="price">320,000 FCFA</div>
+                <span class="period">per month (6-25 users)</span>
+                <ul>
+                    <li>6-25 users covered</li>
+                    <li>12×5 support (extended hours)</li>
+                    <li>Remote + on-site visits (2/month)</li>
+                    <li>Priority response (2 hours)</li>
+                    <li>Weekly system monitoring</li>
+                    <li>Software installation included</li>
+                    <li>Team training sessions</li>
+                </ul>
+                <a href="../business-technology.html#quote-form" class="btn">Get Started</a>
+            </div>
+
+            <div class="plan">
+                <h3>Enterprise Support</h3>
+                <div class="price">From 650,000 FCFA</div>
+                <span class="period">per month (26+ users)</span>
+                <ul>
+                    <li>26+ users covered</li>
+                    <li>24×7 support availability</li>
+                    <li>Unlimited on-site visits</li>
+                    <li>30-minute response time</li>
+                    <li>Dedicated support engineer</li>
+                    <li>Proactive monitoring</li>
+                    <li>Complete IT management</li>
+                </ul>
+                <a href="../business-technology.html#quote-form" class="btn">Get Started</a>
+            </div>
+        </div>
+
+        <div class="section-header" style="margin-top: 100px;">
+            <h2>What We Support</h2>
+            <p>Comprehensive IT assistance for all your business technology needs</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature">
+                <h3>🖥️ Hardware Issues</h3>
+                <p>Computer repairs, printer setup, network equipment, and hardware troubleshooting.</p>
+            </div>
+            <div class="feature">
+                <h3>💻 Software Support</h3>
+                <p>Application errors, software installation, updates, and configuration assistance.</p>
+            </div>
+            <div class="feature">
+                <h3>🌐 Network Problems</h3>
+                <p>Internet connectivity, Wi-Fi issues, network speed, and access problems.</p>
+            </div>
+            <div class="feature">
+                <h3>📧 Email Issues</h3>
+                <p>Email setup, password resets, synchronization, and configuration support.</p>
+            </div>
+            <div class="feature">
+                <h3>🔒 Security & Backups</h3>
+                <p>Antivirus setup, data backup, security updates, and threat removal.</p>
+            </div>
+            <div class="feature">
+                <h3>👤 User Onboarding</h3>
+                <p>New employee setup, account creation, access provisioning, and training.</p>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop" alt="IT support team">
+            <div>
+                <h2>Why Businesses Choose Our IT Support</h2>
+                <ul>
+                    <li>Local team available in Douala and Yaoundé</li>
+                    <li>English and French support</li>
+                    <li>Fast response times guaranteed by SLA</li>
+                    <li>Proactive monitoring prevents problems</li>
+                    <li>Transparent pricing with no hidden fees</li>
+                    <li>Expert technicians with certifications</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Get Reliable IT Support</h2>
+            <p>Stop wasting time on technology problems. Let us handle your IT so you can focus on business.</p>
+            <a href="../business-technology.html#quote-form" class="btn btn-large">Request Quote</a>
+            <a href="https://wa.me/237677604100?text=Hi%2C%20I%20need%20IT%20support%20services" target="_blank" class="btn btn-outline btn-large">WhatsApp Us</a>
+        </div>
+
+        <div class="back-link">
+            <a href="../business-technology.html">← Back to All Services</a>
+        </div>
+    </div>
+
+    <footer><p>&copy; 2026 Q4 Life Business Technology Division. All rights reserved.</p></footer>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+    </script>
+</body>
+</html>
