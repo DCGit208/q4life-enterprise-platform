@@ -102,6 +102,60 @@
                 padding-left: 1rem;
             }
             
+            /* Dropdown Menu */
+            .nav-item {
+                position: relative;
+            }
+            
+            .dropdown-menu {
+                position: absolute;
+                top: 100%;\n                left: 0;
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(20px);
+                min-width: 240px;
+                border-radius: 12px;
+                padding: 12px 0;
+                margin-top: 8px;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+            }
+            
+            .nav-item:hover .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            .dropdown-menu li {
+                list-style: none;
+            }
+            
+            .dropdown-menu a {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 12px 20px;
+                color: rgba(255, 255, 255, 0.9) !important;
+                text-decoration: none;
+                transition: all 0.2s;
+                font-size: 0.95rem;
+            }
+            
+            .dropdown-menu a:hover {
+                background: rgba(59, 130, 246, 0.1);
+                color: #3b82f6 !important;
+                padding-left: 24px !important;
+            }
+            
+            .dropdown-menu i {
+                font-size: 1.1rem;
+                width: 20px;
+            }
+            
             .nav-menu .btn {
                 width: 100%;
                 margin-top: 1rem;
@@ -214,7 +268,14 @@
                 </button>
                 
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="#divisions" class="nav-link">Divisions</a></li>
+                    <li class="nav-item">
+                        <a href="#divisions" class="nav-link">Divisions</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="divisions/power.html"><i class="fas fa-bolt"></i> Power Solutions</a></li>
+                            <li><a href="divisions/connect.html"><i class="fas fa-wifi"></i> Internet & Network</a></li>
+                            <li><a href="divisions/business-technology.html"><i class="fas fa-laptop-code"></i> Business Technology</a></li>
+                        </ul>
+                    </li>
                     <li><a href="divisions/connect.html" class="nav-link">Connect</a></li>
                     <li><a href="divisions/power.html" class="nav-link">Power</a></li>
                     <li><a href="investors/index.html" class="nav-link">Investors</a></li>
