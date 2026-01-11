@@ -68,13 +68,18 @@
             min-width: 240px;
             border-radius: 12px;
             padding: 12px 0;
-            margin-top: 8px;
+            margin-top: 0;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             z-index: 9999;
             list-style: none;
         }
         
         .nav-item:hover .dropdown {
+            display: block !important;
+        }
+        
+        /* Keep dropdown visible when hovering over it */
+        .dropdown:hover {
             display: block !important;
         }
         
