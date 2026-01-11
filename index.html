@@ -108,21 +108,23 @@
             }
             
             .dropdown {
+                display: none !important;
                 position: absolute;
-                top: 100%;                left: 0;
+                top: 100%;
+                left: 0;
                 background: rgba(15, 23, 42, 0.98);
                 backdrop-filter: blur(20px);
                 min-width: 240px;
                 border-radius: 12px;
                 padding: 12px 0;
                 margin-top: 8px;
-                display: none;
                 box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
                 z-index: 9999;
+                list-style: none;
             }
             
             .nav-item:hover .dropdown {
-                display: block;
+                display: block !important;
             }
             
             .dropdown li {
