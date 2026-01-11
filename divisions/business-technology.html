@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Technology Services | Q4 Life - Complete IT Solutions</title>
+    <meta name="description" content="Your complete business technology partner. From email to enterprise software - one reliable team for all your IT needs.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #2563eb; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #2563eb;
+        }
+
+        /* Hero */
+        .hero {
+            margin-top: 75px;
+            position: relative;
+            height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600&h=900&fit=crop') center/cover;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            max-width: 1000px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .persona-tags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .persona-tag {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover { background: #1d4ed8; }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #2563eb;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #6b7280;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Service Tiers */
+        .tier-navigation {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .tier-btn {
+            padding: 12px 30px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            color: #4b5563;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tier-btn:hover, .tier-btn.active {
+            border-color: #2563eb;
+            background: #2563eb;
+            color: white;
+        }
+
+        .tier-content {
+            display: none;
+        }
+
+        .tier-content.active {
+            display: block;
+        }
+
+        /* Service Cards */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+            margin: 50px 0;
+        }
+
+        .service-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            transform: translateY(-5px);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .price-range {
+            color: #2563eb;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-card .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            font-size: 0.95rem;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: #f9fafb;
+            padding: 60px 40px;
+            margin: 80px 0;
+            border-radius: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 3rem;
+            color: #2563eb;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat p {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        /* Business Packages */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin: 60px 0;
+        }
+
+        .package {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 40px;
+            transition: all 0.3s;
+        }
+
+        .package:hover {
+            border-color: #2563eb;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .package.featured {
+            border-color: #2563eb;
+            position: relative;
+        }
+
+        .featured-label {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .package h3 {
+            font-size: 1.8rem;
+            color: #1f2937;
+            margin-bottom: 15px;
+        }
+
+        .package .price {
+            font-size: 2.5rem;
+            color: #2563eb;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .package ul {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .package ul li {
+            padding: 10px 0;
+            color: #4b5563;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .package ul li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        /* Two Column */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin: 100px 0;
+        }
+
+        .two-col img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .two-col h2 {
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .two-col ul {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .two-col ul li {
+            padding: 12px 0;
+            color: #4b5563;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .two-col ul li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+        /* Quote Form */
+        .quote-section {
+            background: #f9fafb;
+            padding: 80px 40px;
+            border-radius: 10px;
+            margin: 80px 0;
+        }
+
+        .quote-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-container { padding: 0 20px; }
+            .nav-links {
+                position: fixed;
+                top: 75px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                transform: translateY(-200%);
+                transition: transform 0.3s;
+            }
+            .nav-links.active { transform: translateY(0); }
+            .hamburger { display: flex; }
+            .hero { height: 500px; }
+            .hero h1 { font-size: 2.5rem; }
+            .two-col { grid-template-columns: 1fr; }
+            .service-grid { grid-template-columns: 1fr; }
+            .packages-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">Q4 Life</a>
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact-us.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="persona-tags">
+                <div class="persona-tag">SME Owners: Who can handle our email, website, IT support?</div>
+                <div class="persona-tag">Operations Managers: Need reliable vendor for recurring tech needs</div>
+                <div class="persona-tag">CEOs: One partner for multiple IT requirements</div>
+            </div>
+            <h1>Complete Business Technology Solutions</h1>
+            <p>From professional email to enterprise software. One reliable partner for all your technology needs.</p>
+            <div class="cta-buttons">
+                <a href="#services" class="btn btn-primary">Explore Services</a>
+                <a href="#quote-form" class="btn btn-outline">Get Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stats-grid">
+                <div class="stat">
+                    <h3>50+</h3>
+                    <p>Business Clients</p>
+                </div>
+                <div class="stat">
+                    <h3>99.8%</h3>
+                    <p>Uptime Guarantee</p>
+                </div>
+                <div class="stat">
+                    <h3>24/7</h3>
+                    <p>Technical Support</p>
+                </div>
+                <div class="stat">
+                    <h3>100%</h3>
+                    <p>Satisfaction Rate</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="services" class="section-header">
+            <h2>Choose Your Service Tier</h2>
+            <p>Start with the basics or scale up to enterprise solutions. We grow with your business.</p>
+        </div>
+
+        <div class="tier-navigation">
+            <button class="tier-btn active" onclick="showTier('foundation')">Foundation Services</button>
+            <button class="tier-btn" onclick="showTier('growth')">Growth Services</button>
+            <button class="tier-btn" onclick="showTier('enterprise')">Enterprise Services</button>
+        </div>
+
+        <div id="foundation" class="tier-content active">
+            <div class="service-grid">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&h=600&fit=crop" class="service-image" alt="Email">
+                    <div class="service-content">
+                        <h3>Professional Email & Collaboration</h3>
+                        <p>Custom business email with Microsoft 365 or Google Workspace. Build credibility with professional addresses.</p>
+                        <span class="price-range">From 5,000 FCFA/user/month</span>
+                        <a href="business-technology/email-collaboration.html" class="btn btn-primary">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" class="service-image" alt="Website">
+                    <div class="service-content">
+                        <h3>Website & Digital Presence</h3>
+                        <p>Professional websites, e-commerce stores, and online presence. Mobile-responsive and SEO-optimized.</p>
+                        <span class="price-range">From 150,000 FCFA</span>
+                        <a href="business-technology/website-digital-presence.html" class="btn btn-primary">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop" class="service-image" alt="IT Support">
+                    <div class="service-content">
+                        <h3>IT Support & Help Desk</h3>
+                        <p>Remote and on-site technical support. Keep your team productive with reliable IT assistance.</p>
+                        <span class="price-range">From 50,000 FCFA/month</span>
+                        <a href="business-technology/it-support.html" class="btn btn-primary">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="growth" class="tier-content">
+            <div class="service-grid">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop" class="service-image" alt="Software">
+                    <div class="service-content">
+                        <h3>Business Software Solutions</h3>
+                        <p>CRM, accounting, inventory, and ERP systems. Streamline operations with the right software.</p>
+                        <span class="price-range">From 200,000 FCFA</span>
+                        <a href="business-technology/business-software.html" class="btn btn-primary">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop" class="service-image" alt="Cloud">
+                    <div class="service-content">
+                        <h3>Cloud Infrastructure & Hosting</h3>
+                        <p>Secure cloud storage, VPS hosting, and dedicated servers. Scalable infrastructure for your business.</p>
+                        <span class="price-range">From 75,000 FCFA/month</span>
+                        <a href="business-technology/cloud-infrastructure.html" class="btn btn-primary">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop" class="service-image" alt="Network">
+                    <div class="service-content">
+                        <h3>Network & Security Setup</h3>
+                        <p>Office network design, Wi-Fi setup, firewalls, and security cameras. Protect your business.</p>
+                        <span class="price-range">From 350,000 FCFA</span>
+                        <a href="business-technology/network-security.html" class="btn btn-primary">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="enterprise" class="tier-content">
+            <div class="service-grid">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop" class="service-image" alt="Development">
+                    <div class="service-content">
+                        <h3>Custom Software Development</h3>
+                        <p>Mobile apps, POS systems, inventory management, and bespoke business applications.</p>
+                        <span class="price-range">From 3,000,000 FCFA</span>
+                        <a href="business-technology/software-development.html" class="btn btn-primary">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" class="service-image" alt="Analytics">
+                    <div class="service-content">
+                        <h3>Data Analytics & Business Intelligence</h3>
+                        <p>Executive dashboards, automated reporting, and data-driven insights for better decisions.</p>
+                        <span class="price-range">From 800,000 FCFA</span>
+                        <a href="business-technology/data-analytics.html" class="btn btn-primary">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" class="service-image" alt="Consulting">
+                    <div class="service-content">
+                        <h3>IT Consulting & Strategy</h3>
+                        <p>Technology roadmaps, infrastructure audits, and digital transformation consulting.</p>
+                        <span class="price-range">From 300,000 FCFA/day</span>
+                        <a href="business-technology/it-consulting.html" class="btn btn-primary">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-header" style="margin-top: 120px;">
+            <h2>Complete Business Packages</h2>
+            <p>Bundle services and save. Everything your business needs to succeed.</p>
+        </div>
+
+        <div class="packages-grid">
+            <div class="package">
+                <h3>Startup Tech Kit</h3>
+                <div class="price">120,000 FCFA</div>
+                <p style="color: #6b7280; margin-bottom: 20px;">per month</p>
+                <ul>
+                    <li>Professional email (5 users)</li>
+                    <li>Business website</li>
+                    <li>Basic IT support</li>
+                    <li>Cloud storage (100GB)</li>
+                    <li>Domain registration</li>
+                </ul>
+                <a href="#quote-form" class="btn btn-primary">Get Started</a>
+            </div>
+
+            <div class="package featured">
+                <div class="featured-label">MOST POPULAR</div>
+                <h3>Growth Business Suite</h3>
+                <div class="price">350,000 FCFA</div>
+                <p style="color: #6b7280; margin-bottom: 20px;">per month</p>
+                <ul>
+                    <li>Professional email (15 users)</li>
+                    <li>E-commerce website</li>
+                    <li>CRM software</li>
+                    <li>Business IT support</li>
+                    <li>Network setup</li>
+                    <li>Cloud hosting (VPS)</li>
+                </ul>
+                <a href="#quote-form" class="btn btn-primary">Get Started</a>
+            </div>
+
+            <div class="package">
+                <h3>Enterprise Package</h3>
+                <div class="price">Custom</div>
+                <p style="color: #6b7280; margin-bottom: 20px;">tailored to needs</p>
+                <ul>
+                    <li>Unlimited email users</li>
+                    <li>Custom software development</li>
+                    <li>Enterprise IT support</li>
+                    <li>Business intelligence</li>
+                    <li>Dedicated infrastructure</li>
+                    <li>IT consulting included</li>
+                </ul>
+                <a href="#quote-form" class="btn btn-primary">Contact Us</a>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop" alt="Business meeting">
+            <div>
+                <h2>Why Choose Q4 Life for Technology?</h2>
+                <p style="color: #6b7280; margin-bottom: 25px;">We're not just another IT vendor. We're your long-term technology partner committed to your business success.</p>
+                <ul>
+                    <li>One reliable partner for all tech needs</li>
+                    <li>Local team with global expertise</li>
+                    <li>24/7 support in English and French</li>
+                    <li>Transparent pricing with no hidden fees</li>
+                    <li>Proven track record with 50+ businesses</li>
+                    <li>Scalable solutions that grow with you</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="quote-form" class="quote-section">
+            <div class="section-header">
+                <h2>Request a Quote</h2>
+                <p>Tell us about your technology needs. We'll respond within 24 hours.</p>
+            </div>
+            <form class="quote-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                    <label>Your Name *</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label>Company Name</label>
+                    <input type="text" name="company">
+                </div>
+                <div class="form-group">
+                    <label>Service Interested In *</label>
+                    <select name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="email">Professional Email</option>
+                        <option value="website">Website Design</option>
+                        <option value="it-support">IT Support</option>
+                        <option value="software">Business Software</option>
+                        <option value="cloud">Cloud Hosting</option>
+                        <option value="network">Network Setup</option>
+                        <option value="development">Software Development</option>
+                        <option value="analytics">Data Analytics</option>
+                        <option value="consulting">IT Consulting</option>
+                        <option value="package">Complete Package</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tell us about your needs</label>
+                    <textarea name="message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px;">Submit Request</button>
+                <p style="text-align: center; margin-top: 20px; color: #6b7280;">Or WhatsApp us: <a href="https://wa.me/237677604100?text=Hi%2C%20I%20need%20business%20technology%20services" target="_blank" style="color: #2563eb; font-weight: 600;">+237 677 604 100</a></p>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Q4 Life Business Technology Division. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        function showTier(tier) {
+            // Hide all tiers
+            document.querySelectorAll('.tier-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tier-btn').forEach(el => el.classList.remove('active'));
+            
+            // Show selected tier
+            document.getElementById(tier).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
