@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Energy Solutions | Q4-LIFE POWER™</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 0 2rem; 
+        }
+        
+        /* Header */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: #ef4444;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+        
+        .logo-accent { color: #dc2626; }
+        
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        nav a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover { color: #ef4444; }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(239, 68, 68, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: #ef4444;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            padding: 8rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .badge {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            font-weight: 600;
+            color: #ef4444;
+        }
+        
+        /* Section Styles */
+        .section-dark {
+            background: #0f172a;
+            padding: 6rem 0;
+        }
+        
+        .section-light {
+            background: #1e293b;
+            padding: 6rem 0;
+        }
+        
+        /* Grid Layouts */
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+        
+        /* Cards */
+        .card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        
+        .card h3 {
+            margin-bottom: 1rem;
+            color: #ef4444;
+        }
+        
+        .card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .product-card {
+            background: rgba(30, 41, 59, 0.9);
+            border: 2px solid rgba(239, 68, 68, 0.2);
+        }
+        
+        .product-card:hover {
+            border-color: #ef4444;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ef4444;
+            margin: 1rem 0;
+        }
+        
+        .price-note {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.5);
+            font-style: italic;
+        }
+        
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .feature-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .feature-list li i {
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            color: #10b981;
+        }
+        
+        /* Stats */
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ef4444;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.125rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .container { padding: 0 1rem; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">TESLA<span class="logo-accent">ENERGY</span></a>
+            <nav>
+                <a href="power.html">← Back to EcoFlow</a>
+                <a href="power-anker.html">Anker SOLIX</a>
+                <a href="../index.html">Home</a>
+            </nav>
+            <a href="https://wa.me/237691498369" class="btn btn-primary">
+                <i class="fab fa-whatsapp"></i> Get Quote
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="container">
+        <h1>Tesla Energy Solutions</h1>
+        <p>Premium whole-home and commercial energy independence. Powerwall, Solar Panels, Solar Roof, and Megapack installations.</p>
+        
+        <div class="badge-container">
+            <div class="badge"><i class="fas fa-check-circle"></i> Tesla Certified Installer</div>
+            <div class="badge"><i class="fas fa-solar-panel"></i> Full Solar Integration</div>
+            <div class="badge"><i class="fas fa-building"></i> Commercial & Estate Scale</div>
+        </div>
+    </div>
+</section>
+
+<!-- TESLA PHILOSOPHY -->
+<section class="section-dark">
+    <div class="container">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <h2 style="margin-bottom: 2rem;">The Tesla Energy Difference</h2>
+            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.7); line-height: 1.8;">
+                Tesla Energy delivers seamless integration between solar generation, battery storage, and grid connectivity. 
+                Purpose-built for permanent installations, architectural aesthetics, and long-term reliability.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- POWERWALL -->
+<section class="section-light">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 3rem; color: #ef4444;">Tesla Powerwall</h2>
+        
+        <div class="grid-2" style="gap: 3rem;">
+            <div>
+                <div class="card product-card" style="height: 100%;">
+                    <h3>Powerwall 3</h3>
+                    <div class="price">XAF 8,700,000</div>
+                    <p class="price-note">Professional installation included</p>
+                    
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> <strong>13.5 kWh</strong> usable capacity</li>
+                        <li><i class="fas fa-check"></i> <strong>11.5 kW</strong> continuous power output</li>
+                        <li><i class="fas fa-check"></i> <strong>Stackable</strong> - up to 10 units (135kWh)</li>
+                        <li><i class="fas fa-check"></i> Integrated solar inverter (6kW solar)</li>
+                        <li><i class="fas fa-check"></i> <strong>Storm Watch</strong> automatic charging</li>
+                        <li><i class="fas fa-check"></i> <strong>10-year warranty</strong></li>
+                        <li><i class="fas fa-check"></i> Tesla app control & monitoring</li>
+                        <li><i class="fas fa-check"></i> Seamless grid integration</li>
+                        <li><i class="fas fa-check"></i> All-weather rated (IP67)</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Tesla%20Powerwall%203" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                        Request Powerwall Quote
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Ideal Use Cases:</h4>
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h4 style="color: #10b981;"><i class="fas fa-home"></i> Luxury Homes & Villas</h4>
+                    <p style="color: rgba(255,255,255,0.7);">Sleek wall-mounted design complements high-end architecture. Silent operation, zero emissions, premium aesthetics.</p>
+                </div>
+                
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h4 style="color: #10b981;"><i class="fas fa-building"></i> Estate Compounds</h4>
+                    <p style="color: rgba(255,255,255,0.7);">Stack multiple Powerwalls for 27kWh, 40.5kWh, or 135kWh capacity. Power entire estates with zero diesel.</p>
+                </div>
+                
+                <div class="card">
+                    <h4 style="color: #10b981;"><i class="fas fa-solar-panel"></i> Solar + Storage</h4>
+                    <p style="color: rgba(255,255,255,0.7);">Integrated solar inverter eliminates extra equipment. Charge from solar during day, use stored power at night.</p>
+                </div>
+                
+                <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%);">
+                    <h4>Multi-Unit Discounts:</h4>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-tag"></i> 2 Units (27kWh): XAF 16,800,000 <em style="color: #10b981;">(Save 3%)</em></li>
+                        <li><i class="fas fa-tag"></i> 3 Units (40.5kWh): XAF 24,600,000 <em style="color: #10b981;">(Save 5%)</em></li>
+                        <li><i class="fas fa-tag"></i> 4+ Units: Custom enterprise pricing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOLAR PANELS -->
+<section class="section-dark">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 1rem; color: #ef4444;">Tesla Solar Panels</h2>
+        <p style="text-align: center; font-size: 1.25rem; color: rgba(255,255,255,0.6); max-width: 700px; margin: 0 auto 4rem;">
+            High-efficiency monocrystalline panels engineered for maximum energy harvest and long-term reliability.
+        </p>
+        
+        <div class="grid-3">
+            <div class="card product-card">
+                <h3>5kW System</h3>
+                <div class="price">XAF 7,250,000</div>
+                <p class="price-note">~15-17 panels | Small villa</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 5,000W peak output</li>
+                    <li><i class="fas fa-check"></i> ~20 kWh/day generation</li>
+                    <li><i class="fas fa-check"></i> Powers 2-3 bedroom home</li>
+                    <li><i class="fas fa-check"></i> 25-year performance warranty</li>
+                    <li><i class="fas fa-check"></i> Professional installation</li>
+                </ul>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%205kW%20Tesla%20Solar" class="btn btn-secondary" style="width: 100%; margin-top: 2rem; justify-content: center; border-color: #ef4444; color: #ef4444;">
+                    Get 5kW Quote
+                </a>
+            </div>
+            
+            <div class="card product-card" style="border: 2px solid #ef4444;">
+                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #ef4444; color: white; padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">POPULAR</div>
+                <h3>10kW System</h3>
+                <div class="price">XAF 13,050,000</div>
+                <p class="price-note">~30-34 panels | Large villa</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 10,000W peak output</li>
+                    <li><i class="fas fa-check"></i> ~40 kWh/day generation</li>
+                    <li><i class="fas fa-check"></i> Powers 4-6 bedroom estate</li>
+                    <li><i class="fas fa-check"></i> 25-year performance warranty</li>
+                    <li><i class="fas fa-check"></i> Tesla app monitoring</li>
+                </ul>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%2010kW%20Tesla%20Solar" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                    Get 10kW Quote
+                </a>
+            </div>
+            
+            <div class="card product-card">
+                <h3>15kW+ System</h3>
+                <div class="price">Custom</div>
+                <p class="price-note">45+ panels | Estate/Commercial</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 15,000W+ peak output</li>
+                    <li><i class="fas fa-check"></i> ~60+ kWh/day generation</li>
+                    <li><i class="fas fa-check"></i> Multi-building compounds</li>
+                    <li><i class="fas fa-check"></i> 25-year performance warranty</li>
+                    <li><i class="fas fa-check"></i> Dedicated project manager</li>
+                </ul>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20custom%20Tesla%20Solar" class="btn btn-secondary" style="width: 100%; margin-top: 2rem; justify-content: center; border-color: #ef4444; color: #ef4444;">
+                    Get Custom Quote
+                </a>
+            </div>
+        </div>
+        
+        <div class="card" style="margin-top: 3rem; text-align: center; background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%);">
+            <h4 style="color: #ef4444; margin-bottom: 1rem;">All Solar Systems Include:</h4>
+            <div class="grid-4">
+                <div><i class="fas fa-tools" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i><br>Professional Installation</div>
+                <div><i class="fas fa-certificate" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i><br>25-Year Warranty</div>
+                <div><i class="fas fa-mobile-alt" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i><br>Tesla App Monitoring</div>
+                <div><i class="fas fa-headset" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i><br>Lifetime Support</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOLAR ROOF -->
+<section class="section-light">
+    <div class="container">
+        <div class="grid-2" style="gap: 4rem; align-items: center;">
+            <div>
+                <h2 style="margin-bottom: 2rem; color: #ef4444;">Tesla Solar Roof</h2>
+                <h3 style="margin-bottom: 1.5rem;">Your roof is a solar power plant</h3>
+                <p style="font-size: 1.125rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 2rem;">
+                    Solar Roof replaces traditional roof tiles with beautiful solar glass tiles that generate clean energy. 
+                    Integrated solar + roofing solution with unmatched aesthetics and durability.
+                </p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Architectural glass solar tiles + steel roofing tiles</li>
+                    <li><i class="fas fa-check"></i> 3x stronger than standard roofing tiles</li>
+                    <li><i class="fas fa-check"></i> 25-year power generation warranty</li>
+                    <li><i class="fas fa-check"></i> Class A fire rating, hail resistant</li>
+                    <li><i class="fas fa-check"></i> Seamless integration with Powerwall</li>
+                    <li><i class="fas fa-check"></i> Weather-resistant in all conditions</li>
+                </ul>
+                
+                <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.15) 100%);">
+                    <h4>Pricing:</h4>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.125rem;">
+                        <strong style="color: #ef4444;">XAF 25,000 - 35,000 per m²</strong><br>
+                        <span style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
+                            Final cost depends on roof size, complexity, and solar coverage percentage. 
+                            Average 200m² roof: XAF 5,000,000 - 7,000,000.
+                        </span>
+                    </p>
+                </div>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Tesla%20Solar%20Roof" class="btn btn-primary" style="margin-top: 2rem;">
+                    Request Solar Roof Assessment
+                </a>
+            </div>
+            
+            <div>
+                <div class="card">
+                    <h4 style="margin-bottom: 1.5rem; text-align: center;">Why Solar Roof vs Solar Panels?</h4>
+                    
+                    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 0;">
+                        <h5 style="color: #10b981; margin-bottom: 0.5rem;">Choose Solar Roof if:</h5>
+                        <ul style="margin-left: 1.5rem; color: rgba(255,255,255,0.7);">
+                            <li>Building new home or replacing roof</li>
+                            <li>Aesthetics are priority (no visible panels)</li>
+                            <li>Want strongest roof protection available</li>
+                            <li>Premium architectural design</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="padding: 1.5rem 0;">
+                        <h5 style="color: #f59e0b; margin-bottom: 0.5rem;">Choose Solar Panels if:</h5>
+                        <ul style="margin-left: 1.5rem; color: rgba(255,255,255,0.7);">
+                            <li>Existing roof in good condition</li>
+                            <li>Lower upfront investment</li>
+                            <li>Faster installation (days vs weeks)</li>
+                            <li>Easier to expand later</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MEGAPACK -->
+<section class="section-dark">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 1rem; color: #ef4444;">Tesla Megapack</h2>
+        <p style="text-align: center; font-size: 1.25rem; color: rgba(255,255,255,0.6); max-width: 800px; margin: 0 auto 4rem;">
+            Utility-scale energy storage for commercial estates, industrial facilities, and large residential compounds.
+        </p>
+        
+        <div class="grid-2" style="gap: 3rem;">
+            <div class="card product-card" style="height: 100%;">
+                <h3>Megapack 2XL</h3>
+                <div class="price">Contact for Quote</div>
+                <p class="price-note">Enterprise-scale energy storage</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> <strong>3.9 MWh</strong> energy capacity per unit</li>
+                    <li><i class="fas fa-check"></i> <strong>1.9 MW</strong> continuous power output</li>
+                    <li><i class="fas fa-check"></i> Scalable to hundreds of MWh</li>
+                    <li><i class="fas fa-check"></i> AC-coupled, grid-ready</li>
+                    <li><i class="fas fa-check"></i> Integrated cooling system</li>
+                    <li><i class="fas fa-check"></i> Remote monitoring & control</li>
+                    <li><i class="fas fa-check"></i> 20-year+ operational life</li>
+                    <li><i class="fas fa-check"></i> Turnkey installation</li>
+                </ul>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Tesla%20Megapack" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                    Request Megapack Consultation
+                </a>
+            </div>
+            
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Megapack Applications:</h4>
+                
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h4 style="color: #10b981;"><i class="fas fa-industry"></i> Industrial Facilities</h4>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        Manufacturing plants, data centers, cold storage. Eliminate diesel generators, reduce grid dependence, 
+                        ensure continuous operations during prolonged outages.
+                    </p>
+                </div>
+                
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h4 style="color: #10b981;"><i class="fas fa-hotel"></i> Hotels & Resorts</h4>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        Silent, zero-emission backup power for luxury hospitality. Protect guest experience, 
+                        maintain refrigeration, climate control, and critical systems 24/7.
+                    </p>
+                </div>
+                
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h4 style="color: #10b981;"><i class="fas fa-building"></i> Commercial Real Estate</h4>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        Office towers, shopping centers, residential towers. Add energy resilience as tenant value proposition. 
+                        Reduce operating costs through peak shaving.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <h4 style="color: #10b981;"><i class="fas fa-university"></i> Institutional Facilities</h4>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        Hospitals, universities, government buildings. Mission-critical backup power with decades of reliability. 
+                        Integrate with existing solar arrays.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPLETE PACKAGES -->
+<section class="section-light">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 1rem; color: #ef4444;">Complete Tesla Energy Packages</h2>
+        <p style="text-align: center; font-size: 1.25rem; color: rgba(255,255,255,0.6); max-width: 800px; margin: 0 auto 4rem;">
+            Integrated solar + storage systems designed for African power realities. One partner, complete solution.
+        </p>
+        
+        <div class="grid-3">
+            <div class="card product-card">
+                <h3>Luxury Villa Package</h3>
+                <div class="price">XAF 20,300,000</div>
+                <p class="price-note">Solar + Storage + Installation</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-solar-panel"></i> 10kW Solar System (~34 panels)</li>
+                    <li><i class="fas fa-battery-full"></i> 2x Powerwall 3 (27kWh storage)</li>
+                    <li><i class="fas fa-tools"></i> Professional installation & commissioning</li>
+                    <li><i class="fas fa-mobile-alt"></i> Tesla app monitoring</li>
+                    <li><i class="fas fa-headset"></i> 5-year priority support</li>
+                </ul>
+                
+                <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem; margin-bottom: 1rem;">
+                        Powers: 4-6 bedroom villa with AC, refrigeration, lighting, entertainment, security
+                    </p>
+                    <p style="color: #10b981; font-weight: 600;">
+                        Generate ~40 kWh/day | Store 27 kWh | ~2-3 days backup
+                    </p>
+                </div>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Luxury%20Villa%20Tesla%20Package" class="btn btn-secondary" style="width: 100%; margin-top: 2rem; justify-content: center; border-color: #ef4444; color: #ef4444;">
+                    Request Quote
+                </a>
+            </div>
+            
+            <div class="card product-card" style="border: 2px solid #ef4444;">
+                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #ef4444; color: white; padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">RECOMMENDED</div>
+                <h3>Estate Package</h3>
+                <div class="price">XAF 33,800,000</div>
+                <p class="price-note">Solar + Storage + Installation</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-solar-panel"></i> 15kW Solar System (~50 panels)</li>
+                    <li><i class="fas fa-battery-full"></i> 3x Powerwall 3 (40.5kWh storage)</li>
+                    <li><i class="fas fa-tools"></i> Professional installation & commissioning</li>
+                    <li><i class="fas fa-mobile-alt"></i> Tesla app monitoring</li>
+                    <li><i class="fas fa-headset"></i> 10-year priority support</li>
+                    <li><i class="fas fa-user-shield"></i> Dedicated account manager</li>
+                </ul>
+                
+                <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem; margin-bottom: 1rem;">
+                        Powers: Multi-building compounds, guest houses, pool systems, security, full estate infrastructure
+                    </p>
+                    <p style="color: #10b981; font-weight: 600;">
+                        Generate ~60 kWh/day | Store 40.5 kWh | ~3-4 days backup
+                    </p>
+                </div>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Estate%20Tesla%20Package" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                    Request Quote
+                </a>
+            </div>
+            
+            <div class="card product-card">
+                <h3>Commercial Package</h3>
+                <div class="price">Custom</div>
+                <p class="price-note">Megapack + Solar + Installation</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-solar-panel"></i> 50kW+ Solar Arrays</li>
+                    <li><i class="fas fa-battery-full"></i> Megapack 2XL (3.9 MWh)</li>
+                    <li><i class="fas fa-tools"></i> Turnkey installation & integration</li>
+                    <li><i class="fas fa-chart-line"></i> Load management & optimization</li>
+                    <li><i class="fas fa-headset"></i> Enterprise support SLA</li>
+                    <li><i class="fas fa-user-tie"></i> Dedicated project team</li>
+                </ul>
+                
+                <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem; margin-bottom: 1rem;">
+                        Powers: Hotels, manufacturing, data centers, hospitals, universities, large residential towers
+                    </p>
+                    <p style="color: #10b981; font-weight: 600;">
+                        Custom capacity | Days of backup | ROI analysis provided
+                    </p>
+                </div>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Commercial%20Tesla%20Package" class="btn btn-secondary" style="width: 100%; margin-top: 2rem; justify-content: center; border-color: #ef4444; color: #ef4444;">
+                    Request Consultation
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INSTALLATION PROCESS -->
+<section class="section-dark">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 4rem; color: #ef4444;">Tesla Energy Installation Process</h2>
+        
+        <div class="grid-3">
+            <div class="card">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; color: white;">1</div>
+                <h4>Site Assessment & Design</h4>
+                <p style="color: rgba(255,255,255,0.7);">Energy audit, roof inspection, load analysis, system sizing, architectural integration planning.</p>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; color: white;">2</div>
+                <h4>Custom System Engineering</h4>
+                <p style="color: rgba(255,255,255,0.7);">Detailed electrical design, permit applications, Tesla system configuration, timeline planning.</p>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; color: white;">3</div>
+                <h4>Equipment Procurement</h4>
+                <p style="color: rgba(255,255,255,0.7);">Tesla factory direct ordering, import logistics, customs clearance, secure warehousing.</p>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; color: white;">4</div>
+                <h4>Professional Installation</h4>
+                <p style="color: rgba(255,255,255,0.7);">Certified Tesla installers, structural mounting, electrical integration, safety testing.</p>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; color: white;">5</div>
+                <h4>Commissioning & Training</h4>
+                <p style="color: rgba(255,255,255,0.7);">System activation, Tesla app setup, client training, performance validation, handover documentation.</p>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; color: white;">6</div>
+                <h4>Long-Term Support</h4>
+                <p style="color: rgba(255,255,255,0.7);">24/7 monitoring, preventive maintenance, software updates, warranty support, system expansion.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY TESLA THROUGH Q4-LIFE -->
+<section class="section-light">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 4rem; color: #ef4444;">Why Tesla Energy Through Q4-LIFE?</h2>
+        
+        <div class="grid-2" style="gap: 3rem;">
+            <div class="card">
+                <h4 style="color: #10b981; margin-bottom: 1.5rem;">
+                    <i class="fas fa-certificate"></i> Tesla Certified Partner
+                </h4>
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                    Official Tesla Energy installer with factory training, direct procurement channels, and warranty support. 
+                    Genuine Tesla products, proper import certifications, full manufacturer backing.
+                </p>
+            </div>
+            
+            <div class="card">
+                <h4 style="color: #10b981; margin-bottom: 1.5rem;">
+                    <i class="fas fa-map-marked-alt"></i> Local Expertise, Global Standards
+                </h4>
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                    We understand African power challenges while maintaining Tesla's global installation standards. 
+                    Experience with unreliable grids, voltage fluctuations, and extended outage scenarios.
+                </p>
+            </div>
+            
+            <div class="card">
+                <h4 style="color: #10b981; margin-bottom: 1.5rem;">
+                    <i class="fas fa-hands-helping"></i> Turnkey Service
+                </h4>
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                    One partner from assessment through decades of operation. We handle permits, imports, installation, 
+                    commissioning, training, maintenance, expansions, and warranty claims.
+                </p>
+            </div>
+            
+            <div class="card">
+                <h4 style="color: #10b981; margin-bottom: 1.5rem;">
+                    <i class="fas fa-shield-alt"></i> Long-Term Relationship
+                </h4>
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                    Tesla systems are 10-25 year investments. We're here for the entire lifecycle with local support, 
+                    spare parts inventory, software updates, and system optimization.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="section-dark">
+    <div class="container">
+        <div class="grid-4">
+            <div class="stat-box">
+                <span class="stat-number">13.5kWh</span>
+                <p class="stat-label">Powerwall Capacity</p>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">25+</span>
+                <p class="stat-label">Year Warranty</p>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">3.9MWh</span>
+                <p class="stat-label">Megapack Storage</p>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">24/7</span>
+                <p class="stat-label">Local Support</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 style="color: white; margin-bottom: 1.5rem;">Ready to go solar with Tesla?</h2>
+            <p style="font-size: 1.5rem; margin-bottom: 3rem; opacity: 0.95;">
+                Request a site assessment. Get a custom Tesla Energy design. Start your energy independence journey.
+            </p>
+            
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Tesla%20Energy%20Solutions" class="btn" style="background: white; color: #ef4444; font-size: 1.125rem; padding: 1.25rem 2.5rem;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp: +237 691 498 369
+                </a>
+                <a href="mailto:info@q4-life.com" class="btn btn-secondary" style="font-size: 1.125rem; padding: 1.25rem 2.5rem; border-color: white; color: white;">
+                    <i class="fas fa-envelope"></i> Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #0a0f1e; padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="container">
+        <div class="grid-4" style="margin-bottom: 3rem;">
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1.5rem; font-size: 1.5rem;">TESLA ENERGY</h4>
+                <p style="color: rgba(255,255,255,0.6); line-height: 1.8;">
+                    Premium solar + storage solutions for homes, estates, and commercial facilities.
+                </p>
+            </div>
+            
+            <div>
+                <h5 style="margin-bottom: 1rem;">Tesla Products</h5>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 0.5rem;"><a href="#powerwall" style="color: rgba(255,255,255,0.6); text-decoration: none;">Powerwall</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#solar" style="color: rgba(255,255,255,0.6); text-decoration: none;">Solar Panels</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#solarroof" style="color: rgba(255,255,255,0.6); text-decoration: none;">Solar Roof</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#megapack" style="color: rgba(255,255,255,0.6); text-decoration: none;">Megapack</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h5 style="margin-bottom: 1rem;">Other Solutions</h5>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 0.5rem;"><a href="power.html" style="color: rgba(255,255,255,0.6); text-decoration: none;">EcoFlow Systems</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="power-anker.html" style="color: rgba(255,255,255,0.6); text-decoration: none;">Anker SOLIX</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="../index.html" style="color: rgba(255,255,255,0.6); text-decoration: none;">All Divisions</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h5 style="margin-bottom: 1rem;">Contact</h5>
+                <p style="color: rgba(255,255,255,0.6); margin-bottom: 0.5rem;">
+                    <i class="fab fa-whatsapp"></i> +237 691 498 369
+                </p>
+                <p style="color: rgba(255,255,255,0.6);">
+                    <i class="fas fa-envelope"></i> info@q4-life.com
+                </p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4);">
+            <p>&copy; 2026 Q4-LIFE POWER™. Tesla Certified Installer. All prices include 45% professional margin.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

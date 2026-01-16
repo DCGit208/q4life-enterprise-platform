@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anker SOLIX Solutions | Q4-LIFE POWER™</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 0 2rem; 
+        }
+        
+        /* Header */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: #10b981;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+        
+        .logo-accent { color: #059669; }
+        
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        nav a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover { color: #10b981; }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: #10b981;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            padding: 8rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .badge {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            font-weight: 600;
+            color: #10b981;
+        }
+        
+        /* Section Styles */
+        .section-dark {
+            background: #0f172a;
+            padding: 6rem 0;
+        }
+        
+        .section-light {
+            background: #1e293b;
+            padding: 6rem 0;
+        }
+        
+        /* Grid Layouts */
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+        
+        /* Cards */
+        .card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        
+        .card h3 {
+            margin-bottom: 1rem;
+            color: #10b981;
+        }
+        
+        .card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .product-card {
+            background: rgba(30, 41, 59, 0.9);
+            border: 2px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .product-card:hover {
+            border-color: #10b981;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #10b981;
+            margin: 1rem 0;
+        }
+        
+        .price-note {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.5);
+            font-style: italic;
+        }
+        
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .feature-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .feature-list li i {
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            color: #10b981;
+        }
+        
+        /* Stats */
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #10b981;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.125rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .container { padding: 0 1rem; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">ANKER<span class="logo-accent">SOLIX</span></a>
+            <nav>
+                <a href="power.html">← Back to EcoFlow</a>
+                <a href="power-tesla.html">Tesla Energy</a>
+                <a href="../index.html">Home</a>
+            </nav>
+            <a href="https://wa.me/237691498369" class="btn btn-primary">
+                <i class="fab fa-whatsapp"></i> Get Quote
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="container">
+        <h1>Anker SOLIX Solutions</h1>
+        <p>High-performance portable and home backup power systems with industry-leading solar input and competitive pricing.</p>
+        
+        <div class="badge-container">
+            <div class="badge"><i class="fas fa-check-circle"></i> Anker Authorized Partner</div>
+            <div class="badge"><i class="fas fa-bolt"></i> Up to 2400W Solar Input</div>
+            <div class="badge"><i class="fas fa-expand-arrows-alt"></i> Expandable to 53.8kWh</div>
+        </div>
+    </div>
+</section>
+
+<!-- ANKER PHILOSOPHY -->
+<section class="section-dark">
+    <div class="container">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <h2 style="margin-bottom: 2rem;">The Anker SOLIX Advantage</h2>
+            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.7); line-height: 1.8;">
+                Anker SOLIX combines portability with whole-home backup capability. Industry-leading 2400W solar input, 
+                expandable capacity up to 53.8kWh, and competitive pricing make SOLIX a compelling choice for energy independence.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- F3800 HOME POWER SYSTEM -->
+<section class="section-light">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 3rem; color: #10b981;">Anker SOLIX F3800 Home Power System</h2>
+        
+        <div class="grid-2" style="gap: 3rem;">
+            <div>
+                <div class="card product-card" style="height: 100%;">
+                    <h3>F3800 Base Unit</h3>
+                    <div class="price">XAF 2,900,000</div>
+                    <p class="price-note">Portable + Home backup ready</p>
+                    
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> <strong>3.84 kWh</strong> LiFePO4 battery</li>
+                        <li><i class="fas fa-check"></i> <strong>6,000W</strong> continuous output (9,000W surge)</li>
+                        <li><i class="fas fa-check"></i> <strong>2400W</strong> max solar input (highest in class)</li>
+                        <li><i class="fas fa-check"></i> Dual charging: Solar + AC simultaneously</li>
+                        <li><i class="fas fa-check"></i> <strong>Expandable to 53.8kWh</strong> with batteries</li>
+                        <li><i class="fas fa-check"></i> 16x outlets (AC, USB-C 100W, 12V, RV)</li>
+                        <li><i class="fas fa-check"></i> Smart app control & monitoring</li>
+                        <li><i class="fas fa-check"></i> 6-year warranty</li>
+                        <li><i class="fas fa-check"></i> Wheels + handle for portability</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Anker%20F3800" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                        Request F3800 Quote
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">F3800 + Expansion Batteries:</h4>
+                
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h4 style="color: #10b981;">F3800 + 1 Expansion Battery</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div>
+                            <span style="font-size: 2rem; font-weight: 900; color: #10b981;">XAF 5,500,000</span>
+                            <p class="price-note">7.68 kWh total capacity</p>
+                        </div>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">Powers a 3-4 bedroom home for 1-2 days. Refrigeration, lighting, fans, electronics, security.</p>
+                </div>
+                
+                <div class="card" style="margin-bottom: 1.5rem; border: 2px solid #10b981;">
+                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">POPULAR</div>
+                    <h4 style="color: #10b981;">F3800 + 3 Expansion Batteries</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div>
+                            <span style="font-size: 2rem; font-weight: 900; color: #10b981;">XAF 9,800,000</span>
+                            <p class="price-note">15.36 kWh total capacity</p>
+                        </div>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">Powers a 4-6 bedroom villa for 3-4 days. Full home backup including AC, appliances, entertainment.</p>
+                </div>
+                
+                <div class="card">
+                    <h4 style="color: #10b981;">F3800 + 13 Expansion Batteries (Max)</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div>
+                            <span style="font-size: 2rem; font-weight: 900; color: #10b981;">XAF 27,500,000</span>
+                            <p class="price-note">53.76 kWh total capacity</p>
+                        </div>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">Powers estates, guest houses, pool systems for 7-10+ days. Commercial-grade home backup.</p>
+                </div>
+                
+                <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);">
+                    <h4><i class="fas fa-info-circle"></i> Each Expansion Battery:</h4>
+                    <ul style="margin-left: 1.5rem; color: rgba(255,255,255,0.7); margin-top: 1rem;">
+                        <li>3.84 kWh LiFePO4</li>
+                        <li>Stackable design</li>
+                        <li>Hot-swappable</li>
+                        <li><strong>XAF 1,740,000</strong> per unit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOME POWER PANEL -->
+<section class="section-dark">
+    <div class="container">
+        <div class="grid-2" style="gap: 4rem; align-items: center;">
+            <div>
+                <h2 style="margin-bottom: 2rem; color: #10b981;">Anker SOLIX Home Power Panel</h2>
+                <h3 style="margin-bottom: 1.5rem;">Seamless whole-home backup integration</h3>
+                <p style="font-size: 1.125rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 2rem;">
+                    Transform your F3800 into a permanent whole-home backup system. Automatic transfer switch, 
+                    circuit-level control, and grid integration. Powers your entire home during outages.
+                </p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 6-circuit home backup panel</li>
+                    <li><i class="fas fa-check"></i> Automatic switchover (&lt;20ms)</li>
+                    <li><i class="fas fa-check"></i> Grid + solar charging when available</li>
+                    <li><i class="fas fa-check"></i> Circuit-level load management</li>
+                    <li><i class="fas fa-check"></i> Professional installation included</li>
+                    <li><i class="fas fa-check"></i> Compatible with F3800 system</li>
+                </ul>
+                
+                <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%);">
+                    <h4>Home Power Panel Pricing:</h4>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.125rem; margin-top: 1rem;">
+                        <strong style="color: #10b981;">XAF 1,450,000</strong> (panel + installation)<br>
+                        <span style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
+                            Includes transfer switch, circuit breakers, electrical integration, labor
+                        </span>
+                    </p>
+                </div>
+            </div>
+            
+            <div>
+                <div class="card">
+                    <h4 style="margin-bottom: 1.5rem; text-align: center;">Portable vs Permanent Installation</h4>
+                    
+                    <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 0;">
+                        <h5 style="color: #10b981; margin-bottom: 0.5rem;">F3800 Standalone (Portable):</h5>
+                        <ul style="margin-left: 1.5rem; color: rgba(255,255,255,0.7);">
+                            <li>Plug appliances directly into unit</li>
+                            <li>Move between locations (home, office, outdoor)</li>
+                            <li>No installation required</li>
+                            <li>Manual switchover during outages</li>
+                            <li><strong>Best for:</strong> Flexibility, renters, mobile needs</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="padding: 1.5rem 0;">
+                        <h5 style="color: #f59e0b; margin-bottom: 0.5rem;">F3800 + Home Power Panel (Permanent):</h5>
+                        <ul style="margin-left: 1.5rem; color: rgba(255,255,255,0.7);">
+                            <li>Powers entire home through breaker panel</li>
+                            <li>Automatic switchover during outages</li>
+                            <li>Professional electrical integration</li>
+                            <li>Charge from grid + solar automatically</li>
+                            <li><strong>Best for:</strong> Homeowners, seamless backup, convenience</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PORTABLE LINEUP -->
+<section class="section-light">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 1rem; color: #10b981;">Anker SOLIX Portable Power Stations</h2>
+        <p style="text-align: center; font-size: 1.25rem; color: rgba(255,255,255,0.6); max-width: 700px; margin: 0 auto 4rem;">
+            Compact backup power for small homes, apartments, offices, and outdoor adventures.
+        </p>
+        
+        <div class="grid-3">
+            <div class="card product-card">
+                <h3>C800 Plus</h3>
+                <div class="price">XAF 580,000</div>
+                <p class="price-note">768Wh | Compact backup</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 768Wh LiFePO4</li>
+                    <li><i class="fas fa-check"></i> 1200W output (1600W surge)</li>
+                    <li><i class="fas fa-check"></i> 600W max solar input</li>
+                    <li><i class="fas fa-check"></i> 11 output ports</li>
+                    <li><i class="fas fa-check"></i> Fast recharge: 1hr (AC)</li>
+                    <li><i class="fas fa-check"></i> 6-year warranty</li>
+                </ul>
+                
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem; margin-top: 1rem;">
+                    Powers: Laptop, phone, router, small fridge for 6-12 hours
+                </p>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Anker%20C800%20Plus" class="btn btn-secondary" style="width: 100%; margin-top: 2rem; justify-content: center; border-color: #10b981; color: #10b981;">
+                    Get C800 Quote
+                </a>
+            </div>
+            
+            <div class="card product-card" style="border: 2px solid #10b981;">
+                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">BEST VALUE</div>
+                <h3>C1000</h3>
+                <div class="price">XAF 870,000</div>
+                <p class="price-note">1056Wh | Apartment backup</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 1056Wh LiFePO4</li>
+                    <li><i class="fas fa-check"></i> 1800W output (2400W surge)</li>
+                    <li><i class="fas fa-check"></i> 600W max solar input</li>
+                    <li><i class="fas fa-check"></i> 11 output ports</li>
+                    <li><i class="fas fa-check"></i> Fast recharge: 1.5hr (AC)</li>
+                    <li><i class="fas fa-check"></i> 6-year warranty</li>
+                </ul>
+                
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem; margin-top: 1rem;">
+                    Powers: 1-2 bedroom apartment essentials for 12-24 hours
+                </p>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Anker%20C1000" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                    Get C1000 Quote
+                </a>
+            </div>
+            
+            <div class="card product-card">
+                <h3>C1000X</h3>
+                <div class="price">XAF 1,160,000</div>
+                <p class="price-note">1056Wh | Premium portable</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 1056Wh LiFePO4</li>
+                    <li><i class="fas fa-check"></i> 2000W output (3000W surge)</li>
+                    <li><i class="fas fa-check"></i> 1000W max solar input</li>
+                    <li><i class="fas fa-check"></i> 13 output ports</li>
+                    <li><i class="fas fa-check"></i> Ultra-fast recharge: 58min (AC)</li>
+                    <li><i class="fas fa-check"></i> 6-year warranty</li>
+                </ul>
+                
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem; margin-top: 1rem;">
+                    Powers: High-power tools, outdoor events, mobile offices
+                </p>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Anker%20C1000X" class="btn btn-secondary" style="width: 100%; margin-top: 2rem; justify-content: center; border-color: #10b981; color: #10b981;">
+                    Get C1000X Quote
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOLAR PANELS -->
+<section class="section-dark">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 1rem; color: #10b981;">Anker SOLIX Solar Panels</h2>
+        <p style="text-align: center; font-size: 1.25rem; color: rgba(255,255,255,0.6); max-width: 700px; margin: 0 auto 4rem;">
+            High-efficiency portable and rigid solar panels for maximum energy harvest.
+        </p>
+        
+        <div class="grid-4">
+            <div class="card product-card">
+                <h3>100W Portable</h3>
+                <div class="price">XAF 217,500</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 100W output</li>
+                    <li><i class="fas fa-check"></i> 23% efficiency</li>
+                    <li><i class="fas fa-check"></i> Foldable design</li>
+                    <li><i class="fas fa-check"></i> IP67 waterproof</li>
+                </ul>
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20100W%20Anker%20Solar" class="btn btn-secondary" style="width: 100%; margin-top: 1.5rem; justify-content: center; border-color: #10b981; color: #10b981;">
+                    Get Quote
+                </a>
+            </div>
+            
+            <div class="card product-card">
+                <h3>200W Portable</h3>
+                <div class="price">XAF 377,000</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 200W output</li>
+                    <li><i class="fas fa-check"></i> 23% efficiency</li>
+                    <li><i class="fas fa-check"></i> Foldable design</li>
+                    <li><i class="fas fa-check"></i> IP67 waterproof</li>
+                </ul>
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20200W%20Anker%20Solar" class="btn btn-secondary" style="width: 100%; margin-top: 1.5rem; justify-content: center; border-color: #10b981; color: #10b981;">
+                    Get Quote
+                </a>
+            </div>
+            
+            <div class="card product-card" style="border: 2px solid #10b981;">
+                <h3>400W Rigid</h3>
+                <div class="price">XAF 580,000</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 400W output</li>
+                    <li><i class="fas fa-check"></i> 25% efficiency</li>
+                    <li><i class="fas fa-check"></i> Permanent mount</li>
+                    <li><i class="fas fa-check"></i> 25-year warranty</li>
+                </ul>
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20400W%20Anker%20Solar" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; justify-content: center;">
+                    Get Quote
+                </a>
+            </div>
+            
+            <div class="card product-card">
+                <h3>600W Rigid</h3>
+                <div class="price">XAF 870,000</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 600W output</li>
+                    <li><i class="fas fa-check"></i> 25% efficiency</li>
+                    <li><i class="fas fa-check"></i> Permanent mount</li>
+                    <li><i class="fas fa-check"></i> 25-year warranty</li>
+                </ul>
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20600W%20Anker%20Solar" class="btn btn-secondary" style="width: 100%; margin-top: 1.5rem; justify-content: center; border-color: #10b981; color: #10b981;">
+                    Get Quote
+                </a>
+            </div>
+        </div>
+        
+        <div class="card" style="margin-top: 3rem; text-align: center; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);">
+            <h4 style="color: #10b981; margin-bottom: 1rem;">Recommended Solar Arrays for F3800:</h4>
+            <div class="grid-3">
+                <div><strong>1200W Array:</strong><br>2x 600W Rigid<br><em style="color: #10b981;">XAF 1,740,000</em></div>
+                <div><strong>1800W Array:</strong><br>3x 600W Rigid<br><em style="color: #10b981;">XAF 2,610,000</em></div>
+                <div><strong>2400W Array (Max):</strong><br>4x 600W Rigid<br><em style="color: #10b981;">XAF 3,480,000</em></div>
+            </div>
+            <p style="margin-top: 1.5rem; color: rgba(255,255,255,0.6);">
+                Installation included. Roof mounting, wiring, weatherproofing, commissioning.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- COMPLETE PACKAGES -->
+<section class="section-light">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 1rem; color: #10b981;">Complete Anker SOLIX Packages</h2>
+        <p style="text-align: center; font-size: 1.25rem; color: rgba(255,255,255,0.6); max-width: 800px; margin: 0 auto 4rem;">
+            Power station + solar + installation bundles. Maximum value, complete solution.
+        </p>
+        
+        <div class="grid-3">
+            <div class="card product-card">
+                <h3>Apartment Package</h3>
+                <div class="price">XAF 1,450,000</div>
+                <p class="price-note">C1000 + Solar</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-battery-full"></i> C1000 (1056Wh)</li>
+                    <li><i class="fas fa-solar-panel"></i> 2x 200W Portable Solar</li>
+                    <li><i class="fas fa-tools"></i> Setup & training</li>
+                    <li><i class="fas fa-headset"></i> 2-year support</li>
+                </ul>
+                
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem; margin-top: 1rem;">
+                    Perfect for: 1-2 bedroom apartments, home offices, renters
+                </p>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Anker%20Apartment%20Package" class="btn btn-secondary" style="width: 100%; margin-top: 2rem; justify-content: center; border-color: #10b981; color: #10b981;">
+                    Request Quote
+                </a>
+            </div>
+            
+            <div class="card product-card" style="border: 2px solid #10b981;">
+                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">RECOMMENDED</div>
+                <h3>Home Backup Package</h3>
+                <div class="price">XAF 8,700,000</div>
+                <p class="price-note">F3800 + Batteries + Solar + Panel</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-battery-full"></i> F3800 + 2 Expansion (11.52kWh)</li>
+                    <li><i class="fas fa-solar-panel"></i> 1800W Solar Array (3x 600W)</li>
+                    <li><i class="fas fa-plug"></i> Home Power Panel integration</li>
+                    <li><i class="fas fa-tools"></i> Professional installation</li>
+                    <li><i class="fas fa-headset"></i> 5-year priority support</li>
+                </ul>
+                
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem; margin-top: 1rem;">
+                    Perfect for: 3-5 bedroom homes, automatic backup, solar charging
+                </p>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Anker%20Home%20Backup%20Package" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                    Request Quote
+                </a>
+            </div>
+            
+            <div class="card product-card">
+                <h3>Estate Package</h3>
+                <div class="price">XAF 18,850,000</div>
+                <p class="price-note">F3800 Max + Solar + Panel</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-battery-full"></i> F3800 + 6 Expansion (26.88kWh)</li>
+                    <li><i class="fas fa-solar-panel"></i> 2400W Solar Array (4x 600W)</li>
+                    <li><i class="fas fa-plug"></i> Home Power Panel integration</li>
+                    <li><i class="fas fa-tools"></i> Professional installation</li>
+                    <li><i class="fas fa-headset"></i> 10-year priority support</li>
+                    <li><i class="fas fa-user-shield"></i> Dedicated account manager</li>
+                </ul>
+                
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem; margin-top: 1rem;">
+                    Perfect for: Large villas, guest houses, pool systems, estates
+                </p>
+                
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Anker%20Estate%20Package" class="btn btn-secondary" style="width: 100%; margin-top: 2rem; justify-content: center; border-color: #10b981; color: #10b981;">
+                    Request Quote
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY ANKER SOLIX -->
+<section class="section-dark">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 4rem; color: #10b981;">Why Anker SOLIX Through Q4-LIFE?</h2>
+        
+        <div class="grid-2" style="gap: 3rem;">
+            <div class="card">
+                <h4 style="color: #10b981; margin-bottom: 1.5rem;">
+                    <i class="fas fa-bolt"></i> Industry-Leading Solar Input
+                </h4>
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                    <strong>2400W solar input</strong> on F3800 is the highest in its class. Recharge faster from solar, 
+                    maximize daytime energy harvest, extend backup capacity indefinitely with proper solar array.
+                </p>
+            </div>
+            
+            <div class="card">
+                <h4 style="color: #10b981; margin-bottom: 1.5rem;">
+                    <i class="fas fa-expand-arrows-alt"></i> Extreme Expandability
+                </h4>
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                    Start with 3.84kWh, expand to <strong>53.8kWh</strong> - more than three Powerwalls. 
+                    Modular design lets you grow capacity as needs increase without replacing base unit.
+                </p>
+            </div>
+            
+            <div class="card">
+                <h4 style="color: #10b981; margin-bottom: 1.5rem;">
+                    <i class="fas fa-tag"></i> Competitive Value
+                </h4>
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                    Similar performance to competitors at 15-30% lower cost. LiFePO4 batteries, 6-year warranty, 
+                    high solar input, and expandable capacity at aggressive pricing.
+                </p>
+            </div>
+            
+            <div class="card">
+                <h4 style="color: #10b981; margin-bottom: 1.5rem;">
+                    <i class="fas fa-random"></i> Portable OR Permanent
+                </h4>
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                    Use F3800 standalone for portability, or integrate with Home Power Panel for automatic whole-home backup. 
+                    Only system that gives you both options.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="section-light">
+    <div class="container">
+        <div class="grid-4">
+            <div class="stat-box">
+                <span class="stat-number">2400W</span>
+                <p class="stat-label">Max Solar Input</p>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">53.8kWh</span>
+                <p class="stat-label">Max Capacity</p>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">6-Year</span>
+                <p class="stat-label">Warranty</p>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">24/7</span>
+                <p class="stat-label">Local Support</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 style="color: white; margin-bottom: 1.5rem;">Ready for high-performance backup power?</h2>
+            <p style="font-size: 1.5rem; margin-bottom: 3rem; opacity: 0.95;">
+                Request a capacity assessment. Get a custom Anker SOLIX design. Start saving on energy costs.
+            </p>
+            
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://wa.me/237691498369?text=I'm%20interested%20in%20Anker%20SOLIX%20Solutions" class="btn" style="background: white; color: #10b981; font-size: 1.125rem; padding: 1.25rem 2.5rem;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp: +237 691 498 369
+                </a>
+                <a href="mailto:info@q4-life.com" class="btn btn-secondary" style="font-size: 1.125rem; padding: 1.25rem 2.5rem; border-color: white; color: white;">
+                    <i class="fas fa-envelope"></i> Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #0a0f1e; padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="container">
+        <div class="grid-4" style="margin-bottom: 3rem;">
+            <div>
+                <h4 style="color: #10b981; margin-bottom: 1.5rem; font-size: 1.5rem;">ANKER SOLIX</h4>
+                <p style="color: rgba(255,255,255,0.6); line-height: 1.8;">
+                    High-performance portable and home backup power with industry-leading solar input.
+                </p>
+            </div>
+            
+            <div>
+                <h5 style="margin-bottom: 1rem;">Anker Products</h5>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 0.5rem;"><a href="#f3800" style="color: rgba(255,255,255,0.6); text-decoration: none;">F3800 Home System</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#portable" style="color: rgba(255,255,255,0.6); text-decoration: none;">Portable Stations</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#solar" style="color: rgba(255,255,255,0.6); text-decoration: none;">Solar Panels</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#packages" style="color: rgba(255,255,255,0.6); text-decoration: none;">Complete Packages</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h5 style="margin-bottom: 1rem;">Other Solutions</h5>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 0.5rem;"><a href="power.html" style="color: rgba(255,255,255,0.6); text-decoration: none;">EcoFlow Systems</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="power-tesla.html" style="color: rgba(255,255,255,0.6); text-decoration: none;">Tesla Energy</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="../index.html" style="color: rgba(255,255,255,0.6); text-decoration: none;">All Divisions</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h5 style="margin-bottom: 1rem;">Contact</h5>
+                <p style="color: rgba(255,255,255,0.6); margin-bottom: 0.5rem;">
+                    <i class="fab fa-whatsapp"></i> +237 691 498 369
+                </p>
+                <p style="color: rgba(255,255,255,0.6);">
+                    <i class="fas fa-envelope"></i> info@q4-life.com
+                </p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4);">
+            <p>&copy; 2026 Q4-LIFE POWER™. Anker Authorized Partner. All prices include 45% professional margin.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
