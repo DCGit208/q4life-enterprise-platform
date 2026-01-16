@@ -3,57 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World-Class Power Solutions | Q4Life</title>
-    <link rel="stylesheet" href="/files/theme/main_style.css">
+    <title>Q4-LIFE POWER™ | Energy Independence as a Service</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
-            background: #f8fafc;
-            color: #1e293b;
+            background: #0f172a;
+            color: #e2e8f0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem; align-items: center; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 0 2rem; 
+        }
         
-        .card {
-            background: white;
-            border-radius: 24px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0,0,0,0.04);
+        /* Header */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: #f59e0b;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+        
+        .logo-accent { color: #10b981; }
+        
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        nav a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover { color: #f59e0b; }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            padding: 8rem 0 6rem;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
-        .card::before {
+        
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 60%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+            z-index: 0;
         }
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.12);
-        }
-        .card:hover::before { transform: scaleX(1); }
         
-        h1 { font-size: clamp(2.5rem, 5vw, 5.5rem); font-weight: 900; line-height: 1.1; }
-        h2 { font-size: clamp(2rem, 4vw, 3.75rem); font-weight: 800; line-height: 1.2; }
-        h3 { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; }
-        h4 { font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 600; }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: clamp(1.25rem, 2.5vw, 2rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
         
         .badge {
             display: inline-flex;
@@ -65,983 +165,861 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            background: rgba(245, 158, 11, 0.2);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #f59e0b;
+            margin: 0 0.5rem 1rem;
         }
         
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
         }
         
-        .product-img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-            transition: transform 0.5s ease;
+        .section-dark {
+            background: #0f172a;
         }
-        .product-img:hover { transform: scale(1.03) rotate(1deg); }
         
-        .price {
+        .section-light {
+            background: #1e293b;
+        }
+        
+        h2 {
             font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        h4 {
+            font-size: clamp(1.25rem, 2vw, 1.75rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .section-intro {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            line-height: 1.8;
+        }
+        
+        /* Cards */
+        .card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(30, 41, 59, 0.95);
+            border-color: rgba(245, 158, 11, 0.3);
+            box-shadow: 0 20px 60px rgba(245, 158, 11, 0.15);
+        }
+        
+        .card-premium {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            border: 2px solid rgba(245, 158, 11, 0.3);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* Feature Lists */
+        .feature-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list i {
+            color: #10b981;
+            font-size: 1.25rem;
+            margin-top: 0.25rem;
+        }
+        
+        /* Stat Box */
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .stat-number {
+            font-size: clamp(2.5rem, 4vw, 4rem);
             font-weight: 900;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-        
-        .stat-box {
-            text-align: center;
-            padding: 2.5rem 2rem;
-            background: rgba(255,255,255,0.15);
-            border-radius: 20px;
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
-            min-width: 260px;
-        }
-        .stat-box:hover {
-            transform: translateY(-5px) scale(1.05);
-            background: rgba(255,255,255,0.2);
-        }
-        .stat-number {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 900;
             display: block;
+            line-height: 1;
             margin-bottom: 0.5rem;
-            color: white;
         }
+        
         .stat-label {
-            font-size: clamp(0.875rem, 1.5vw, 0.95rem);
-            opacity: 0.95;
-            color: white;
-            font-weight: 500;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(2deg); }
-            66% { transform: translateY(-10px) rotate(-2deg); }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
-        
-        .section { padding: 6rem 0; }
-        
-        .pattern-dots {
-            background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
-        }
-        
-        .floating-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.4;
-            animation: float 10s ease-in-out infinite;
-        }
-        
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 35px;
-            text-decoration: none;
-            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 15px 50px rgba(37, 211, 102, 0.6);
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin: 2rem 0;
-        }
-        table thead {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        table th {
-            padding: 1.25rem;
-            text-align: left;
-            font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
-        table th:first-child { border-radius: 12px 0 0 0; }
-        table th:last-child { border-radius: 0 12px 0 0; }
-        table td {
-            padding: 1.25rem;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 0.95rem;
-        }
-        table tbody tr {
-            background: white;
-            transition: all 0.3s ease;
-        }
-        table tbody tr:hover {
-            background: #f8fafc;
-            transform: scale(1.01);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-        table tbody tr:last-child td:first-child { border-radius: 0 0 0 12px; }
-        table tbody tr:last-child td:last-child { border-radius: 0 0 12px 0; }
         
-        /* DROPDOWN MENU */
-        header nav {
-            position: relative;
+        /* Problem Section */
+        .problem-card {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+            border-left: 4px solid #ef4444;
         }
-        .nav-item {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: rgba(15, 23, 42, 0.98);
-            backdrop-filter: blur(20px);
-            min-width: 240px;
-            border-radius: 12px;
-            padding: 12px 0;
-            margin-top: 8px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
+        
+        .problem-list {
             list-style: none;
-        }
-        .nav-item:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        .dropdown-menu li {
-            display: block;
-        }
-        .dropdown-menu a {
-            display: flex !important;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 20px !important;
-            color: rgba(255, 255, 255, 0.9) !important;
-            transition: all 0.2s;
-            font-size: 0.95rem !important;
-            font-weight: 500 !important;
-        }
-        .dropdown-menu a:hover {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea !important;
-            padding-left: 24px !important;
-        }
-        .dropdown-menu i {
-            font-size: 1.1rem;
-            width: 20px;
+            margin: 1.5rem 0;
         }
         
-        /* MOBILE HAMBURGER MENU */
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1001;
+        .problem-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            font-size: 1.125rem;
+            color: rgba(255,255,255,0.8);
         }
-        .mobile-menu-btn span {
-            width: 28px;
-            height: 3px;
-            background: #667eea;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-        .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
-        .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
-        .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
         
+        .problem-list i {
+            color: #ef4444;
+            margin-top: 0.25rem;
+        }
+        
+        /* Package Cards */
+        .package-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #f59e0b;
+            margin: 1.5rem 0;
+        }
+        
+        .package-price small {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.5);
+            font-weight: 400;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 40%),
+                radial-gradient(circle at 70% 80%, rgba(0,0,0,0.1) 0%, transparent 40%);
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0f1e;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .mobile-menu-btn { display: flex; }
-            header nav {
-                position: fixed !important;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 350px;
-                height: 100vh;
-                background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
-                flex-direction: column !important;
-                padding: 5rem 2rem 2rem !important;
-                gap: 0 !important;
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-                z-index: 1000;
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
             }
-            header nav.active { right: 0; }
-            header nav a {
-                display: block;
-                padding: 1.25rem 0 !important;
-                font-size: 1.125rem !important;
-                color: white !important;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
+            
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
             }
-            header nav a:hover { padding-left: 1rem !important; color: #667eea !important; }
-            .nav-overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.7);
-                backdrop-filter: blur(4px);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s;
-                z-index: 999;
+            
+            nav {
+                display: none;
             }
-            .nav-overlay.active { opacity: 1; visibility: visible; }
-            .btn { width: 100% !important; margin-top: 1rem !important; }
+            
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-<header style="background: white; box-shadow: 0 2px 20px rgba(0,0,0,0.08); padding: 1.5rem 0; position: sticky; top: 0; z-index: 1000;">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-        <a href="/" style="font-size: 1.75rem; font-weight: 900; color: #667eea; text-decoration: none;">
-            Q4<span style="color: #764ba2;">Life</span>
-        </a>
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <nav id="navMenu" style="display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap;">
-            <span class="nav-item">
-                <a href="../index.html#services" style="color: #64748b; text-decoration: none; font-weight: 500;">Services</a>
-                <ul class="dropdown-menu">
-                    <li><a href="connect.html"><i class="fas fa-wifi"></i> Internet & Network</a></li>
-                    <li><a href="business-technology.html"><i class="fas fa-laptop-code"></i> Business Technology</a></li>
-                </ul>
-            </span>
-            <a href="connect.html" style="color: #64748b; text-decoration: none; font-weight: 500;">Internet</a>
-            <a href="power.html" style="color: #667eea; text-decoration: none; font-weight: 600;">Power</a>
-            <a href="../about.html" style="color: #64748b; text-decoration: none; font-weight: 500;">About</a>
-            <a href="https://wa.me/237691498369" class="btn-primary btn">Get Quote</a>
-        </nav>
+<!-- HEADER -->
+<header>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                Q4<span class="logo-accent">Life</span> <span style="color: #f59e0b;">POWER™</span>
+            </a>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../index.html#divisions">Divisions</a>
+                <a href="connect.html">Connect</a>
+                <a href="business-technology.html">Business Tech</a>
+                <a href="https://wa.me/237691498369" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> Get Quote
+                </a>
+            </nav>
+        </div>
     </div>
 </header>
-<div class="nav-overlay" id="navOverlay"></div>
 
-<section style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 70%); color: white; padding: 10rem 0 8rem; text-align: center; position: relative; overflow: hidden;">
-    <div class="floating-orb" style="top: 10%; left: 5%; width: 400px; height: 400px; background: radial-gradient(circle, #667eea 0%, transparent 70%); animation-delay: 0s;"></div>
-    <div class="floating-orb" style="top: 60%; right: 10%; width: 500px; height: 500px; background: radial-gradient(circle, #10b981 0%, transparent 70%); animation-delay: 3s;"></div>
-    <div class="floating-orb" style="bottom: 20%; left: 50%; width: 350px; height: 350px; background: radial-gradient(circle, #f59e0b 0%, transparent 70%); animation-delay: 6s;"></div>
-    
-    <div class="container" style="position: relative; z-index: 1;">
-        <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap;">
-            <span class="badge" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white;">
-                <i class="fas fa-trophy"></i> EcoFlow Certified
-            </span>
-            <span class="badge" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white;">
-                <i class="fas fa-bolt"></i> Tesla Partner
-            </span>
-            <span class="badge" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white;">
-                <i class="fas fa-sun"></i> Solar Experts
-            </span>
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div style="margin-bottom: 2rem;">
+                <span class="badge">
+                    <i class="fas fa-certificate"></i> EcoFlow Premium Systems
+                </span>
+                <span class="badge">
+                    <i class="fas fa-bolt"></i> 2026 Vision
+                </span>
+            </div>
+            
+            <h1>Power everything.<br>Live uninterrupted.<br>Build assets.</h1>
+            
+            <p class="subtitle">
+                Stop losing money to blackouts. Enterprise-grade battery systems + solar for homes, hotels, and businesses.
+            </p>
+            
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem;">
+                <a href="#packages" class="btn btn-primary" style="font-size: 1.125rem; padding: 1.25rem 2.5rem;">
+                    <i class="fas fa-rocket"></i> View Energy Systems
+                </a>
+                <a href="https://wa.me/237691498369" class="btn btn-secondary" style="font-size: 1.125rem; padding: 1.25rem 2.5rem;">
+                    <i class="fab fa-whatsapp"></i> Request Energy Audit
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- THE PHILOSOPHY -->
+<section class="section-dark">
+    <div class="container">
+        <div style="text-align: center; max-width: 1000px; margin: 0 auto;">
+            <h2 style="margin-bottom: 1.5rem;">Energy Independence as a Service (EIaaS)</h2>
+            <p style="font-size: 1.5rem; color: rgba(255,255,255,0.9); margin-bottom: 3rem; line-height: 1.7;">
+                At Q4-LIFE POWER™, clients do not buy batteries.
+            </p>
         </div>
         
-        <h1 class="fade-in-up">World-Class<br>Off-Grid Power Solutions</h1>
-        <p style="font-size: clamp(1.125rem, 2vw, 1.75rem); margin: 2rem auto 3rem; max-width: 900px; opacity: 0.95; font-weight: 300; line-height: 1.7;">
-            Stop losing money to blackouts. Enterprise-grade battery systems + solar for homes, hotels, and businesses. 
-            <strong style="font-weight: 700; color: #10b981;">From $1,250 to $167,000+</strong>
-        </p>
-        
-        <div style="display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 4rem; flex-wrap: wrap;">
-            <a href="#packages" class="btn btn-primary" style="font-size: 1.125rem; padding: 1.125rem 2.5rem;">
-                <i class="fas fa-calculator"></i> View Packages
-            </a>
-            <a href="https://wa.me/237691498369" class="btn" style="background: rgba(255,255,255,0.15); color: white; font-size: 1.125rem; padding: 1.125rem 2.5rem; backdrop-filter: blur(10px);">
-                <i class="fab fa-whatsapp"></i> WhatsApp Us
-            </a>
+        <div class="grid-3" style="margin-top: 4rem;">
+            <div class="card">
+                <i class="fas fa-shield-alt" style="font-size: 3rem; color: #10b981; margin-bottom: 1.5rem;"></i>
+                <h4>Zero Downtime</h4>
+                <p style="color: rgba(255,255,255,0.7);">Your operations continue regardless of grid status. No interruptions, no compromises.</p>
+            </div>
+            
+            <div class="card">
+                <i class="fas fa-volume-mute" style="font-size: 3rem; color: #10b981; margin-bottom: 1.5rem;"></i>
+                <h4>Silence</h4>
+                <p style="color: rgba(255,255,255,0.7);">No generators. No noise. No fumes. Pure, clean, silent power.</p>
+            </div>
+            
+            <div class="card">
+                <i class="fas fa-chart-line" style="font-size: 3rem; color: #10b981; margin-bottom: 1.5rem;"></i>
+                <h4>Predictable Power</h4>
+                <p style="color: rgba(255,255,255,0.7);">Know exactly what your energy costs. No fuel price shocks. No surprises.</p>
+            </div>
+            
+            <div class="card">
+                <i class="fas fa-gas-pump" style="font-size: 3rem; color: #10b981; margin-bottom: 1.5rem;"></i>
+                <h4>Freedom from Fuel Stress</h4>
+                <p style="color: rgba(255,255,255,0.7);">Never buy diesel again. Solar + battery = true independence.</p>
+            </div>
+            
+            <div class="card">
+                <i class="fas fa-crown" style="font-size: 3rem; color: #10b981; margin-bottom: 1.5rem;"></i>
+                <h4>Prestige & Peace of Mind</h4>
+                <p style="color: rgba(255,255,255,0.7);">Modern, clean technology. Professional installation. Total confidence.</p>
+            </div>
+            
+            <div class="card">
+                <i class="fas fa-building" style="font-size: 3rem; color: #10b981; margin-bottom: 1.5rem;"></i>
+                <h4>Assets that Appreciate</h4>
+                <p style="color: rgba(255,255,255,0.7);">Not machines that decay. Infrastructure that adds property value.</p>
+            </div>
         </div>
         
-        <div class="grid-4" style="margin-top: 5rem;">
+        <div style="text-align: center; margin-top: 4rem;">
+            <p style="font-size: 1.5rem; color: rgba(255,255,255,0.8); font-weight: 300; line-height: 1.8;">
+                This is not solar retail.<br>
+                <strong style="color: #f59e0b; font-weight: 700;">This is energy assurance.</strong>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- THE AFRICAN POWER REALITY -->
+<section class="section-light">
+    <div class="container">
+        <div class="grid-2">
+            <div>
+                <h2 style="color: #ef4444; margin-bottom: 2rem;">
+                    <i class="fas fa-exclamation-triangle"></i> The African Power Reality
+                </h2>
+                <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(255,255,255,0.8); line-height: 1.8;">
+                    Blackouts aren't just an inconvenience — they're destroying businesses and disrupting lives across Africa.
+                </p>
+                
+                <div class="card problem-card">
+                    <h4 style="color: #ef4444; margin-bottom: 1.5rem;">
+                        <i class="fas fa-money-bill-wave"></i> The Real Cost of Waiting:
+                    </h4>
+                    <ul class="problem-list">
+                        <li><i class="fas fa-times-circle"></i> <strong>$500–$2,000+/month</strong> in lost revenue, spoiled inventory, and productivity loss</li>
+                        <li><i class="fas fa-times-circle"></i> <strong>Diesel generators:</strong> $200–$800/month in fuel + noise + pollution</li>
+                        <li><i class="fas fa-times-circle"></i> <strong>Equipment damage</strong> from voltage surges and power cuts</li>
+                        <li><i class="fas fa-times-circle"></i> <strong>Customer frustration</strong> and reputation damage</li>
+                        <li><i class="fas fa-times-circle"></i> <strong>Health risks</strong> from fumes and air conditioning failures</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <img src="../Images/Power images/IMG_1782.jpg" alt="Power Reality" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 4rem; padding: 3rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%); border-radius: 24px; border: 2px solid rgba(16, 185, 129, 0.3);">
+            <h3 style="color: #10b981; margin-bottom: 1rem;">The Solution Exists</h3>
+            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.8); max-width: 800px; margin: 0 auto;">
+                Premium battery systems that deliver <strong style="color: #f59e0b;">3–7 days of continuous power</strong>, 
+                with solar extension and zero diesel dependence.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section class="section-dark">
+    <div class="container">
+        <div style="text-align: center; max-width: 900px; margin: 0 auto 4rem;">
+            <h2>Designed for those who cannot afford power failure</h2>
+            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.7); line-height: 1.8;">
+                Our clients value quality of life, business continuity, and peace of mind over compromise.
+            </p>
+        </div>
+        
+        <div class="grid-4">
+            <div class="card">
+                <i class="fas fa-home" style="font-size: 2.5rem; color: #f59e0b; margin-bottom: 1rem;"></i>
+                <h4>Homes that cherish comfort</h4>
+                <p style="color: rgba(255,255,255,0.7);">Families who refuse to compromise on air conditioning, refrigeration, and modern living.</p>
+            </div>
+            
+            <div class="card">
+                <i class="fas fa-briefcase" style="font-size: 2.5rem; color: #f59e0b; margin-bottom: 1rem;"></i>
+                <h4>Businesses that cannot stop</h4>
+                <p style="color: rgba(255,255,255,0.7);">Operations that lose money every hour without power. Clinics, offices, hotels, restaurants.</p>
+            </div>
+            
+            <div class="card">
+                <i class="fas fa-building" style="font-size: 2.5rem; color: #f59e0b; margin-bottom: 1rem;"></i>
+                <h4>Real estate developers</h4>
+                <p style="color: rgba(255,255,255,0.7);">Who want higher rents, faster sales, and premium positioning.</p>
+            </div>
+            
+            <div class="card">
+                <i class="fas fa-university" style="font-size: 2.5rem; color: #f59e0b; margin-bottom: 1rem;"></i>
+                <h4>Institutions</h4>
+                <p style="color: rgba(255,255,255,0.7);">Tired of generator chaos, noise, and fuel uncertainty.</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 4rem;">
+            <p style="font-size: 1.5rem; color: rgba(255,255,255,0.8);">
+                If uninterrupted power matters to you — <strong style="color: #10b981;">you belong here.</strong>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- THE POWER SYSTEMS -->
+<section class="section-light" id="packages">
+    <div class="container">
+        <div style="text-align: center; max-width: 900px; margin: 0 auto 4rem;">
+            <h2>The Power Systems</h2>
+            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.7);">
+                Each system is engineered, installed, and commissioned.<br>
+                <strong style="color: #f59e0b;">No off-the-shelf solutions. No guesswork.</strong>
+            </p>
+        </div>
+        
+        <div class="grid-3">
+            <!-- EXECUTIVE ASSURANCE -->
+            <div class="card package-card">
+                <span class="package-badge">Professional</span>
+                <img src="../Images/Power images/IMG_1783.jpg" alt="Executive Assurance" class="card-image">
+                <h3 style="color: #f59e0b;">EXECUTIVE ASSURANCE™</h3>
+                <p style="font-size: 1.125rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem;">
+                    Premium Apartment & Professional Power System
+                </p>
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 1.5rem;">
+                    "Your life and work continue — regardless of outages."
+                </p>
+                
+                <div class="package-price">
+                    From $3,500 <small>+ Installation</small>
+                </div>
+                
+                <h4 style="font-size: 1.125rem; margin-bottom: 1rem;">Designed for:</h4>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Executive apartments</li>
+                    <li><i class="fas fa-check-circle"></i> Home offices</li>
+                    <li><i class="fas fa-check-circle"></i> Clinics</li>
+                    <li><i class="fas fa-check-circle"></i> High-end small spaces</li>
+                </ul>
+                
+                <h4 style="font-size: 1.125rem; margin: 1.5rem 0 1rem;">What it delivers:</h4>
+                <ul class="feature-list">
+                    <li><i class="fas fa-bolt"></i> Days of essential power</li>
+                    <li><i class="fas fa-bolt"></i> Silent, automatic operation</li>
+                    <li><i class="fas fa-bolt"></i> Solar-extended independence</li>
+                    <li><i class="fas fa-bolt"></i> Zero generator dependence</li>
+                </ul>
+                
+                <a href="https://wa.me/237691498369" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                    <i class="fab fa-whatsapp"></i> Request Energy Audit
+                </a>
+            </div>
+            
+            <!-- FAMILY COMFORT -->
+            <div class="card package-card card-premium">
+                <span class="package-badge">Most Popular</span>
+                <img src="../Images/Power images/IMG_1784.jpg" alt="Family Comfort" class="card-image">
+                <h3 style="color: #10b981;">FAMILY COMFORT™</h3>
+                <p style="font-size: 1.125rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem;">
+                    Whole-Home Generator Replacement System
+                </p>
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 1.5rem;">
+                    "Comfort without compromise. Power without diesel."
+                </p>
+                
+                <div class="package-price">
+                    From $8,500 <small>+ Installation</small>
+                </div>
+                
+                <h4 style="font-size: 1.125rem; margin-bottom: 1rem;">Designed for:</h4>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Villas</li>
+                    <li><i class="fas fa-check-circle"></i> Duplexes</li>
+                    <li><i class="fas fa-check-circle"></i> Family homes</li>
+                    <li><i class="fas fa-check-circle"></i> Small businesses</li>
+                </ul>
+                
+                <h4 style="font-size: 1.125rem; margin: 1.5rem 0 1rem;">What it delivers:</h4>
+                <ul class="feature-list">
+                    <li><i class="fas fa-bolt"></i> Full-home coverage</li>
+                    <li><i class="fas fa-bolt"></i> AC, pumps, appliances</li>
+                    <li><i class="fas fa-bolt"></i> Day-to-day independence</li>
+                    <li><i class="fas fa-bolt"></i> Solar-first energy logic</li>
+                </ul>
+                
+                <a href="https://wa.me/237691498369" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                    <i class="fab fa-whatsapp"></i> Get Custom Quote
+                </a>
+            </div>
+            
+            <!-- ESTATE & BUSINESS POWER -->
+            <div class="card package-card">
+                <span class="package-badge">Enterprise</span>
+                <img src="../Images/Power images/IMG_1785.jpg" alt="Estate Power" class="card-image">
+                <h3 style="color: #f59e0b;">ESTATE & BUSINESS POWER™</h3>
+                <p style="font-size: 1.125rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem;">
+                    Permanent Energy Infrastructure
+                </p>
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 1.5rem;">
+                    "This property does not go off."
+                </p>
+                
+                <div class="package-price">
+                    From $25,000 <small>+ Custom Design</small>
+                </div>
+                
+                <h4 style="font-size: 1.125rem; margin-bottom: 1rem;">Designed for:</h4>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Estates</li>
+                    <li><i class="fas fa-check-circle"></i> Hotels</li>
+                    <li><i class="fas fa-check-circle"></i> Offices</li>
+                    <li><i class="fas fa-check-circle"></i> Schools</li>
+                    <li><i class="fas fa-check-circle"></i> Data-driven businesses</li>
+                </ul>
+                
+                <h4 style="font-size: 1.125rem; margin: 1.5rem 0 1rem;">What it delivers:</h4>
+                <ul class="feature-list">
+                    <li><i class="fas fa-bolt"></i> Full operational continuity</li>
+                    <li><i class="fas fa-bolt"></i> Zoned power architecture</li>
+                    <li><i class="fas fa-bolt"></i> Redundant energy layers</li>
+                    <li><i class="fas fa-bolt"></i> True off-grid capability</li>
+                </ul>
+                
+                <a href="https://wa.me/237691498369" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                    <i class="fab fa-whatsapp"></i> Schedule Consultation
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- POWER-READY APARTMENTS -->
+<section class="section-dark">
+    <div class="container">
+        <div class="grid-2">
+            <div>
+                <h2 style="color: #f59e0b; margin-bottom: 2rem;">
+                    <i class="fas fa-fire"></i> Power-Ready Apartments™
+                </h2>
+                <h3 style="margin-bottom: 1.5rem;">Energy as an Asset, Not an Expense</h3>
+                
+                <div class="card" style="margin-bottom: 2rem; background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444;">
+                    <h4 style="color: #ef4444;">The old model:</h4>
+                    <ul class="problem-list">
+                        <li><i class="fas fa-times"></i> One large diesel generator</li>
+                        <li><i class="fas fa-times"></i> Fuel theft</li>
+                        <li><i class="fas fa-times"></i> Noise complaints</li>
+                        <li><i class="fas fa-times"></i> Constant breakdowns</li>
+                        <li><i class="fas fa-times"></i> High maintenance costs</li>
+                    </ul>
+                </div>
+                
+                <div class="card" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%); border-left: 4px solid #10b981;">
+                    <h4 style="color: #10b981;">The Q4-LIFE POWER model:</h4>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Modular EcoFlow clusters per block</li>
+                        <li><i class="fas fa-check-circle"></i> Shared solar generation</li>
+                        <li><i class="fas fa-check-circle"></i> Redundant battery architecture</li>
+                        <li><i class="fas fa-check-circle"></i> Smart load control per apartment</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="card card-premium">
+                    <h4 style="color: #f59e0b; margin-bottom: 1.5rem;">Business advantage:</h4>
+                    <ul class="feature-list" style="margin-bottom: 2rem;">
+                        <li><i class="fas fa-chart-line"></i> <strong>Sell or rent as "Power-Ready Apartments"</strong></li>
+                        <li><i class="fas fa-chart-line"></i> <strong>Bundle power into rent</strong></li>
+                        <li><i class="fas fa-chart-line"></i> <strong>Offer premium units with guaranteed uptime</strong></li>
+                        <li><i class="fas fa-chart-line"></i> <strong>Increase property value by 10–20%</strong></li>
+                    </ul>
+                    
+                    <div style="padding: 2rem; background: rgba(245, 158, 11, 0.1); border-radius: 12px; text-align: center;">
+                        <p style="font-size: 1.5rem; color: #f59e0b; font-weight: 700; margin-bottom: 0.5rem;">
+                            This is infrastructure-as-asset.
+                        </p>
+                        <p style="color: rgba(255,255,255,0.7);">
+                            Not expense. Not noise. Not fuel.
+                        </p>
+                    </div>
+                    
+                    <a href="https://wa.me/237691498369" class="btn btn-primary" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                        <i class="fas fa-phone"></i> Speak to an Energy Systems Architect
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY ECOFLOW -->
+<section class="section-light">
+    <div class="container">
+        <div style="text-align: center; max-width: 900px; margin: 0 auto 4rem;">
+            <h2>Why EcoFlow + Q4-LIFE</h2>
+            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.7);">
+                EcoFlow is not chosen because it is popular.<br>
+                It is chosen because it meets <strong style="color: #f59e0b;">non-negotiable standards.</strong>
+            </p>
+        </div>
+        
+        <div class="grid-2">
+            <div>
+                <div class="card">
+                    <h4 style="color: #10b981; margin-bottom: 1.5rem;">EcoFlow Premium Systems</h4>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-cube"></i> <strong>Modular & expandable</strong> — grow without rebuilding</li>
+                        <li><i class="fas fa-battery-full"></i> <strong>Industrial-grade LFP batteries</strong> — 10+ year lifespan</li>
+                        <li><i class="fas fa-volume-mute"></i> <strong>Silent operation</strong> — no noise, no fumes</li>
+                        <li><i class="fas fa-mobile-alt"></i> <strong>Smart control</strong> — full system visibility via app</li>
+                        <li><i class="fas fa-plug"></i> <strong>Grid + solar + battery</strong> orchestration</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="card" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);">
+                    <h4 style="color: #f59e0b; margin-bottom: 1.5rem;">Q4-LIFE adds what hardware alone never can:</h4>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-drafting-compass"></i> <strong>Engineering design</strong></li>
+                        <li><i class="fas fa-brain"></i> <strong>Load intelligence</strong></li>
+                        <li><i class="fas fa-shield-alt"></i> <strong>Risk buffering</strong></li>
+                        <li><i class="fas fa-tools"></i> <strong>Professional installation</strong></li>
+                        <li><i class="fas fa-headset"></i> <strong>Long-term service responsibility</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 4rem;">
+            <p style="font-size: 1.75rem; color: rgba(255,255,255,0.9); font-weight: 300;">
+                Together, this becomes <strong style="color: #f59e0b; font-weight: 700;">Energy Independence as a Service.</strong>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section-dark">
+    <div class="container">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 4rem;">
+            <h2>Our Deployment Process</h2>
+            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.7);">
+                You do not manage complexity. <strong style="color: #10b981;">We do.</strong>
+            </p>
+        </div>
+        
+        <div class="grid-3">
+            <div class="card">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; color: white;">1</div>
+                <h4>Energy Audit & Load Intelligence</h4>
+                <p style="color: rgba(255,255,255,0.7);">We analyze your power consumption, critical loads, and backup requirements.</p>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; color: white;">2</div>
+                <h4>System Architecture & Risk Buffering</h4>
+                <p style="color: rgba(255,255,255,0.7);">Custom design with redundancy and expansion planning built in.</p>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; color: white;">3</div>
+                <h4>Import, Logistics & Quality Control</h4>
+                <p style="color: rgba(255,255,255,0.7);">Genuine EcoFlow systems, properly imported and certified.</p>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; color: white;">4</div>
+                <h4>Professional Installation & Commissioning</h4>
+                <p style="color: rgba(255,255,255,0.7);">Expert installation, testing, and system validation.</p>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; color: white;">5</div>
+                <h4>Client Training & App Enablement</h4>
+                <p style="color: rgba(255,255,255,0.7);">Full training on system operation and mobile app control.</p>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 900; color: white;">6</div>
+                <h4>Ongoing Support & Expansion</h4>
+                <p style="color: rgba(255,255,255,0.7);">Long-term service, maintenance, and system growth planning.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY Q4-LIFE POWER -->
+<section class="section-light">
+    <div class="container">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <h2 style="margin-bottom: 2rem;">We do not compete on price.</h2>
+            <p style="font-size: 1.5rem; color: rgba(255,255,255,0.8); margin-bottom: 3rem; line-height: 1.7;">
+                We compete on certainty, independence, silence, longevity, asset value, and peace of mind.
+            </p>
+            
+            <div class="card" style="text-align: left; padding: 3rem;">
+                <div class="grid-2" style="gap: 3rem;">
+                    <div>
+                        <h4 style="color: #10b981; margin-bottom: 1.5rem;">
+                            <i class="fas fa-check-circle"></i> If quality of life is your standard:
+                        </h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-star"></i> Premium engineering</li>
+                            <li><i class="fas fa-star"></i> Professional installation</li>
+                            <li><i class="fas fa-star"></i> Long-term support</li>
+                            <li><i class="fas fa-star"></i> Asset value increase</li>
+                            <li><i class="fas fa-star"></i> Peace of mind</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: #ef4444; margin-bottom: 1.5rem;">
+                            <i class="fas fa-times-circle"></i> If cheap power is your goal:
+                        </h4>
+                        <p style="font-size: 1.125rem; color: rgba(255,255,255,0.7); line-height: 1.8;">
+                            We are not for you. There are many providers offering budget solutions with no engineering, 
+                            no support, and no accountability. That is not our market.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <p style="font-size: 1.75rem; color: rgba(255,255,255,0.9); font-weight: 300;">
+                    <strong style="color: #f59e0b; font-weight: 700;">Welcome</strong> to energy assurance.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS SECTION -->
+<section class="section-dark">
+    <div class="container">
+        <div class="grid-4">
             <div class="stat-box">
-                <span class="stat-number">312%</span>
-                <p class="stat-label">Month ROI</p>
+                <span class="stat-number">3-7</span>
+                <p class="stat-label">Days Backup Power</p>
             </div>
             <div class="stat-box">
-                <span class="stat-number">10K</span>
+                <span class="stat-number">0dB</span>
+                <p class="stat-label">Silent Operation</p>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">10+</span>
                 <p class="stat-label">Year Lifespan</p>
             </div>
             <div class="stat-box">
-                <span class="stat-number">50</span>
-                <p class="stat-label">Installations</p>
-            </div>
-            <div class="stat-box">
-                <span class="stat-number">247</span>
+                <span class="stat-number">24/7</span>
                 <p class="stat-label">Local Support</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section" style="background: white;" id="problem">
+<!-- CTA SECTION -->
+<section class="cta-section">
     <div class="container">
-        <div class="grid-2">
-            <div>
-                <h2 style="color: #dc2626; margin-bottom: 2rem;">
-                    <i class="fas fa-exclamation-triangle"></i> The African Power Reality
-                </h2>
-                <p style="font-size: 1.25rem; margin-bottom: 2rem; color: #475569; line-height: 1.8;">
-                    Blackouts aren't just an inconvenience — they're destroying businesses and disrupting lives across Africa.
-                </p>
-                
-                <div class="card" style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-left: 6px solid #dc2626; margin-bottom: 2rem;">
-                    <h4 style="color: #dc2626; margin-bottom: 1.5rem;">
-                        <i class="fas fa-money-bill-wave"></i> The Real Cost of Waiting:
-                    </h4>
-                    <ul style="font-size: 1.125rem; line-height: 2.2; color: #991b1b; list-style: none;">
-                        <li><i class="fas fa-hotel" style="color: #dc2626; margin-right: 0.75rem;"></i> <strong>Hotels:</strong> -$830/month per 15-room property</li>
-                        <li><i class="fas fa-utensils" style="color: #dc2626; margin-right: 0.75rem;"></i> <strong>Restaurants:</strong> -$3,800/month spoiled inventory</li>
-                        <li><i class="fas fa-briefcase" style="color: #dc2626; margin-right: 0.75rem;"></i> <strong>Businesses:</strong> -$3,300/month lost productivity</li>
-                        <li><i class="fas fa-home" style="color: #dc2626; margin-right: 0.75rem;"></i> <strong>Work-from-home:</strong> -$1,330/month missed income</li>
-                    </ul>
-                    <p style="margin-top: 1.5rem; font-style: italic; color: #7f1d1d; font-size: 1rem;">
-                        Every month without backup power costs you more than the system itself. Why keep losing money when the solution exists?
-                    </p>
-                </div>
-                
-                <a href="#packages" class="btn btn-primary" style="font-size: 1.125rem;">
-                    <i class="fas fa-arrow-down"></i> See Solutions Below
+        <div class="cta-content">
+            <h2 style="color: white; margin-bottom: 1.5rem;">Ready to stop worrying about power?</h2>
+            <p style="font-size: 1.5rem; margin-bottom: 3rem; opacity: 0.95;">
+                Request an Energy Audit. Speak to an Energy Systems Architect. Design a Power-Ready Property.
+            </p>
+            
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://wa.me/237691498369" class="btn" style="background: white; color: #f59e0b; font-size: 1.125rem; padding: 1.25rem 2.5rem;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp: +237 691 498 369
+                </a>
+                <a href="mailto:info@q4-life.com" class="btn btn-secondary" style="font-size: 1.125rem; padding: 1.25rem 2.5rem; border-color: white; color: white;">
+                    <i class="fas fa-envelope"></i> Email Us
                 </a>
             </div>
-            
-            <div>
-                <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&h=600&fit=crop" 
-                     alt="Power Outage Impact" 
-                     class="product-img"
-                     style="height: 500px;">
-            </div>
         </div>
     </div>
 </section>
 
-
-<section class="section pattern-dots" style="background: #f8fafc;" id="packages">
+<!-- FOOTER -->
+<footer>
     <div class="container">
-        <div style="text-align: center; margin-bottom: 5rem;">
-            <h2><i class="fas fa-box-open"></i> Power Packages</h2>
-            <p style="font-size: 1.25rem; color: #64748b; margin-top: 1rem;">
-                Choose the perfect solution for your needs
+        <div style="text-align: center; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="font-size: 1.5rem; font-weight: 700; color: #f59e0b; margin-bottom: 0.5rem;">
+                Q4-LIFE POWER™
             </p>
-        </div>
-        
-        <div style="margin-bottom: 6rem;">
-            <h3 style="margin-bottom: 3rem;"><i class="fas fa-home"></i> Home & Small Office Packages</h3>
-            
-            <div class="grid-3">
-                <!-- MINI PACKAGE -->
-                <div class="card">
-                    <span class="badge" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; margin-bottom: 1.5rem;">
-                        <i class="fas fa-star"></i> Entry Level
-                    </span>
-                    <h4 style="margin-bottom: 1rem;">Mini Power (4-6 Hours)</h4>
-                    <p style="color: #64748b; margin-bottom: 2rem;">Keep essentials running during short blackouts</p>
-                    
-                    <div class="price" style="margin-bottom: 1.5rem;">$1,250</div>
-                    
-                    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
-                        <p style="font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-box"></i> What's Included:</p>
-                        <ul style="color: #475569; line-height: 2;">
-                            <li>EcoFlow DELTA 2 (1kWh)</li>
-                            <li>1,800W output power</li>
-                            <li>Runs: WiFi, lights, laptop, TV</li>
-                            <li>5-year warranty</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="https://wa.me/237691498369?text=Interested%20in%20Mini%20Package" class="btn btn-primary" style="width: 100%; text-align: center;">
-                        <i class="fab fa-whatsapp"></i> Get Quote
-                    </a>
-                </div>
-                
-                <!-- 8-12 HOUR PACKAGE -->
-                <div class="card" style="border: 3px solid #667eea;">
-                    <span class="badge" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin-bottom: 1.5rem;">
-                        <i class="fas fa-trophy"></i> Most Popular
-                    </span>
-                    <h4 style="margin-bottom: 1rem;">Standard Power (8-12 Hours)</h4>
-                    <p style="color: #64748b; margin-bottom: 2rem;">Run full home or small office through typical outages</p>
-                    
-                    <div class="price" style="margin-bottom: 1.5rem;">$3,200</div>
-                    
-                    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
-                        <p style="font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-box"></i> What's Included:</p>
-                        <ul style="color: #475569; line-height: 2;">
-                            <li>DELTA Pro (3.6kWh)</li>
-                            <li>3,600W output power</li>
-                            <li>Runs: Full home, AC, fridge</li>
-                            <li>Solar-ready, expandable</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="https://wa.me/237691498369?text=Interested%20in%20Standard%20Package" class="btn btn-primary" style="width: 100%; text-align: center;">
-                        <i class="fab fa-whatsapp"></i> Get Quote
-                    </a>
-                </div>
-                
-                <!-- SOLAR PACKAGE -->
-                <div class="card">
-                    <span class="badge" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; margin-bottom: 1.5rem;">
-                        <i class="fas fa-sun"></i> Solar Hybrid
-                    </span>
-                    <h4 style="margin-bottom: 1rem;">Solar + Battery (24hrs+)</h4>
-                    <p style="color: #64748b; margin-bottom: 2rem;">True energy independence with solar charging</p>
-                    
-                    <div class="price" style="margin-bottom: 1.5rem;">$8,300</div>
-                    
-                    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
-                        <p style="font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-box"></i> What's Included:</p>
-                        <ul style="color: #475569; line-height: 2;">
-                            <li>DELTA Pro + Extra Battery (7.2kWh)</li>
-                            <li>4.8kW Solar Panels</li>
-                            <li>Smart Switchover</li>
-                            <li>Near-infinite runtime</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="https://wa.me/237691498369?text=Interested%20in%20Solar%20Package" class="btn btn-primary" style="width: 100%; text-align: center;">
-                        <i class="fab fa-whatsapp"></i> Get Quote
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div>
-            <h3 style="margin-bottom: 3rem;"><i class="fas fa-building"></i> Hotel & Hospitality Packages</h3>
-            
-            <div class="grid-3">
-                <!-- HOTEL CORE -->
-                <div class="card">
-                    <span class="badge" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; margin-bottom: 1.5rem;">
-                        <i class="fas fa-hotel"></i> Hotel Core
-                    </span>
-                    <h4 style="margin-bottom: 1rem;">15-Room Property</h4>
-                    <p style="color: #64748b; margin-bottom: 2rem;">Essential backup for small hotels and guesthouses</p>
-                    
-                    <div class="price" style="margin-bottom: 1.5rem;">$15,000</div>
-                    
-                    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
-                        <p style="font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-bolt"></i> Coverage:</p>
-                        <ul style="color: #475569; line-height: 2;">
-                            <li>2x DELTA Pro (7.2kWh total)</li>
-                            <li>Reception, WiFi, POS</li>
-                            <li>Guest room basics</li>
-                            <li>8-10 hour runtime</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="https://wa.me/237691498369?text=Interested%20in%20Hotel%20Core%20Package" class="btn btn-primary" style="width: 100%; text-align: center;">
-                        <i class="fab fa-whatsapp"></i> Get Quote
-                    </a>
-                </div>
-                
-                <!-- HOTEL SOLAR -->
-                <div class="card" style="border: 3px solid #f59e0b;">
-                    <span class="badge" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; margin-bottom: 1.5rem;">
-                        <i class="fas fa-sun"></i> Best ROI
-                    </span>
-                    <h4 style="margin-bottom: 1rem;">Hotel Solar Package</h4>
-                    <p style="color: #64748b; margin-bottom: 2rem;">Complete solar+battery solution for 24/7 operation</p>
-                    
-                    <div class="price" style="margin-bottom: 1.5rem;">$33,300</div>
-                    
-                    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
-                        <p style="font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-bolt"></i> Coverage:</p>
-                        <ul style="color: #475569; line-height: 2;">
-                            <li>3x DELTA Pro + Batteries (21.6kWh)</li>
-                            <li>10kW Solar Array</li>
-                            <li>Full property coverage</li>
-                            <li>ROI: 6-8 months</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="https://wa.me/237691498369?text=Interested%20in%20Hotel%20Solar%20Package" class="btn btn-primary" style="width: 100%; text-align: center;">
-                        <i class="fab fa-whatsapp"></i> Get Quote
-                    </a>
-                </div>
-                
-                <!-- HOTEL ENTERPRISE -->
-                <div class="card">
-                    <span class="badge" style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); color: white; margin-bottom: 1.5rem;">
-                        <i class="fas fa-crown"></i> Premium
-                    </span>
-                    <h4 style="margin-bottom: 1rem;">Enterprise Hotel Solution</h4>
-                    <p style="color: #64748b; margin-bottom: 2rem;">Large hotels, resorts, conference centers</p>
-                    
-                    <div class="price" style="margin-bottom: 1.5rem;">$66,700+</div>
-                    
-                    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
-                        <p style="font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-bolt"></i> Coverage:</p>
-                        <ul style="color: #475569; line-height: 2;">
-                            <li>6+ Ocean Pro units (45kWh+)</li>
-                            <li>20-40kW Solar</li>
-                            <li>Whole-property backup</li>
-                            <li>Custom design included</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="https://wa.me/237691498369?text=Interested%20in%20Enterprise%20Hotel%20Package" class="btn btn-primary" style="width: 100%; text-align: center;">
-                        <i class="fab fa-whatsapp"></i> Request Consultation
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section" style="background: white;" id="products">
-    <div class="container">
-        <div style="text-align: center; margin-bottom: 5rem;">
-            <h2><i class="fas fa-battery-full"></i> Product Lineup</h2>
-            <p style="font-size: 1.25rem; color: #64748b; margin-top: 1rem;">
-                Premium battery systems from industry leaders
+            <p style="color: rgba(255,255,255,0.5); margin-bottom: 1rem;">
+                Power everything. Live uninterrupted. Build assets.
             </p>
-        </div>
-        
-        <!-- EcoFlow DELTA Pro -->
-        <div class="card" style="margin-bottom: 4rem;">
-            <div class="grid-2" style="align-items: start;">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&h=600&fit=crop" 
-                         alt="EcoFlow DELTA Pro" 
-                         class="product-img">
-                </div>
-                <div>
-                    <span class="badge" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; margin-bottom: 1.5rem;">
-                        <i class="fas fa-fire"></i> PRO CHOICE
-                    </span>
-                    <h3 style="margin-bottom: 1rem;">EcoFlow DELTA Pro</h3>
-                    <p style="font-size: 1.125rem; color: #64748b; margin-bottom: 2rem; line-height: 1.8;">
-                        Serious backup power for homes and businesses. Expandable to 25kWh for multi-day off-grid capability.
-                    </p>
-                    
-                    <div style="background: #f8fafc; padding: 2rem; border-radius: 16px; margin-bottom: 2rem;">
-                        <table style="margin: 0;">
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Capacity:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">3,600Wh (expandable to 25kWh)</td>
-                            </tr>
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Output Power:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">3,600W (surge 7,200W)</td>
-                            </tr>
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Battery Type:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">LFP (3,500+ cycles to 80%)</td>
-                            </tr>
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Recharge:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">1.8hr (0-80% dual charging)</td>
-                            </tr>
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Warranty:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">5 years</td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
-                        <div>
-                            <p style="color: #64748b; font-size: 0.875rem;">Starting at</p>
-                            <p class="price">$6,300</p>
-                        </div>
-                        <a href="https://wa.me/237691498369?text=Interested%20in%20DELTA%20Pro" class="btn btn-primary">
-                            <i class="fab fa-whatsapp"></i> Get Quote
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- EcoFlow Ocean Pro -->
-        <div class="card" style="margin-bottom: 4rem; background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border: 2px solid #3b82f6;">
-            <div class="grid-2" style="align-items: start;">
-                <div>
-                    <span class="badge" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; margin-bottom: 1.5rem;">
-                        <i class="fas fa-home"></i> WHOLE-HOME
-                    </span>
-                    <h3 style="margin-bottom: 1rem;">EcoFlow Ocean Pro (PowerOcean)</h3>
-                    <p style="font-size: 1.125rem; color: #64748b; margin-bottom: 2rem; line-height: 1.8;">
-                        Integrated whole-home backup system. Direct competitor to Tesla Powerwall with modular design.
-                    </p>
-                    
-                    <div style="background: white; padding: 2rem; border-radius: 16px; margin-bottom: 2rem; border: 1px solid #dbeafe;">
-                        <table style="margin: 0;">
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Capacity:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">5kWh per unit (modular to 45kWh)</td>
-                            </tr>
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Output Power:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">7.2kW continuous (10kW peak)</td>
-                            </tr>
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Installation:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">Wall-mounted, professional required</td>
-                            </tr>
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Smart Features:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">App, auto-switchover, load management</td>
-                            </tr>
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Warranty:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">10 years</td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
-                        <div>
-                            <p style="color: #64748b; font-size: 0.875rem;">Starting at</p>
-                            <p class="price" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$9,200</p>
-                        </div>
-                        <a href="https://wa.me/237691498369?text=Interested%20in%20Ocean%20Pro" class="btn" style="background: #3b82f6; color: white;">
-                            <i class="fab fa-whatsapp"></i> Get Quote
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" 
-                         alt="EcoFlow Ocean Pro" 
-                         class="product-img">
-                </div>
-            </div>
-        </div>
-        
-        <!-- Tesla Powerwall 3 -->
-        <div class="card" style="background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%); border: 3px solid #dc2626;">
-            <div class="grid-2" style="align-items: start;">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1617396900799-f4ec2b43c7ae?w=800&h=600&fit=crop" 
-                         alt="Tesla Powerwall 3" 
-                         class="product-img">
-                </div>
-                <div>
-                    <span class="badge" style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: white; margin-bottom: 1.5rem;">
-                        <i class="fas fa-crown"></i> PREMIUM
-                    </span>
-                    <h3 style="margin-bottom: 1rem;">Tesla Powerwall 3</h3>
-                    <p style="font-size: 1.125rem; color: #64748b; margin-bottom: 2rem; line-height: 1.8;">
-                        The gold standard in home energy storage. Premium brand, premium performance, premium price.
-                    </p>
-                    
-                    <div style="background: white; padding: 2rem; border-radius: 16px; margin-bottom: 2rem; border: 1px solid #fee2e2;">
-                        <table style="margin: 0;">
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Capacity:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">13.5kWh (usable)</td>
-                            </tr>
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Output Power:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">11.5kW continuous (full home)</td>
-                            </tr>
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Scalability:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">Up to 4 units (54kWh)</td>
-                            </tr>
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Warranty:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0;">10 years</td>
-                            </tr>
-                            <tr>
-                                <td style="border: none; padding: 0.75rem 0;"><strong>Availability:</strong></td>
-                                <td style="border: none; padding: 0.75rem 0; color: #dc2626;"><i class="fas fa-exclamation-triangle"></i> Limited in Africa (long lead times)</td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <div style="padding: 1.5rem; background: #fef2f2; border-radius: 12px; border-left: 4px solid #dc2626; margin-bottom: 2rem;">
-                        <h4 style="color: #dc2626; font-size: 1.125rem; margin-bottom: 1rem;">
-                            <i class="fas fa-balance-scale"></i> Why Tesla (and why not):
-                        </h4>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-                            <div style="background: #d1fae5; padding: 1rem; border-radius: 8px;">
-                                <p style="font-weight: 600; color: #065f46; margin-bottom: 0.5rem;"><i class="fas fa-check-circle"></i> Pros:</p>
-                                <ul style="color: #047857; font-size: 0.95rem; line-height: 1.8;">
-                                    <li>Tesla brand prestige</li>
-                                    <li>Sleek design</li>
-                                    <li>High capacity per unit</li>
-                                </ul>
-                            </div>
-                            <div style="background: #fee2e2; padding: 1rem; border-radius: 8px;">
-                                <p style="font-weight: 600; color: #7f1d1d; margin-bottom: 0.5rem;"><i class="fas fa-times-circle"></i> Cons:</p>
-                                <ul style="color: #991b1b; font-size: 0.95rem; line-height: 1.8;">
-                                    <li>2-3x price of EcoFlow</li>
-                                    <li>6-12 month wait times</li>
-                                    <li>Limited local support</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
-                        <div>
-                            <p style="color: #64748b; font-size: 0.875rem;">Starting at</p>
-                            <p class="price" style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$20,000</p>
-                            <p style="font-size: 0.875rem; color: #dc2626;">+ installation</p>
-                        </div>
-                        <a href="https://wa.me/237691498369?text=Interested%20in%20Tesla%20Powerwall%203" class="btn" style="background: #dc2626; color: white;">
-                            <i class="fas fa-info-circle"></i> Request Info
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="section gradient-primary" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); text-align: center; color: white;">
-    <div class="container">
-        <h2 style="color: white; margin-bottom: 2rem;"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
-        <p style="font-size: 1.25rem; opacity: 0.95; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-            Everything you need to know about backup power systems, batteries, and installation.
-        </p>
-        
-        <div style="max-width: 900px; margin: 0 auto; text-align: left;">
-            <div class="card" style="margin-bottom: 2rem;">
-                <h4 style="margin-bottom: 1rem;"><i class="fas fa-clock" style="color: #667eea;"></i> How long will the battery last? (Lifespan)</h4>
-                <p style="color: #64748b; line-height: 1.8;">
-                    EcoFlow batteries use LFP chemistry rated for 3,000-6,000+ cycles to 80% capacity. That's 10-15 years of daily use. 
-                    Tesla Powerwall lasts 10+ years. Much longer than traditional generators.
-                </p>
-            </div>
-            
-            <div class="card" style="margin-bottom: 2rem;">
-                <h4 style="margin-bottom: 1rem;"><i class="fas fa-expand" style="color: #667eea;"></i> Can I expand the system later if my needs grow?</h4>
-                <p style="color: #64748b; line-height: 1.8;">
-                    Yes! DELTA Pro is modular — add extra batteries (up to 25kWh), solar panels, or even additional DELTA Pro units. 
-                    We design systems with future expansion in mind.
-                </p>
-            </div>
-            
-            <div class="card" style="margin-bottom: 2rem;">
-                <h4 style="margin-bottom: 1rem;"><i class="fas fa-tools" style="color: #667eea;"></i> How long does installation take?</h4>
-                <p style="color: #64748b; line-height: 1.8;">
-                    <strong>Portable systems (DELTA 2/Pro):</strong> 2-4 hours for basic setup.<br>
-                    <strong>Whole-home systems (Ocean Pro/Powerwall):</strong> 1-3 days depending on complexity.<br>
-                    <strong>Solar integration:</strong> Add 2-5 days for panel installation.
-                </p>
-            </div>
-            
-            <div class="card" style="margin-bottom: 2rem;">
-                <h4 style="margin-bottom: 1rem;"><i class="fas fa-wrench" style="color: #667eea;"></i> What maintenance is required?</h4>
-                <p style="color: #64748b; line-height: 1.8;">
-                    Nearly zero! Modern lithium batteries don't need water, fuel, or regular servicing like generators. 
-                    Just keep firmware updated (we help with this) and dust off solar panels occasionally.
-                </p>
-            </div>
-            
-            <div class="card">
-                <h4 style="margin-bottom: 1rem;"><i class="fas fa-shopping-cart" style="color: #667eea;"></i> Why EcoFlow instead of cheap Chinese batteries from AliExpress?</h4>
-                <p style="color: #64748b; line-height: 1.8;">
-                    <strong>Safety:</strong> EcoFlow has UL, CE, FCC certifications. Cheap batteries can overheat or fail dangerously.<br>
-                    <strong>Warranty:</strong> 5-10 year coverage vs none.<br>
-                    <strong>Support:</strong> We provide local installation, troubleshooting, and service. AliExpress? Good luck.<br>
-                    <strong>Performance:</strong> Certified specs vs fictional ratings.
-                </p>
-            </div>
-            
-            <div class="card" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 4px solid #2563eb;">
-                <h4 style="margin-bottom: 1rem;"><i class="fas fa-wifi" style="color: #2563eb;"></i> Need Reliable Internet Too?</h4>
-                <p style="color: #1e40af; line-height: 1.8; margin-bottom: 1.5rem;">
-                    Power backup is only half the solution. Pair it with <strong>Starlink satellite internet</strong> for complete infrastructure independence. 
-                    We provide enterprise-grade connectivity that works anywhere — perfect complement to your power system.
-                </p>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="/divisions/connect-enterprise.html" style="display: inline-block; padding: 0.875rem 2rem; background: #2563eb; color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: all 0.3s;">
-                        <i class="fas fa-globe"></i> View Connect Division →
-                    </a>
-                    <a href="https://wa.me/237677604100?text=I%20need%20Power%20+%20Internet%20bundle" style="display: inline-block; padding: 0.875rem 2rem; background: white; color: #2563eb; text-decoration: none; border-radius: 10px; font-weight: 600; border: 2px solid #2563eb; transition: all 0.3s;">
-                        <i class="fab fa-whatsapp"></i> Get Bundle Quote
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div style="margin-top: 4rem; padding: 3rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 20px;">
-            <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
-                <i class="fas fa-comments"></i> Power systems can be complex. We're happy to explain anything in detail — no technical jargon, just straight talk.
+            <p style="color: rgba(255,255,255,0.4); font-size: 0.875rem;">
+                © 2026 Q4Life. All rights reserved. | Energy Independence as a Service (EIaaS)
             </p>
-            <a href="https://wa.me/237691498369?text=I%20have%20questions%20about%20backup%20power" 
-               class="btn" 
-               style="background: white; color: #667eea; font-size: 1.125rem; padding: 1.125rem 2.5rem;">
-                <i class="fab fa-whatsapp"></i> Ask Your Question on WhatsApp
-            </a>
-        </div>
-    </div>
-</section>
-
-<section class="section" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); text-align: center; color: white;">
-    <div class="container">
-        <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); border-radius: 24px; padding: 4rem 3rem; border: 2px solid rgba(255,255,255,0.2);">
-            <i class="fas fa-bolt" style="font-size: 4rem; color: #10b981; margin-bottom: 2rem;"></i>
-            <h2 style="color: white; margin-bottom: 2rem;">Ready to Stop Losing Money to Blackouts?</h2>
-            <p style="font-size: 1.5rem; margin-bottom: 3rem; opacity: 0.95; max-width: 800px; margin-left: auto; margin-right: auto;">
-                Get a custom quote in 24 hours. Free site assessment. No obligation.
-            </p>
-            
-            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
-                <a href="https://wa.me/237691498369?text=Hi!%20I%20need%20a%20quote%20for%20backup%20power" 
-                   class="btn" 
-                   style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: white; font-size: 1.25rem; padding: 1.25rem 3rem; box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);">
-                    <i class="fab fa-whatsapp"></i> Contact via WhatsApp
-                    <p style="font-size: 0.875rem; margin-top: 0.5rem; opacity: 0.9;">Response in 5-15 minutes (8am-8pm)</p>
-                </a>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto; text-align: left;">
-                <div>
-                    <i class="fas fa-phone" style="font-size: 2rem; color: #10b981; margin-bottom: 1rem;"></i>
-                    <p style="opacity: 0.8;"><strong>Call Us:</strong></p>
-                    <a href="tel:+237691498369" style="font-size: 1.125rem; color: #10b981; text-decoration: none; font-weight: 600;">📞 Click to Call</a>
-                    <p style="font-size: 0.875rem; opacity: 0.7;">Monday-Saturday 8am-8pm</p>
-                </div>
-                <div>
-                    <i class="fas fa-map-marker-alt" style="font-size: 2rem; color: #10b981; margin-bottom: 1rem;"></i>
-                    <p style="opacity: 0.8;"><strong>Visit Our Office:</strong></p>
-                    <p style="font-size: 1.125rem;">Douala, Cameroon</p>
-                    <p style="font-size: 0.875rem; opacity: 0.7;">Free site assessment</p>
-                </div>
-                <div>
-                    <i class="fas fa-envelope" style="font-size: 2rem; color: #10b981; margin-bottom: 1rem;"></i>
-                    <p style="opacity: 0.8;"><strong>Email:</strong></p>
-                    <p style="font-size: 1.125rem;">connect@q4-life.com</p>
-                    <p style="font-size: 0.875rem; opacity: 0.7;">24-48hr response</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer style="background: #0f172a; color: white; padding: 4rem 0 2rem;">
-    <div class="container">
-        <div class="grid-4" style="margin-bottom: 3rem;">
-            <div>
-                <h4 style="margin-bottom: 1.5rem; color: white; font-size: 1.25rem;">
-                    <i class="fas fa-bolt" style="color: #10b981;"></i> Q4Life Power
-                </h4>
-                <p style="opacity: 0.8; line-height: 1.8;">
-                    Off-grid and backup power solutions that keep Starlink and essential operations running during blackouts.
-                </p>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 1.5rem; color: white; font-size: 1rem;">Solutions</h4>
-                <p><a href="#packages" style="color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem;">Home Backup</a></p>
-                <p><a href="#packages" style="color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem;">Hotel Systems</a></p>
-                <p><a href="#packages" style="color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem;">Enterprise Power</a></p>
-                <p><a href="#products" style="color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem;">Solar Integration</a></p>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 1.5rem; color: white; font-size: 1rem;">Products</h4>
-                <p><a href="#products" style="color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem;">EcoFlow (Primary)</a></p>
-                <p><a href="#products" style="color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem;">Tesla Powerwall</a></p>
-                <p><a href="#products" style="color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem;">Solar Panels</a></p>
-                <p><a href="#products" style="color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem;">Accessories</a></p>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 1.5rem; color: white; font-size: 1rem;">Company</h4>
-                <p><a href="/about.html" style="color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem;">About Q4Life</a></p>
-                <p><a href="connect.html" style="color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem;">Starlink Internet</a></p>
-                <p><a href="/#services" style="color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem;">All Services</a></p>
-                <p><a href="/contact-us.html" style="color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem;">Contact</a></p>
-            </div>
-        </div>
-        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.6;">
-            <p>&copy; 2026 Q4Life Power Solutions. Part of Q4Life Global. | We don't sell guesswork. We engineer reliability.</p>
         </div>
     </div>
 </footer>
-
-<a href="https://wa.me/237691498369" class="whatsapp-float">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-<script>
-// Mobile Menu Toggle
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navMenu = document.getElementById('navMenu');
-const navOverlay = document.getElementById('navOverlay');
-const navLinks = navMenu.querySelectorAll('a');
-
-function toggleMenu() {
-    mobileMenuBtn.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    navOverlay.classList.toggle('active');
-    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-}
-
-if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', toggleMenu);
-    navOverlay.addEventListener('click', toggleMenu);
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navMenu.classList.contains('active')) toggleMenu();
-        });
-    });
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navMenu.classList.contains('active')) toggleMenu();
-    });
-}
-</script>
 
 </body>
 </html>
