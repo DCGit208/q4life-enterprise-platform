@@ -1090,6 +1090,652 @@
     </div>
 </section>
 
+<!-- INTERACTIVE POWER SOLUTION FINDER -->
+<section class="section-dark">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="color: #f59e0b; margin-bottom: 1rem;">Power Solution Finder</h2>
+            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.6); max-width: 800px; margin: 0 auto;">
+                Select your appliances and desired runtime - we'll recommend the perfect solution across all brands.
+            </p>
+        </div>
+
+        <!-- Calculator Interface -->
+        <div class="card" style="max-width: 1200px; margin: 0 auto; background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);">
+            <div class="grid-2" style="gap: 3rem;">
+                <!-- Left: Appliance Selection -->
+                <div>
+                    <h3 style="color: #f59e0b; margin-bottom: 1.5rem;">Select Your Appliances</h3>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: #10b981; font-size: 1rem; margin-bottom: 1rem;">Essential</h4>
+                        <label style="display: flex; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" class="appliance-checkbox" data-watts="150" data-name="Refrigerator" style="margin-right: 1rem; width: 20px; height: 20px;">
+                            <span style="flex: 1;">Refrigerator</span>
+                            <span style="color: rgba(255,255,255,0.5);">150W</span>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" class="appliance-checkbox" data-watts="40" data-name="LED Lights (4-6)" style="margin-right: 1rem; width: 20px; height: 20px;">
+                            <span style="flex: 1;">LED Lights (4-6 bulbs)</span>
+                            <span style="color: rgba(255,255,255,0.5);">40W</span>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" class="appliance-checkbox" data-watts="20" data-name="WiFi Router" style="margin-right: 1rem; width: 20px; height: 20px;">
+                            <span style="flex: 1;">WiFi Router + Modem</span>
+                            <span style="color: rgba(255,255,255,0.5);">20W</span>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" class="appliance-checkbox" data-watts="20" data-name="Phone Charging" style="margin-right: 1rem; width: 20px; height: 20px;">
+                            <span style="flex: 1;">Phone Charging (2 devices)</span>
+                            <span style="color: rgba(255,255,255,0.5);">20W</span>
+                        </label>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: #10b981; font-size: 1rem; margin-bottom: 1rem;">Medium Load</h4>
+                        <label style="display: flex; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" class="appliance-checkbox" data-watts="100" data-name="Laptop + Monitor" style="margin-right: 1rem; width: 20px; height: 20px;">
+                            <span style="flex: 1;">Laptop + Monitor</span>
+                            <span style="color: rgba(255,255,255,0.5);">100W</span>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" class="appliance-checkbox" data-watts="100" data-name="TV 42 inch" style="margin-right: 1rem; width: 20px; height: 20px;">
+                            <span style="flex: 1;">TV (42")</span>
+                            <span style="color: rgba(255,255,255,0.5);">100W</span>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" class="appliance-checkbox" data-watts="150" data-name="Ceiling Fans (2)" style="margin-right: 1rem; width: 20px; height: 20px;">
+                            <span style="flex: 1;">Ceiling Fans (2)</span>
+                            <span style="color: rgba(255,255,255,0.5);">150W</span>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" class="appliance-checkbox" data-watts="800" data-name="Microwave" style="margin-right: 1rem; width: 20px; height: 20px;">
+                            <span style="flex: 1;">Microwave (occasional use)</span>
+                            <span style="color: rgba(255,255,255,0.5);">800W</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <h4 style="color: #10b981; font-size: 1rem; margin-bottom: 1rem;">High Power</h4>
+                        <label style="display: flex; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" class="appliance-checkbox" data-watts="1200" data-name="Window AC" style="margin-right: 1rem; width: 20px; height: 20px;">
+                            <span style="flex: 1;">Window AC Unit</span>
+                            <span style="color: rgba(255,255,255,0.5);">1200W</span>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" class="appliance-checkbox" data-watts="1800" data-name="Split AC" style="margin-right: 1rem; width: 20px; height: 20px;">
+                            <span style="flex: 1;">Split AC Unit</span>
+                            <span style="color: rgba(255,255,255,0.5);">1800W</span>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" class="appliance-checkbox" data-watts="1500" data-name="Electric Water Heater" style="margin-right: 1rem; width: 20px; height: 20px;">
+                            <span style="flex: 1;">Electric Water Heater</span>
+                            <span style="color: rgba(255,255,255,0.5);">1500W</span>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" class="appliance-checkbox" data-watts="500" data-name="Washing Machine" style="margin-right: 1rem; width: 20px; height: 20px;">
+                            <span style="flex: 1;">Washing Machine</span>
+                            <span style="color: rgba(255,255,255,0.5);">500W</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Right: Runtime & Results -->
+                <div>
+                    <h3 style="color: #f59e0b; margin-bottom: 1.5rem;">Desired Runtime</h3>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <input type="range" id="runtime-slider" min="8" max="72" value="24" step="4" style="width: 100%; height: 8px; border-radius: 4px; background: rgba(255,255,255,0.2); outline: none; appearance: none;">
+                        <div style="display: flex; justify-content: space-between; margin-top: 0.5rem; color: rgba(255,255,255,0.5); font-size: 0.875rem;">
+                            <span>8h</span>
+                            <span>24h</span>
+                            <span>48h</span>
+                            <span>72h</span>
+                        </div>
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <span style="font-size: 2rem; color: #f59e0b; font-weight: 700;" id="runtime-display">24</span>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 1.25rem;"> hours</span>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
+                        <h4 style="color: #10b981; margin-bottom: 1rem;">Your Load Summary</h4>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <span style="color: rgba(255,255,255,0.6);">Total Power Draw:</span>
+                            <span style="color: white; font-weight: 600;"><span id="total-watts">0</span>W</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <span style="color: rgba(255,255,255,0.6);">Runtime Needed:</span>
+                            <span style="color: white; font-weight: 600;"><span id="runtime-needed">24</span>h</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.2);">
+                            <span style="color: rgba(255,255,255,0.6);">Required Capacity:</span>
+                            <span style="color: #f59e0b; font-weight: 700; font-size: 1.25rem;"><span id="required-capacity">0</span> Wh</span>
+                        </div>
+                    </div>
+
+                    <!-- Recommendation Results -->
+                    <div id="recommendation-results" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%); padding: 2rem; border-radius: 12px; border: 2px solid rgba(16, 185, 129, 0.3);">
+                        <h4 style="color: #10b981; margin-bottom: 1.5rem; text-align: center;">Recommended Solutions</h4>
+                        <div id="recommendations-list">
+                            <p style="text-align: center; color: rgba(255,255,255,0.5);">
+                                Select appliances above to see recommendations
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ECOFLOW RUNTIME SCENARIOS -->
+<section class="section-light">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="color: #f59e0b; margin-bottom: 1rem;">EcoFlow Solutions by Runtime</h2>
+            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.6); max-width: 800px; margin: 0 auto;">
+                Flexible portable and whole-home power solutions for every scenario.
+            </p>
+        </div>
+
+        <!-- Runtime Solutions Table -->
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: separate; border-spacing: 0; background: rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden;">
+                <thead>
+                    <tr style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.2) 100%);">
+                        <th style="padding: 1.5rem; text-align: left; color: #f59e0b; font-size: 1.1rem; border-bottom: 2px solid rgba(245, 158, 11, 0.3);">Scenario</th>
+                        <th style="padding: 1.5rem; text-align: center; color: #f59e0b; font-size: 1.1rem; border-bottom: 2px solid rgba(245, 158, 11, 0.3);">Runtime</th>
+                        <th style="padding: 1.5rem; text-align: left; color: #f59e0b; font-size: 1.1rem; border-bottom: 2px solid rgba(245, 158, 11, 0.3);">Appliances Powered</th>
+                        <th style="padding: 1.5rem; text-align: center; color: #f59e0b; font-size: 1.1rem; border-bottom: 2px solid rgba(245, 158, 11, 0.3);">Recommended System</th>
+                        <th style="padding: 1.5rem; text-align: center; color: #f59e0b; font-size: 1.1rem; border-bottom: 2px solid rgba(245, 158, 11, 0.3);">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Scenario 1: Portable Camping -->
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="background: rgba(245, 158, 11, 0.15); padding: 0.75rem; border-radius: 8px; min-width: 50px; text-align: center;">
+                                    <i class="fas fa-campground" style="color: #f59e0b; font-size: 1.5rem;"></i>
+                                </div>
+                                <div>
+                                    <strong style="color: white; display: block; margin-bottom: 0.25rem;">Portable Camping</strong>
+                                    <span style="color: rgba(255,255,255,0.5); font-size: 0.875rem;">Outdoor adventures</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; font-size: 1.5rem;">24-48h</strong>
+                        </td>
+                        <td style="padding: 1.5rem;">
+                            <ul style="list-style: none; color: rgba(255,255,255,0.7); line-height: 1.8;">
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> LED lights (30W)</li>
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> Phone/tablet charging (30W)</li>
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> Portable fridge (60W)</li>
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> Laptop (80W)</li>
+                                <li style="margin-top: 0.5rem; font-size: 0.875rem; color: rgba(255,255,255,0.5);"><strong>Total:</strong> ~150W average</li>
+                            </ul>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block; margin-bottom: 0.5rem;">Delta 2</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">1024Wh | 1800W</span>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: #f59e0b; font-size: 1.5rem;">Coming Soon</strong>
+                            </div>
+                            <a href="https://wa.me/237677604100?text=I%20need%20Portable/Camping%20EcoFlow%20-%20Delta%202" class="btn btn-primary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem; background: #f59e0b;">
+                                Get Quote
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Scenario 2: Home Essential 24h -->
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="background: rgba(245, 158, 11, 0.15); padding: 0.75rem; border-radius: 8px; min-width: 50px; text-align: center;">
+                                    <i class="fas fa-home" style="color: #f59e0b; font-size: 1.5rem;"></i>
+                                </div>
+                                <div>
+                                    <strong style="color: white; display: block; margin-bottom: 0.25rem;">Home Essential 24h</strong>
+                                    <span style="color: rgba(255,255,255,0.5); font-size: 0.875rem;">Basic home backup</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; font-size: 1.5rem;">24h</strong>
+                        </td>
+                        <td style="padding: 1.5rem;">
+                            <ul style="list-style: none; color: rgba(255,255,255,0.7); line-height: 1.8;">
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> Refrigerator (150W)</li>
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> Lights + WiFi (60W)</li>
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> TV + decoder (100W)</li>
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> Fans + charging (120W)</li>
+                                <li style="margin-top: 0.5rem; font-size: 0.875rem; color: rgba(255,255,255,0.5);"><strong>Total:</strong> ~400W average</li>
+                            </ul>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block; margin-bottom: 0.5rem;">Delta Pro</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">3600Wh | 3600W</span>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: #f59e0b; font-size: 1.5rem;">Coming Soon</strong>
+                            </div>
+                            <a href="https://wa.me/237677604100?text=I%20need%20Home%20Essential%2024h%20EcoFlow%20-%20Delta%20Pro" class="btn btn-primary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem; background: #f59e0b;">
+                                Get Quote
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Scenario 3: Whole Home 48h -->
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="background: rgba(245, 158, 11, 0.15); padding: 0.75rem; border-radius: 8px; min-width: 50px; text-align: center;">
+                                    <i class="fas fa-building" style="color: #f59e0b; font-size: 1.5rem;"></i>
+                                </div>
+                                <div>
+                                    <strong style="color: white; display: block; margin-bottom: 0.25rem;">Whole Home 48h</strong>
+                                    <span style="color: rgba(255,255,255,0.5); font-size: 0.875rem;">Extended home backup</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; font-size: 1.5rem;">48h</strong>
+                        </td>
+                        <td style="padding: 1.5rem;">
+                            <ul style="list-style: none; color: rgba(255,255,255,0.7); line-height: 1.8;">
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> All essentials above +</li>
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> Window AC (1200W)</li>
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> Microwave occasional (800W)</li>
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> Water pump (500W)</li>
+                                <li style="margin-top: 0.5rem; font-size: 0.875rem; color: rgba(255,255,255,0.5);"><strong>Total:</strong> ~900W average</li>
+                            </ul>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block; margin-bottom: 0.5rem;">Delta Pro + Battery</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">7200Wh | 3600W</span>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: #f59e0b; font-size: 1.5rem;">Coming Soon</strong>
+                            </div>
+                            <a href="https://wa.me/237677604100?text=I%20need%20Whole%20Home%2048h%20EcoFlow%20-%20Delta%20Pro%20plus%20Battery" class="btn btn-primary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem; background: #f59e0b;">
+                                Get Quote
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Scenario 4: Off-Grid Solar -->
+                    <tr>
+                        <td style="padding: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="background: rgba(245, 158, 11, 0.15); padding: 0.75rem; border-radius: 8px; min-width: 50px; text-align: center;">
+                                    <i class="fas fa-sun" style="color: #f59e0b; font-size: 1.5rem;"></i>
+                                </div>
+                                <div>
+                                    <strong style="color: white; display: block; margin-bottom: 0.25rem;">Off-Grid Unlimited</strong>
+                                    <span style="color: rgba(255,255,255,0.5); font-size: 0.875rem;">Solar recharge daily</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; font-size: 1.5rem;">∞</strong>
+                            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.25rem;">With solar</div>
+                        </td>
+                        <td style="padding: 1.5rem;">
+                            <ul style="list-style: none; color: rgba(255,255,255,0.7); line-height: 1.8;">
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> Medium load 24/7</li>
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> ~800W continuous</li>
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> 1600W solar panels</li>
+                                <li><i class="fas fa-check" style="color: #10b981;"></i> Daily recharge cycle</li>
+                                <li style="margin-top: 0.5rem; font-size: 0.875rem; color: rgba(255,255,255,0.5);"><strong>Production:</strong> 8-10kWh/day</li>
+                            </ul>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block; margin-bottom: 0.5rem;">Delta Pro + Battery<br>+ 1600W Solar</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">7200Wh storage</span>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: #f59e0b; font-size: 1.5rem;">Coming Soon</strong>
+                            </div>
+                            <a href="https://wa.me/237677604100?text=I%20need%20Off-Grid%20Unlimited%20EcoFlow%20system" class="btn btn-primary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem; background: #f59e0b;">
+                                Get Quote
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.1) 100%); text-align: center;">
+            <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                <i class="fas fa-info-circle" style="color: #f59e0b;"></i> 
+                <strong>EcoFlow Advantages:</strong> Fastest deployment (plug-and-play), modular expansion up to 90kWh with Smart Home Panel, 
+                app control via WiFi/Bluetooth, 15 versatile outlets per unit. Perfect for flexibility and rapid installation.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- CONSOLIDATED COMPARISON TABLE -->
+<section class="section-dark">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="color: #10b981; margin-bottom: 1rem;">Compare All Solutions by Your Needs</h2>
+            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.6); max-width: 900px; margin: 0 auto;">
+                Side-by-side comparison of Anker, Tesla, and EcoFlow for the same runtime scenarios.
+            </p>
+        </div>
+
+        <!-- Comparison Table -->
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: separate; border-spacing: 0; background: rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden;">
+                <thead>
+                    <tr style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);">
+                        <th style="padding: 1.5rem; text-align: left; color: white; font-size: 1.1rem; border-bottom: 2px solid rgba(16, 185, 129, 0.3);">Scenario</th>
+                        <th style="padding: 1.5rem; text-align: center; color: #10b981; font-size: 1.1rem; border-bottom: 2px solid rgba(16, 185, 129, 0.3);">
+                            <i class="fas fa-bolt"></i> Anker SOLIX
+                        </th>
+                        <th style="padding: 1.5rem; text-align: center; color: #ef4444; font-size: 1.1rem; border-bottom: 2px solid rgba(239, 68, 68, 0.3);">
+                            <i class="fas fa-battery-full"></i> Tesla Energy
+                        </th>
+                        <th style="padding: 1.5rem; text-align: center; color: #f59e0b; font-size: 1.1rem; border-bottom: 2px solid rgba(245, 158, 11, 0.3);">
+                            <i class="fas fa-plug"></i> EcoFlow
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Scenario 1: Essential 24h -->
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 1.5rem;">
+                            <strong style="color: white; display: block; margin-bottom: 0.5rem;">Essential 24h Backup</strong>
+                            <span style="color: rgba(255,255,255,0.5); font-size: 0.875rem;">
+                                Fridge, lights, WiFi, phones<br>~250W average load
+                            </span>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">C1000</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">1056Wh | 1800W</span>
+                            <strong style="color: #10b981; font-size: 1.25rem;">$1,913</strong>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <span style="color: rgba(255,255,255,0.5); font-size: 0.875rem;">
+                                Powerwall oversized<br>for this scenario
+                            </span>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">Delta Pro</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">3600Wh | 3600W</span>
+                            <strong style="color: #f59e0b; font-size: 1.25rem;">Coming Soon</strong>
+                        </td>
+                    </tr>
+
+                    <!-- Scenario 2: Home 24h -->
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 1.5rem;">
+                            <strong style="color: white; display: block; margin-bottom: 0.5rem;">Standard Home 24h</strong>
+                            <span style="color: rgba(255,255,255,0.5); font-size: 0.875rem;">
+                                All essentials + TV + fans<br>~500W average load
+                            </span>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">F3800</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">3840Wh | 6000W</span>
+                            <strong style="color: #10b981; font-size: 1.25rem;">$6,263</strong>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">1x Powerwall 3</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">13.5kWh | 11.5kW</span>
+                            <strong style="color: #ef4444; font-size: 1.25rem;">$14,500</strong>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">Delta Pro</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">3600Wh | 3600W</span>
+                            <strong style="color: #f59e0b; font-size: 1.25rem;">Coming Soon</strong>
+                        </td>
+                    </tr>
+
+                    <!-- Scenario 3: Full Home 48h -->
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 1.5rem;">
+                            <strong style="color: white; display: block; margin-bottom: 0.5rem;">Full Home 48h</strong>
+                            <span style="color: rgba(255,255,255,0.5); font-size: 0.875rem;">
+                                Medium load + AC + appliances<br>~1000W average load
+                            </span>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">F3800 + 1 Battery</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">7680Wh | 6000W</span>
+                            <strong style="color: #10b981; font-size: 1.25rem;">$10,090</strong>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">2x Powerwall 3</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">27kWh | 23kW</span>
+                            <strong style="color: #ef4444; font-size: 1.25rem;">$28,000</strong>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">Delta Pro + Battery</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">7200Wh | 3600W</span>
+                            <strong style="color: #f59e0b; font-size: 1.25rem;">Coming Soon</strong>
+                        </td>
+                    </tr>
+
+                    <!-- Scenario 4: Villa 72h -->
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 1.5rem;">
+                            <strong style="color: white; display: block; margin-bottom: 0.5rem;">Villa 72h Backup</strong>
+                            <span style="color: rgba(255,255,255,0.5); font-size: 0.875rem;">
+                                Heavy residential load<br>~1500W average load
+                            </span>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">F3800 + 2 Batteries</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">11,520Wh | 6000W</span>
+                            <strong style="color: #10b981; font-size: 1.25rem;">$13,917</strong>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">3x Powerwall 3</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">40.5kWh | 34.5kW</span>
+                            <strong style="color: #ef4444; font-size: 1.25rem;">$41,000</strong>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">Delta Pro + 2 Batteries</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">10,800Wh | 3600W</span>
+                            <strong style="color: #f59e0b; font-size: 1.25rem;">Coming Soon</strong>
+                        </td>
+                    </tr>
+
+                    <!-- Scenario 5: Off-Grid Unlimited -->
+                    <tr>
+                        <td style="padding: 1.5rem;">
+                            <strong style="color: white; display: block; margin-bottom: 0.5rem;">Off-Grid Unlimited</strong>
+                            <span style="color: rgba(255,255,255,0.5); font-size: 0.875rem;">
+                                With solar recharge<br>~1000W average load
+                            </span>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">F3800 + 2 Batteries<br>+ 2400W Solar</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">11,520Wh storage</span>
+                            <strong style="color: #10b981; font-size: 1.25rem;">$21,569</strong>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">3x Powerwall 3<br>+ 10kW Solar</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">40.5kWh storage</span>
+                            <strong style="color: #ef4444; font-size: 1.25rem;">$66,167</strong>
+                        </td>
+                        <td style="padding: 1.5rem; text-align: center;">
+                            <strong style="color: white; display: block;">Delta Pro + Battery<br>+ 1600W Solar</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem; display: block; margin: 0.5rem 0;">7200Wh storage</span>
+                            <strong style="color: #f59e0b; font-size: 1.25rem;">Coming Soon</strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Brand Comparison Summary -->
+        <div class="grid-3" style="gap: 2rem; margin-top: 3rem;">
+            <div class="card" style="border: 2px solid rgba(16, 185, 129, 0.3);">
+                <h4 style="color: #10b981; margin-bottom: 1rem;"><i class="fas fa-bolt"></i> Anker SOLIX</h4>
+                <ul style="list-style: none; color: rgba(255,255,255,0.7); line-height: 2;">
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Best value per kWh</li>
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Highest solar input (2400W)</li>
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Portable + home integration</li>
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> 6000W output (F3800)</li>
+                </ul>
+                <a href="divisions/power-anker.html" class="btn btn-primary" style="width: 100%; margin-top: 1rem; justify-content: center; background: #10b981;">
+                    View Anker Solutions
+                </a>
+            </div>
+
+            <div class="card" style="border: 2px solid rgba(239, 68, 68, 0.3);">
+                <h4 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-battery-full"></i> Tesla Energy</h4>
+                <ul style="list-style: none; color: rgba(255,255,255,0.7); line-height: 2;">
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Premium whole-home solution</li>
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Highest continuous output (11.5kW)</li>
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Seamless UPS mode (&lt;20ms)</li>
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Integrated solar inverter</li>
+                </ul>
+                <a href="divisions/power-tesla.html" class="btn btn-primary" style="width: 100%; margin-top: 1rem; justify-content: center; background: #ef4444;">
+                    View Tesla Solutions
+                </a>
+            </div>
+
+            <div class="card" style="border: 2px solid rgba(245, 158, 11, 0.3);">
+                <h4 style="color: #f59e0b; margin-bottom: 1rem;"><i class="fas fa-plug"></i> EcoFlow</h4>
+                <ul style="list-style: none; color: rgba(255,255,255,0.7); line-height: 2;">
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Fastest deployment (plug-and-play)</li>
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Most versatile (15 outlets)</li>
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Modular expansion to 90kWh</li>
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> App control WiFi/Bluetooth</li>
+                </ul>
+                <a href="#hero" class="btn btn-primary" style="width: 100%; margin-top: 1rem; justify-content: center; background: #f59e0b;">
+                    View EcoFlow Solutions
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Interactive Calculator -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.appliance-checkbox');
+    const runtimeSlider = document.getElementById('runtime-slider');
+    const runtimeDisplay = document.getElementById('runtime-display');
+    const totalWattsDisplay = document.getElementById('total-watts');
+    const runtimeNeeded = document.getElementById('runtime-needed');
+    const requiredCapacity = document.getElementById('required-capacity');
+    const recommendationsList = document.getElementById('recommendations-list');
+
+    // Product database
+    const products = {
+        anker: [
+            { name: 'C800 Plus', capacity: 768, output: 1200, price: 1550, minWh: 0, maxWh: 1000 },
+            { name: 'C1000', capacity: 1056, output: 1800, price: 1913, minWh: 1000, maxWh: 2000 },
+            { name: 'F3800', capacity: 3840, output: 6000, price: 6263, minWh: 2000, maxWh: 5000 },
+            { name: 'F3800 + 1 Battery', capacity: 7680, output: 6000, price: 10090, minWh: 5000, maxWh: 9000 },
+            { name: 'F3800 + 2 Batteries', capacity: 11520, output: 6000, price: 13917, minWh: 9000, maxWh: 14000 },
+            { name: 'F3800 + 3 Batteries', capacity: 15360, output: 6000, price: 17744, minWh: 14000, maxWh: 999999 }
+        ],
+        tesla: [
+            { name: '1x Powerwall 3', capacity: 13500, output: 11500, price: 14500, minWh: 8000, maxWh: 20000 },
+            { name: '2x Powerwall 3', capacity: 27000, output: 23000, price: 28000, minWh: 20000, maxWh: 35000 },
+            { name: '3x Powerwall 3', capacity: 40500, output: 34500, price: 41000, minWh: 35000, maxWh: 999999 }
+        ],
+        ecoflow: [
+            { name: 'Delta 2', capacity: 1024, output: 1800, price: 'Coming Soon', minWh: 0, maxWh: 2000 },
+            { name: 'Delta Pro', capacity: 3600, output: 3600, price: 'Coming Soon', minWh: 2000, maxWh: 5000 },
+            { name: 'Delta Pro + Battery', capacity: 7200, output: 3600, price: 'Coming Soon', minWh: 5000, maxWh: 10000 },
+            { name: 'Delta Pro + 2 Batteries', capacity: 10800, output: 3600, price: 'Coming Soon', minWh: 10000, maxWh: 999999 }
+        ]
+    };
+
+    function updateCalculator() {
+        // Calculate total watts
+        let totalWatts = 0;
+        checkboxes.forEach(cb => {
+            if (cb.checked) {
+                totalWatts += parseInt(cb.dataset.watts);
+            }
+        });
+
+        // Get runtime
+        const runtime = parseInt(runtimeSlider.value);
+        
+        // Calculate required capacity (add 10% buffer)
+        const requiredWh = Math.ceil(totalWatts * runtime * 1.1);
+
+        // Update displays
+        totalWattsDisplay.textContent = totalWatts;
+        runtimeDisplay.textContent = runtime;
+        runtimeNeeded.textContent = runtime;
+        requiredCapacity.textContent = requiredWh.toLocaleString();
+
+        // Generate recommendations
+        if (totalWatts === 0) {
+            recommendationsList.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.5);">Select appliances above to see recommendations</p>';
+            return;
+        }
+
+        let html = '';
+
+        // Find best match for each brand
+        ['anker', 'tesla', 'ecoflow'].forEach(brand => {
+            const product = products[brand].find(p => 
+                requiredWh >= p.minWh && requiredWh <= p.maxWh && totalWatts <= p.output
+            );
+
+            if (product) {
+                const brandColor = brand === 'anker' ? '#10b981' : brand === 'tesla' ? '#ef4444' : '#f59e0b';
+                const brandName = brand.charAt(0).toUpperCase() + brand.slice(1);
+                const brandIcon = brand === 'anker' ? 'bolt' : brand === 'tesla' ? 'battery-full' : 'plug';
+                
+                html += `
+                    <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 3px solid ${brandColor};">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <strong style="color: ${brandColor};">
+                                <i class="fas fa-${brandIcon}"></i> ${brandName}
+                            </strong>
+                            <span style="color: white; font-weight: 600;">${product.name}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.875rem; color: rgba(255,255,255,0.6);">
+                            <span>${product.capacity}Wh | ${product.output}W</span>
+                            <strong style="color: ${brandColor}; font-size: 1.1rem;">${typeof product.price === 'number' ? '$' + product.price.toLocaleString() : product.price}</strong>
+                        </div>
+                        ${typeof product.price === 'number' ? `
+                            <a href="https://wa.me/237677604100?text=Calculator%20recommended%20${encodeURIComponent(product.name)}%20for%20my%20${totalWatts}W%20load%20${runtime}h%20runtime" 
+                               class="btn btn-primary" 
+                               style="width: 100%; margin-top: 0.75rem; font-size: 0.875rem; padding: 0.5rem; justify-content: center; background: ${brandColor};">
+                                Get This Setup
+                            </a>
+                        ` : ''}
+                    </div>
+                `;
+            }
+        });
+
+        if (html === '') {
+            recommendationsList.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.5);">Your load exceeds our standard configurations. Contact us for custom enterprise solution.</p>';
+        } else {
+            recommendationsList.innerHTML = html;
+        }
+    }
+
+    // Event listeners
+    checkboxes.forEach(cb => cb.addEventListener('change', updateCalculator));
+    runtimeSlider.addEventListener('input', updateCalculator);
+
+    // Initial update
+    updateCalculator();
+});
+</script>
+
 <!-- COMPLETE POWER ECOSYSTEM -->
 <section style="background: #1e293b; padding: 6rem 0;">
     <div class="container">
