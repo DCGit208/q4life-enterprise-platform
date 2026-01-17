@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Q4-LIFE Industrial Solutions | Data Centers, Mining, Hospitality, Healthcare, E-commerce, Government - Industry-specific energy services designed for Cameroon's largest energy consumers.">
+    <title>Industrial & Vertical Solutions | Q4-LIFE POWER™</title>
+    <link rel="stylesheet" href="../files/main_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --enterprise-dark: #0f172a;
+            --enterprise-accent: #f59e0b;
+            --enterprise-green: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--enterprise-dark) 0%, rgba(15,23,42,0.9) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(245,158,11,0.2);
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .verticals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .vertical-card {
+            background: linear-gradient(135deg, rgba(30,41,59,0.8) 0%, rgba(20,30,48,0.8) 100%);
+            border: 1px solid rgba(245,158,11,0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vertical-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100px;
+            height: 100px;
+            background: rgba(245,158,11,0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .vertical-card:hover {
+            border-color: var(--enterprise-accent);
+            box-shadow: 0 20px 40px rgba(245,158,11,0.1);
+            transform: translateY(-4px);
+        }
+
+        .vertical-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vertical-icon {
+            font-size: 2.5rem;
+            color: var(--enterprise-accent);
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .vertical-title h2 {
+            font-size: 1.5rem;
+            color: white;
+            margin: 0;
+        }
+
+        .vertical-title p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin: 0.25rem 0 0 0;
+        }
+
+        .vertical-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .challenge, .solution, .revenue {
+            margin-bottom: 1.25rem;
+        }
+
+        .challenge h4, .solution h4, .revenue h4 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--enterprise-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .challenge p, .solution p, .revenue p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+
+        .revenue-highlight {
+            background: rgba(245,158,11,0.1);
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            border-left: 2px solid var(--enterprise-accent);
+        }
+
+        .revenue-highlight strong {
+            color: var(--enterprise-accent);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            text-align: center;
+            background: rgba(245,158,11,0.1);
+            color: var(--enterprise-accent);
+            border: 1px solid rgba(245,158,11,0.3);
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: var(--enterprise-accent);
+            color: #000;
+            border-color: var(--enterprise-accent);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--enterprise-accent);
+            color: #000;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .verticals-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vertical-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div style="padding: 1rem 2rem; background: rgba(15,23,42,0.8); border-bottom: 1px solid rgba(245,158,11,0.1); font-size: 0.9rem;">
+        <a href="/" style="color: var(--enterprise-accent); text-decoration: none;">Home</a> / 
+        <a href="/divisions/enterprise-power.html" style="color: var(--enterprise-accent); text-decoration: none;">Enterprise</a> / 
+        <span style="color: rgba(255,255,255,0.6);">Industrial Solutions</span>
+    </div>
+
+    <div class="page-header">
+        <h1>Industry-Specific Energy Solutions</h1>
+        <p>Tailored power systems for Cameroon's six largest energy consumer sectors</p>
+    </div>
+
+    <div class="verticals-grid">
+        <!-- Data Centers -->
+        <div class="vertical-card">
+            <div class="vertical-header">
+                <div class="vertical-icon"><i class="fas fa-server"></i></div>
+                <div class="vertical-title">
+                    <h2>Data Centers</h2>
+                    <p>Cloud & Telecom Infrastructure</p>
+                </div>
+            </div>
+            <div class="vertical-content">
+                <div class="challenge">
+                    <h4><i class="fas fa-exclamation-circle"></i> Challenge</h4>
+                    <p>
+                        Continuous 24/7 uptime required. Even 1 second of downtime = $50k+ lost revenue + reputation damage. Cooling systems consume 40% of total power. Grid interruptions trigger cascade failures.
+                    </p>
+                </div>
+                <div class="solution">
+                    <h4><i class="fas fa-plug"></i> Q4-LIFE Solution</h4>
+                    <p>
+                        Multi-redundant battery + solar system with automatic failover (< 20ms). Oversized to handle peak cooling demand. SLA: 99.99% uptime guaranteed (four 9s). Revenue stacking: SLA fees + demand management + arbitrage.
+                    </p>
+                </div>
+                <div class="revenue">
+                    <h4><i class="fas fa-chart-line"></i> Revenue / ROI</h4>
+                    <div class="revenue-highlight">
+                        <strong>$15k–25k/month</strong> SLA fee + <strong>$5k–10k/month</strong> from demand charge reduction
+                    </div>
+                    <p style="margin-top: 0.75rem;">
+                        <strong>Payback:</strong> 3–4 years | <strong>10-Year NPV:</strong> $2.5M+
+                    </p>
+                </div>
+                <a href="#contact" class="cta-btn">Request Data Center Audit</a>
+            </div>
+        </div>
+
+        <!-- Mining -->
+        <div class="vertical-card featured-badge">
+            <div style="position: absolute; top: 1rem; right: 1rem; background: var(--enterprise-accent); color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; z-index: 2;">PRIORITY</div>
+            <div class="vertical-header">
+                <div class="vertical-icon"><i class="fas fa-mountain"></i></div>
+                <div class="vertical-title">
+                    <h2>Mining & Extraction</h2>
+                    <p>Remote Heavy Industry</p>
+                </div>
+            </div>
+            <div class="vertical-content">
+                <div class="challenge">
+                    <h4><i class="fas fa-exclamation-circle"></i> Challenge</h4>
+                    <p>
+                        Remote facilities far from grid. Fuel transport costs $1.5M–3M/year. Diesel generator failures halt production for days. Environmental pressure to reduce emissions. Volatile commodity prices amplify cost uncertainty.
+                    </p>
+                </div>
+                <div class="solution">
+                    <h4><i class="fas fa-plug"></i> Q4-LIFE Solution</h4>
+                    <p>
+                        Standalone solar farm (3–10 MWp) + large battery (1–3 MWh) + minimal diesel backup. No grid required. Fuel usage drops 70–80%. Fixed-price energy via long-term PPA (insulates from fuel volatility).
+                    </p>
+                </div>
+                <div class="revenue">
+                    <h4><i class="fas fa-chart-line"></i> Revenue / ROI</h4>
+                    <div class="revenue-highlight">
+                        <strong>$2M–3M/year</strong> fuel savings + <strong>$500k–1M/year</strong> Q4-LIFE PPA revenue
+                    </div>
+                    <p style="margin-top: 0.75rem;">
+                        <strong>Mining Co. Payback:</strong> 2–3 years | <strong>Q4-LIFE 15-Year PPA:</strong> $15M–25M value
+                    </p>
+                </div>
+                <a href="/divisions/enterprise-case-studies.html" class="cta-btn">View Mining Case Study</a>
+            </div>
+        </div>
+
+        <!-- Hospitality -->
+        <div class="vertical-card">
+            <div class="vertical-header">
+                <div class="vertical-icon"><i class="fas fa-hotel"></i></div>
+                <div class="vertical-title">
+                    <h2>Hospitality & Tourism</h2>
+                    <p>Hotels, Resorts, Conference Centers</p>
+                </div>
+            </div>
+            <div class="vertical-content">
+                <div class="challenge">
+                    <h4><i class="fas fa-exclamation-circle"></i> Challenge</h4>
+                    <p>
+                        Guest satisfaction hinges on power reliability. Generator noise damages experience + reputation. Peak demand during tourist season (18:00–22:00) overlaps grid stress. Energy bills 12–15% of operating budget.
+                    </p>
+                </div>
+                <div class="solution">
+                    <h4><i class="fas fa-plug"></i> Q4-LIFE Solution</h4>
+                    <p>
+                        Silent battery backup (no generator noise). Smart load shedding ensures guest systems never lose power. Demand management shifts laundry/landscaping to off-peak. Premium UX: "Always On" energy reliability as selling point.
+                    </p>
+                </div>
+                <div class="revenue">
+                    <h4><i class="fas fa-chart-line"></i> Revenue / ROI</h4>
+                    <div class="revenue-highlight">
+                        <strong>$8k–15k/month</strong> energy cost reduction + <strong>+3% occupancy boost</strong> ($150k–300k/year)
+                    </div>
+                    <p style="margin-top: 0.75rem;">
+                        <strong>Payback:</strong> 2–3 years | <strong>10-Year NPV:</strong> $2M+
+                    </p>
+                </div>
+                <a href="/divisions/enterprise-case-studies.html" class="cta-btn">View Hospitality Case Study</a>
+            </div>
+        </div>
+
+        <!-- Healthcare -->
+        <div class="vertical-card">
+            <div class="vertical-header">
+                <div class="vertical-icon"><i class="fas fa-heartbeat"></i></div>
+                <div class="vertical-title">
+                    <h2>Healthcare</h2>
+                    <p>Hospitals & Clinics</p>
+                </div>
+            </div>
+            <div class="vertical-content">
+                <div class="challenge">
+                    <h4><i class="fas fa-exclamation-circle"></i> Challenge</h4>
+                    <p>
+                        Regulatory requirement: continuous power for ICU, surgical suites, blood storage. Diesel generators must start within 10 seconds. Patient safety depends on reliability. Budget pressures limit capex, but downtime = liability + loss of life.
+                    </p>
+                </div>
+                <div class="solution">
+                    <h4><i class="fas fa-plug"></i> Q4-LIFE Solution</h4>
+                    <p>
+                        UPS-grade battery system (response < 100ms) with SLA guarantee + compliance documentation. Solar charging reduces daily fuel burn. On-site monitoring ensures regulatory compliance. Meets MINEE medical facility standards.
+                    </p>
+                </div>
+                <div class="revenue">
+                    <h4><i class="fas fa-chart-line"></i> Revenue / ROI</h4>
+                    <div class="revenue-highlight">
+                        <strong>$12k–20k/month</strong> regulatory compliance value + <strong>$3k–5k/month</strong> fuel savings
+                    </div>
+                    <p style="margin-top: 0.75rem;">
+                        <strong>Payback:</strong> 3–4 years | <strong>Risk mitigation:</strong> Immeasurable
+                    </p>
+                </div>
+                <a href="#contact" class="cta-btn">Request Healthcare Assessment</a>
+            </div>
+        </div>
+
+        <!-- E-Commerce & Warehousing -->
+        <div class="vertical-card">
+            <div class="vertical-header">
+                <div class="vertical-icon"><i class="fas fa-boxes"></i></div>
+                <div class="vertical-title">
+                    <h2>E-Commerce & Warehousing</h2>
+                    <p>Distribution, Cold Storage, Automation</p>
+                </div>
+            </div>
+            <div class="vertical-content">
+                <div class="challenge">
+                    <h4><i class="fas fa-exclamation-circle"></i> Challenge</h4>
+                    <p>
+                        Variable demand: peak during afternoon/evening. Cooling for cold storage = largest load (35–45% of total). Grid outages halt logistics + spoil product. Energy costs directly reduce margins.
+                    </p>
+                </div>
+                <div class="solution">
+                    <h4><i class="fas fa-plug"></i> Q4-LIFE Solution</h4>
+                    <p>
+                        AI demand forecasting + battery dispatch optimizes cooling load timing. Pre-cool during low-demand hours, maintain during peak. Peak shaving reduces demand charges (largest monthly cost). Revenue stacking from grid services.
+                    </p>
+                </div>
+                <div class="revenue">
+                    <h4><i class="fas fa-chart-line"></i> Revenue / ROI</h4>
+                    <div class="revenue-highlight">
+                        <strong>$6k–12k/month</strong> from demand charge reduction + <strong>$2k–4k/month</strong> arbitrage
+                    </div>
+                    <p style="margin-top: 0.75rem;">
+                        <strong>Payback:</strong> 3–4 years | <strong>10-Year NPV:</strong> $1.2M+
+                    </p>
+                </div>
+                <a href="#contact" class="cta-btn">Request Logistics Audit</a>
+            </div>
+        </div>
+
+        <!-- Government & Institutional -->
+        <div class="vertical-card">
+            <div class="vertical-header">
+                <div class="vertical-icon"><i class="fas fa-building"></i></div>
+                <div class="vertical-title">
+                    <h2>Government & Institutional</h2>
+                    <p>Agencies, Universities, Military</p>
+                </div>
+            </div>
+            <div class="vertical-content">
+                <div class="challenge">
+                    <h4><i class="fas fa-exclamation-circle"></i> Challenge</h4>
+                    <p>
+                        Budget-constrained. Large campuses with diverse loads. Aging infrastructure + legacy diesel generators. Long procurement timelines. Need to balance uptime, cost control, and sustainability goals.
+                    </p>
+                </div>
+                <div class="solution">
+                    <h4><i class="fas fa-plug"></i> Q4-LIFE Solution</h4>
+                    <p>
+                        ESCO model: Q4-LIFE funds system, government pays from energy savings. 15+ year agreement ensures payback. Modular approach (rollout buildings incrementally). No upfront capex burden on government.
+                    </p>
+                </div>
+                <div class="revenue">
+                    <h4><i class="fas fa-chart-line"></i> Revenue / ROI</h4>
+                    <div class="revenue-highlight">
+                        <strong>$4k–8k/month</strong> energy cost savings (split: 60% government, 40% Q4-LIFE) over 15 years
+                    </div>
+                    <p style="margin-top: 0.75rem;">
+                        <strong>Government Savings:</strong> $2.5M–5M over 15 years | <strong>Q4-LIFE Revenue:</strong> $7M–14M
+                    </p>
+                </div>
+                <a href="#contact" class="cta-btn">Request ESCO Proposal</a>
+            </div>
+        </div>
+
+        <!-- BONUS: Composite / Mixed Use -->
+        <div class="vertical-card">
+            <div class="vertical-header">
+                <div class="vertical-icon"><i class="fas fa-city"></i></div>
+                <div class="vertical-title">
+                    <h2>Real Estate & Mixed-Use</h2>
+                    <p>Office Parks, Malls, Residential</p>
+                </div>
+            </div>
+            <div class="vertical-content">
+                <div class="challenge">
+                    <h4><i class="fas fa-exclamation-circle"></i> Challenge</h4>
+                    <p>
+                        Diverse tenants with varying power needs. Landlord = energy provider (must ensure reliability). Peak demand unpredictable. Tenant comfort = leasing competitiveness. Environmental credentials attract premium tenants.
+                    </p>
+                </div>
+                <div class="solution">
+                    <h4><i class="fas fa-plug"></i> Q4-LIFE Solution</h4>
+                    <p>
+                        Central solar + battery system + smart load management per tenant. Landlord reduces energy costs, can market as "Green Certified." Tenants get reliable power + transparent pricing. Revenue stacking: facility fees + arbitrage + grid services.
+                    </p>
+                </div>
+                <div class="revenue">
+                    <h4><i class="fas fa-chart-line"></i> Revenue / ROI</h4>
+                    <div class="revenue-highlight">
+                        <strong>$10k–20k/month</strong> facility energy cost reduction + <strong>+5–10% rent premium</strong> for sustainability
+                    </div>
+                    <p style="margin-top: 0.75rem;">
+                        <strong>Payback:</strong> 4–5 years | <strong>10-Year NPV:</strong> $1.5M+
+                    </p>
+                </div>
+                <a href="#contact" class="cta-btn">Request RE Feasibility Study</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div style="text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(245,158,11,0.1) 0%, rgba(16,185,129,0.05) 100%); border-top: 1px solid rgba(245,158,11,0.2); margin-top: 2rem;">
+        <h2 style="color: white; margin-bottom: 1rem;">Which Vertical Fits Your Facility?</h2>
+        <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Each sector has unique power challenges — and unique profitability. Start with a free energy audit.</p>
+        <a href="/divisions/enterprise-power.html#contact" style="display: inline-block; padding: 1rem 2rem; background: var(--enterprise-accent); color: #000; border-radius: 6px; text-decoration: none; font-weight: 600;">
+            Schedule Your Free Audit
+        </a>
+    </div>
+</body>
+</html>

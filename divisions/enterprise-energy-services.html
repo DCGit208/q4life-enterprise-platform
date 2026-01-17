@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Q4-LIFE ESaaS Offerings | Guaranteed Uptime SLAs, Demand Charge Management, Energy Arbitrage, Solar PPAs, Grid Services, Custom Microgrids for African enterprises.">
+    <meta name="keywords" content="ESaaS, energy services, BESS, battery storage, guaranteed uptime, demand response, Cameroon, Africa">
+    <title>Energy Services Offerings | Q4-LIFE POWER™ ESaaS</title>
+    <link rel="stylesheet" href="../files/main_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --enterprise-dark: #0f172a;
+            --enterprise-accent: #f59e0b;
+            --enterprise-green: #10b981;
+            --enterprise-blue: #3b82f6;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--enterprise-dark) 0%, rgba(15,23,42,0.9) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(245,158,11,0.2);
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+        }
+
+        .breadcrumb {
+            padding: 1rem 2rem;
+            background: rgba(15,23,42,0.8);
+            border-bottom: 1px solid rgba(245,158,11,0.1);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--enterprise-accent);
+            text-decoration: none;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(30,41,59,0.6);
+            border: 1px solid rgba(245,158,11,0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--enterprise-accent);
+            background: rgba(30,41,59,0.9);
+            box-shadow: 0 20px 40px rgba(245,158,11,0.1);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--enterprise-accent);
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .service-card h2 {
+            font-size: 1.75rem;
+            color: white;
+            margin: 0;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            color: var(--enterprise-accent);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-description, .service-model, .service-roi, .service-timeline, .service-requirements, .service-use-case {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-model {
+            background: rgba(245,158,11,0.05);
+            padding: 1rem;
+            border-left: 3px solid var(--enterprise-accent);
+            border-radius: 6px;
+        }
+
+        .service-model strong {
+            color: var(--enterprise-accent);
+        }
+
+        .roi-highlight {
+            background: rgba(16,185,129,0.1);
+            padding: 1rem;
+            border-left: 3px solid var(--enterprise-green);
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+
+        .roi-highlight strong {
+            color: var(--enterprise-green);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            margin: 0.75rem 0;
+        }
+
+        .timeline-bullet {
+            color: var(--enterprise-accent);
+            font-weight: bold;
+        }
+
+        .tech-spec {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .spec-item {
+            background: rgba(15,23,42,0.5);
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 2px solid var(--enterprise-green);
+        }
+
+        .spec-item strong {
+            color: white;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-item span {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--enterprise-accent);
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .service-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .service-icon {
+                text-align: left;
+            }
+
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        <a href="/">Home</a> / <a href="/divisions/enterprise-power.html">Enterprise</a> / Energy Services
+    </div>
+
+    <div class="page-header">
+        <h1>Q4-LIFE ESaaS Offerings</h1>
+        <p>Six Stacked Revenue Streams for Energy Independence & Optimization</p>
+    </div>
+
+    <section class="services-grid">
+        <!-- Service 1: Guaranteed Uptime Contract -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                <h2>Guaranteed Uptime Contract</h2>
+            </div>
+
+            <h3>Service Description</h3>
+            <p class="service-description">
+                Q4-LIFE guarantees 99.5% power availability via documented Service-Level Agreements (SLAs). Our hybrid battery + grid system ensures zero unplanned outages for critical loads. 24/7 network monitoring, rapid response protocols (within 30 minutes), and scheduled maintenance windows.
+            </p>
+
+            <h3>Revenue Model</h3>
+            <div class="service-model">
+                <strong>Fixed Monthly Service Fee</strong><br>
+                Client pays recurring fee (~$5,000–$15,000/month depending on facility size & load). Q4-LIFE guarantees uptime; service credits apply for any breaches.
+            </div>
+
+            <h3>Typical ROI</h3>
+            <div class="roi-highlight">
+                <strong>30% OPEX Reduction</strong> by eliminating unplanned downtime costs (lost productivity, emergency repairs, temporary power rentals).<br>
+                <strong>Payback: 2–3 years</strong> through operational efficiency gains.
+            </div>
+
+            <h3>Implementation Timeline</h3>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Month 1:</span> <span>Energy audit, system design, technical requirements</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Months 2–3:</span> <span>Hardware procurement, installation, testing</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Month 4+:</span> <span>Live operation, SLA monitoring, optimization</span>
+            </div>
+
+            <h3>Technical Requirements</h3>
+            <div class="tech-spec">
+                <div class="spec-item">
+                    <strong>System Size</strong>
+                    <span>100 kWh – 1 MWh depending on critical load</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Response Time</strong>
+                    <span>< 100 milliseconds (uninterruptible)</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Monitoring</strong>
+                    <span>24/7 remote + on-site</span>
+                </div>
+                <div class="spec-item">
+                    <strong>SLA Credit</strong>
+                    <span>5–10% monthly fee per hour of missed SLA</span>
+                </div>
+            </div>
+
+            <h3>Perfect For</h3>
+            <p class="service-use-case">
+                Data centers, hospitals, banking headquarters, telecommunications hubs, e-commerce fulfillment centers. Any facility where even 1 hour of downtime costs > $50,000.
+            </p>
+
+            <button class="cta-button"><i class="fas fa-phone"></i> Request SLA Quote</button>
+        </div>
+
+        <!-- Service 2: Demand Charge Management -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h2>Demand Charge Management</h2>
+            </div>
+
+            <h3>Service Description</h3>
+            <p class="service-description">
+                Q4-LIFE's AI-powered battery storage system automatically shifts loads, avoiding peak-hour energy pricing. By charging during off-peak (cheap) hours and discharging during peak demand, we reduce your highest-cost energy charges by 20–40%.
+            </p>
+
+            <h3>Revenue Model</h3>
+            <div class="service-model">
+                <strong>Shared Savings Model (60% Client / 40% Q4-LIFE)</strong><br>
+                We monitor demand charges, Q4-LIFE optimizes storage dispatch, and both parties share the reduction. Total peak charge reduction typically ranges $50k–$200k/year depending on facility.
+            </div>
+
+            <h3>Typical ROI</h3>
+            <div class="roi-highlight">
+                <strong>$100k–$500k/year in savings</strong> depending on load profile and peak tariff rates.<br>
+                <strong>Payback: 2–4 years</strong> on battery system cost.
+            </div>
+
+            <h3>Implementation Timeline</h3>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Week 1–2:</span> <span>Load profile analysis, peak period identification</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Weeks 3–4:</span> <span>AI algorithm training, baseline optimization</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Month 2+:</span> <span>Live optimization, daily reporting, savings tracking</span>
+            </div>
+
+            <h3>Technical Requirements</h3>
+            <div class="tech-spec">
+                <div class="spec-item">
+                    <strong>Battery Capacity</strong>
+                    <span>Sized for 1–3 hours of peak load</span>
+                </div>
+                <div class="spec-item">
+                    <strong>AI Dispatch</strong>
+                    <span>Real-time forecasting + utility pricing data</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Integration</strong>
+                    <span>BMS + utility meter integration</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Monitoring</strong>
+                    <span>Automated daily savings reports</span>
+                </div>
+            </div>
+
+            <h3>Perfect For</h3>
+            <p class="service-use-case">
+                Manufacturing plants, cold storage warehouses, e-commerce fulfillment, industrial processing. Facilities with peak demand charges > 30% of total energy bill.
+            </p>
+
+            <button class="cta-button"><i class="fas fa-bar-chart"></i> Calculate Your Savings</button>
+        </div>
+
+        <!-- Service 3: Energy Arbitrage & Trading -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-coins"></i></div>
+                <h2>Energy Arbitrage & Trading</h2>
+            </div>
+
+            <h3>Service Description</h3>
+            <p class="service-description">
+                Q4-LIFE operates battery storage systems as profit centers, buying low-cost grid power during off-peak hours and selling during peak demand windows. We can also participate in utility grid balancing services, generating additional revenue from frequency regulation and capacity reserves.
+            </p>
+
+            <h3>Revenue Model</h3>
+            <div class="service-model">
+                <strong>Q4-LIFE Earns | Facility Benefits</strong><br>
+                Q4-LIFE monetizes energy arbitrage + grid services. Host facility receives reduced demand charges as secondary benefit. Win-win arrangement.
+            </div>
+
+            <h3>Typical ROI</h3>
+            <div class="roi-highlight">
+                <strong>$30k–$100k/year arbitrage revenue</strong> per 500 kWh system.<br>
+                <strong>Additional $20k–$50k/year from grid services</strong> (via Eneo contracts in Cameroon).<br>
+                <strong>Payback: 3–5 years</strong> on Q4-LIFE side.
+            </div>
+
+            <h3>Implementation Timeline</h3>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Month 1:</span> <span>Regulatory & grid operator approvals (Eneo integration)</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Month 2:</span> <span>Trading algorithm development & backtesting</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Month 3+:</span> <span>Live trading, daily optimization, quarterly settlements</span>
+            </div>
+
+            <h3>Technical Requirements</h3>
+            <div class="tech-spec">
+                <div class="spec-item">
+                    <strong>System Size</strong>
+                    <span>500+ kWh for viable arbitrage</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Grid Connection</strong>
+                    <span>Direct metering, bidirectional power flow</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Software</strong>
+                    <span>Real-time market data, predictive analytics</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Regulation</strong>
+                    <span>Cameroon MINEE DER aggregation license</span>
+                </div>
+            </div>
+
+            <h3>Perfect For</h3>
+            <p class="service-use-case">
+                Large industrial facilities, utility partners, renewable energy producers, municipal governments. Any site with 500+ kWh storage and grid connection.
+            </p>
+
+            <button class="cta-button"><i class="fas fa-chart-area"></i> View Arbitrage Potential</button>
+        </div>
+
+        <!-- Service 4: Commercial Solar + Storage PPAs -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-sun"></i></div>
+                <h2>Commercial Solar + Storage PPAs</h2>
+            </div>
+
+            <h3>Service Description</h3>
+            <p class="service-description">
+                Q4-LIFE owns, installs, and operates solar panels + battery storage systems on client facilities for 15–20 year Power Purchase Agreements (PPAs). Clients buy renewable energy at fixed $/kWh rates, locked in for inflation protection. Q4-LIFE manages all operations, maintenance, and optimization.
+            </p>
+
+            <h3>Revenue Model</h3>
+            <div class="service-model">
+                <strong>Energy Sales PPA ($0.08–$0.12 USD/kWh)</strong><br>
+                Client buys all renewable output at fixed rate (negotiated based on site solar resource). Q4-LIFE earns margin on generation cost + operations.
+            </div>
+
+            <h3>Typical ROI</h3>
+            <div class="roi-highlight">
+                <strong>Client saves 30–50% on electricity costs</strong> vs. grid-only or diesel hybrid.<br>
+                <strong>Payback: 6–8 years</strong> on soft costs; long-term hedge value much higher.<br>
+                <strong>Q4-LIFE earns: $50k–$200k/year</strong> per MWh system.
+            </div>
+
+            <h3>Implementation Timeline</h3>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Month 1:</span> <span>Solar resource assessment, load profiling</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Months 2–3:</span> <span>Engineering design, PPA negotiation, financing</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Months 4–6:</span> <span>Permitting, installation, grid interconnection</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Month 7+:</span> <span>Operational, meter-based billing, continuous optimization</span>
+            </div>
+
+            <h3>Technical Requirements</h3>
+            <div class="tech-spec">
+                <div class="spec-item">
+                    <strong>System Size</strong>
+                    <span>50–500 kWp solar + 50–200 kWh storage</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Roof/Ground Space</strong>
+                    <span>Depends on kWp (typically 2–5 m²/kWp)</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Grid Connection</strong>
+                    <span>Standard interconnection (15–25 days Eneo)</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Contract Term</strong>
+                    <span>15–20 years (energy security)</span>
+                </div>
+            </div>
+
+            <h3>Perfect For</h3>
+            <p class="service-use-case">
+                Real estate developers, hospitality groups, government facilities, manufacturing plants. Any tenant/owner with steady daytime or 24/7 loads and roof/ground space for solar.
+            </p>
+
+            <button class="cta-button"><i class="fas fa-file-contract"></i> Request PPA Quote</button>
+        </div>
+
+        <!-- Service 5: Grid Services & Frequency Regulation -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+                <h2>Grid Services & Frequency Regulation</h2>
+            </div>
+
+            <h3>Service Description</h3>
+            <p class="service-description">
+                Q4-LIFE's distributed battery network provides critical grid stability services: frequency regulation, voltage support, emergency capacity reserves. We bid these services to utilities (Eneo in Cameroon) and regional grid operators, generating recurring revenue. Host facility benefits from grid support contracts and potential emergency backup capability.
+            </p>
+
+            <h3>Revenue Model</h3>
+            <div class="service-model">
+                <strong>Grid Service Contracts + Performance Bonuses</strong><br>
+                Q4-LIFE contracts with utilities for frequency regulation services (~$50k–$150k/year per 500 kWh system). Revenue split or dedicated capacity reservation for host facility's emergency use.
+            </div>
+
+            <h3>Typical ROI</h3>
+            <div class="roi-highlight">
+                <strong>Host facility: $20k–$50k/year</strong> from shared grid service revenue or emergency reserve discount.<br>
+                <strong>Q4-LIFE: $40k–$120k/year</strong> per system from grid operator contracts.<br>
+                <strong>Cameroon utility (Eneo): Grid stability benefit</strong> worth $100k+/year in deferred infrastructure.
+            </div>
+
+            <h3>Implementation Timeline</h3>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Month 1:</span> <span>Utility discussions, regulatory framework approval</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Month 2:</span> <span>Telemetry integration, SCADA connections</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Month 3+:</span> <span>Service provision, monthly settlements with Eneo</span>
+            </div>
+
+            <h3>Technical Requirements</h3>
+            <div class="tech-spec">
+                <div class="spec-item">
+                    <strong>Response Capability</strong>
+                    <span>< 100 ms (automated frequency support)</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Grid Connection</strong>
+                    <span>Direct metering + SCADA integration</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Regulatory</strong>
+                    <span>DER aggregator license + service agreements</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Availability</strong>
+                    <span>99.5% uptime (standby reserve capacity)</span>
+                </div>
+            </div>
+
+            <h3>Perfect For</h3>
+            <p class="service-use-case">
+                Strategic urban locations near grid substations, industrial parks with multiple facilities, utility partners piloting DER programs. Any site with 300+ kWh storage willing to provide emergency grid support.
+            </p>
+
+            <button class="cta-button"><i class="fas fa-handshake"></i> Explore Grid Partnerships</button>
+        </div>
+
+        <!-- Service 6: Custom Microgrids -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-project-diagram"></i></div>
+                <h2>Custom Microgrids & On-Site Generation</h2>
+            </div>
+
+            <h3>Service Description</h3>
+            <p class="service-description">
+                Q4-LIFE designs, builds, and operates fully integrated microgrids combining solar generation, battery storage, diesel backup (optional), and smart controls. Perfect for campuses, industrial parks, remote facilities, and real estate developments. Microgrids can island from main grid during emergencies, providing complete energy independence.
+            </p>
+
+            <h3>Revenue Model</h3>
+            <div class="service-model">
+                <strong>Turnkey Ownership or Operations & Maintenance (O&M) Model</strong><br>
+                Q4-LIFE can own & operate full microgrid (client buys renewable energy via PPA), or client owns hardware and Q4-LIFE provides O&M services ($5k–$20k/month).
+            </div>
+
+            <h3>Typical ROI</h3>
+            <div class="roi-highlight">
+                <strong>50–70% reduction in total energy costs</strong> through solar + optimization + grid services.<br>
+                <strong>Payback: 5–8 years</strong> (faster for O&M-only models).<br>
+                <strong>20-year NPV: $500k–$2M+</strong> depending on scale.
+            </div>
+
+            <h3>Implementation Timeline</h3>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Months 1–2:</span> <span>Masterplanning, load assessment, renewable resource analysis</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Months 3–4:</span> <span>Engineering design, permitting, financing</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Months 5–8:</span> <span>Installation, controls integration, testing</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-bullet">Month 9+:</span> <span>Operational, optimization, performance reporting</span>
+            </div>
+
+            <h3>Technical Requirements</h3>
+            <div class="tech-spec">
+                <div class="spec-item">
+                    <strong>System Scale</strong>
+                    <span>100 kWp – 5 MWp solar + proportional storage</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Control Architecture</strong>
+                    <span>Islanding-capable microgrid controller</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Redundancy</strong>
+                    <span>Multi-source generation + battery + grid backup</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Integration</strong>
+                    <span>Building automation, EV charging, load management</span>
+                </div>
+            </div>
+
+            <h3>Perfect For</h3>
+            <p class="service-use-case">
+                Real estate developers (new builds), university campuses, industrial parks, government facilities, remote mining/agricultural operations. Any multi-building complex wanting energy autonomy + cost control.
+            </p>
+
+            <button class="cta-button"><i class="fas fa-pencil-ruler"></i> Start Microgrid Design</button>
+        </section>
+
+    <!-- Bottom CTA -->
+    <div style="text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(245,158,11,0.1) 0%, rgba(16,185,129,0.05) 100%); border-top: 1px solid rgba(245,158,11,0.2);">
+        <h2 style="color: white; margin-bottom: 1rem;">Ready to Stack Revenue?</h2>
+        <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Our energy advisors will model all six streams for your facility.</p>
+        <a href="/divisions/enterprise-power.html#contact" style="display: inline-block; padding: 1rem 2rem; background: var(--enterprise-accent); color: #000; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+            Request Consultation
+        </a>
+    </div>
+</body>
+</html>

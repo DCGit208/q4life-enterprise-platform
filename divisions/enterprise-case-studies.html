@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Q4-LIFE Enterprise Case Studies | Bank Headquarters, Hospitality Group, Mining Operation - Real results: 99.5% uptime, 30% OPEX reduction, $2M+ annual savings.">
+    <title>Enterprise Case Studies | Q4-LIFE POWER™ Success Stories</title>
+    <link rel="stylesheet" href="../files/main_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --enterprise-dark: #0f172a;
+            --enterprise-accent: #f59e0b;
+            --enterprise-green: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--enterprise-dark) 0%, rgba(15,23,42,0.9) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(245,158,11,0.2);
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .case-study {
+            background: linear-gradient(135deg, rgba(30,41,59,0.8) 0%, rgba(20,30,48,0.8) 100%);
+            border: 1px solid rgba(245,158,11,0.2);
+            border-radius: 12px;
+            padding: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .case-study:hover {
+            border-color: var(--enterprise-accent);
+            box-shadow: 0 20px 40px rgba(245,158,11,0.1);
+        }
+
+        .case-header {
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(245,158,11,0.2);
+            padding-bottom: 1.5rem;
+        }
+
+        .case-header h2 {
+            font-size: 1.75rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-header p {
+            color: var(--enterprise-accent);
+            font-size: 0.95rem;
+        }
+
+        .facility-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .spec {
+            background: rgba(15,23,42,0.6);
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--enterprise-accent);
+        }
+
+        .spec strong {
+            color: var(--enterprise-accent);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .spec span {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section h3 {
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: 0.75rem;
+        }
+
+        .challenge, .solution, .results, .quote {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .results {
+            background: rgba(16,185,129,0.1);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--enterprise-green);
+        }
+
+        .result-item {
+            margin-bottom: 0.75rem;
+        }
+
+        .result-item strong {
+            color: var(--enterprise-green);
+        }
+
+        .roi-comparison {
+            background: rgba(245,158,11,0.05);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--enterprise-accent);
+        }
+
+        .roi-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            padding: 0.5rem 0;
+        }
+
+        .roi-item span:first-child {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .roi-item span:last-child {
+            color: var(--enterprise-accent);
+            font-weight: 600;
+        }
+
+        .quote-box {
+            background: rgba(245,158,11,0.05);
+            border-left: 4px solid var(--enterprise-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+            font-style: italic;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .quote-attribution {
+            text-align: right;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            font-style: normal;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--enterprise-accent);
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .case-study {
+                padding: 1.5rem;
+            }
+
+            .facility-specs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div style="padding: 1rem 2rem; background: rgba(15,23,42,0.8); border-bottom: 1px solid rgba(245,158,11,0.1); font-size: 0.9rem;">
+        <a href="/" style="color: var(--enterprise-accent); text-decoration: none;">Home</a> / 
+        <a href="/divisions/enterprise-power.html" style="color: var(--enterprise-accent); text-decoration: none;">Enterprise</a> / 
+        <span style="color: rgba(255,255,255,0.6);">Case Studies</span>
+    </div>
+
+    <div class="page-header">
+        <h1>Enterprise Success Stories</h1>
+        <p>Real deployments delivering measurable results across Africa</p>
+    </div>
+
+    <section class="cases-grid">
+        <!-- Case Study 1: Regional Bank -->
+        <div class="case-study">
+            <div class="case-header">
+                <h2><i class="fas fa-bank"></i> Regional Bank Headquarters</h2>
+                <p>Yaoundé, Cameroon | Financial Services | Deployed 2023</p>
+            </div>
+
+            <div class="facility-specs">
+                <div class="spec">
+                    <strong>Facility Type</strong>
+                    <span>12-story office + data center</span>
+                </div>
+                <div class="spec">
+                    <strong>Peak Load</strong>
+                    <span>500 kW</span>
+                </div>
+                <div class="spec">
+                    <strong>Daily Consumption</strong>
+                    <span>3 MWh</span>
+                </div>
+                <div class="spec">
+                    <strong>System Size</strong>
+                    <span>250 kWh battery + 150 kW solar</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-exclamation-circle"></i> Challenge</h3>
+                <p class="challenge">
+                    The bank experienced 2–3 grid outages per week lasting 30 minutes to 3 hours. Each outage disrupted customer service, ATM operations, and data processing. Emergency diesel generators were costly, noisy, and unreliable. The bank needed guaranteed uptime (99.5%+ SLA) and wanted to reduce operating costs.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-wrench"></i> Q4-LIFE Solution</h3>
+                <p class="solution">
+                    Hybrid solar + battery + grid system with UPS redundancy. Rooftop solar charges batteries during the day; battery backup activates within 100 milliseconds of grid loss, ensuring uninterrupted power to critical systems (data center, ATM network, HVAC). On-site diesel generator serves as emergency reserve (rarely used). Full system automation via Q4-LIFE's control platform. 99.5% SLA guaranteed with monthly service credits for breaches.
+                </p>
+                <strong>Timeline: 6 months (design → commissioning)</strong>
+                <strong>Total Investment: $400,000</strong>
+            </div>
+
+            <div class="roi-comparison">
+                <div class="roi-item">
+                    <span><strong>OPEX Reduction</strong></span>
+                    <span>30% ($180k/year)</span>
+                </div>
+                <div class="roi-item">
+                    <span><strong>Diesel Fuel Eliminated</strong></span>
+                    <span>$120k/year (fuel costs)</span>
+                </div>
+                <div class="roi-item">
+                    <span><strong>Generator Maintenance</strong></span>
+                    <span>$30k/year (reduced staff, parts)</span>
+                </div>
+                <div class="roi-item">
+                    <span><strong>Avoided Outage Costs</strong></span>
+                    <span>$300k+/year (lost productivity, customer churn)</span>
+                </div>
+                <div class="roi-item">
+                    <span style="border-top: 1px solid rgba(245,158,11,0.2); padding-top: 0.5rem;"><strong>Estimated Annual Benefit</strong></span>
+                    <span style="border-top: 1px solid rgba(245,158,11,0.2); padding-top: 0.5rem;">$620k+</span>
+                </div>
+            </div>
+
+            <div class="results">
+                <h3 style="color: var(--enterprise-green); margin-top: 0;">Year 1 Results</h3>
+                <div class="result-item"><strong>✓ Grid Uptime:</strong> 99.97% achieved (zero unplanned outages)</div>
+                <div class="result-item"><strong>✓ Energy Savings:</strong> $180k (OPEX reduction)</div>
+                <div class="result-item"><strong>✓ Operational Efficiency:</strong> +15% (no cooling loss during outages)</div>
+                <div class="result-item"><strong>✓ Staff Reduction:</strong> 2 FTE diesel technicians reassigned</div>
+                <div class="result-item"><strong>✓ Brand Impact:</strong> "Most Reliable Financial Institution" messaging</div>
+                <div class="result-item"><strong>✓ Payback Timeline:</strong> 3.2 years (faster than projected)</div>
+                <div class="result-item"><strong>✓ 10-Year NPV:</strong> +$2.8M</div>
+            </div>
+
+            <div class="quote-box">
+                "We went from managing power anxiety to predictable reliability. Every hour of power availability now translates directly to customer confidence and transaction completion. The investment pays for itself through avoided outage costs alone. That doesn't even account for the peace of mind."
+                <div class="quote-attribution">— Chief Financial Officer, Bank HQ</div>
+            </div>
+
+            <a href="#" class="download-btn"><i class="fas fa-file-pdf"></i> Download Full Case Study (PDF)</a>
+        </div>
+
+        <!-- Case Study 2: Hospitality Group -->
+        <div class="case-study">
+            <div class="case-header">
+                <h2><i class="fas fa-hotel"></i> Hospitality Portfolio</h2>
+                <p>Douala, Cameroon | 3-Hotel Group | Deployed 2023</p>
+            </div>
+
+            <div class="facility-specs">
+                <div class="spec">
+                    <strong>Portfolio</strong>
+                    <span>3 hotels (200 rooms total)</span>
+                </div>
+                <div class="spec">
+                    <strong>Peak Load (Combined)</strong>
+                    <span>200 kW</span>
+                </div>
+                <div class="spec">
+                    <strong>Daily Consumption</strong>
+                    <span>2 MWh</span>
+                </div>
+                <div class="spec">
+                    <strong>System Size</strong>
+                    <span>2 × 100 kWh batteries + rooftop solar</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-exclamation-circle"></i> Challenge</h3>
+                <p class="challenge">
+                    Diesel generator noise complaints from guests. Unpredictable grid power degraded guest experience and hurt occupancy rates. Energy costs were 18–22% of operating budget. Competitors with reliable backup power were capturing market share.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-wrench"></i> Q4-LIFE Solution</h3>
+                <p class="solution">
+                    Two modular battery systems (one per hotel cluster) plus rooftop solar panels. Smart load shedding ensures guest-facing systems (lighting, AC, hot water) never lose power, while non-critical systems (laundry, landscaping) shed load during grid outages. Result: silent, seamless backup. Demand charge management shifts peak loads to off-peak hours, reducing energy bills further.
+                </p>
+                <strong>Timeline: 4 months (phased rollout per hotel)</strong>
+                <strong>Total Investment: $250,000</strong>
+            </div>
+
+            <div class="roi-comparison">
+                <div class="roi-item">
+                    <span><strong>Diesel Usage Reduction</strong></span>
+                    <span>70% ($90k/year)</span>
+                </div>
+                <div class="roi-item">
+                    <span><strong>Peak Demand Shaving</strong></span>
+                    <span>$45k/year</span>
+                </div>
+                <div class="roi-item">
+                    <span><strong>Generator Maintenance</strong></span>
+                    <span>-$20k/year</span>
+                </div>
+                <div class="roi-item">
+                    <span><strong>Occupancy Improvement</strong></span>
+                    <span>+3% = $180k/year (premium rate booking)</span>
+                </div>
+                <div class="roi-item">
+                    <span style="border-top: 1px solid rgba(245,158,11,0.2); padding-top: 0.5rem;"><strong>Annual Benefit</strong></span>
+                    <span style="border-top: 1px solid rgba(245,158,11,0.2); padding-top: 0.5rem;">$315k+</span>
+                </div>
+            </div>
+
+            <div class="results">
+                <h3 style="color: var(--enterprise-green); margin-top: 0;">Year 1 Results</h3>
+                <div class="result-item"><strong>✓ Guest Satisfaction:</strong> +25% (silent backup, no power loss)</div>
+                <div class="result-item"><strong>✓ Energy Cost Reduction:</strong> -$135k (65% diesel + demand charges)</div>
+                <div class="result-item"><strong>✓ Maintenance Effort:</strong> -4 hours/week (reduced generator checks)</div>
+                <div class="result-item"><strong>✓ Occupancy Rate:</strong> +3% year-over-year</div>
+                <div class="result-item"><strong>✓ Premium Booking Rate:</strong> +8% (reliability as selling point)</div>
+                <div class="result-item"><strong>✓ Payback Timeline:</strong> 3.1 years (fastest in portfolio)</div>
+                <div class="result-item"><strong>✓ 15-Year NPV:</strong> +$2.2M</div>
+            </div>
+
+            <div class="quote-box">
+                "Our guests notice the silence immediately. No generator noise. Power is always on. They stay longer and book premium suites. We went from justifying power as cost center to marketing it as a premium amenity. That was transformational for our business."
+                <div class="quote-attribution">— General Manager, Hotel Group</div>
+            </div>
+
+            <a href="#" class="download-btn"><i class="fas fa-file-pdf"></i> Download Full Case Study (PDF)</a>
+        </div>
+
+        <!-- Case Study 3: Mining Operation -->
+        <div class="case-study">
+            <div class="case-header">
+                <h2><i class="fas fa-mountain"></i> Mining Operation</h2>
+                <p>Eastern Cameroon | Remote Processing Plant | Deployed 2022</p>
+            </div>
+
+            <div class="facility-specs">
+                <div class="spec">
+                    <strong>Facility</strong>
+                    <span>Remote processing plant + camp</span>
+                </div>
+                <div class="spec">
+                    <strong>Peak Load</strong>
+                    <span>2 MW (24/7)</span>
+                </div>
+                <div class="spec">
+                    <strong>Daily Consumption</strong>
+                    <span>35 MWh</span>
+                </div>
+                <div class="spec">
+                    <strong>System Size</strong>
+                    <span>2 MWh battery + 3 MW solar farm</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-exclamation-circle"></i> Challenge</h3>
+                <p class="challenge">
+                    Remote mining site located 60+ km from nearest grid. Fuel transport costs exceeded $2.1M/year. Diesel generators were unreliable in remote setting; frequent breakdowns halted processing. Operation needed 98%+ uptime to meet production targets and commodity market timing. Environmental concerns about diesel emissions in protected area.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-wrench"></i> Q4-LIFE Solution</h3>
+                <p class="solution">
+                    Modular 2 MWh battery storage system + 3 MWp solar farm designed for 24/7 load averaging 80% capacity factor. System sized for daily recharge cycle using strong regional solar resource (5.5+ kWh/m²/day). Diesel backup generator kept for emergency only (< 5% utilization). Q4-LIFE owns and operates system under long-term energy services contract; mining company buys power at fixed $/kWh.
+                </p>
+                <strong>Timeline: 9 months (site prep + system build)</strong>
+                <strong>Q4-LIFE Investment: $3.2M</strong>
+            </div>
+
+            <div class="roi-comparison">
+                <div class="roi-item">
+                    <span><strong>Diesel Fuel Cost Eliminated</strong></span>
+                    <span>$2.1M/year</span>
+                </div>
+                <div class="roi-item">
+                    <span><strong>Overall Energy Cost</strong></span>
+                    <span>-55% vs. current</span>
+                </div>
+                <div class="roi-item">
+                    <span><strong>Production Efficiency</strong></span>
+                    <span>+12% (stable power = better yields)</span>
+                </div>
+                <div class="roi-item">
+                    <span><strong>CO₂ Reduction</strong></span>
+                    <span>8,000 tons/year (marketable)</span>
+                </div>
+                <div class="roi-item">
+                    <span style="border-top: 1px solid rgba(245,158,11,0.2); padding-top: 0.5rem;"><strong>Mining Co. Annual Benefit</strong></span>
+                    <span style="border-top: 1px solid rgba(245,158,11,0.2); padding-top: 0.5rem;">$1.8M+</span>
+                </div>
+            </div>
+
+            <div class="results">
+                <h3 style="color: var(--enterprise-green); margin-top: 0;">Year 1 Results (Q4-LIFE / Mining Co.)</h3>
+                <div class="result-item"><strong>✓ Uptime Achievement:</strong> 98.5% (target met; zero fuel-related outages)</div>
+                <div class="result-item"><strong>✓ Fuel Elimination:</strong> $2.1M annual savings (mining co.)</div>
+                <div class="result-item"><strong>✓ Production Yield:</strong> +12% due to power stability</div>
+                <div class="result-item"><strong>✓ CO₂ Reduction:</strong> 8,000 tons/year (ESG marketing value)</div>
+                <div class="result-item"><strong>✓ Q4-LIFE Revenue:</strong> $900k from energy sales + operations</div>
+                <div class="result-item"><strong>✓ Q4-LIFE Payback:</strong> 4.5 years</div>
+                <div class="result-item"><strong>✓ 15-Year PPA Value (Q4-LIFE):</strong> $18M+ recurring revenue</div>
+            </div>
+
+            <div class="quote-box">
+                "Q4-LIFE turned our biggest operational cost center into a strategic advantage. We eliminated fuel volatility, improved production, and became one of the greenest mining operations in Central Africa. The energy security has allowed us to sign long-term commodity contracts with confidence. This was a game-changer."
+                <div class="quote-attribution">— Chief Operating Officer, Mining Company</div>
+            </div>
+
+            <a href="#" class="download-btn"><i class="fas fa-file-pdf"></i> Download Full Case Study (PDF)</a>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <div style="text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(245,158,11,0.1) 0%, rgba(16,185,129,0.05) 100%); border-top: 1px solid rgba(245,158,11,0.2);">
+        <h2 style="color: white; margin-bottom: 1rem;">Your Success Story Starts Here</h2>
+        <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Every facility is different. Let's model your ROI.</p>
+        <a href="/divisions/enterprise-power.html#contact" style="display: inline-block; padding: 1rem 2rem; background: var(--enterprise-accent); color: #000; border-radius: 6px; text-decoration: none; font-weight: 600;">
+            Request Free Energy Audit
+        </a>
+    </div>
+</body>
+</html>

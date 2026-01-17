@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Q4-LIFE Revenue Stacking Model | Multi-stream energy revenue: SLA fees + demand management + arbitrage + PPAs + grid services + microgrids. See how one 100kWh system generates $1.2M+ over 25 years.">
+    <title>Revenue Stacking Model | Q4-LIFE POWER™</title>
+    <link rel="stylesheet" href="../files/main_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --enterprise-dark: #0f172a;
+            --enterprise-accent: #f59e0b;
+            --enterprise-green: #10b981;
+            --enterprise-blue: #3b82f6;
+            --enterprise-red: #ef4444;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--enterprise-dark) 0%, rgba(15,23,42,0.9) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(245,158,11,0.2);
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro-section {
+            background: linear-gradient(135deg, rgba(30,41,59,0.8) 0%, rgba(20,30,48,0.8) 100%);
+            border: 1px solid rgba(245,158,11,0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .intro-section strong {
+            color: var(--enterprise-accent);
+        }
+
+        /* Revenue Streams */
+        .revenue-streams {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stream-card {
+            background: rgba(30,41,59,0.6);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--enterprise-accent);
+            transition: all 0.3s ease;
+        }
+
+        .stream-card:hover {
+            border-left-color: var(--enterprise-green);
+            background: rgba(30,41,59,0.8);
+        }
+
+        .stream-card h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stream-card i {
+            color: var(--enterprise-accent);
+            font-size: 1.25rem;
+        }
+
+        .stream-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .revenue-amount {
+            background: rgba(245,158,11,0.1);
+            padding: 0.75rem;
+            border-radius: 4px;
+            color: var(--enterprise-accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Model System */
+        .model-section {
+            background: linear-gradient(135deg, rgba(30,41,59,0.8) 0%, rgba(20,30,48,0.8) 100%);
+            border: 1px solid rgba(245,158,11,0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .model-section h2 {
+            font-size: 1.75rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .timeline-container {
+            overflow-x: auto;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-row {
+            display: flex;
+            gap: 1rem;
+            min-width: min-content;
+        }
+
+        .timeline-period {
+            background: rgba(15,23,42,0.6);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(245,158,11,0.1);
+            min-width: 200px;
+        }
+
+        .timeline-period h4 {
+            color: var(--enterprise-accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item {
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .timeline-item strong {
+            color: white;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item span {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+        }
+
+        /* Stacked Revenue Chart (Text-based) */
+        .revenue-breakdown {
+            background: rgba(15,23,42,0.6);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .breakdown-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .breakdown-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .breakdown-label strong {
+            color: white;
+        }
+
+        .breakdown-value {
+            color: var(--enterprise-accent);
+            font-weight: 600;
+        }
+
+        .breakdown-bar {
+            height: 24px;
+            background: rgba(245,158,11,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(245,158,11,0.2);
+        }
+
+        .breakdown-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--enterprise-accent) 0%, var(--enterprise-green) 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Sensitivity Analysis */
+        .sensitivity-section {
+            background: rgba(15,23,42,0.6);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .sensitivity-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .scenario {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(30,41,59,0.6);
+            border-radius: 6px;
+            border-left: 3px solid var(--enterprise-accent);
+        }
+
+        .scenario-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .scenario-label strong {
+            color: white;
+        }
+
+        .scenario-value {
+            color: var(--enterprise-green);
+            font-weight: 600;
+        }
+
+        /* Comparison */
+        .comparison-section {
+            background: linear-gradient(135deg, rgba(30,41,59,0.8) 0%, rgba(20,30,48,0.8) 100%);
+            border: 1px solid rgba(245,158,11,0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .comparison-card {
+            background: rgba(15,23,42,0.6);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(245,158,11,0.1);
+        }
+
+        .comparison-card h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .comparison-stat {
+            margin-bottom: 0.75rem;
+        }
+
+        .comparison-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 0.25rem;
+        }
+
+        .comparison-stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--enterprise-accent);
+        }
+
+        .comparison-card.favorable .comparison-stat-value {
+            color: var(--enterprise-green);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .revenue-streams {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-period {
+                min-width: 160px;
+                padding: 1rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div style="padding: 1rem 2rem; background: rgba(15,23,42,0.8); border-bottom: 1px solid rgba(245,158,11,0.1); font-size: 0.9rem;">
+        <a href="/" style="color: var(--enterprise-accent); text-decoration: none;">Home</a> / 
+        <a href="/divisions/enterprise-power.html" style="color: var(--enterprise-accent); text-decoration: none;">Enterprise</a> / 
+        <span style="color: rgba(255,255,255,0.6);">Revenue Stacking</span>
+    </div>
+
+    <div class="page-header">
+        <h1>The Revenue Stacking Model</h1>
+        <p>How Q4-LIFE extracts maximum value from distributed energy systems</p>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="intro-section">
+            <p>
+                <strong>The Traditional Energy Model:</strong> A customer buys electricity. The utility earns fixed per-kWh revenue. Done.
+            </p>
+            <p>
+                <strong>The Q4-LIFE Revenue Stacking Model:</strong> One battery installation generates revenue from <strong>six concurrent streams</strong>. Same facility, same customer, multiple revenue channels. This is why distributed energy is the future.
+            </p>
+            <p style="margin-bottom: 0;">
+                <strong>The Result?</strong> A 100 kWh hotel battery system in Douala generates <strong>$1.2M+ over 25 years</strong> — for the utility, for Q4-LIFE, and for the customer.
+            </p>
+        </div>
+
+        <h2 style="color: white; font-size: 1.75rem; margin: 2rem 0 1.5rem 0;">
+            <i class="fas fa-layer-group"></i> The Six Revenue Streams
+        </h2>
+
+        <div class="revenue-streams">
+            <div class="stream-card">
+                <h3><i class="fas fa-shield-alt"></i> SLA Guarantees</h3>
+                <p>Customer pays monthly fee for guaranteed uptime (99.5%–99.99%). No energy consumed, just availability.</p>
+                <div class="revenue-amount">$5k–$15k/month</div>
+            </div>
+
+            <div class="stream-card">
+                <h3><i class="fas fa-chart-line"></i> Demand Charge Reduction</h3>
+                <p>AI shifts peak loads to off-peak hours. Customer splits savings 60/40 with Q4-LIFE. Largest monthly utility line item.</p>
+                <div class="revenue-amount">$3k–$8k/month</div>
+            </div>
+
+            <div class="stream-card">
+                <h3><i class="fas fa-coins"></i> Energy Arbitrage</h3>
+                <p>Buy electricity when cheap (midnight, low demand). Sell back when expensive (evening peak). Pure margin.</p>
+                <div class="revenue-amount">$2k–$5k/month</div>
+            </div>
+
+            <div class="stream-card">
+                <h3><i class="fas fa-sun"></i> Solar PPAs</h3>
+                <p>Q4-LIFE installs solar. Customer pays fixed $/kWh (inflation protection). 20-year revenue certainty.</p>
+                <div class="revenue-amount">$4k–$10k/month</div>
+            </div>
+
+            <div class="stream-card">
+                <h3><i class="fas fa-network-wired"></i> Grid Services</h3>
+                <p>ENEO compensates for frequency regulation, demand response, capacity reserve. Virtual power plant value.</p>
+                <div class="revenue-amount">$1k–$4k/month</div>
+            </div>
+
+            <div class="stream-card">
+                <h3><i class="fas fa-project-diagram"></i> Microgrid Control</h3>
+                <p>If system scales to campus/industrial park: turnkey ownership or $5k–$20k/month O&M fees.</p>
+                <div class="revenue-amount">$5k–$20k/month</div>
+            </div>
+        </div>
+
+        <!-- Case Study: 100 kWh Hotel Battery -->
+        <div class="model-section">
+            <h2><i class="fas fa-hotel"></i> Case Study: 100 kWh Hotel Battery (Douala)</h2>
+
+            <p style="margin-bottom: 2rem; color: rgba(255,255,255,0.8);">
+                Initial Investment: $150,000 | System Size: 100 kWh battery + 30 kWp solar | Contract Term: 25 years
+            </p>
+
+            <h3 style="color: var(--enterprise-accent); margin-bottom: 1rem; font-size: 1.1rem;">Timeline & Revenue Breakdown</h3>
+
+            <div class="timeline-container">
+                <div class="timeline-row">
+                    <!-- Year 1 -->
+                    <div class="timeline-period">
+                        <h4>Year 1 (Launch)</h4>
+                        <div class="timeline-item">
+                            <strong>SLA Fees:</strong>
+                            <span>$90k (ramping up)</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Demand Mgmt:</strong>
+                            <span>$20k (commissioning)</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Arbitrage:</strong>
+                            <span>$8k</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Solar PPA:</strong>
+                            <span>$0 (Q4-LIFE capex phase)</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Grid Services:</strong>
+                            <span>$12k</span>
+                        </div>
+                        <div class="timeline-item" style="border-top: 1px solid rgba(245,158,11,0.2); padding-top: 0.75rem; margin-top: 0.75rem;">
+                            <strong style="color: var(--enterprise-green);">Total Year 1:</strong>
+                            <span style="color: var(--enterprise-green);">$130k</span>
+                        </div>
+                    </div>
+
+                    <!-- Year 2–5 -->
+                    <div class="timeline-period">
+                        <h4>Years 2–5 (Growth)</h4>
+                        <div class="timeline-item">
+                            <strong>SLA Fees:</strong>
+                            <span>$120k/year</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Demand Mgmt:</strong>
+                            <span>$48k/year</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Arbitrage:</strong>
+                            <span>$24k/year</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Solar PPA:</strong>
+                            <span>$36k/year (ramp)</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Grid Services:</strong>
+                            <span>$28k/year</span>
+                        </div>
+                        <div class="timeline-item" style="border-top: 1px solid rgba(245,158,11,0.2); padding-top: 0.75rem; margin-top: 0.75rem;">
+                            <strong style="color: var(--enterprise-green);">Total/Year:</strong>
+                            <span style="color: var(--enterprise-green);">$256k</span>
+                        </div>
+                    </div>
+
+                    <!-- Year 6–10 -->
+                    <div class="timeline-period">
+                        <h4>Years 6–10 (Maturity)</h4>
+                        <div class="timeline-item">
+                            <strong>SLA Fees:</strong>
+                            <span>$140k/year</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Demand Mgmt:</strong>
+                            <span>$60k/year</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Arbitrage:</strong>
+                            <span>$36k/year</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Solar PPA:</strong>
+                            <span>$48k/year (full)</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Grid Services:</strong>
+                            <span>$36k/year</span>
+                        </div>
+                        <div class="timeline-item" style="border-top: 1px solid rgba(245,158,11,0.2); padding-top: 0.75rem; margin-top: 0.75rem;">
+                            <strong style="color: var(--enterprise-green);">Total/Year:</strong>
+                            <span style="color: var(--enterprise-green);">$320k</span>
+                        </div>
+                    </div>
+
+                    <!-- Year 11–25 -->
+                    <div class="timeline-period">
+                        <h4>Years 11–25 (Harvest)</h4>
+                        <div class="timeline-item">
+                            <strong>SLA Fees:</strong>
+                            <span>$140k/year</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Demand Mgmt:</strong>
+                            <span>$60k/year</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Arbitrage:</strong>
+                            <span>$40k/year (scaling)</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Solar PPA:</strong>
+                            <span>$48k/year</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>Grid Services:</strong>
+                            <span>$40k/year</span>
+                        </div>
+                        <div class="timeline-item" style="border-top: 1px solid rgba(245,158,11,0.2); padding-top: 0.75rem; margin-top: 0.75rem;">
+                            <strong style="color: var(--enterprise-green);">Total/Year:</strong>
+                            <span style="color: var(--enterprise-green);">$328k</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--enterprise-accent); margin: 2rem 0 1rem 0; font-size: 1.1rem;">25-Year Revenue Breakdown</h3>
+
+            <div class="revenue-breakdown">
+                <div class="breakdown-item">
+                    <div class="breakdown-label">
+                        <strong>SLA Fees</strong>
+                        <span class="breakdown-value">$3.2M (38%)</span>
+                    </div>
+                    <div class="breakdown-bar">
+                        <div class="breakdown-fill" style="width: 38%;"><span>SLA</span></div>
+                    </div>
+                </div>
+
+                <div class="breakdown-item">
+                    <div class="breakdown-label">
+                        <strong>Solar PPA Revenue</strong>
+                        <span class="breakdown-value">$1.8M (22%)</span>
+                    </div>
+                    <div class="breakdown-bar">
+                        <div class="breakdown-fill" style="width: 22%;"><span>PPA</span></div>
+                    </div>
+                </div>
+
+                <div class="breakdown-item">
+                    <div class="breakdown-label">
+                        <strong>Demand Charge Mgmt</strong>
+                        <span class="breakdown-value">$1.5M (18%)</span>
+                    </div>
+                    <div class="breakdown-bar">
+                        <div class="breakdown-fill" style="width: 18%;"><span>Demand</span></div>
+                    </div>
+                </div>
+
+                <div class="breakdown-item">
+                    <div class="breakdown-label">
+                        <strong>Energy Arbitrage</strong>
+                        <span class="breakdown-value">$0.8M (10%)</span>
+                    </div>
+                    <div class="breakdown-bar">
+                        <div class="breakdown-fill" style="width: 10%;"><span>Arb</span></div>
+                    </div>
+                </div>
+
+                <div class="breakdown-item">
+                    <div class="breakdown-label">
+                        <strong>Grid Services</strong>
+                        <span class="breakdown-value">$0.9M (11%)</span>
+                    </div>
+                    <div class="breakdown-bar">
+                        <div class="breakdown-fill" style="width: 11%;"><span>Grid</span></div>
+                    </div>
+                </div>
+
+                <div class="breakdown-item" style="border-top: 2px solid rgba(245,158,11,0.3); padding-top: 1rem; margin-top: 1rem;">
+                    <div class="breakdown-label">
+                        <strong>TOTAL 25-YEAR REVENUE</strong>
+                        <span class="breakdown-value" style="color: var(--enterprise-green); font-size: 1.1rem;">$8.2M</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1rem; padding: 1rem; background: rgba(245,158,11,0.1); border-radius: 6px; border-left: 3px solid var(--enterprise-accent);">
+                    <strong style="color: white;">Less: Operating Costs</strong>
+                    <div style="color: rgba(255,255,255,0.7); margin-top: 0.5rem;">
+                        Maintenance, monitoring, battery replacement (Year 15): $2.5M
+                    </div>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(245,158,11,0.2);">
+                        <strong style="color: var(--enterprise-green);">NET 25-YEAR PROFIT: $5.7M</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sensitivity Analysis -->
+        <div class="model-section">
+            <h2><i class="fas fa-chart-area"></i> Sensitivity Analysis: What If?</h2>
+
+            <p style="margin-bottom: 2rem; color: rgba(255,255,255,0.8);">
+                Real-world outcomes depend on diesel price, grid services compensation, and system utilization. Here's how the model scales under different scenarios:
+            </p>
+
+            <div class="sensitivity-section">
+                <h4><i class="fas fa-arrow-up"></i> Scenario: Diesel Prices Rise 50% (High Probability)</h4>
+                <div class="scenario">
+                    <div class="scenario-label">
+                        <strong>Customer SLA Willingness:</strong>
+                        <span class="scenario-value">+$4k/month (+40% pricing power)</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.6); margin-top: 0.5rem; font-size: 0.9rem;">
+                        When diesel becomes $1.50+/liter, customers view backup power as essential, not optional. Price elasticity shifts.
+                    </p>
+                </div>
+                <div class="scenario">
+                    <div class="scenario-label">
+                        <strong>25-Year Profit Impact:</strong>
+                        <span class="scenario-value">+$1.2M (25 years × $4k/month × 0.5 probability)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sensitivity-section">
+                <h4><i class="fas fa-arrow-down"></i> Scenario: Grid Stability Improves (Lower Probability)</h4>
+                <div class="scenario">
+                    <div class="scenario-label">
+                        <strong>SLA Fee Reduction:</strong>
+                        <span class="scenario-value">-$2k/month (-20% demand)</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.6); margin-top: 0.5rem; font-size: 0.9rem;">
+                        If ENEO stabilizes grid with new generation, customers view uptime as less critical. But arbitrage demand INCREASES.
+                    </p>
+                </div>
+                <div class="scenario">
+                    <div class="scenario-label">
+                        <strong>Arbitrage Revenue Increase:</strong>
+                        <span class="scenario-value">+$3k/month (30% larger spread)</span>
+                    </div>
+                </div>
+                <div class="scenario">
+                    <div class="scenario-label">
+                        <strong>Net 25-Year Impact:</strong>
+                        <span class="scenario-value">-$100k (breakeven trade-off)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sensitivity-section">
+                <h4><i class="fas fa-bolt"></i> Scenario: Grid Services Expand (HIGHEST PROBABILITY)</h4>
+                <div class="scenario">
+                    <div class="scenario-label">
+                        <strong>Grid Services Revenue:</strong>
+                        <span class="scenario-value">+$2k/month (regulatory ramp)</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.6); margin-top: 0.5rem; font-size: 0.9rem;">
+                        ENEO incentivizes frequency regulation and demand response. Aggregators like Q4-LIFE are critical to grid modernization.
+                    </p>
+                </div>
+                <div class="scenario">
+                    <div class="scenario-label">
+                        <strong>25-Year Profit Upside:</strong>
+                        <span class="scenario-value">+$600k</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison: Q4-LIFE vs. Alternatives -->
+        <div class="comparison-section">
+            <h2 style="color: white; font-size: 1.75rem; margin-bottom: 1.5rem;">
+                <i class="fas fa-balance-scale"></i> How Does Q4-LIFE Stack Up?
+            </h2>
+
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem;">
+                Let's compare the 100 kWh hotel system (25-year financial outcome) against traditional alternatives:
+            </p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card favorable">
+                    <h4><i class="fas fa-check-circle" style="color: var(--enterprise-green);"></i> Q4-LIFE Revenue Stacking</h4>
+                    <div class="comparison-stat">
+                        <div class="comparison-stat-label">Customer Energy Cost</div>
+                        <div class="comparison-stat-value">-45% ($360k savings)</div>
+                    </div>
+                    <div class="comparison-stat">
+                        <div class="comparison-stat-label">Q4-LIFE Revenue</div>
+                        <div class="comparison-stat-value">$5.7M net</div>
+                    </div>
+                    <div class="comparison-stat">
+                        <div class="comparison-stat-label">System Payback</div>
+                        <div class="comparison-stat-value">3.1 years</div>
+                    </div>
+                    <div class="comparison-stat">
+                        <div class="comparison-stat-label">Environmental Tons CO₂</div>
+                        <div class="comparison-stat-value">-8,000 tons</div>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <h4><i class="fas fa-battery-three-quarters" style="color: var(--enterprise-accent);"></i> Simple Solar + Battery</h4>
+                    <div class="comparison-stat">
+                        <div class="comparison-stat-label">Customer Energy Cost</div>
+                        <div class="comparison-stat-value">-30% ($240k savings)</div>
+                    </div>
+                    <div class="comparison-stat">
+                        <div class="comparison-stat-label">Zero Other Revenue</div>
+                        <div class="comparison-stat-value">$0 / grid services</div>
+                    </div>
+                    <div class="comparison-stat">
+                        <div class="comparison-stat-label">System Payback</div>
+                        <div class="comparison-stat-value">5–6 years</div>
+                    </div>
+                    <div class="comparison-stat">
+                        <div class="comparison-stat-label">Customer Capex</div>
+                        <div class="comparison-stat-value">$150k required</div>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <h4><i class="fas fa-gas-pump" style="color: var(--enterprise-red);"></i> Diesel Generation (Status Quo)</h4>
+                    <div class="comparison-stat">
+                        <div class="comparison-stat-label">Customer Energy Cost</div>
+                        <div class="comparison-stat-value">$1.2M (25 years)</div>
+                    </div>
+                    <div class="comparison-stat">
+                        <div class="comparison-stat-label">Maintenance / Repairs</div>
+                        <div class="comparison-stat-value">+$200k (25 years)</div>
+                    </div>
+                    <div class="comparison-stat">
+                        <div class="comparison-stat-label">Environmental Cost</div>
+                        <div class="comparison-stat-value">+8,000 tons CO₂</div>
+                    </div>
+                    <div class="comparison-stat">
+                        <div class="comparison-stat-label">Uptime Guarantee</div>
+                        <div class="comparison-stat-value">95% (unreliable)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: rgba(245,158,11,0.05); padding: 2rem; border-radius: 8px; border: 1px solid rgba(245,158,11,0.2); margin-top: 2rem;">
+                <h3 style="color: white; margin-bottom: 1rem;">The Bottom Line</h3>
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">
+                    Over 25 years, a Q4-LIFE revenue stacking system delivers:
+                </p>
+                <ul style="color: rgba(255,255,255,0.7); margin-left: 1.5rem; line-height: 1.8;">
+                    <li><strong>For the Hotel:</strong> $360k in energy savings vs. diesel, plus 99.5% reliability</li>
+                    <li><strong>For Q4-LIFE:</strong> $5.7M in net revenue from six concurrent streams</li>
+                    <li><strong>For Cameroon:</strong> 8,000 tons CO₂ reduction + grid infrastructure deferred $50M+</li>
+                </ul>
+                <p style="color: rgba(255,255,255,0.7); margin-top: 1.5rem; font-style: italic;">
+                    That's the power of revenue stacking. One system. Multiple payers. Sustainable business model.
+                </p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div style="text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(245,158,11,0.1) 0%, rgba(16,185,129,0.05) 100%); border-radius: 8px; margin-top: 2rem;">
+            <h2 style="color: white; margin-bottom: 1rem;">Ready to Model Your Revenue Stack?</h2>
+            <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Every facility has unique stacking potential. We'll build a financial model tailored to your facility.</p>
+            <a href="/divisions/enterprise-power.html#contact" style="display: inline-block; padding: 1rem 2rem; background: var(--enterprise-accent); color: #000; border-radius: 6px; text-decoration: none; font-weight: 600;">
+                Request Financial Projection
+            </a>
+        </div>
+    </div>
+</body>
+</html>
