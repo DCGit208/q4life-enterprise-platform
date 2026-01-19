@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Q4-LIFE Power Solutions: Consumer EIaaS products and Enterprise ESCO/BESS services for reliable, cost-effective energy across Africa">
+    <meta name="keywords" content="Q4-LIFE, power solutions, EIaaS, ESCO, BESS, energy storage, Cameroon, Africa, backup power, enterprise energy">
+    <title>Power Solutions Hub | Q4-LIFE</title>
+    <link rel="stylesheet" href="/files/main_style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navigation Breadcrumb */
+        .breadcrumb {
+            padding: 1.5rem 2rem;
+            background: rgba(15, 23, 42, 0.6);
+            border-bottom: 1px solid rgba(248, 250, 252, 0.1);
+        }
+
+        .breadcrumb a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #f59e0b;
+        }
+
+        .breadcrumb span {
+            color: #64748b;
+            margin: 0 0.5rem;
+        }
+
+        .breadcrumb .current {
+            color: #f59e0b;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero .description {
+            font-size: 1.125rem;
+            color: #94a3b8;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Track Cards */
+        .tracks-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .track-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid rgba(248, 250, 252, 0.1);
+            border-radius: 16px;
+            padding: 3rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .track-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .track-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(245, 158, 11, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .track-card:hover::before {
+            opacity: 1;
+        }
+
+        .track-card.consumer::before {
+            background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+        }
+
+        .track-card.consumer:hover {
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .track-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .track-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f8fafc;
+            margin-bottom: 0.75rem;
+        }
+
+        .track-card .track-subtitle {
+            font-size: 1.125rem;
+            color: #f59e0b;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .track-card.consumer .track-subtitle {
+            color: #10b981;
+        }
+
+        .track-card .track-description {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #cbd5e1;
+            font-size: 1rem;
+        }
+
+        .features-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #f59e0b;
+            font-weight: 700;
+        }
+
+        .track-card.consumer .features-list li::before {
+            color: #10b981;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #0f172a;
+            font-weight: 700;
+            font-size: 1.125rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateX(4px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        }
+
+        .track-card.consumer .cta-button {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .track-card.consumer .cta-button:hover {
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .cta-arrow {
+            font-size: 1.25rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover .cta-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            max-width: 1200px;
+            margin: 4rem auto 2rem;
+            padding: 3rem 2rem;
+            background: rgba(30, 41, 59, 0.4);
+            border-top: 1px solid rgba(248, 250, 252, 0.1);
+            border-bottom: 1px solid rgba(248, 250, 252, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #f59e0b;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: #94a3b8;
+            font-size: 1.125rem;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-cta h2 {
+            font-size: 2rem;
+            color: #f8fafc;
+            margin-bottom: 1rem;
+        }
+
+        .footer-cta p {
+            color: #94a3b8;
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-cta .cta-button {
+            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+            box-shadow: 0 4px 12px rgba(100, 116, 139, 0.3);
+        }
+
+        .footer-cta .cta-button:hover {
+            box-shadow: 0 6px 20px rgba(100, 116, 139, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .tracks-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .hero .description {
+                font-size: 1rem;
+            }
+
+            .track-card {
+                padding: 2rem;
+            }
+
+            .track-card h2 {
+                font-size: 1.75rem;
+            }
+
+            .stats-grid {
+                gap: 2rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2.25rem;
+            }
+
+            .cta-button {
+                padding: 0.875rem 2rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb">
+        <a href="/index.html">Home</a>
+        <span>/</span>
+        <span class="current">Power</span>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Power Solutions for Every Need</h1>
+        <p class="subtitle">Reliable Energy. Intelligent Economics. African Excellence.</p>
+        <p class="description">
+            Q4-LIFE delivers comprehensive power solutions across Africa—from consumer backup systems to enterprise-grade energy infrastructure. Choose your pathway to energy independence.
+        </p>
+    </section>
+
+    <!-- Track Cards -->
+    <section class="tracks-container">
+        <!-- Consumer Track -->
+        <article class="track-card consumer">
+            <div class="track-icon">🏠</div>
+            <h2>Consumer Solutions</h2>
+            <p class="track-subtitle">Energy-as-a-Service (EIaaS)</p>
+            <p class="track-description">
+                Premium backup power systems for homes and small businesses. From EcoFlow portable stations to Tesla Powerwall installations, we deliver reliable energy without the complexity.
+            </p>
+            <ul class="features-list">
+                <li>EcoFlow, Anker & Tesla product range</li>
+                <li>Turnkey installation & maintenance</li>
+                <li>Flexible financing & subscription models</li>
+                <li>24/7 monitoring & support</li>
+            </ul>
+            <a href="/power/consumer/index.html" class="cta-button">
+                Explore Consumer Power
+                <span class="cta-arrow">→</span>
+            </a>
+        </article>
+
+        <!-- Enterprise Track -->
+        <article class="track-card enterprise">
+            <div class="track-icon">🏢</div>
+            <h2>Enterprise Solutions</h2>
+            <p class="track-subtitle">ESCO, BESS & Grid Services</p>
+            <p class="track-description">
+                Mission-critical power infrastructure for data centers, mining operations, hospitality, and industrial facilities. Multi-stream revenue models with 99.5%+ uptime SLAs.
+            </p>
+            <ul class="features-list">
+                <li>Guaranteed uptime SLAs (99.5-99.99%)</li>
+                <li>Energy arbitrage & demand charge management</li>
+                <li>Commercial solar PPAs (15-20 years)</li>
+                <li>Grid services & Eneo partnerships</li>
+                <li>Custom microgrids & DER aggregation</li>
+            </ul>
+            <a href="/power/enterprise/index.html" class="cta-button">
+                Explore Enterprise Power
+                <span class="cta-arrow">→</span>
+            </a>
+        </article>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>99.5%+</h3>
+                <p>Uptime Guarantee<br>for Enterprise Clients</p>
+            </div>
+            <div class="stat-item">
+                <h3>250MW</h3>
+                <p>Planned Battery Capacity<br>by 2028</p>
+            </div>
+            <div class="stat-item">
+                <h3>5 Countries</h3>
+                <p>Cameroon, Benin, Ivory Coast,<br>Senegal, Ghana</p>
+            </div>
+            <div class="stat-item">
+                <h3>$2-3M</h3>
+                <p>Annual Savings for<br>Heavy Industry Clients</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <h2>Not Sure Which Solution Fits?</h2>
+        <p>Our energy specialists can assess your needs and recommend the optimal approach—whether consumer, enterprise, or hybrid solutions.</p>
+        <a href="/contact-us.html" class="cta-button">
+            Get a Free Consultation
+            <span class="cta-arrow">→</span>
+        </a>
+    </section>
+</body>
+</html>
