@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enterprise Energy Services | Q4-LIFE POWER™ offers ESCO & BESS solutions: guaranteed uptime SLAs, demand charge management, energy arbitrage, and grid services for African enterprises.">
+    <meta name="keywords" content="ESCO, BESS, Energy Services, Battery Storage, ESaaS, Cameroon, Africa, grid services, demand response">
+    <meta property="og:title" content="Enterprise Energy Services | Q4-LIFE POWER™">
+    <meta property="og:description" content="Guaranteed uptime, predictable costs, revenue optimization for enterprises across Africa.">
+    <meta property="og:image" content="https://q4-life.com/img/enterprise-og.jpg">
+    <meta property="og:type" content="website">
+    <title>Enterprise Energy Services | Q4-LIFE POWER™ ESCO & BESS Solutions</title>
+    <link rel="stylesheet" href="/files/main_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Enterprise-specific B2B styling */
+        :root {
+            --enterprise-dark: #0f172a;
+            --enterprise-accent: #f59e0b;
+            --enterprise-green: #10b981;
+            --enterprise-blue: #3b82f6;
+            --enterprise-gray: #475569;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .enterprise-hero {
+            background: linear-gradient(135deg, var(--enterprise-dark) 0%, rgba(15,23,42,0.9) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(245,158,11,0.2);
+        }
+
+        .enterprise-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .enterprise-hero p.subtitle {
+            font-size: 1.5rem;
+            color: var(--enterprise-accent);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .enterprise-hero p.description {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--enterprise-accent);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(245,158,11,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--enterprise-accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(245,158,11,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Value Drivers Section */
+        .value-drivers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            background: rgba(15,23,42,0.5);
+        }
+
+        .driver-card {
+            background: rgba(30,41,59,0.6);
+            border: 1px solid rgba(245,158,11,0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .driver-card:hover {
+            border-color: var(--enterprise-accent);
+            background: rgba(30,41,59,0.9);
+            transform: translateY(-5px);
+        }
+
+        .driver-card i {
+            font-size: 3rem;
+            color: var(--enterprise-accent);
+            margin-bottom: 1rem;
+        }
+
+        .driver-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .driver-card p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+        }
+
+        /* Target Clients Section */
+        .target-clients {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(15,23,42,0.3) 0%, rgba(10,16,31,0.5) 100%);
+        }
+
+        .target-clients h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .client-icons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .client-icon {
+            background: rgba(30,41,59,0.8);
+            border: 1px solid rgba(245,158,11,0.1);
+            border-radius: 12px;
+            padding: 2rem 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .client-icon:hover {
+            border-color: var(--enterprise-accent);
+            background: rgba(30,41,59,0.95);
+            transform: scale(1.05);
+        }
+
+        .client-icon i {
+            font-size: 2.5rem;
+            color: var(--enterprise-accent);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .client-icon p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            margin: 0;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            padding: 4rem 2rem;
+            background: rgba(15,23,42,0.4);
+        }
+
+        .comparison-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .comparison-table {
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(30,41,59,0.6);
+            border: 1px solid rgba(245,158,11,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: rgba(245,158,11,0.1);
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--enterprise-accent);
+            border-bottom: 2px solid rgba(245,158,11,0.2);
+        }
+
+        .comparison-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(245,158,11,0.1);
+            color: rgba(255,255,255,0.8);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .check {
+            color: var(--enterprise-green);
+            font-weight: bold;
+        }
+
+        .x {
+            color: #ef4444;
+        }
+
+        /* Contact Section */
+        .enterprise-contact {
+            background: linear-gradient(135deg, rgba(245,158,11,0.1) 0%, rgba(16,185,129,0.05) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(245,158,11,0.2);
+        }
+
+        .enterprise-contact h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .enterprise-contact p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 1rem 2rem;
+            background: rgba(15,23,42,0.8);
+            border-bottom: 1px solid rgba(245,158,11,0.1);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--enterprise-accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .enterprise-hero h1 {
+                font-size: 2rem;
+            }
+
+            .enterprise-hero p.subtitle {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+
+            .comparison-table table {
+                font-size: 0.85rem;
+            }
+
+            .comparison-table th, .comparison-table td {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/">Home</a> / <a href="/power/">Power</a> / <span style="color: rgba(255,255,255,0.7);">Enterprise</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="enterprise-hero">
+        <h1>Enterprise Energy Services</h1>
+        <p class="subtitle">Energy Services as a Service (ESaaS) for African Enterprise</p>
+        <p class="description">
+            Guaranteed uptime. Predictable costs. Revenue optimization. Q4-LIFE POWER™ delivers enterprise-grade energy reliability 
+            combined with sophisticated revenue stacking models. For mining operations, data centers, hospitality, healthcare, and more.
+        </p>
+        <div class="cta-buttons">
+            <a href="#contact" class="btn-primary">Schedule Energy Audit</a>
+            <a href="/power/enterprise/services.html" class="btn-secondary">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Value Drivers -->
+    <section class="value-drivers">
+        <div class="driver-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Guaranteed Uptime (SLA)</h3>
+            <p>99.5% power availability guaranteed via documented service-level agreements. 24/7 support. Rapid response protocols.</p>
+        </div>
+        <div class="driver-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Demand Charge Management</h3>
+            <p>Reduce peak-hour energy spend by 20–40% through intelligent battery storage and load shifting. Shared savings model.</p>
+        </div>
+        <div class="driver-card">
+            <i class="fas fa-coins"></i>
+            <h3>Energy Cost Optimization</h3>
+            <p>Predictable monthly energy expense. No diesel volatility. Fixed rates + inflation hedges. Multi-year contracts available.</p>
+        </div>
+    </section>
+
+    <!-- Target Clients -->
+    <section class="target-clients">
+        <h2>Who We Serve</h2>
+        <div class="client-icons">
+            <div class="client-icon">
+                <i class="fas fa-server"></i>
+                <p><strong>Data Centers</strong><br>24/7 uptime, cooling, UPS redundancy</p>
+            </div>
+            <div class="client-icon">
+                <i class="fas fa-industry"></i>
+                <p><strong>Mining & Heavy Industry</strong><br>Remote locations, high draw, fuel costs</p>
+            </div>
+            <div class="client-icon">
+                <i class="fas fa-hotel"></i>
+                <p><strong>Hospitality</strong><br>Guest experience, premium positioning</p>
+            </div>
+            <div class="client-icon">
+                <i class="fas fa-hospital"></i>
+                <p><strong>Healthcare</strong><br>Critical uptime, regulatory compliance</p>
+            </div>
+            <div class="client-icon">
+                <i class="fas fa-boxes"></i>
+                <p><strong>E-commerce & Warehousing</strong><br>Variable demand, cooling/automation</p>
+            </div>
+            <div class="client-icon">
+                <i class="fas fa-building"></i>
+                <p><strong>Government & Institutional</strong><br>Budget certainty, ESCO models</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison-section">
+        <h2>Q4-LIFE ESaaS vs. Traditional Approaches</h2>
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Factor</th>
+                        <th>Traditional Diesel</th>
+                        <th>Basic Solar/Battery</th>
+                        <th>Q4-LIFE ESaaS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Uptime Guarantee</strong></td>
+                        <td>Not provided</td>
+                        <td>Weather-dependent</td>
+                        <td><span class="check">99.5% SLA ✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operating Cost</strong></td>
+                        <td>High + fuel volatility</td>
+                        <td>Variable O&M</td>
+                        <td><span class="check">Fixed + predictable ✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Maintenance Burden</strong></td>
+                        <td>High (generator service)</td>
+                        <td>Moderate</td>
+                        <td><span class="check">Q4-LIFE managed ✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Environmental Impact</strong></td>
+                        <td>High emissions</td>
+                        <td>Zero emissions</td>
+                        <td><span class="check">Zero emissions ✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Revenue Opportunities</strong></td>
+                        <td>None</td>
+                        <td>Minimal</td>
+                        <td><span class="check">Arbitrage + grid services ✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scalability</strong></td>
+                        <td>Limited</td>
+                        <td>Modular</td>
+                        <td><span class="check">Fully modular + stackable ✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>25-Year Cost</strong></td>
+                        <td>$900k+ (fuel, maintenance, replacement)</td>
+                        <td>$650k (battery degradation, O&M)</td>
+                        <td><span class="check">$400k net (after service revenue) ✓</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="enterprise-contact" id="contact">
+        <h2>Ready to Optimize Your Energy?</h2>
+        <p>Our energy audit is free. No commitment. Discover your savings potential in 48 hours.</p>
+        <form style="max-width: 600px; margin: 0 auto; display: grid; gap: 1rem;">
+            <input type="text" placeholder="Company Name" required style="padding: 0.75rem; border: none; border-radius: 6px;">
+            <select required style="padding: 0.75rem; border: none; border-radius: 6px;">
+                <option value="">Select Industry</option>
+                <option value="data-center">Data Center</option>
+                <option value="mining">Mining / Heavy Industry</option>
+                <option value="hospitality">Hospitality</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="ecommerce">E-commerce / Warehouse</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="email" placeholder="Email Address" required style="padding: 0.75rem; border: none; border-radius: 6px;">
+            <input type="tel" placeholder="Phone Number" required style="padding: 0.75rem; border: none; border-radius: 6px;">
+            <button type="submit" class="btn-primary" style="width: 100%;">Request Free Energy Audit</button>
+        </form>
+        <p style="margin-top: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+            We respect your privacy. Data handled per our <a href="#" style="color: var(--enterprise-accent);">Privacy Policy</a>.
+        </p>
+    </section>
+
+    <!-- Breadcrumb footer link -->
+    <div style="text-align: center; padding: 2rem; background: rgba(15,23,42,0.5); border-top: 1px solid rgba(245,158,11,0.1);">
+        <p style="color: rgba(255,255,255,0.6);">
+            Explore more: <a href="/power/enterprise/services.html" style="color: var(--enterprise-accent);">Energy Services</a> · 
+            <a href="/power/enterprise/industrial-solutions.html" style="color: var(--enterprise-accent);">Industry Solutions</a> · 
+            <a href="/power/enterprise/infrastructure/cameroon-market.html" style="color: var(--enterprise-accent);">Cameroon Market</a>
+        </p>
+    </div>
+
+    <script>
+        // Form submission handler (placeholder for now)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! We will contact you shortly to schedule your free energy audit.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

@@ -3,485 +3,605 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Enterprise Energy Services | Q4-LIFE POWER™ offers ESCO & BESS solutions: guaranteed uptime SLAs, demand charge management, energy arbitrage, and grid services for African enterprises.">
-    <meta name="keywords" content="ESCO, BESS, Energy Services, Battery Storage, ESaaS, Cameroon, Africa, grid services, demand response">
-    <meta property="og:title" content="Enterprise Energy Services | Q4-LIFE POWER™">
-    <meta property="og:description" content="Guaranteed uptime, predictable costs, revenue optimization for enterprises across Africa.">
-    <meta property="og:image" content="https://q4-life.com/img/enterprise-og.jpg">
-    <meta property="og:type" content="website">
-    <title>Enterprise Energy Services | Q4-LIFE POWER™ ESCO & BESS Solutions</title>
-    <link rel="stylesheet" href="/files/main_style.css">
+    <meta name="description" content="Enterprise Energy Infrastructure | Q4-LIFE POWER™ delivers mission-critical ESCO & BESS solutions with 99.5%+ uptime SLAs, multi-stream revenue optimization, and guaranteed performance for African enterprises.">
+    <meta name="keywords" content="ESCO, BESS, Energy Services, Battery Storage, ESaaS, Enterprise Power, Cameroon, Africa, grid services, demand response">
+    <title>Enterprise Energy Infrastructure | Q4-LIFE POWER™</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Enterprise-specific B2B styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
-            --enterprise-dark: #0f172a;
-            --enterprise-accent: #f59e0b;
-            --enterprise-green: #10b981;
-            --enterprise-blue: #3b82f6;
-            --enterprise-gray: #475569;
+            --primary: #2563eb;
+            --accent-gold: #f59e0b;
+            --accent-green: #10b981;
+            --dark-bg: #0f172a;
+            --dark-surface: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --border: rgba(248, 250, 252, 0.1);
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: rgba(255,255,255,0.8);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 50%, #1e293b 100%);
+            color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .breadcrumb {
+            padding: 1rem 2rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .breadcrumb a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #fbbf24;
+        }
+
+        .breadcrumb span {
+            color: var(--text-muted);
+            margin: 0 0.5rem;
         }
 
         /* Hero Section */
-        .enterprise-hero {
-            background: linear-gradient(135deg, var(--enterprise-dark) 0%, rgba(15,23,42,0.9) 100%);
-            padding: 5rem 2rem;
+        .hero {
+            position: relative;
+            padding: 6rem 2rem;
             text-align: center;
-            border-bottom: 1px solid rgba(245,158,11,0.2);
+            overflow: hidden;
         }
 
-        .enterprise-hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: white;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        .enterprise-hero p.subtitle {
-            font-size: 1.5rem;
-            color: var(--enterprise-accent);
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: #60a5fa;
             margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
             font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
         }
 
-        .enterprise-hero p.description {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.6);
+        .hero .description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
             max-width: 700px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
         }
 
-        /* CTA Buttons */
-        .cta-buttons {
+        .hero-cta {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
         }
 
-        .btn-primary, .btn-secondary {
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
             padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-primary {
-            background: var(--enterprise-accent);
-            color: #000;
+            background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
         }
 
         .btn-primary:hover {
-            background: #f59e0b;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(245,158,11,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid var(--enterprise-accent);
+            background: rgba(248, 250, 252, 0.05);
+            border: 2px solid var(--border);
+            color: var(--text-primary);
         }
 
         .btn-secondary:hover {
-            background: rgba(245,158,11,0.1);
-            transform: translateY(-2px);
+            background: rgba(248, 250, 252, 0.1);
+            border-color: var(--primary);
         }
 
-        /* Value Drivers Section */
-        .value-drivers {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 4rem 2rem;
-            background: rgba(15,23,42,0.5);
+        /* Stats Bar */
+        .stats-bar {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 3rem 2rem;
         }
 
-        .driver-card {
-            background: rgba(30,41,59,0.6);
-            border: 1px solid rgba(245,158,11,0.2);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .driver-card:hover {
-            border-color: var(--enterprise-accent);
-            background: rgba(30,41,59,0.9);
-            transform: translateY(-5px);
-        }
-
-        .driver-card i {
-            font-size: 3rem;
-            color: var(--enterprise-accent);
-            margin-bottom: 1rem;
-        }
-
-        .driver-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-
-        .driver-card p {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.95rem;
-        }
-
-        /* Target Clients Section */
-        .target-clients {
-            padding: 4rem 2rem;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(15,23,42,0.3) 0%, rgba(10,16,31,0.5) 100%);
-        }
-
-        .target-clients h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: white;
-        }
-
-        .client-icons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
+        .stats-grid {
             max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
         }
 
-        .client-icon {
-            background: rgba(30,41,59,0.8);
-            border: 1px solid rgba(245,158,11,0.1);
-            border-radius: 12px;
-            padding: 2rem 1rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
+        .stat-item {
+            animation: fadeInUp 1s ease-out both;
         }
 
-        .client-icon:hover {
-            border-color: var(--enterprise-accent);
-            background: rgba(30,41,59,0.95);
-            transform: scale(1.05);
-        }
+        .stat-item:nth-child(1) { animation-delay: 0.2s; }
+        .stat-item:nth-child(2) { animation-delay: 0.4s; }
+        .stat-item:nth-child(3) { animation-delay: 0.6s; }
+        .stat-item:nth-child(4) { animation-delay: 0.8s; }
 
-        .client-icon i {
-            font-size: 2.5rem;
-            color: var(--enterprise-accent);
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
             margin-bottom: 1rem;
         }
 
-        .client-icon p {
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.7);
-            margin: 0;
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
         }
 
-        /* Comparison Table */
-        .comparison-section {
-            padding: 4rem 2rem;
-            background: rgba(15,23,42,0.4);
-        }
-
-        .comparison-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: white;
-        }
-
-        .comparison-table {
-            max-width: 1000px;
+        .services-grid {
+            max-width: 1200px;
             margin: 0 auto;
-            overflow-x: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
         }
 
-        .comparison-table table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(30,41,59,0.6);
-            border: 1px solid rgba(245,158,11,0.1);
-            border-radius: 8px;
+        .service-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.6) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
             overflow: hidden;
         }
 
-        .comparison-table th {
-            background: rgba(245,158,11,0.1);
-            padding: 1.5rem;
-            text-align: left;
-            font-weight: 600;
-            color: var(--enterprise-accent);
-            border-bottom: 2px solid rgba(245,158,11,0.2);
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent-gold) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
 
-        .comparison-table td {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(245,158,11,0.1);
-            color: rgba(255,255,255,0.8);
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.2);
         }
 
-        .comparison-table tr:last-child td {
-            border-bottom: none;
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
-        .check {
-            color: var(--enterprise-green);
-            font-weight: bold;
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(245, 158, 11, 0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
         }
 
-        .x {
-            color: #ef4444;
-        }
-
-        /* Contact Section */
-        .enterprise-contact {
-            background: linear-gradient(135deg, rgba(245,158,11,0.1) 0%, rgba(16,185,129,0.05) 100%);
-            padding: 4rem 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(245,158,11,0.2);
-        }
-
-        .enterprise-contact h2 {
-            font-size: 2.5rem;
-            color: white;
+        .service-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
-        .enterprise-contact p {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
-        /* Breadcrumb */
-        .breadcrumb {
-            padding: 1rem 2rem;
-            background: rgba(15,23,42,0.8);
-            border-bottom: 1px solid rgba(245,158,11,0.1);
-            font-size: 0.9rem;
+        .service-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
         }
 
-        .breadcrumb a {
-            color: var(--enterprise-accent);
+        .service-card li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .service-card li i {
+            color: var(--accent-green);
+            font-size: 0.875rem;
+        }
+
+        .service-link {
+            color: var(--primary);
+            font-weight: 600;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
         }
 
-        .breadcrumb a:hover {
-            text-decoration: underline;
+        .service-link:hover {
+            gap: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .enterprise-hero h1 {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .section-header h2 {
                 font-size: 2rem;
             }
 
-            .enterprise-hero p.subtitle {
-                font-size: 1.2rem;
+            .services-grid {
+                grid-template-columns: 1fr;
             }
 
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .btn-primary, .btn-secondary {
-                width: 100%;
-            }
-
-            .comparison-table table {
-                font-size: 0.85rem;
-            }
-
-            .comparison-table th, .comparison-table td {
-                padding: 1rem;
+            .stat-number {
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <a href="/">Home</a> / <a href="/power/">Power</a> / <span style="color: rgba(255,255,255,0.7);">Enterprise</span>
-    </div>
 
-    <!-- Hero Section -->
-    <section class="enterprise-hero">
-        <h1>Enterprise Energy Services</h1>
-        <p class="subtitle">Energy Services as a Service (ESaaS) for African Enterprise</p>
-        <p class="description">
-            Guaranteed uptime. Predictable costs. Revenue optimization. Q4-LIFE POWER™ delivers enterprise-grade energy reliability 
-            combined with sophisticated revenue stacking models. For mining operations, data centers, hospitality, healthcare, and more.
-        </p>
-        <div class="cta-buttons">
-            <a href="#contact" class="btn-primary">Schedule Energy Audit</a>
-            <a href="/power/enterprise/services.html" class="btn-secondary">Explore Services</a>
-        </div>
-    </section>
+<!-- Breadcrumb -->
+<nav class="breadcrumb">
+    <a href="../../index.html">Home</a>
+    <span>→</span>
+    <a href="../index.html">Power</a>
+    <span>→</span>
+    <span style="color: var(--text-primary);">Enterprise</span>
+</nav>
 
-    <!-- Value Drivers -->
-    <section class="value-drivers">
-        <div class="driver-card">
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">
             <i class="fas fa-shield-alt"></i>
-            <h3>Guaranteed Uptime (SLA)</h3>
-            <p>99.5% power availability guaranteed via documented service-level agreements. 24/7 support. Rapid response protocols.</p>
+            Mission-Critical Energy Infrastructure
         </div>
-        <div class="driver-card">
-            <i class="fas fa-chart-line"></i>
-            <h3>Demand Charge Management</h3>
-            <p>Reduce peak-hour energy spend by 20–40% through intelligent battery storage and load shifting. Shared savings model.</p>
-        </div>
-        <div class="driver-card">
-            <i class="fas fa-coins"></i>
-            <h3>Energy Cost Optimization</h3>
-            <p>Predictable monthly energy expense. No diesel volatility. Fixed rates + inflation hedges. Multi-year contracts available.</p>
-        </div>
-    </section>
-
-    <!-- Target Clients -->
-    <section class="target-clients">
-        <h2>Who We Serve</h2>
-        <div class="client-icons">
-            <div class="client-icon">
-                <i class="fas fa-server"></i>
-                <p><strong>Data Centers</strong><br>24/7 uptime, cooling, UPS redundancy</p>
-            </div>
-            <div class="client-icon">
-                <i class="fas fa-industry"></i>
-                <p><strong>Mining & Heavy Industry</strong><br>Remote locations, high draw, fuel costs</p>
-            </div>
-            <div class="client-icon">
-                <i class="fas fa-hotel"></i>
-                <p><strong>Hospitality</strong><br>Guest experience, premium positioning</p>
-            </div>
-            <div class="client-icon">
-                <i class="fas fa-hospital"></i>
-                <p><strong>Healthcare</strong><br>Critical uptime, regulatory compliance</p>
-            </div>
-            <div class="client-icon">
-                <i class="fas fa-boxes"></i>
-                <p><strong>E-commerce & Warehousing</strong><br>Variable demand, cooling/automation</p>
-            </div>
-            <div class="client-icon">
-                <i class="fas fa-building"></i>
-                <p><strong>Government & Institutional</strong><br>Budget certainty, ESCO models</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Comparison Table -->
-    <section class="comparison-section">
-        <h2>Q4-LIFE ESaaS vs. Traditional Approaches</h2>
-        <div class="comparison-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Factor</th>
-                        <th>Traditional Diesel</th>
-                        <th>Basic Solar/Battery</th>
-                        <th>Q4-LIFE ESaaS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Uptime Guarantee</strong></td>
-                        <td>Not provided</td>
-                        <td>Weather-dependent</td>
-                        <td><span class="check">99.5% SLA ✓</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Operating Cost</strong></td>
-                        <td>High + fuel volatility</td>
-                        <td>Variable O&M</td>
-                        <td><span class="check">Fixed + predictable ✓</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Maintenance Burden</strong></td>
-                        <td>High (generator service)</td>
-                        <td>Moderate</td>
-                        <td><span class="check">Q4-LIFE managed ✓</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Environmental Impact</strong></td>
-                        <td>High emissions</td>
-                        <td>Zero emissions</td>
-                        <td><span class="check">Zero emissions ✓</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Revenue Opportunities</strong></td>
-                        <td>None</td>
-                        <td>Minimal</td>
-                        <td><span class="check">Arbitrage + grid services ✓</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Scalability</strong></td>
-                        <td>Limited</td>
-                        <td>Modular</td>
-                        <td><span class="check">Fully modular + stackable ✓</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>25-Year Cost</strong></td>
-                        <td>$900k+ (fuel, maintenance, replacement)</td>
-                        <td>$650k (battery degradation, O&M)</td>
-                        <td><span class="check">$400k net (after service revenue) ✓</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="enterprise-contact" id="contact">
-        <h2>Ready to Optimize Your Energy?</h2>
-        <p>Our energy audit is free. No commitment. Discover your savings potential in 48 hours.</p>
-        <form style="max-width: 600px; margin: 0 auto; display: grid; gap: 1rem;">
-            <input type="text" placeholder="Company Name" required style="padding: 0.75rem; border: none; border-radius: 6px;">
-            <select required style="padding: 0.75rem; border: none; border-radius: 6px;">
-                <option value="">Select Industry</option>
-                <option value="data-center">Data Center</option>
-                <option value="mining">Mining / Heavy Industry</option>
-                <option value="hospitality">Hospitality</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="ecommerce">E-commerce / Warehouse</option>
-                <option value="other">Other</option>
-            </select>
-            <input type="email" placeholder="Email Address" required style="padding: 0.75rem; border: none; border-radius: 6px;">
-            <input type="tel" placeholder="Phone Number" required style="padding: 0.75rem; border: none; border-radius: 6px;">
-            <button type="submit" class="btn-primary" style="width: 100%;">Request Free Energy Audit</button>
-        </form>
-        <p style="margin-top: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
-            We respect your privacy. Data handled per our <a href="#" style="color: var(--enterprise-accent);">Privacy Policy</a>.
+        <h1>Enterprise Energy<br>Infrastructure</h1>
+        <p class="subtitle">ESCO & BESS Solutions for African Enterprises</p>
+        <p class="description">
+            Guaranteed 99.5%+ uptime SLAs, multi-stream revenue optimization, and professional energy management for data centers, mining operations, hospitality, and industrial facilities across Africa.
         </p>
-    </section>
+        <div class="hero-cta">
+            <a href="https://wa.me/237677604100?text=Request%20Enterprise%20Energy%20Audit" class="btn btn-primary">
+                <i class="fab fa-whatsapp"></i>
+                Request Energy Audit
+            </a>
+            <a href="services.html" class="btn btn-secondary">
+                View Services
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
 
-    <!-- Breadcrumb footer link -->
-    <div style="text-align: center; padding: 2rem; background: rgba(15,23,42,0.5); border-top: 1px solid rgba(245,158,11,0.1);">
-        <p style="color: rgba(255,255,255,0.6);">
-            Explore more: <a href="/power/enterprise/services.html" style="color: var(--enterprise-accent);">Energy Services</a> · 
-            <a href="/power/enterprise/industrial-solutions.html" style="color: var(--enterprise-accent);">Industry Solutions</a> · 
-            <a href="/power/enterprise/infrastructure/cameroon-market.html" style="color: var(--enterprise-accent);">Cameroon Market</a>
-        </p>
+<!-- Stats Bar -->
+<section class="stats-bar">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <span class="stat-number">99.5%</span>
+            <p class="stat-label">Uptime Guarantee</p>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <p class="stat-label">Monitoring & Support</p>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">6+</span>
+            <p class="stat-label">Revenue Streams</p>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">15-25yr</span>
+            <p class="stat-label">Partnership Terms</p>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section">
+    <div class="section-header">
+        <h2>Enterprise Energy Services</h2>
+        <p>Comprehensive ESCO & BESS solutions designed for mission-critical operations</p>
     </div>
 
-    <script>
-        // Form submission handler (placeholder for now)
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you! We will contact you shortly to schedule your free energy audit.');
-            this.reset();
-        });
-    </script>
+    <div class="services-grid">
+        <!-- Guaranteed Uptime SLAs -->
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-shield-check"></i>
+            </div>
+            <h3>Guaranteed Uptime SLAs</h3>
+            <p>Mission-critical power with contractual performance guarantees and financial penalties for downtime.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> 99.5% - 99.99% uptime tiers</li>
+                <li><i class="fas fa-check-circle"></i> Financial penalties for breaches</li>
+                <li><i class="fas fa-check-circle"></i> Redundant system architecture</li>
+                <li><i class="fas fa-check-circle"></i> Real-time monitoring dashboards</li>
+            </ul>
+            <a href="services.html#uptime" class="service-link">
+                Learn more <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Demand Charge Management -->
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Demand Charge Management</h3>
+            <p>Reduce peak demand charges by 40-60% through intelligent battery discharge during high-rate periods.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Peak shaving algorithms</li>
+                <li><i class="fas fa-check-circle"></i> 40-60% cost reduction</li>
+                <li><i class="fas fa-check-circle"></i> Predictive load management</li>
+                <li><i class="fas fa-check-circle"></i> Automated dispatch</li>
+            </ul>
+            <a href="services.html#demand" class="service-link">
+                Learn more <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Energy Arbitrage -->
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-sync-alt"></i>
+            </div>
+            <h3>Energy Arbitrage</h3>
+            <p>Buy low, sell high - capture value from time-of-use rate differentials and grid export opportunities.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Time-of-use optimization</li>
+                <li><i class="fas fa-check-circle"></i> Grid export revenue</li>
+                <li><i class="fas fa-check-circle"></i> Automated trading algorithms</li>
+                <li><i class="fas fa-check-circle"></i> 15-20% ROI improvement</li>
+            </ul>
+            <a href="services.html#arbitrage" class="service-link">
+                Learn more <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Solar PPAs -->
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-solar-panel"></i>
+            </div>
+            <h3>Commercial Solar PPAs</h3>
+            <p>Zero-capex solar installations with 15-20 year Power Purchase Agreements at rates below grid prices.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> No upfront investment</li>
+                <li><i class="fas fa-check-circle"></i> 15-20 year fixed rates</li>
+                <li><i class="fas fa-check-circle"></i> Below-grid pricing</li>
+                <li><i class="fas fa-check-circle"></i> Full O&M included</li>
+            </ul>
+            <a href="services.html#solar" class="service-link">
+                Learn more <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Grid Services -->
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-network-wired"></i>
+            </div>
+            <h3>Grid Services & Partnerships</h3>
+            <p>Generate revenue by providing frequency regulation, voltage support, and demand response to utilities.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Eneo partnership programs</li>
+                <li><i class="fas fa-check-circle"></i> Frequency regulation revenue</li>
+                <li><i class="fas fa-check-circle"></i> Voltage support services</li>
+                <li><i class="fas fa-check-circle"></i> Demand response incentives</li>
+            </ul>
+            <a href="grid-partnerships.html" class="service-link">
+                Learn more <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Custom Microgrids -->
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <h3>Custom Microgrids & DER</h3>
+            <p>Design and operate campus-scale microgrids with solar, storage, and intelligent energy management.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Campus-scale design</li>
+                <li><i class="fas fa-check-circle"></i> Solar + storage integration</li>
+                <li><i class="fas fa-check-circle"></i> Island mode capability</li>
+                <li><i class="fas fa-check-circle"></i> DER aggregation</li>
+            </ul>
+            <a href="services.html#microgrids" class="service-link">
+                Learn more <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Ready to Transform Your Energy Infrastructure?</h2>
+        <p>Schedule a comprehensive energy audit with our engineering team. We'll analyze your load profile, identify optimization opportunities, and design a custom solution.</p>
+        <div class="hero-cta">
+            <a href="https://wa.me/237677604100?text=Request%20Enterprise%20Energy%20Audit" class="btn btn-primary">
+                <i class="fab fa-whatsapp"></i>
+                Schedule Energy Audit
+            </a>
+            <a href="mailto:enterprise@q4-life.com" class="btn btn-secondary">
+                <i class="fas fa-envelope"></i>
+                Email Our Team
+            </a>
+        </div>
+    </div>
+</section>
+
 </body>
 </html>
