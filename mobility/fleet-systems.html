@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Q4-LIFE Fleet Systems | B2B fleet management + driver-as-a-service programs - $700-$900/vehicle/month recurring revenue">
+    <title>Fleet Systems | Q4-LIFE Mobility Division</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/files/main_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --mobility-orange: #f97316;
+            --mobility-emerald: #10b981;
+            --mobility-violet: #8b5cf6;
+            --dark-bg: #0f172a;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --border: rgba(248, 250, 252, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 50%, #1e293b 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .breadcrumb {
+            padding: 1rem 2rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .breadcrumb a {
+            color: var(--mobility-orange);
+            text-decoration: none;
+        }
+
+        .hero {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.2) 0%, transparent 70%);
+        }
+
+        .hero-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--mobility-orange), var(--mobility-violet));
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3rem;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f8fafc 0%, var(--mobility-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--mobility-orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            margin-left: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .section li {
+            margin-bottom: 0.75rem;
+        }
+
+        .revenue-table {
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+        }
+
+        .revenue-table th,
+        .revenue-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .revenue-table th {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--mobility-orange);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .revenue-table td {
+            color: var(--text-secondary);
+        }
+
+        .highlight-box {
+            background: rgba(249, 115, 22, 0.1);
+            border-left: 4px solid var(--mobility-orange);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-item {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .metric-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--mobility-orange);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--mobility-orange), var(--mobility-violet));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        <a href="/">Home</a> / <a href="/mobility/">Mobility</a> / Fleet Systems
+    </div>
+
+    <div class="hero">
+        <div class="hero-icon">
+            <i class="fas fa-shuttle-van"></i>
+        </div>
+        <h1>Fleet Systems</h1>
+        <p>B2B fleet management + driver-as-a-service programs. Stable recurring revenue from corporate contracts and driver leasing.</p>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <h2>Core Business Model</h2>
+            <p>Fleet Systems operates on two tracks:</p>
+            
+            <h3>1. Driver-as-a-Service (DaaS)</h3>
+            <p>Vehicles leased to drivers who earn income from ride-hailing, delivery, or personal taxi services. Drivers pay weekly/monthly lease fees.</p>
+            <ul>
+                <li><strong>Revenue Model:</strong> $700-$900/vehicle/month</li>
+                <li><strong>Driver Benefits:</strong> Access to income-generating asset without capital outlay</li>
+                <li><strong>Our Services:</strong> Maintenance, insurance, GPS tracking, roadside assistance</li>
+                <li><strong>Lease-to-Own Option:</strong> Drivers can purchase vehicle after 24-36 months</li>
+            </ul>
+
+            <h3>2. Corporate Fleet Contracts (B2B)</h3>
+            <p>Long-term fleet management for NGOs, hotels, schools, enterprises. 12-24 month contracts with stable monthly revenue.</p>
+            <ul>
+                <li><strong>Revenue Model:</strong> $500-$800/vehicle/month + management fee</li>
+                <li><strong>Client Benefits:</strong> No capital expense, predictable monthly cost, full-service management</li>
+                <li><strong>Our Services:</strong> Vehicle procurement, maintenance, driver sourcing, GPS tracking, fuel management</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Key Advantage:</strong> B2B contracts = predictable cash flow. 85%+ retention rate. Lower churn than consumer-facing businesses.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Revenue Scaling: The Math</h2>
+
+            <table class="revenue-table">
+                <thead>
+                    <tr>
+                        <th>Fleet Size</th>
+                        <th>Revenue per Vehicle</th>
+                        <th>Monthly Revenue</th>
+                        <th>Annual Revenue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 vehicles</td>
+                        <td>$800/month</td>
+                        <td>$8,000</td>
+                        <td>$96,000</td>
+                    </tr>
+                    <tr>
+                        <td>50 vehicles</td>
+                        <td>$800/month</td>
+                        <td>$40,000</td>
+                        <td>$480,000</td>
+                    </tr>
+                    <tr>
+                        <td>100 vehicles</td>
+                        <td>$800/month</td>
+                        <td>$80,000</td>
+                        <td>$960,000</td>
+                    </tr>
+                    <tr>
+                        <td>200 vehicles</td>
+                        <td>$800/month</td>
+                        <td>$160,000</td>
+                        <td>$1,920,000</td>
+                    </tr>
+                    <tr>
+                        <td>500 vehicles</td>
+                        <td>$800/month</td>
+                        <td>$400,000</td>
+                        <td>$4,800,000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="metric-grid">
+                <div class="metric-item">
+                    <span class="metric-number">96%</span>
+                    <span class="metric-label">Annual ROI per Vehicle</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">85%</span>
+                    <span class="metric-label">Target Fleet Utilization</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">95%</span>
+                    <span class="metric-label">Driver Payment Rate</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">18-24</span>
+                    <span class="metric-label">Months Vehicle Payback</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Driver-as-a-Service Program</h2>
+
+            <h3>Driver Qualification Criteria</h3>
+            <ul>
+                <li><strong>Valid Driver's License:</strong> Minimum 2 years driving experience</li>
+                <li><strong>Background Check:</strong> Criminal record + traffic violation screening</li>
+                <li><strong>Income Verification:</strong> Minimum demonstrated monthly earnings capacity</li>
+                <li><strong>Security Deposit:</strong> $300-$500 (refundable)</li>
+                <li><strong>Training Program:</strong> Mandatory safety + customer service training (via Q4-Life Education)</li>
+            </ul>
+
+            <h3>Lease Agreement Structure</h3>
+            <ul>
+                <li><strong>Weekly Lease:</strong> $180-$220/week ($720-$880/month)</li>
+                <li><strong>Monthly Lease:</strong> $700-$850/month (discounted vs weekly)</li>
+                <li><strong>Lease Term:</strong> 12-36 months</li>
+                <li><strong>Included Services:</strong> Insurance, GPS tracking, roadside assistance, first maintenance</li>
+                <li><strong>Excluded:</strong> Fuel, driver-caused damages, traffic fines</li>
+            </ul>
+
+            <h3>Driver Support Services</h3>
+            <ul>
+                <li><strong>24/7 Roadside Assistance:</strong> Emergency towing + battery jumpstart</li>
+                <li><strong>Maintenance Network:</strong> Access to certified mechanics (discounted rates)</li>
+                <li><strong>GPS Tracking:</strong> Fleet management + theft recovery</li>
+                <li><strong>Income Analytics:</strong> Dashboard showing daily earnings, expenses, net profit</li>
+                <li><strong>Lease-to-Own Path:</strong> Option to purchase vehicle after 24 months (residual value credit)</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Driver Economics:</strong> Average ride-hailing driver earns $1,200-$1,800/month. After $800 lease + $400 fuel = $0-$600 net. Attractive for drivers without vehicle capital.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Corporate Fleet Contracts</h2>
+
+            <h3>Target Client Segments</h3>
+            
+            <h4>1. NGOs / Development Organizations</h4>
+            <ul>
+                <li><strong>Fleet Size:</strong> 20-100 vehicles</li>
+                <li><strong>Use Case:</strong> Field operations, staff transport, program delivery</li>
+                <li><strong>Contract Length:</strong> 12-36 months (project duration)</li>
+                <li><strong>Revenue Potential:</strong> 50-vehicle NGO = $40k-$50k/month</li>
+            </ul>
+
+            <h4>2. Hotels / Hospitality</h4>
+            <ul>
+                <li><strong>Fleet Size:</strong> 5-30 vehicles</li>
+                <li><strong>Use Case:</strong> Airport shuttles, guest transport, tours</li>
+                <li><strong>Contract Length:</strong> 24-60 months</li>
+                <li><strong>Revenue Potential:</strong> 15-vehicle hotel = $10k-$12k/month</li>
+            </ul>
+
+            <h4>3. Schools / Universities</h4>
+            <ul>
+                <li><strong>Fleet Size:</strong> 10-50 vehicles (buses + vans)</li>
+                <li><strong>Use Case:</strong> Student transport, field trips, staff shuttles</li>
+                <li><strong>Contract Length:</strong> 12 months (renewable annually)</li>
+                <li><strong>Revenue Potential:</strong> 25-vehicle school = $20k-$25k/month</li>
+            </ul>
+
+            <h4>4. Enterprise / Corporate</h4>
+            <ul>
+                <li><strong>Fleet Size:</strong> 10-100 vehicles</li>
+                <li><strong>Use Case:</strong> Executive transport, sales teams, logistics</li>
+                <li><strong>Contract Length:</strong> 24-48 months</li>
+                <li><strong>Revenue Potential:</strong> 40-vehicle enterprise = $32k-$40k/month</li>
+            </ul>
+
+            <h3>Corporate Contract Structure</h3>
+            <table class="revenue-table">
+                <thead>
+                    <tr>
+                        <th>Service Component</th>
+                        <th>Monthly Fee</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Vehicle Lease</td>
+                        <td>$500-$700/vehicle</td>
+                        <td>Base rental fee</td>
+                    </tr>
+                    <tr>
+                        <td>Fleet Management</td>
+                        <td>$50-$100/vehicle</td>
+                        <td>GPS, reporting, admin</td>
+                    </tr>
+                    <tr>
+                        <td>Maintenance Package</td>
+                        <td>$100-$150/vehicle</td>
+                        <td>All scheduled + minor repairs</td>
+                    </tr>
+                    <tr>
+                        <td>Insurance Coverage</td>
+                        <td>$80-$120/vehicle</td>
+                        <td>Comprehensive + liability</td>
+                    </tr>
+                    <tr>
+                        <td>Driver Sourcing (Optional)</td>
+                        <td>$200-$300/driver</td>
+                        <td>Recruitment + training</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total Package</strong></td>
+                        <td><strong>$730-$1,070/vehicle</strong></td>
+                        <td><strong>All-inclusive</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <p><strong>Win-Win:</strong> Clients avoid $10k-$15k upfront vehicle purchase + ongoing admin. We earn $700-$1,000/month recurring. Vehicle pays for itself in 12-18 months.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Fleet Management Platform</h2>
+
+            <h3>Real-Time Monitoring Dashboard</h3>
+            <ul>
+                <li><strong>GPS Tracking:</strong> Live vehicle location, geofencing alerts</li>
+                <li><strong>Utilization Metrics:</strong> Daily mileage, idle time, trip history</li>
+                <li><strong>Driver Behavior:</strong> Speed monitoring, harsh braking alerts</li>
+                <li><strong>Fuel Management:</strong> Consumption tracking, cost analysis</li>
+                <li><strong>Maintenance Alerts:</strong> Scheduled service reminders, predictive maintenance</li>
+            </ul>
+
+            <h3>Client Portal Features</h3>
+            <ul>
+                <li><strong>Fleet Status:</strong> Available, in-use, under maintenance</li>
+                <li><strong>Trip Reports:</strong> Detailed journey logs with timestamps</li>
+                <li><strong>Cost Analytics:</strong> Monthly spending breakdown (fuel, maintenance, insurance)</li>
+                <li><strong>Driver Management:</strong> Performance ratings, assignment scheduling</li>
+                <li><strong>Billing Transparency:</strong> Itemized invoices, online payment</li>
+            </ul>
+
+            <h3>Operational Efficiency Tools</h3>
+            <ul>
+                <li><strong>Automated Maintenance Scheduling:</strong> Service due notifications, mechanic dispatch</li>
+                <li><strong>Insurance Claims Management:</strong> Accident reporting, claim tracking</li>
+                <li><strong>Fuel Card Integration:</strong> Automated fuel expense tracking</li>
+                <li><strong>Driver Communication:</strong> Push notifications, SMS alerts</li>
+                <li><strong>Reporting:</strong> Monthly executive summaries, cost savings analysis</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Capital Strategy: Mobility Fund</h2>
+            
+            <p>Fleet expansion funded through <strong>Q4-LIFE Mobility Fund</strong> (not operational cash):</p>
+            
+            <ul>
+                <li><strong>Fund Size:</strong> $5M-$10M (Phase 1), $20M-$50M (Phase 2)</li>
+                <li><strong>Deployment:</strong> 50% fleet vehicles, 25% EV infrastructure, 25% working capital</li>
+                <li><strong>Returns:</strong> Target 15-25% annual returns to investors</li>
+                <li><strong>Q4-LIFE Revenue:</strong> 2-3% management fee + 20% performance carry</li>
+            </ul>
+
+            <div class="metric-grid">
+                <div class="metric-item">
+                    <span class="metric-number">$10M</span>
+                    <span class="metric-label">Example Fund Size</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">500</span>
+                    <span class="metric-label">Vehicles Deployed</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$4.8M</span>
+                    <span class="metric-label">Annual Fleet Revenue</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$700k</span>
+                    <span class="metric-label">Q4 Management Earnings</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Integration with Q4-LIFE Ecosystem</h2>
+
+            <ul>
+                <li><strong>Vehicle Trading:</strong> Fleet vehicles sourced from marketplace at wholesale rates</li>
+                <li><strong>Certified Services:</strong> All fleet maintenance routed to certified mechanic network</li>
+                <li><strong>Energy Division:</strong> EV fleet charging via Q4-Life Power infrastructure</li>
+                <li><strong>Education:</strong> Driver training programs via Q4-Life Education (ASE partnership)</li>
+                <li><strong>Business Tech:</strong> Fleet management software shared across Q4 platforms</li>
+            </ul>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; margin-bottom: 1rem;">Need Fleet Management Solutions?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Corporate contracts from 10-500 vehicles. No capital outlay required.</p>
+            <a href="https://api.whatsapp.com/send?phone=237680655903&text=I'm%20interested%20in%20Q4-LIFE%20Fleet%20Systems" class="btn-primary">
+                <i class="fab fa-whatsapp"></i> Request Corporate Proposal
+            </a>
+        </div>
+    </div>
+</body>
+</html>

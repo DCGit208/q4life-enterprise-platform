@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Q4-LIFE Mobility Division Strategy | Complete automotive transaction infrastructure playbook - zero capital, maximum leverage, institutional-scale returns">
+    <title>Mobility Division Strategy | Q4-LIFE Systems Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/files/main_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #2563eb;
+            --mobility-orange: #f97316;
+            --mobility-emerald: #10b981;
+            --mobility-violet: #8b5cf6;
+            --dark-bg: #0f172a;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --border: rgba(248, 250, 252, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 50%, #1e293b 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .breadcrumb {
+            padding: 1rem 2rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .breadcrumb a {
+            color: var(--mobility-orange);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .page-header {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+        }
+
+        .page-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .strategy-section {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .strategy-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--mobility-orange);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .strategy-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .strategy-section h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--mobility-emerald);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .strategy-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .strategy-section ul, .strategy-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .strategy-section li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .highlight-box {
+            background: rgba(249, 115, 22, 0.1);
+            border-left: 4px solid var(--mobility-orange);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box strong {
+            color: var(--mobility-orange);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .revenue-table {
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+        }
+
+        .revenue-table th,
+        .revenue-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .revenue-table th {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--mobility-orange);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .revenue-table td {
+            color: var(--text-secondary);
+        }
+
+        .phase-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .phase-card h5 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--mobility-emerald);
+            margin-bottom: 1rem;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-item {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .metric-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--mobility-orange);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .strategy-section { padding: 1.5rem; }
+            .revenue-table { font-size: 0.875rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        <a href="/">Home</a> / <a href="/mobility/">Mobility</a> / Strategy
+    </div>
+
+    <div class="page-header">
+        <h1>Q4-LIFE Mobility Division<br>Strategic Architecture</h1>
+        <p>
+            Complete playbook for building transaction infrastructure in African automotive markets. Zero inventory risk, maximum leverage, institutional-scale returns.
+        </p>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Core Thesis -->
+        <div class="strategy-section">
+            <h2><i class="fas fa-lightbulb"></i> Core Thesis</h2>
+            <div class="highlight-box">
+                <p><strong>We are not building a car business.</strong></p>
+                <p>We are building <strong>transaction infrastructure</strong> for automotive markets — the rails that money flows through:</p>
+                <ul>
+                    <li>Financing commissions</li>
+                    <li>Insurance brokerage</li>
+                    <li>Service network commissions</li>
+                    <li>Marketplace transaction fees</li>
+                    <li>Fleet management subscriptions</li>
+                    <li>Data licensing</li>
+                </ul>
+            </div>
+
+            <p>
+                <strong>Analogies:</strong>
+            </p>
+            <ul>
+                <li><strong>Stripe</strong> doesn't own inventory — they own payment rails</li>
+                <li><strong>Uber</strong> doesn't own cars — they own dispatch infrastructure</li>
+                <li><strong>Carvana</strong> doesn't just sell cars — they own the financing + warranty + logistics stack</li>
+            </ul>
+
+            <p>
+                We combine all three: <strong>Assets + Labor + Transactions + Platform</strong>
+            </p>
+        </div>
+
+        <!-- Exhaustive Value Chain -->
+        <div class="strategy-section">
+            <h2><i class="fas fa-link"></i> The Complete Automotive Value Chain</h2>
+            
+            <h3>Revenue Stream #1: Vehicle Supply & Trading</h3>
+            <h4>Supply Sources</h4>
+            <ul>
+                <li><strong>Imports:</strong> Japan (Toyota, Nissan), UAE (luxury), Europe (German engineering)</li>
+                <li><strong>Local Trade-ins:</strong> Upgrade cycles from existing customers</li>
+                <li><strong>Salvage Auctions:</strong> Repair/refurbish programs</li>
+                <li><strong>Fleet Liquidation:</strong> Corporate vehicles at end-of-lease</li>
+            </ul>
+
+            <h4>Revenue Model</h4>
+            <table class="revenue-table">
+                <thead>
+                    <tr>
+                        <th>Mechanism</th>
+                        <th>Revenue</th>
+                        <th>Volume (100 cars/mo)</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sales Commission</td>
+                        <td>3-7% ($240-$560 per $8k car)</td>
+                        <td>$24k-$56k/month</td>
+                        <td>Zero inventory risk</td>
+                    </tr>
+                    <tr>
+                        <td>Inspection Fees</td>
+                        <td>$50 per vehicle</td>
+                        <td>$5k/month</td>
+                        <td>Required to list</td>
+                    </tr>
+                    <tr>
+                        <td>Dealer Subscriptions</td>
+                        <td>$100-$300/month</td>
+                        <td>$4k-$12k (20 dealers)</td>
+                        <td>Recurring revenue</td>
+                    </tr>
+                    <tr>
+                        <td>Featured Listings</td>
+                        <td>$50-$200 per listing</td>
+                        <td>$2k-$8k/month</td>
+                        <td>Premium placement</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <p><strong>Key Insight:</strong> We facilitate transactions, we don't hold inventory. Commission model = zero capital requirements, zero storage costs, zero depreciation risk.</p>
+            </div>
+
+            <h3>Revenue Stream #2: Vehicle Financing (The Billion-Dollar Layer)</h3>
+            <p>
+                Banks don't want small retail clients (high admin cost, low margins). We become the intermediary — aggregating demand, underwriting clients, routing to financial partners.
+            </p>
+
+            <h4>Commission Structure</h4>
+            <ul>
+                <li><strong>Financing Referral:</strong> 5-12% of loan value</li>
+                <li><strong>Example:</strong> Client finances $10,000 car → We earn $500-$1,200 instantly</li>
+                <li><strong>Scale:</strong> 100 financed cars/month = $50k-$120k/month</li>
+                <li><strong>Risk:</strong> Zero (bank holds the loan, we earn commission)</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Why This Matters:</strong> Financing commissions often EXCEED sales commissions. A $10k car at 10% financing commission = $1,000 (vs $300 sales commission at 3%). This is where billions live.</p>
+            </div>
+
+            <h4>Financial Partners</h4>
+            <ul>
+                <li>Commercial banks (retail auto loans)</li>
+                <li>Microfinance institutions (informal sector)</li>
+                <li>Saccos/cooperatives (member financing)</li>
+                <li>International lenders (diaspora financing)</li>
+            </ul>
+
+            <h3>Revenue Stream #3: Insurance Brokerage</h3>
+            <p>Every vehicle MUST be insured (regulatory requirement). We become the insurance broker of record.</p>
+
+            <h4>Revenue Model</h4>
+            <table class="revenue-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                        <th>Calculation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Commission Rate</td>
+                        <td>15-25% annually</td>
+                        <td>On total premium paid</td>
+                    </tr>
+                    <tr>
+                        <td>Average Premium</td>
+                        <td>$400/year</td>
+                        <td>Comprehensive coverage</td>
+                    </tr>
+                    <tr>
+                        <td>Commission per Car</td>
+                        <td>$60-$100/year</td>
+                        <td>Recurring annually</td>
+                    </tr>
+                    <tr>
+                        <td>1000 Cars on Platform</td>
+                        <td>$60k-$100k/year</td>
+                        <td>Pure recurring revenue</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <p><strong>Critical:</strong> Insurance revenue is RECURRING. Once a customer is on the platform, they renew annually. This compounds year-over-year.</p>
+            </div>
+
+            <h3>Revenue Stream #4: Registration + Licensing Services</h3>
+            <ul>
+                <li><strong>Service:</strong> Government registration, title transfer, license renewal</li>
+                <li><strong>Revenue:</strong> $50-$150 per vehicle (service margin on top of govt fees)</li>
+                <li><strong>Volume:</strong> 100 cars/month = $5k-$15k/month</li>
+                <li><strong>Margin:</strong> 100% (pure service profit)</li>
+            </ul>
+
+            <h3>Revenue Stream #5: Maintenance + Parts (Daily Cash Flow)</h3>
+            
+            <h4>Service Categories</h4>
+            <ul>
+                <li><strong>Routine Maintenance:</strong> Oil changes, filters, brake pads (20-30% margins)</li>
+                <li><strong>Major Repairs:</strong> Engine, transmission, suspension (30-40% margins)</li>
+                <li><strong>Parts Supply:</strong> Batteries, tires, electronics (20-40% markup)</li>
+                <li><strong>Emergency Services:</strong> Towing, roadside assistance (50%+ margins)</li>
+            </ul>
+
+            <h4>Revenue Model (Certified Services Network)</h4>
+            <div class="metric-grid">
+                <div class="metric-item">
+                    <span class="metric-number">300</span>
+                    <span class="metric-label">Certified Mechanics</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">2</span>
+                    <span class="metric-label">Jobs per Mechanic/Day</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">600</span>
+                    <span class="metric-label">Daily Jobs Total</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$10-15</span>
+                    <span class="metric-label">Commission per Job</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$6k</span>
+                    <span class="metric-label">Daily Revenue</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$180k</span>
+                    <span class="metric-label">Monthly Revenue</span>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>This is the real cash engine.</strong> Maintenance happens DAILY. Not monthly like car sales. Not annually like insurance. DAILY.</p>
+                <p>300 mechanics × 2 jobs/day × $10 commission = $6,000/day = $180,000/month</p>
+                <p><strong>WITHOUT owning workshops.</strong></p>
+            </div>
+
+            <h3>Revenue Stream #6: Fleet Leasing / Driver Programs</h3>
+            
+            <h4>Driver-as-a-Service Model</h4>
+            <p>Vehicles deployed as income-generating assets. Drivers lease vehicles with built-in maintenance + insurance + support.</p>
+
+            <table class="revenue-table">
+                <thead>
+                    <tr>
+                        <th>Fleet Size</th>
+                        <th>Revenue per Vehicle</th>
+                        <th>Monthly Total</th>
+                        <th>Annual Revenue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 car</td>
+                        <td>$700-$900/month</td>
+                        <td>$800/month</td>
+                        <td>$9,600</td>
+                    </tr>
+                    <tr>
+                        <td>20 cars</td>
+                        <td>$700-$900/month</td>
+                        <td>$16,000/month</td>
+                        <td>$192,000</td>
+                    </tr>
+                    <tr>
+                        <td>100 cars</td>
+                        <td>$700-$900/month</td>
+                        <td>$80,000/month</td>
+                        <td>$960,000</td>
+                    </tr>
+                    <tr>
+                        <td>500 cars</td>
+                        <td>$700-$900/month</td>
+                        <td>$400,000/month</td>
+                        <td>$4,800,000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Corporate Fleet Contracts</h4>
+            <ul>
+                <li><strong>NGOs:</strong> 50-car fleets @ $500/car/month = $25k/month</li>
+                <li><strong>Schools:</strong> 10-20 buses @ $800/bus/month = $8k-$16k/month</li>
+                <li><strong>Hotels:</strong> 15-car shuttle fleets @ $600/car/month = $9k/month</li>
+                <li><strong>Enterprises:</strong> Executive transport, logistics fleets</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Key Advantage:</strong> B2B contracts = stable, predictable revenue. 12-24 month agreements. Lower churn than consumer.</p>
+            </div>
+        </div>
+
+        <!-- Certified Mechanic Network Deep Dive -->
+        <div class="strategy-section">
+            <h2><i class="fas fa-users-cog"></i> Certified Mechanic Network: The Cash Engine</h2>
+            
+            <p>This is NOT charity training. This is a <strong>controlled labor monopoly</strong> — like Uber's driver network, but for skilled automotive technicians.</p>
+
+            <h3>How It Works</h3>
+            <ol>
+                <li><strong>Create Certification Program</strong>
+                    <ul>
+                        <li>Partner with ASE (Automotive Service Excellence) via BTH Education Group</li>
+                        <li>Link: <a href="https://btheducationgroup.org/programs/automotive?level=1&vendor=ASE&partner=standard" target="_blank" style="color: var(--mobility-orange);">ASE Certification Program</a></li>
+                        <li>Tiered certifications: Entry → Advanced → EV Specialist</li>
+                    </ul>
+                </li>
+                <li><strong>License Mechanics</strong>
+                    <ul>
+                        <li>Only certified mechanics get platform access</li>
+                        <li>Digital ID cards + uniforms + diagnostic app</li>
+                        <li>Quality rating system (customer reviews)</li>
+                    </ul>
+                </li>
+                <li><strong>Route Jobs ONLY to Certified Techs</strong>
+                    <ul>
+                        <li>Customers book through platform</li>
+                        <li>Jobs dispatched to nearest available mechanic</li>
+                        <li>Uber-style dispatch algorithm</li>
+                    </ul>
+                </li>
+                <li><strong>Control Pricing</strong>
+                    <ul>
+                        <li>Platform sets standardized service pricing</li>
+                        <li>Transparent to customers (no price gouging)</li>
+                        <li>Mechanics accept platform rates or lose access</li>
+                    </ul>
+                </li>
+                <li><strong>Take Commission</strong>
+                    <ul>
+                        <li>20-30% of every service transaction</li>
+                        <li>10-20% of every parts sale</li>
+                        <li>Payment processed through platform</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Revenue Breakdown: Mechanic Network</h3>
+
+            <h4>1️⃣ Certification Fees</h4>
+            <table class="revenue-table">
+                <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>Fee</th>
+                        <th>Annual Volume</th>
+                        <th>Revenue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Entry Mechanic</td>
+                        <td>$150</td>
+                        <td>200</td>
+                        <td>$30,000</td>
+                    </tr>
+                    <tr>
+                        <td>Advanced Mechanic</td>
+                        <td>$300</td>
+                        <td>75</td>
+                        <td>$22,500</td>
+                    </tr>
+                    <tr>
+                        <td>EV Specialist</td>
+                        <td>$500</td>
+                        <td>25</td>
+                        <td>$12,500</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total (300 mechanics/year)</strong></td>
+                        <td></td>
+                        <td><strong>300</strong></td>
+                        <td><strong>$65,000</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>2️⃣ Franchise Toolkit</h4>
+            <ul>
+                <li>Branded uniforms ($50)</li>
+                <li>Digital ID cards + insurance ($30)</li>
+                <li>Diagnostic app access ($40)</li>
+                <li>Tool financing programs (commission on loans)</li>
+                <li><strong>Onboarding Package:</strong> $200 per mechanic</li>
+                <li><strong>300 mechanics:</strong> $60,000</li>
+            </ul>
+
+            <h4>3️⃣ Job Commission (The Big One)</h4>
+            <div class="highlight-box">
+                <p><strong>Customer pays $50 repair. We take 20-30%. $10-$15 per job.</strong></p>
+                <p>If 300 mechanics do 2 jobs/day:</p>
+                <ul>
+                    <li>600 jobs × $10 = <strong>$6,000/day</strong></li>
+                    <li>= <strong>$180,000/month</strong></li>
+                    <li>= <strong>$2,160,000/year</strong></li>
+                </ul>
+                <p><strong>WITHOUT owning workshops. WITHOUT liability. WITHOUT equipment overhead.</strong></p>
+            </div>
+
+            <h4>4️⃣ Parts Commission</h4>
+            <p>Mechanics buy parts through YOUR supply chain. You negotiate bulk deals with distributors, mechanics order through platform, you earn 10-20% margin.</p>
+            <ul>
+                <li><strong>Average parts per job:</strong> $30</li>
+                <li><strong>Margin:</strong> 15%</li>
+                <li><strong>Commission per job:</strong> $4.50</li>
+                <li><strong>600 jobs/day:</strong> $2,700/day = $81,000/month</li>
+            </ul>
+
+            <h4>5️⃣ Corporate Maintenance Contracts</h4>
+            <p>NGOs, fleets, schools need regular maintenance. You win the contract, subcontract to certified mechanics, keep 25% margin.</p>
+            <ul>
+                <li><strong>Example:</strong> 50-car NGO fleet @ $500/month/car = $25,000/month</li>
+                <li><strong>You subcontract:</strong> Pay mechanics $375/car</li>
+                <li><strong>You keep:</strong> $125/car × 50 = $6,250/month</li>
+                <li><strong>Scale:</strong> 5 corporate contracts = $30k+/month recurring</li>
+            </ul>
+
+            <h3>Why This Becomes Your Service Backbone</h3>
+            <ul>
+                <li>✅ All cars sold on platform → route to your mechanics</li>
+                <li>✅ All parts → route through your supply chain</li>
+                <li>✅ All service data → belongs to you (predictive maintenance, resale values)</li>
+                <li>✅ All clients → depend on your network</li>
+            </ul>
+
+            <p><strong>This is vertical integration.</strong> You control the entire post-sale service layer.</p>
+        </div>
+
+        <!-- PART 2: Marketplace Platform Architecture + Data Licensing -->
+        <div class="strategy-section">
+            <h2><i class="fas fa-layer-group"></i> PART 2: Marketplace Platform Architecture</h2>
+            
+            <p>The marketplace isn't a product. It's <strong>infrastructure</strong> that connects:</p>
+            <ul>
+                <li>Buyers + Sellers</li>
+                <li>Financial institutions + Borrowers</li>
+                <li>Insurance providers + Vehicle owners</li>
+                <li>Mechanics + Customers</li>
+                <li>Parts suppliers + Repair shops</li>
+                <li>Fleet owners + Corporate clients</li>
+            </ul>
+
+            <h3>Platform Architecture: 7 Ownership Layers</h3>
+            
+            <div class="highlight-box">
+                <p><strong>You Own ALL 7 Layers:</strong></p>
+                <ol>
+                    <li>✅ <strong>Vehicle Transactions</strong> — Marketplace commissions (3-7%)</li>
+                    <li>✅ <strong>Financing Pipeline</strong> — Loan origination commissions (5-12%)</li>
+                    <li>✅ <strong>Mechanic Labor</strong> — Service network commissions (20-30%)</li>
+                    <li>✅ <strong>Parts Flow</strong> — Parts supply margins (10-20%)</li>
+                    <li>✅ <strong>Fleet Assets</strong> — Leasing revenue ($700-$900/vehicle/month)</li>
+                    <li>✅ <strong>Driver Data</strong> — Telematics, behavior analytics, credit scoring</li>
+                    <li>✅ <strong>Energy (EV + Solar)</strong> — Charging infrastructure + fleet electrification</li>
+                </ol>
+            </div>
+
+            <h3>How the Platform Works (Transaction Flow)</h3>
+
+            <h4>Step 1: Vehicle Listed on Marketplace</h4>
+            <ul>
+                <li>Dealer or private seller uploads vehicle</li>
+                <li>Platform requires: Photos, specs, inspection report ($50 fee)</li>
+                <li>AI-powered pricing suggestion (based on transaction data)</li>
+                <li>Featured listing option ($50-$200 for premium placement)</li>
+            </ul>
+
+            <h4>Step 2: Buyer Discovers Vehicle</h4>
+            <ul>
+                <li>Search filters: Make, model, price, location, features</li>
+                <li>Personalized recommendations (ML-based)</li>
+                <li>Saved searches + email alerts</li>
+                <li>In-platform messaging with seller</li>
+            </ul>
+
+            <h4>Step 3: Financing + Insurance (THE MONEY LAYER)</h4>
+            <p><strong>This is where you capture massive commissions:</strong></p>
+            <ul>
+                <li><strong>Financing Calculator:</strong> Buyer enters income, down payment</li>
+                <li><strong>Lender Matching:</strong> Platform routes to 3-5 bank/MFI partners</li>
+                <li><strong>Parallel Applications:</strong> Submit to multiple lenders simultaneously</li>
+                <li><strong>Approval + Commission:</strong> 5-12% of loan value = $500-$1,200 per $10k car</li>
+                <li><strong>Insurance Quote Engine:</strong> Multi-provider comparison</li>
+                <li><strong>Broker Commission:</strong> 15-25% annually on premium</li>
+            </ul>
+
+            <div class="metric-grid">
+                <div class="metric-item">
+                    <span class="metric-number">$8,000</span>
+                    <span class="metric-label">Average Vehicle Price</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$240</span>
+                    <span class="metric-label">Sales Commission (3%)</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$800</span>
+                    <span class="metric-label">Financing Commission (10%)</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$80</span>
+                    <span class="metric-label">Insurance Commission (20%)</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$100</span>
+                    <span class="metric-label">Registration Service Fee</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$1,220</span>
+                    <span class="metric-label">Total Revenue per Transaction</span>
+                </div>
+            </div>
+
+            <h4>Step 4: Transaction Completion</h4>
+            <ul>
+                <li>Digital contract signing (e-signature)</li>
+                <li>Payment processing (escrow optional)</li>
+                <li>Registration + title transfer (your service team handles)</li>
+                <li>Delivery scheduling</li>
+            </ul>
+
+            <h4>Step 5: Post-Sale Services (LIFETIME VALUE)</h4>
+            <p><strong>The transaction doesn't end at sale. It STARTS there.</strong></p>
+            <ul>
+                <li><strong>First Maintenance:</strong> Route to certified mechanic (20-30% commission)</li>
+                <li><strong>Parts Purchases:</strong> Route through your supply chain (10-20% margin)</li>
+                <li><strong>Insurance Renewal:</strong> Annual recurring commission (15-25%)</li>
+                <li><strong>Eventual Resale:</strong> Customer trades in on platform → another commission cycle</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Platform Network Effects:</strong></p>
+                <ul>
+                    <li>More buyers → More sellers join</li>
+                    <li>More sellers → More vehicle selection → More buyers</li>
+                    <li>More transactions → Better data → Better predictions → More trust</li>
+                    <li>More mechanics → Faster service → Better customer experience</li>
+                    <li>More customers → More parts volume → Better supplier pricing</li>
+                </ul>
+                <p><strong>This is a compounding system.</strong> Each layer feeds the others.</p>
+            </div>
+
+            <h3>Data Licensing: The Hidden Billion-Dollar Asset</h3>
+            
+            <p>Every transaction generates data. After 1000+ transactions, you have the ONLY comprehensive automotive dataset in your market.</p>
+
+            <h4>What Data You Collect</h4>
+            <ol>
+                <li><strong>Resale Values:</strong> What cars actually sell for (not asking prices)</li>
+                <li><strong>Default Rates:</strong> Which borrowers default on loans (by demographics, vehicle type)</li>
+                <li><strong>Maintenance Costs:</strong> True cost of ownership by make/model/year</li>
+                <li><strong>Driver Behavior:</strong> Telematics from fleet vehicles (accidents, fuel efficiency)</li>
+                <li><strong>Insurance Claims:</strong> Which vehicles are high risk</li>
+                <li><strong>Regional Demand:</strong> Which cars sell faster in which cities</li>
+            </ol>
+
+            <h4>Institutional Data Clients</h4>
+            
+            <table class="revenue-table">
+                <thead>
+                    <tr>
+                        <th>Client Type</th>
+                        <th>Use Case</th>
+                        <th>Annual License Fee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Commercial Banks</td>
+                        <td>Credit risk scoring, default prediction models</td>
+                        <td>$50k-$200k/year</td>
+                    </tr>
+                    <tr>
+                        <td>Insurance Companies</td>
+                        <td>Actuarial data, claims prediction, pricing models</td>
+                        <td>$30k-$100k/year</td>
+                    </tr>
+                    <tr>
+                        <td>OEMs (Toyota, VW, etc.)</td>
+                        <td>Market intelligence, demand forecasting, pricing</td>
+                        <td>$20k-$50k per report</td>
+                    </tr>
+                    <tr>
+                        <td>Import/Export Companies</td>
+                        <td>Demand trends, optimal inventory selection</td>
+                        <td>$15k-$40k/year</td>
+                    </tr>
+                    <tr>
+                        <td>Government Agencies</td>
+                        <td>Policy-making, taxation models, emission tracking</td>
+                        <td>$10k-$30k per study</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <p><strong>Data Revenue Potential (at scale):</strong></p>
+                <ul>
+                    <li>5 bank clients @ $100k = $500k/year</li>
+                    <li>3 insurers @ $50k = $150k/year</li>
+                    <li>4 OEM reports @ $30k = $120k/year</li>
+                    <li>2 import companies @ $25k = $50k/year</li>
+                    <li><strong>Total:</strong> $820k/year recurring</li>
+                </ul>
+                <p><strong>Margin:</strong> 95%+ (data already collected, licensing costs near zero)</p>
+            </div>
+
+            <h4>Why Institutions Pay for This Data</h4>
+            <ul>
+                <li><strong>Banks:</strong> Currently lending blind (no resale value data = overpriced loans or rejections)</li>
+                <li><strong>Insurers:</strong> No local claims data = overpriced premiums (customers avoid insurance)</li>
+                <li><strong>OEMs:</strong> Import vehicles blindly (no demand forecasting = inventory mismatch)</li>
+                <li><strong>Your Moat:</strong> Only company with TRANSACTIONAL data (not surveys, not guesses — actual money changing hands)</li>
+            </ul>
+
+            <p><strong>This is your institutional moat.</strong> The more transactions you process, the more valuable your data becomes. At 10,000+ transactions, you become IRREPLACEABLE to financial institutions.</p>
+        </div>
+
+        <!-- PART 3: Mobility Fund + Execution Roadmap + Valuation -->
+        <div class="strategy-section">
+            <h2><i class="fas fa-chart-line"></i> PART 3: Mobility Fund Structure & Valuation Path</h2>
+            
+            <h3>The Q4-LIFE Mobility Fund</h3>
+            
+            <p>The fund is NOT for operations. Operations are commission-based (zero capital). The fund is for <strong>asset accumulation</strong> — vehicles that generate recurring revenue.</p>
+
+            <h4>Fund Structure (Private Equity Model)</h4>
+            
+            <ul>
+                <li><strong>Legal Entity:</strong> Limited Partnership (LP/GP structure)</li>
+                <li><strong>General Partner (GP):</strong> Q4-LIFE Mobility (you control 100%)</li>
+                <li><strong>Limited Partners (LPs):</strong> Institutional investors, family offices, HNW individuals</li>
+                <li><strong>Target Raise:</strong> $5M-$10M (Phase 1), $20M-$50M (Phase 2)</li>
+                <li><strong>Investment Thesis:</strong> African mobility infrastructure (fleet assets, charging stations, EV transition)</li>
+            </ul>
+
+            <h4>Revenue to Q4-LIFE (Fund Management)</h4>
+            
+            <div class="metric-grid">
+                <div class="metric-item">
+                    <span class="metric-number">2-3%</span>
+                    <span class="metric-label">Management Fee (Annual)</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">20%</span>
+                    <span class="metric-label">Performance Carry</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$10M</span>
+                    <span class="metric-label">Fund Size (Example)</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$300k</span>
+                    <span class="metric-label">Annual Mgmt Fee (3%)</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$2M</span>
+                    <span class="metric-label">Annual Returns (20%)</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">$400k</span>
+                    <span class="metric-label">Performance Carry (20%)</span>
+                </div>
+            </div>
+
+            <p><strong>Total earnings from $10M fund:</strong> $300k mgmt fee + $400k carry = <strong>$700k/year</strong></p>
+            <p><strong>Your capital invested:</strong> $0 (you earn fees, investors provide capital)</p>
+
+            <h4>Fund Deployment Strategy</h4>
+            
+            <ol>
+                <li><strong>Fleet Vehicles (50%):</strong> $5M → 500 vehicles @ $10k each
+                    <ul>
+                        <li>Lease to drivers @ $800/month = $400k/month = $4.8M/year</li>
+                        <li>ROI: 96% annually</li>
+                    </ul>
+                </li>
+                <li><strong>EV Charging Infrastructure (25%):</strong> $2.5M → 20-30 charging stations
+                    <ul>
+                        <li>Partnership with Q4-Life Power Division</li>
+                        <li>Revenue: Usage fees + fleet contracts</li>
+                        <li>ROI: 40-60% annually</li>
+                    </ul>
+                </li>
+                <li><strong>Working Capital (15%):</strong> $1.5M → Operations, marketing, tech
+                    <ul>
+                        <li>Platform development</li>
+                        <li>Mechanic training programs</li>
+                        <li>Corporate fleet pilot programs</li>
+                    </ul>
+                </li>
+                <li><strong>Reserve (10%):</strong> $1M → Risk buffer, opportunistic acquisitions</li>
+            </ol>
+
+            <h3>Platform Valuation Framework (Your $100M Path)</h3>
+            
+            <div class="highlight-box">
+                <p><strong>Investors value platforms based on:</strong></p>
+                <ul>
+                    <li>Monthly Recurring Revenue (MRR)</li>
+                    <li>Gross Merchandise Value (GMV)</li>
+                    <li>Take Rate (your % cut)</li>
+                    <li>Ecosystem Control (how many layers you own)</li>
+                </ul>
+                <p><strong>Formula:</strong> Platform Value = Annual Net Revenue × Multiple</p>
+                <p><strong>Your Multiples:</strong></p>
+                <ul>
+                    <li>Simple marketplace: 3×-6×</li>
+                    <li>Marketplace + services: 6×-12×</li>
+                    <li><strong>Ecosystem (finance + fleets + training + data): 10×-20×</strong> ← YOU ARE HERE</li>
+                </ul>
+            </div>
+
+            <h4>Scenario A: Early Traction (12-18 Months)</h4>
+            
+            <table class="revenue-table">
+                <thead>
+                    <tr>
+                        <th>Revenue Source</th>
+                        <th>Monthly</th>
+                        <th>Annual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Marketplace (40 cars × $600 avg)</td>
+                        <td>$24,000</td>
+                        <td>$288,000</td>
+                    </tr>
+                    <tr>
+                        <td>Dealer Subscriptions</td>
+                        <td>$2,000</td>
+                        <td>$24,000</td>
+                    </tr>
+                    <tr>
+                        <td>Inspections + Registration</td>
+                        <td>$3,000</td>
+                        <td>$36,000</td>
+                    </tr>
+                    <tr>
+                        <td>Mechanic Commissions (50 techs)</td>
+                        <td>$6,000</td>
+                        <td>$72,000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total Revenue</strong></td>
+                        <td><strong>$35,000</strong></td>
+                        <td><strong>$420,000</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Valuation at 6× (marketplace + services):</strong> $420k × 6 = <strong>~$2.5M</strong></p>
+
+            <h4>Scenario B: Regional Operator (Year 2-3)</h4>
+            
+            <table class="revenue-table">
+                <thead>
+                    <tr>
+                        <th>Revenue Source</th>
+                        <th>Monthly</th>
+                        <th>Annual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Marketplace (150 cars × $600)</td>
+                        <td>$90,000</td>
+                        <td>$1,080,000</td>
+                    </tr>
+                    <tr>
+                        <td>Insurance + Finance Commissions</td>
+                        <td>$20,000</td>
+                        <td>$240,000</td>
+                    </tr>
+                    <tr>
+                        <td>Mechanic Network (200 techs)</td>
+                        <td>$30,000</td>
+                        <td>$360,000</td>
+                    </tr>
+                    <tr>
+                        <td>Dealer Subs + Listings</td>
+                        <td>$10,000</td>
+                        <td>$120,000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total Revenue</strong></td>
+                        <td><strong>$150,000</strong></td>
+                        <td><strong>$1,800,000</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Valuation at 10× (ecosystem):</strong> $1.8M × 10 = <strong>~$18M</strong></p>
+
+            <h4>Scenario C: Full Mobility Ecosystem (Year 3-5)</h4>
+            
+            <table class="revenue-table">
+                <thead>
+                    <tr>
+                        <th>Revenue Source</th>
+                        <th>Monthly</th>
+                        <th>Annual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Marketplace (300 cars × $600)</td>
+                        <td>$180,000</td>
+                        <td>$2,160,000</td>
+                    </tr>
+                    <tr>
+                        <td>Fleet Leasing (200 vehicles)</td>
+                        <td>$160,000</td>
+                        <td>$1,920,000</td>
+                    </tr>
+                    <tr>
+                        <td>Mechanic Network (300 techs)</td>
+                        <td>$60,000</td>
+                        <td>$720,000</td>
+                    </tr>
+                    <tr>
+                        <td>Parts Supply</td>
+                        <td>$30,000</td>
+                        <td>$360,000</td>
+                    </tr>
+                    <tr>
+                        <td>EV Charging (Q4-Power)</td>
+                        <td>$20,000</td>
+                        <td>$240,000</td>
+                    </tr>
+                    <tr>
+                        <td>Data Licensing</td>
+                        <td>$35,000</td>
+                        <td>$420,000</td>
+                    </tr>
+                    <tr>
+                        <td>Mobility Fund Mgmt Fees</td>
+                        <td>$40,000</td>
+                        <td>$480,000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total Revenue</strong></td>
+                        <td><strong>$525,000</strong></td>
+                        <td><strong>$6,300,000</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Valuation at 12×-15× (full ecosystem):</strong> $6.3M × 12 = <strong>~$75M</strong> | $6.3M × 15 = <strong>~$95M</strong></p>
+
+            <div class="highlight-box">
+                <p><strong>Why $100M+ Is Realistic:</strong></p>
+                <p>Because you own ALL 7 layers:</p>
+                <ol>
+                    <li>✅ Vehicle Transactions → Marketplace GMV</li>
+                    <li>✅ Financing Pipeline → Bank commissions (the billion-dollar layer)</li>
+                    <li>✅ Mechanic Labor → Service network commissions</li>
+                    <li>✅ Parts Flow → Supply chain margins</li>
+                    <li>✅ Fleet Assets → Recurring lease revenue</li>
+                    <li>✅ Driver Data → Institutional licensing</li>
+                    <li>✅ Energy (EV + Solar) → Charging infrastructure</li>
+                </ol>
+                <p><strong>This is mobility INFRASTRUCTURE, not a marketplace.</strong></p>
+                <p>Comparables: Grab ($40B valuation), Bolt ($8B), Carvana ($11B at peak), Vroom ($2.5B)</p>
+            </div>
+
+            <h3>3-Year Execution Roadmap (Conservative)</h3>
+
+            <h4>YEAR 1: Foundation + Proof-of-Concept ($300k-$500k Revenue)</h4>
+            
+            <div class="phase-card">
+                <h5>Q1-Q2: Build + Launch MVP</h5>
+                <ul>
+                    <li><strong>Platform:</strong> Basic marketplace website + mobile app</li>
+                    <li><strong>Fleet Pilot:</strong> 5-10 vehicles deployed to drivers</li>
+                    <li><strong>Mechanic Network:</strong> Certify 20-30 mechanics via BTH/ASE partnership</li>
+                    <li><strong>Corporate Contracts:</strong> Sign 1-2 B2B fleet clients</li>
+                    <li><strong>Financial Partnerships:</strong> MOU with 2-3 banks/MFIs</li>
+                </ul>
+                <p><strong>Target:</strong> 20-40 vehicles transacted, 100-200 service jobs, $25k-$40k/month revenue</p>
+            </div>
+
+            <div class="phase-card">
+                <h5>Q3-Q4: Scale Operations</h5>
+                <ul>
+                    <li><strong>Marketplace:</strong> 10-20 dealer partnerships, 100-200 listings</li>
+                    <li><strong>Fleet Expansion:</strong> 20-30 vehicles under management</li>
+                    <li><strong>Mechanic Network:</strong> 50-100 certified techs</li>
+                    <li><strong>Financing Launch:</strong> Process first 10-20 financed transactions</li>
+                </ul>
+                <p><strong>Target:</strong> 40-60 vehicles/month, 500+ service jobs, $40k-$60k/month revenue</p>
+            </div>
+
+            <p><strong>Year 1 Total Revenue:</strong> $300k-$500k | <strong>Valuation:</strong> $2M-$5M</p>
+
+            <h4>YEAR 2: Marketplace Scale + Fund Launch ($1.5M-$3M Revenue)</h4>
+            
+            <div class="phase-card">
+                <h5>Q1-Q2: Regional Expansion</h5>
+                <ul>
+                    <li><strong>Marketplace:</strong> 100-150 cars/month</li>
+                    <li><strong>Mechanic Network:</strong> 150-200 certified techs</li>
+                    <li><strong>Fleet:</strong> 50-75 vehicles</li>
+                    <li><strong>Mobility Fund:</strong> Raise $5M-$10M from institutional investors</li>
+                    <li><strong>Data Product:</strong> Launch insurance data licensing pilot</li>
+                </ul>
+                <p><strong>Target:</strong> $100k-$150k/month revenue</p>
+            </div>
+
+            <div class="phase-card">
+                <h5>Q3-Q4: Ecosystem Build-Out</h5>
+                <ul>
+                    <li><strong>Marketplace:</strong> 150-200 cars/month</li>
+                    <li><strong>Mechanic Network:</strong> 200-300 techs</li>
+                    <li><strong>Fleet:</strong> 100-150 vehicles (fund-backed)</li>
+                    <li><strong>EV Integration:</strong> Partner with Q4-Life Power for charging stations</li>
+                    <li><strong>Data Licensing:</strong> Sign first bank client ($50k-$100k contract)</li>
+                </ul>
+                <p><strong>Target:</strong> $150k-$250k/month revenue</p>
+            </div>
+
+            <p><strong>Year 2 Total Revenue:</strong> $1.5M-$3M | <strong>Valuation:</strong> $10M-$30M</p>
+
+            <h4>YEAR 3: Multi-City + Profitability ($5M-$8M Revenue)</h4>
+            
+            <div class="phase-card">
+                <h5>Q1-Q4: National Dominance</h5>
+                <ul>
+                    <li><strong>Marketplace:</strong> 300-500 cars/month across 2-3 cities</li>
+                    <li><strong>Mechanic Network:</strong> 400-500 techs (multi-city)</li>
+                    <li><strong>Fleet:</strong> 200-300 vehicles</li>
+                    <li><strong>Data Licensing:</strong> 3-5 institutional clients ($300k-$500k/year)</li>
+                    <li><strong>Corporate Expansion:</strong> 20-30 B2B fleet contracts</li>
+                    <li><strong>Profitability:</strong> 15-25% net margin ($750k-$2M profit)</li>
+                </ul>
+                <p><strong>Target:</strong> $400k-$650k/month revenue</p>
+            </div>
+
+            <p><strong>Year 3 Total Revenue:</strong> $5M-$8M | <strong>Valuation:</strong> $50M-$120M (10×-15× at ecosystem scale)</p>
+
+            <h3>Why This Is NOT a Startup — It's Q4-LIFE Infrastructure</h3>
+            
+            <ul>
+                <li>✅ <strong>Zero capital</strong> required for operations (commission model)</li>
+                <li>✅ <strong>Mobility Fund</strong> provides asset capital (OPM - Other People's Money)</li>
+                <li>✅ <strong>Integration with Q4-Life divisions:</strong>
+                    <ul>
+                        <li>Power Division → EV charging infrastructure</li>
+                        <li>Business Tech → Platform development</li>
+                        <li>Education → Driver/mechanic training via BTH</li>
+                    </ul>
+                </li>
+                <li>✅ <strong>Platform mindset</strong> → Transaction infrastructure, not inventory</li>
+                <li>✅ <strong>Institutional thinking</strong> → Data licensing, fund management, ecosystem control</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Final Truth:</strong></p>
+                <p>Your biggest value driver will NOT be car sales.</p>
+                <p>It will be: <strong>Financing + Fleet + Services + Data</strong></p>
+                <p>Cars are just the entry point.</p>
+                <p><strong>The system IS the asset.</strong></p>
+            </div>
+        </div>
+
+        <!-- Completion Navigation -->
+        <div class="phase-card" style="background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%); border-color: var(--mobility-orange);">
+            <h5>📄 Strategy Document Complete (Parts 1-3)</h5>
+            <p><strong>You now have the complete strategic playbook for Q4-LIFE Mobility Division.</strong></p>
+            <ul>
+                <li>✅ Part 1: Revenue Streams 1-6 + Certified Mechanic Network</li>
+                <li>✅ Part 2: Marketplace Platform Architecture + Data Licensing</li>
+                <li>✅ Part 3: Mobility Fund Structure + Valuation Path ($2M → $100M+)</li>
+            </ul>
+            <p><strong>Next Steps:</strong></p>
+            <ul>
+                <li><a href="/mobility/technical-architecture" style="color: var(--mobility-orange); text-decoration: none; font-weight: 600;">→ View Technical Architecture</a></li>
+                <li><a href="/mobility/vehicle-trading" style="color: var(--mobility-emerald); text-decoration: none; font-weight: 600;">→ Explore Vehicle Trading Division</a></li>
+                <li><a href="/mobility/" style="color: var(--text-primary); text-decoration: none; font-weight: 600;">← Back to Mobility Home</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

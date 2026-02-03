@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Q4-LIFE Mobility Division | Transaction infrastructure for African automotive markets - Vehicle Trading, Fleet Systems, Certified Services, Marketplace Platform, EV Integration, Mobility Fund">
+    <title>Q4-LIFE Mobility & Automotive Systems | Infrastructure-First Transportation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/files/main_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #2563eb;
+            --mobility-orange: #f97316;
+            --mobility-emerald: #10b981;
+            --mobility-violet: #8b5cf6;
+            --dark-bg: #0f172a;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --border: rgba(248, 250, 252, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 50%, #1e293b 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .breadcrumb {
+            padding: 1rem 2rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .breadcrumb a {
+            color: var(--mobility-orange);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover { color: #fb923c; }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, 50px); }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(139, 92, 246, 0.2));
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--mobility-orange);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+            background: rgba(30, 41, 59, 0.4);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            background: rgba(30, 41, 59, 0.6);
+            border-color: var(--mobility-orange);
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--mobility-orange);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Division Grid */
+        .divisions-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .division-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .division-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--mobility-orange), var(--mobility-violet));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .division-card:hover {
+            border-color: var(--mobility-orange);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(249, 115, 22, 0.3);
+        }
+
+        .division-card:hover::before { opacity: 1; }
+
+        .division-card:nth-child(1) { animation-delay: 0.1s; }
+        .division-card:nth-child(2) { animation-delay: 0.2s; }
+        .division-card:nth-child(3) { animation-delay: 0.3s; }
+        .division-card:nth-child(4) { animation-delay: 0.4s; }
+        .division-card:nth-child(5) { animation-delay: 0.5s; }
+        .division-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .division-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(139, 92, 246, 0.2));
+            border-radius: 20px;
+            font-size: 2.5rem;
+            color: var(--mobility-orange);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .division-card:hover .division-icon {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.3), rgba(139, 92, 246, 0.3));
+        }
+
+        .division-card h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .division-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .revenue-streams {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .revenue-streams h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--mobility-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .revenue-streams ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .revenue-streams li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .revenue-streams li::before {
+            content: '→';
+            color: var(--mobility-emerald);
+            font-weight: 700;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border-top: 1px solid var(--border);
+        }
+
+        .cta-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--mobility-orange), #fb923c);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--mobility-orange);
+            border: 1px solid var(--mobility-orange);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(249, 115, 22, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.125rem; }
+            .divisions-grid { grid-template-columns: 1fr; }
+            .cta-section h2 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        <a href="/">Home</a> / Mobility Division
+    </div>
+
+    <section class="hero">
+        <div class="hero-badge">
+            <i class="fas fa-layer-group"></i> Infrastructure-First Transportation
+        </div>
+        <h1>Q4-LIFE Mobility<br>& Automotive Systems</h1>
+        <p class="hero-subtitle">
+            Transaction infrastructure for African automotive markets. We don't own cars — we own the rails that money flows through: financing, insurance, service networks, marketplace platforms, and fleet systems.
+        </p>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number">$3T+</span>
+                <span class="stat-label">Global Auto Economy</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">6</span>
+                <span class="stat-label">Revenue Streams per Vehicle</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">Zero</span>
+                <span class="stat-label">Inventory Risk</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Platform-Based</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="divisions-grid">
+        <!-- Division 1: Vehicle Trading -->
+        <div class="division-card">
+            <div class="division-icon">
+                <i class="fas fa-car"></i>
+            </div>
+            <h2>Vehicle Trading</h2>
+            <p>
+                Transaction infrastructure connecting buyers, sellers, and financing partners. We facilitate deals, not inventory. Commission-based model eliminating capital requirements while controlling the transaction layer.
+            </p>
+            <div class="revenue-streams">
+                <h4>Revenue Streams</h4>
+                <ul>
+                    <li>Sales Commission: 3-7% per transaction</li>
+                    <li>Financing Referral: $500-$1,200 per financed vehicle</li>
+                    <li>Inspection Fees: $50 per vehicle</li>
+                    <li>Dealer Subscriptions: $100-$300/month</li>
+                </ul>
+            </div>
+            <a href="/mobility/vehicle-trading" class="btn-secondary" style="margin-top: 1rem;">
+                Explore Trading <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Division 2: Fleet Systems -->
+        <div class="division-card">
+            <div class="division-icon">
+                <i class="fas fa-shuttle-van"></i>
+            </div>
+            <h2>Fleet Systems</h2>
+            <p>
+                Driver-as-a-service and corporate fleet management. Vehicles deployed as income-generating assets. Corporate contracts for NGOs, schools, and enterprises requiring managed transportation.
+            </p>
+            <div class="revenue-streams">
+                <h4>Revenue Streams</h4>
+                <ul>
+                    <li>Driver Leasing: $700-$900 per vehicle/month</li>
+                    <li>Corporate Fleet Contracts: $500+/vehicle/month</li>
+                    <li>Fleet Management Software: Subscription-based</li>
+                    <li>Telematics & Analytics: Data licensing</li>
+                </ul>
+            </div>
+            <a href="/mobility/fleet-systems" class="btn-secondary" style="margin-top: 1rem;">
+                Explore Fleet <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Division 3: Certified Services -->
+        <div class="division-card">
+            <div class="division-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <h2>Certified Services</h2>
+            <p>
+                ASE-certified mechanic network providing standardized maintenance. We control job routing, pricing, and quality standards. Zero workshop overhead — commission on every service transaction.
+            </p>
+            <div class="revenue-streams">
+                <h4>Revenue Streams</h4>
+                <ul>
+                    <li>Job Commission: 20-30% per service</li>
+                    <li>Parts Margin: 10-20% on all parts</li>
+                    <li>Corporate Contracts: Fleet maintenance</li>
+                    <li>Warranty Programs: Insurance-backed</li>
+                </ul>
+            </div>
+            <a href="/mobility/certified-services" class="btn-secondary" style="margin-top: 1rem;">
+                Explore Services <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Division 4: Marketplace Platform -->
+        <div class="division-card">
+            <div class="division-icon">
+                <i class="fas fa-store"></i>
+            </div>
+            <h2>Marketplace Platform</h2>
+            <p>
+                Digital infrastructure connecting buyers, sellers, financiers, insurers, and service providers. Multi-sided platform capturing value at every transaction point across the vehicle lifecycle.
+            </p>
+            <div class="revenue-streams">
+                <h4>Revenue Streams</h4>
+                <ul>
+                    <li>Transaction Fees: 3-7% on sales</li>
+                    <li>Insurance Brokerage: 15-25% annually</li>
+                    <li>Featured Listings: Premium placement</li>
+                    <li>Data Licensing: Institutional clients</li>
+                </ul>
+            </div>
+            <a href="/mobility/marketplace-platform" class="btn-secondary" style="margin-top: 1rem;">
+                Explore Platform <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Division 5: Energy (EV + Solar) -->
+        <div class="division-card">
+            <div class="division-icon">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <h2>Energy (EV + Solar)</h2>
+            <p>
+                Electric vehicle integration with Q4-Life Power Division. Charging infrastructure, battery storage, and solar integration for fleet operations. Complete vertical: vehicles + energy systems.
+            </p>
+            <div class="revenue-streams">
+                <h4>Revenue Streams</h4>
+                <ul>
+                    <li>EV Sales: Same commission model</li>
+                    <li>Charging Infrastructure: Hardware + subscription</li>
+                    <li>Solar Fleet Charging: Energy services</li>
+                    <li>Battery Storage: Grid services revenue</li>
+                </ul>
+            </div>
+            <a href="/mobility/energy-systems" class="btn-secondary" style="margin-top: 1rem;">
+                Explore Energy <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Division 6: Mobility Fund -->
+        <div class="division-card">
+            <div class="division-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h2>Mobility Fund</h2>
+            <p>
+                Private equity vehicle for institutional capital deployment into fleet assets, imports, and EV infrastructure. Investors fund expansion while we control operations and transaction flow.
+            </p>
+            <div class="revenue-streams">
+                <h4>Revenue Streams</h4>
+                <ul>
+                    <li>Management Fee: 2-3% of AUM annually</li>
+                    <li>Performance Carry: 20% of profits</li>
+                    <li>Portfolio Returns: 15-25% target</li>
+                    <li>Strategic Deployment: Zero personal capital</li>
+                </ul>
+            </div>
+            <a href="/mobility/mobility-fund" class="btn-secondary" style="margin-top: 1rem;">
+                Explore Fund <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>The System is the Asset</h2>
+        <p>
+            Small players sell cars. Big players build infrastructure. We control transactions, labor networks, financing rails, service channels, and data flows. Zero inventory risk. Maximum leverage.
+        </p>
+        <div class="cta-buttons">
+            <a href="/mobility/strategy" class="btn-primary">
+                <i class="fas fa-book"></i> View Complete Strategy
+            </a>
+            <a href="/mobility/technical-architecture" class="btn-secondary">
+                <i class="fas fa-code"></i> Technical Architecture
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=237680655903&text=I'm%20interested%20in%20Q4-LIFE%20Mobility%20Division" class="btn-secondary" target="_blank">
+                <i class="fab fa-whatsapp"></i> Partner with Us
+            </a>
+        </div>
+    </section>
+</body>
+</html>
