@@ -12,46 +12,78 @@
     <link rel="stylesheet" href="/files/main_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
-            --enterprise-dark: #0f172a;
-            --enterprise-accent: #f59e0b;
-            --enterprise-green: #10b981;
-            --enterprise-blue: #3b82f6;
+            --primary: #2563eb;
+            --accent-gold: #f59e0b;
+            --accent-green: #10b981;
+            --dark-bg: #0f172a;
+            --dark-surface: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --border: rgba(248, 250, 252, 0.1);
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .page-header {
-            background: linear-gradient(135deg, var(--enterprise-dark) 0%, rgba(15,23,42,0.9) 100%);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(245,158,11,0.2);
-        }
-
-        .page-header h1 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .page-header p {
-            color: rgba(255,255,255,0.6);
-            font-size: 1rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 50%, #1e293b 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .breadcrumb {
             padding: 1rem 2rem;
-            background: rgba(15,23,42,0.8);
-            border-bottom: 1px solid rgba(245,158,11,0.1);
-            font-size: 0.9rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .breadcrumb a {
-            color: var(--enterprise-accent);
+            color: var(--accent-gold);
             text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #fbbf24;
+        }
+
+        .page-header {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+            position: relative;
+        }
+
+        .page-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .page-header p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
         .services-grid {
@@ -64,119 +96,180 @@
         }
 
         .service-card {
-            background: rgba(30,41,59,0.6);
-            border: 1px solid rgba(245,158,11,0.2);
-            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
             padding: 2.5rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-gold));
+            opacity: 0;
+            transition: opacity 0.4s;
         }
 
         .service-card:hover {
-            border-color: var(--enterprise-accent);
-            background: rgba(30,41,59,0.9);
-            box-shadow: 0 20px 40px rgba(245,158,11,0.1);
+            border-color: var(--accent-gold);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.3);
         }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
 
         .service-header {
             display: flex;
             align-items: center;
             gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .service-icon {
-            font-size: 2.5rem;
-            color: var(--enterprise-accent);
-            min-width: 60px;
-            text-align: center;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(245, 158, 11, 0.2));
+            border-radius: 16px;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            min-width: 70px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(245, 158, 11, 0.3));
         }
 
         .service-card h2 {
+            font-family: 'Poppins', sans-serif;
             font-size: 1.75rem;
-            color: white;
+            font-weight: 700;
+            color: var(--text-primary);
             margin: 0;
         }
 
         .service-card h3 {
-            font-size: 1.2rem;
-            color: var(--enterprise-accent);
-            margin-top: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-top: 2rem;
             margin-bottom: 0.75rem;
         }
 
-        .service-description, .service-model, .service-roi, .service-timeline, .service-requirements, .service-use-case {
-            color: rgba(255,255,255,0.7);
-            line-height: 1.7;
+        .service-description,
+        .service-use-case {
+            color: var(--text-secondary);
+            line-height: 1.8;
             margin-bottom: 1.5rem;
         }
 
         .service-model {
-            background: rgba(245,158,11,0.05);
-            padding: 1rem;
-            border-left: 3px solid var(--enterprise-accent);
-            border-radius: 6px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 8px;
+            margin: 1.5rem 0;
         }
 
         .service-model strong {
-            color: var(--enterprise-accent);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 0.5rem;
         }
 
         .roi-highlight {
-            background: rgba(16,185,129,0.1);
-            padding: 1rem;
-            border-left: 3px solid var(--enterprise-green);
-            border-radius: 6px;
-            margin: 1rem 0;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-green);
+            border-radius: 8px;
+            margin: 1.5rem 0;
         }
 
         .roi-highlight strong {
-            color: var(--enterprise-green);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--accent-green);
         }
 
         .timeline-item {
             display: flex;
             gap: 1rem;
             margin: 0.75rem 0;
+            padding-left: 0.5rem;
         }
 
         .timeline-bullet {
-            color: var(--enterprise-accent);
-            font-weight: bold;
+            color: var(--accent-gold);
+            font-weight: 700;
+            min-width: 100px;
         }
 
         .tech-spec {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .spec-item {
-            background: rgba(15,23,42,0.5);
-            padding: 1rem;
-            border-radius: 6px;
-            border-left: 2px solid var(--enterprise-green);
+            background: rgba(15, 23, 42, 0.6);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .spec-item:hover {
+            background: rgba(15, 23, 42, 0.9);
+            border-left-color: var(--accent-green);
         }
 
         .spec-item strong {
-            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--text-primary);
             display: block;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
         }
 
         .spec-item span {
-            color: rgba(255,255,255,0.6);
+            color: var(--text-muted);
             font-size: 0.9rem;
         }
 
         .cta-button {
             display: inline-block;
-            margin-top: 1rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--enterprise-accent);
+            margin-top: 1.5rem;
+            padding: 0.875rem 1.75rem;
+            background: linear-gradient(135deg, var(--accent-gold), #fbbf24);
             color: #000;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
@@ -184,8 +277,19 @@
         }
 
         .cta-button:hover {
-            background: #f59e0b;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @media (max-width: 768px) {
@@ -194,12 +298,12 @@
                 align-items: flex-start;
             }
 
-            .service-icon {
-                text-align: left;
+            .page-header h1 {
+                font-size: 2rem;
             }
 
-            .page-header h1 {
-                font-size: 1.75rem;
+            .service-card {
+                padding: 1.5rem;
             }
         }
     </style>
