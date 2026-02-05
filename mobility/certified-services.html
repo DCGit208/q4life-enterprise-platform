@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Q4-LIFE Certified Automotive Services - ASE-certified technicians for individual, corporate, and fleet maintenance. Professional service you can trust.">
+    <title>Certified Automotive Services | Q4-LIFE Mobility</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #2563eb;
+            --dark-navy: #0f172a;
+            --gray-900: #1e293b;
+            --gray-700: #334155;
+            --gray-500: #64748b;
+            --gray-300: #cbd5e1;
+            --gray-100: #f1f5f9;
+            --orange-accent: #f97316;
+            --white: #ffffff;
+            --success-green: #059669;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--dark-navy);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--orange-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            overflow: hidden;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            animation: kenBurns 20s ease-in-out infinite;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        @keyframes kenBurns {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12rem 2rem 8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .hero-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 4;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--white);
+            width: 0;
+            animation: progressAnimation 6s linear infinite;
+        }
+
+        @keyframes progressAnimation {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.625rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.375rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--white);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--white);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            max-width: 1200px;
+            margin: -4rem auto 0;
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            overflow: hidden;
+        }
+
+        .stat-item {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-right: 1px solid var(--gray-100);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray-700);
+            font-size: 0.9375rem;
+            font-weight: 600;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .section-label {
+            color: var(--orange-accent);
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark-navy);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--gray-700);
+            line-height: 1.8;
+        }
+
+        /* Multi-Track CTA */
+        .multi-cta {
+            background: var(--gray-100);
+            padding: 5rem 0;
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cta-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+        }
+
+        .cta-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .cta-card-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .cta-card-content {
+            padding: 2rem;
+        }
+
+        .cta-card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin-bottom: 1rem;
+        }
+
+        .cta-card p {
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+
+        .cta-card-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* Service Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--gray-300);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 12px 40px rgba(30, 64, 175, 0.15);
+            transform: translateY(-6px);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gray-100);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin-bottom: 1rem;
+        }
+
+        .service-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .service-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray-100);
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+
+        .service-list li::before {
+            content: '✓';
+            color: var(--success-green);
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        /* Enterprise Section */
+        .enterprise-bg {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .enterprise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .enterprise-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .enterprise-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .enterprise-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .enterprise-content {
+            padding: 1.75rem;
+        }
+
+        .enterprise-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .enterprise-card h3 {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--dark-navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .enterprise-card p {
+            color: var(--gray-700);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        /* Government Slider */
+        .government-slider, .corporate-slider, .ngo-slider, .school-slider, .logistics-slider {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slider-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .slider-image.active {
+            opacity: 1;
+        }
+
+        .slider-btn {
+            display: none;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: var(--white);
+        }
+
+        /* Features Section */
+        .features-highlight {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-radius: 16px;
+            padding: 4rem;
+            margin: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-item-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-item h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-item p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        /* Certification */
+        .certification {
+            background: var(--white);
+            border: 2px solid var(--gray-300);
+            border-radius: 16px;
+            padding: 4rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .ase-badge {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 40px rgba(30, 64, 175, 0.3);
+        }
+
+        .certification h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark-navy);
+            margin-bottom: 1rem;
+        }
+
+        .certification p {
+            font-size: 1.125rem;
+            color: var(--gray-700);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .certification-link {
+            background: var(--orange-accent);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+        }
+
+        .certification-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-navy);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand span {
+            color: var(--orange-accent);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer h4 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                margin: -3rem 1rem 0;
+            }
+
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid var(--gray-100);
+            }
+
+            .stat-item:nth-child(2n) {
+                border-bottom: 1px solid var(--gray-100);
+            }
+
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .service-grid,
+            .cta-grid,
+            .enterprise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Q4-<span>LIFE</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/mobility/">Mobility Home</a></li>
+                    <li><a href="/mobility/vehicle-trading">Vehicle Trading</a></li>
+                    <li><a href="/mobility/fleet-systems">Fleet Systems</a></li>
+                    <li><a href="/mobility/certified-services">Certified Services</a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone=237680655903" class="cta-button">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('images/Hero/luxury-showroom-sunset-stockcake.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero/luxury-cars-lined-stockcake.jpg.webp');"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero/fleet-maintenance-inspection-stockcake.jpg.webp');"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero/mechanic-diagnoses-engine-stockcake.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero/corporate-presentation-scene-stockcake.jpg.webp');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-certificate"></i>
+                ASE-Certified Excellence
+            </div>
+            <h1>Professional Automotive Services</h1>
+            <p class="hero-subtitle">From routine maintenance to enterprise fleet solutions. ASE-certified technicians delivering quality service for individuals, corporations, government agencies, and NGOs across Africa.</p>
+            <div class="hero-buttons">
+                <a href="https://api.whatsapp.com/send?phone=237680655903&text=I%20need%20automotive%20service" class="btn-primary">
+                    <span>Book Service</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://btheducationgroup.org/programs/automotive?level=1&partner=standard" target="_blank" class="btn-secondary">
+                    <span>Get Certified</span>
+                    <i class="fas fa-graduation-cap"></i>
+                </a>
+            </div>
+        </div>
+        <div class="hero-progress">
+            <div class="progress-bar"></div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">300+</span>
+                <span class="stat-label">Certified Technicians</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Service Availability</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">6</span>
+                <span class="stat-label">Service Categories</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Quality Guaranteed</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Multi-Track CTA -->
+    <section class="multi-cta">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Choose Your Path</div>
+                <h2>Who We Serve</h2>
+                <p class="section-description">Whether you're looking to start a career, book a repair, or manage an enterprise fleet, we have a solution for you.</p>
+            </div>
+
+            <div class="cta-grid">
+                <div class="cta-card">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=85" alt="ASE Training" class="cta-card-image">
+                    <div class="cta-card-content">
+                        <div class="cta-card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Get ASE Certified</h3>
+                        <p>Launch your automotive career with industry-recognized ASE certification through BTH Education Group.</p>
+                        <a href="https://btheducationgroup.org/programs/automotive?level=1&partner=standard" target="_blank" class="cta-card-link">
+                            Start Training <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="cta-card">
+                    <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=85" alt="Join Network" class="cta-card-image">
+                    <div class="cta-card-content">
+                        <div class="cta-card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Join Our Network</h3>
+                        <p>Already certified? Earn steady income through our professional technician dispatch platform.</p>
+                        <a href="https://api.whatsapp.com/send?phone=237680655903&text=Certified%20mechanic%20application" class="cta-card-link">
+                            Apply Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="cta-card">
+                    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=800&q=85" alt="Book Service" class="cta-card-image">
+                    <div class="cta-card-content">
+                        <div class="cta-card-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <h3>Book Service</h3>
+                        <p>Need repairs or maintenance? Get professional service from ASE-certified technicians.</p>
+                        <a href="https://api.whatsapp.com/send?phone=237680655903&text=Service%20booking%20request" class="cta-card-link">
+                            Get Quote <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="cta-card">
+                    <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=85" alt="Fleet Solutions" class="cta-card-image">
+                    <div class="cta-card-content">
+                        <div class="cta-card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Enterprise Fleet</h3>
+                        <p>Corporate, government, or NGO? Complete fleet maintenance and transportation services.</p>
+                        <a href="https://api.whatsapp.com/send?phone=237680655903&text=Enterprise%20fleet%20inquiry" class="cta-card-link">
+                            Request Proposal <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Our Services</div>
+                <h2>Complete Automotive Care</h2>
+                <p class="section-description">From engine diagnostics to custom finishes, our ASE-certified technicians handle every aspect of automotive service with precision and professionalism.</p>
+            </div>
+
+            <div class="service-grid">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=800&q=85" alt="Mechanical Services" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h3>Mechanical Services</h3>
+                        <p>Comprehensive engine and mechanical system repairs performed by certified professionals.</p>
+                        <ul class="service-list">
+                            <li>Engine diagnostics & repair</li>
+                            <li>Transmission service</li>
+                            <li>Brake system maintenance</li>
+                            <li>Suspension & steering</li>
+                            <li>Fluid services & oil changes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&q=85" alt="Auto Electrical" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Auto Electrical</h3>
+                        <p>Expert electrical system diagnostics and modern electronics installation.</p>
+                        <ul class="service-list">
+                            <li>Battery & alternator service</li>
+                            <li>Wiring & diagnostics</li>
+                            <li>Electronics installation</li>
+                            <li>Lighting systems</li>
+                            <li>EV battery diagnostics</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1615906655593-ad0386982a0f?w=800&q=85" alt="Body & Paint" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>Body & Paint</h3>
+                        <p>Professional collision repair and refinishing to restore your vehicle's appearance.</p>
+                        <ul class="service-list">
+                            <li>Collision repair</li>
+                            <li>Dent removal & bodywork</li>
+                            <li>Paint jobs & refinishing</li>
+                            <li>Rust treatment</li>
+                            <li>Panel replacement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="images/Detailing%20%26%20Finishing.jpg" alt="Detailing" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-spray-can"></i>
+                        </div>
+                        <h3>Detailing & Finishing</h3>
+                        <p>Premium detailing services to keep your vehicle looking showroom fresh.</p>
+                        <ul class="service-list">
+                            <li>Exterior wash & polish</li>
+                            <li>Interior deep cleaning</li>
+                            <li>Ceramic coating</li>
+                            <li>Paint protection film</li>
+                            <li>Upholstery restoration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=85" alt="Customization" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Customization</h3>
+                        <p>Personalize your vehicle with professional upgrades and modifications.</p>
+                        <ul class="service-list">
+                            <li>Window tinting</li>
+                            <li>Sound system installation</li>
+                            <li>Accessories & modifications</li>
+                            <li>Performance upgrades</li>
+                            <li>Custom wraps & graphics</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=800&q=85" alt="Inspections" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3>Inspections & Certifications</h3>
+                        <p>Thorough vehicle inspections and compliance certifications.</p>
+                        <ul class="service-list">
+                            <li>Pre-purchase inspections</li>
+                            <li>Roadworthiness certificates</li>
+                            <li>Emissions testing</li>
+                            <li>Safety compliance checks</li>
+                            <li>Fleet vehicle audits</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise -->
+    <section class="section enterprise-bg">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Enterprise Solutions</div>
+                <h2>Fleet & Corporate Services</h2>
+                <p class="section-description">Tailored maintenance programs for corporate fleets, government agencies, NGOs, and institutional clients. Reduce costs, ensure compliance, and maximize uptime.</p>
+            </div>
+
+            <div class="enterprise-grid">
+                <div class="enterprise-card corporate-slider-card">
+                    <div class="corporate-slider">
+                        <div class="slider-container">
+                            <img src="images/Corporate/businessman-parking-lot-stockcake.jpg" alt="Corporate Fleet" class="enterprise-image slider-image active">
+                            <img src="images/Corporate/businesswoman-on-call-stockcake.jpg" alt="Corporate Fleet" class="enterprise-image slider-image">
+                            <img src="images/Corporate/contemplative-car-passenger-stockcake.jpg" alt="Corporate Fleet" class="enterprise-image slider-image">
+                            <img src="images/Corporate/expansive-car-showroom-stockcake.jpg.webp" alt="Corporate Fleet" class="enterprise-image slider-image">
+                            <img src="images/Corporate/jet-awaits-departure-stockcake.jpg" alt="Corporate Fleet" class="enterprise-image slider-image">
+                            <img src="images/Corporate/mobile-office-setup-stockcake.jpg" alt="Corporate Fleet" class="enterprise-image slider-image">
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="slideCorp(-1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="slideCorp(1)">&#10095;</button>
+                        <div class="slider-dots">
+                            <span class="dot active" onclick="currentSlideCorp(1)"></span>
+                            <span class="dot" onclick="currentSlideCorp(2)"></span>
+                            <span class="dot" onclick="currentSlideCorp(3)"></span>
+                            <span class="dot" onclick="currentSlideCorp(4)"></span>
+                            <span class="dot" onclick="currentSlideCorp(5)"></span>
+                            <span class="dot" onclick="currentSlideCorp(6)"></span>
+                        </div>
+                    </div>
+                    <div class="enterprise-content">
+                        <div class="enterprise-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Corporate Enterprises</h3>
+                        <p>Executive vehicles, delivery fleets, and company cars with SLA-backed maintenance programs and cost tracking.</p>
+                    </div>
+                </div>
+
+                <div class="enterprise-card government-slider-card">
+                    <div class="government-slider">
+                        <div class="slider-container">
+                            <img src="images/Government/HD-SUV-Chevy-Suburban-copy.jpg.webp" alt="Government Fleet" class="enterprise-image slider-image active">
+                            <img src="images/Government/SUburbans-1.png" alt="Government Fleet" class="enterprise-image slider-image">
+                            <img src="images/Government/gm-defense-inks-us-government-contract-for-heavy-duty-surbans-and-no-you-can-t-have-one-169535-7.jpg.webp" alt="Government Fleet" class="enterprise-image slider-image">
+                            <img src="images/Government/gm-defense-inks-us-government-contract-for-heavy-duty-surbans-and-no-you-can-t-have-one_2.jpg" alt="Government Fleet" class="enterprise-image slider-image">
+                            <img src="images/Government/gm-defense-inks-us-government-contract-for-heavy-duty-surbans-and-no-you-can-t-have-one_3.jpg" alt="Government Fleet" class="enterprise-image slider-image">
+                            <img src="images/Government/gm-defense-inks-us-government-contract-for-heavy-duty-surbans-and-no-you-can-t-have-one_4.jpg" alt="Government Fleet" class="enterprise-image slider-image">
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="slideGov(-1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="slideGov(1)">&#10095;</button>
+                        <div class="slider-dots">
+                            <span class="dot active" onclick="currentSlideGov(1)"></span>
+                            <span class="dot" onclick="currentSlideGov(2)"></span>
+                            <span class="dot" onclick="currentSlideGov(3)"></span>
+                            <span class="dot" onclick="currentSlideGov(4)"></span>
+                            <span class="dot" onclick="currentSlideGov(5)"></span>
+                            <span class="dot" onclick="currentSlideGov(6)"></span>
+                        </div>
+                    </div>
+                    <div class="enterprise-content">
+                        <div class="enterprise-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3>Government Agencies</h3>
+                        <p>Municipal fleets, emergency vehicles, and public transportation with compliance-focused service and transparent reporting.</p>
+                    </div>
+                </div>
+
+                <div class="enterprise-card">
+                    <div class="ngo-slider">
+                        <div class="slider-container">
+                            <img src="images/Vehicles%20for%20NGOs%20and%20IGOs/22273ac911fe07cb78a1b911bc99cddc.jpeg" alt="NGO Fleet" class="enterprise-image slider-image active">
+                            <img src="images/Vehicles%20for%20NGOs%20and%20IGOs/6f8964_0136d58ed5a74dccab31558536bff6a6~mv2.jpg.avif" alt="NGO Fleet" class="enterprise-image slider-image">
+                            <img src="images/Vehicles%20for%20NGOs%20and%20IGOs/8b5e053934b0824cbf6409c38360cf19.png" alt="NGO Fleet" class="enterprise-image slider-image">
+                            <img src="images/Vehicles%20for%20NGOs%20and%20IGOs/JA-07018-1024x576.jpg" alt="NGO Fleet" class="enterprise-image slider-image">
+                            <img src="images/Vehicles%20for%20NGOs%20and%20IGOs/MORE4x4-4200kg300serieslandcruisergmfbullbarg6steelbumpergmf4x4bashplaterohcrawlersafariarmaxsnorkel-25_a7f7df5e-eefe-4710-a08d-b36b5d280405_1000x.jpg.webp" alt="NGO Fleet" class="enterprise-image slider-image">
+                            <img src="images/Vehicles%20for%20NGOs%20and%20IGOs/Toyota-LandCruiser-single-cab_0.webp" alt="NGO Fleet" class="enterprise-image slider-image">
+                            <img src="images/Vehicles%20for%20NGOs%20and%20IGOs/cvk0torc77h45hizkikf3wlag.jpg" alt="NGO Fleet" class="enterprise-image slider-image">
+                            <img src="images/Vehicles%20for%20NGOs%20and%20IGOs/land-cruiser-tole1.png" alt="NGO Fleet" class="enterprise-image slider-image">
+                            <img src="images/Vehicles%20for%20NGOs%20and%20IGOs/models-by-usage.webp" alt="NGO Fleet" class="enterprise-image slider-image">
+                            <img src="images/Vehicles%20for%20NGOs%20and%20IGOs/tlc-200-vs-300-v0-7gs2zniy7n0d1.jpeg.webp" alt="NGO Fleet" class="enterprise-image slider-image">
+                        </div>
+                        <div class="slider-dots">
+                            <span class="dot active" onclick="currentSlideNgo(1)"></span>
+                            <span class="dot" onclick="currentSlideNgo(2)"></span>
+                            <span class="dot" onclick="currentSlideNgo(3)"></span>
+                            <span class="dot" onclick="currentSlideNgo(4)"></span>
+                            <span class="dot" onclick="currentSlideNgo(5)"></span>
+                            <span class="dot" onclick="currentSlideNgo(6)"></span>
+                            <span class="dot" onclick="currentSlideNgo(7)"></span>
+                            <span class="dot" onclick="currentSlideNgo(8)"></span>
+                            <span class="dot" onclick="currentSlideNgo(9)"></span>
+                            <span class="dot" onclick="currentSlideNgo(10)"></span>
+                        </div>
+                    </div>
+                    <div class="enterprise-content">
+                        <div class="enterprise-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3>NGOs & IGOs</h3>
+                        <p>Field vehicles, aid delivery fleets, and mission-critical transportation with reliable multi-location service.</p>
+                    </div>
+                </div>
+
+                <div class="enterprise-card">
+                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=85" alt="Hospitality" class="enterprise-image">
+                    <div class="enterprise-content">
+                        <div class="enterprise-icon">
+                            <i class="fas fa-hotel"></i>
+                        </div>
+                        <h3>Hospitality</h3>
+                        <p>Hotel shuttles, guest transportation, and event vehicles maintaining your brand image through reliable service.</p>
+                    </div>
+                </div>
+
+                <div class="enterprise-card">
+                    <div class="school-slider">
+                        <div class="slider-container">
+                            <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=600&q=85" alt="Schools" class="enterprise-image slider-image active">
+                            <img src="images/School%20buses/1314-4-scaled.webp" alt="School Buses" class="enterprise-image slider-image">
+                            <img src="images/School%20buses/675c951a2278e3f303170236_Micro-Buses.jpg" alt="School Buses" class="enterprise-image slider-image">
+                            <img src="images/School%20buses/blindado-single-1.png" alt="School Buses" class="enterprise-image slider-image">
+                            <img src="images/School%20buses/hq720.jpg" alt="School Buses" class="enterprise-image slider-image">
+                            <img src="images/School%20buses/original_Campus_Shuttle.jpg" alt="School Buses" class="enterprise-image slider-image">
+                            <img src="images/School%20buses/photo-1562774053-701939374585.jpeg" alt="School Buses" class="enterprise-image slider-image">
+                            <img src="images/School%20buses/shuttle-page.jpg" alt="School Buses" class="enterprise-image slider-image">
+                            <img src="images/School%20buses/unibus.jpg" alt="School Buses" class="enterprise-image slider-image">
+                        </div>
+                        <div class="slider-dots">
+                            <span class="dot active" onclick="currentSlideSchool(1)"></span>
+                            <span class="dot" onclick="currentSlideSchool(2)"></span>
+                            <span class="dot" onclick="currentSlideSchool(3)"></span>
+                            <span class="dot" onclick="currentSlideSchool(4)"></span>
+                            <span class="dot" onclick="currentSlideSchool(5)"></span>
+                            <span class="dot" onclick="currentSlideSchool(6)"></span>
+                            <span class="dot" onclick="currentSlideSchool(7)"></span>
+                            <span class="dot" onclick="currentSlideSchool(8)"></span>
+                            <span class="dot" onclick="currentSlideSchool(9)"></span>
+                        </div>
+                    </div>
+                    <div class="enterprise-content">
+                        <div class="enterprise-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <h3>Educational Institutions</h3>
+                        <p>School buses, campus shuttles, and administrative vehicles with safety-first maintenance and regulatory compliance.</p>
+                    </div>
+                </div>
+
+                <div class="enterprise-card">
+                    <div class="logistics-slider">
+                        <div class="slider-container">
+                            <img src="images/Delivery%20vans/20241102_163925%5B6%5D.png" alt="Logistics Fleet" class="enterprise-image slider-image active">
+                            <img src="images/Delivery%20vans/64eb43ca042fae226d844077_cargo-vans-lined-up.webp" alt="Logistics Fleet" class="enterprise-image slider-image">
+                            <img src="images/Delivery%20vans/Last-mile-delivery-trends-shyft-group.jpg" alt="Logistics Fleet" class="enterprise-image slider-image">
+                            <img src="images/Delivery%20vans/first-brightdrop-ev600-vans-delivered-to-fedex_100821193_l.jpg" alt="Logistics Fleet" class="enterprise-image slider-image">
+                            <img src="images/Delivery%20vans/hero-mobile-commercial-bridgestone-fleet-care-last-mile-delivery.webp" alt="Logistics Fleet" class="enterprise-image slider-image">
+                        </div>
+                        <div class="slider-dots">
+                            <span class="dot active" onclick="currentSlideLogistics(1)"></span>
+                            <span class="dot" onclick="currentSlideLogistics(2)"></span>
+                            <span class="dot" onclick="currentSlideLogistics(3)"></span>
+                            <span class="dot" onclick="currentSlideLogistics(4)"></span>
+                            <span class="dot" onclick="currentSlideLogistics(5)"></span>
+                        </div>
+                    </div>
+                    <div class="enterprise-content">
+                        <div class="enterprise-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>Logistics Companies</h3>
+                        <p>Delivery vans, freight vehicles, and last-mile fleets with preventive maintenance programs minimizing downtime.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-highlight">
+                <div class="section-header" style="margin-bottom: 0;">
+                    <h2 style="color: var(--white);">Enterprise Program Benefits</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-item-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h4>Scheduled Maintenance</h4>
+                        <p>Automated preventive maintenance scheduling across your entire fleet</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">
+                            <i class="fas fa-phone-volume"></i>
+                        </div>
+                        <h4>24/7 Emergency Response</h4>
+                        <p>Round-the-clock breakdown assistance and priority service</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Compliance Management</h4>
+                        <p>Safety inspections, regulatory compliance, and certification tracking</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Cost Reporting</h4>
+                        <p>Transparent budgeting, expense tracking, and ROI analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASE Certification -->
+    <section class="section">
+        <div class="container">
+            <div class="certification">
+                <div class="ase-badge">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>ASE Certification Partnership</h3>
+                <p>All Q4-LIFE technicians are certified through <strong>BTH Education Group</strong> using industry-recognized ASE (Automotive Service Excellence) standards. This ensures every service meets the highest professional benchmarks.</p>
+                <a href="https://btheducationgroup.org/programs/automotive?level=1&partner=standard" target="_blank" class="certification-link">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Explore ASE Certification</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Q4-<span>LIFE</span></h3>
+                <p>Building Africa's premier mobility infrastructure through quality service, innovation, and certified excellence.</p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="/mobility/vehicle-trading">Vehicle Trading</a></li>
+                    <li><a href="/mobility/fleet-systems">Fleet Systems</a></li>
+                    <li><a href="/mobility/certified-services">Certified Services</a></li>
+                    <li><a href="/mobility/marketplace-platform">Marketplace</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="/about.html">About Us</a></li>
+                    <li><a href="/mobility/strategy.html">Strategy</a></li>
+                    <li><a href="/contact-us.html">Contact</a></li>
+                    <li><a href="/plan.html">Careers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Connect</h4>
+                <ul class="footer-links">
+                    <li><a href="https://api.whatsapp.com/send?phone=237680655903">WhatsApp</a></li>
+                    <li><a href="mailto:info@q4-life.com">Email Us</a></li>
+                    <li><a href="https://btheducationgroup.org/programs/automotive?level=1&partner=standard" target="_blank">Get Certified</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Q4-LIFE Mobility Division. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let govSlideIndex = 1;
+        let corpSlideIndex = 1;
+        let ngoSlideIndex = 1;
+        let schoolSlideIndex = 1;
+        let logisticsSlideIndex = 1;
+
+        function slideGov(n) {
+            showSlideGov(govSlideIndex += n);
+        }
+
+        function currentSlideGov(n) {
+            showSlideGov(govSlideIndex = n);
+        }
+
+        function showSlideGov(n) {
+            const slides = document.querySelectorAll('.government-slider .slider-image');
+            const dots = document.querySelectorAll('.government-slider .dot');
+            
+            if (n > slides.length) { govSlideIndex = 1; }
+            if (n < 1) { govSlideIndex = slides.length; }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[govSlideIndex - 1].classList.add('active');
+            dots[govSlideIndex - 1].classList.add('active');
+        }
+
+        function slideCorp(n) {
+            showSlideCorp(corpSlideIndex += n);
+        }
+
+        function currentSlideCorp(n) {
+            showSlideCorp(corpSlideIndex = n);
+        }
+
+        function showSlideCorp(n) {
+            const slides = document.querySelectorAll('.corporate-slider .slider-image');
+            const dots = document.querySelectorAll('.corporate-slider .dot');
+            
+            if (n > slides.length) { corpSlideIndex = 1; }
+            if (n < 1) { corpSlideIndex = slides.length; }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[corpSlideIndex - 1].classList.add('active');
+            dots[corpSlideIndex - 1].classList.add('active');
+        }
+
+        function slideNgo(n) {
+            showSlideNgo(ngoSlideIndex += n);
+        }
+
+        function currentSlideNgo(n) {
+            showSlideNgo(ngoSlideIndex = n);
+        }
+
+        function showSlideNgo(n) {
+            const slides = document.querySelectorAll('.ngo-slider .slider-image');
+            const dots = document.querySelectorAll('.ngo-slider .dot');
+            
+            if (n > slides.length) { ngoSlideIndex = 1; }
+            if (n < 1) { ngoSlideIndex = slides.length; }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[ngoSlideIndex - 1].classList.add('active');
+            dots[ngoSlideIndex - 1].classList.add('active');
+        }
+
+        function slideSchool(n) {
+            showSlideSchool(schoolSlideIndex += n);
+        }
+
+        function currentSlideSchool(n) {
+            showSlideSchool(schoolSlideIndex = n);
+        }
+
+        function showSlideSchool(n) {
+            const slides = document.querySelectorAll('.school-slider .slider-image');
+            const dots = document.querySelectorAll('.school-slider .dot');
+            
+            if (n > slides.length) { schoolSlideIndex = 1; }
+            if (n < 1) { schoolSlideIndex = slides.length; }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[schoolSlideIndex - 1].classList.add('active');
+            dots[schoolSlideIndex - 1].classList.add('active');
+        }
+
+        function slideLogistics(n) {
+            showSlideLogistics(logisticsSlideIndex += n);
+        }
+
+        function currentSlideLogistics(n) {
+            showSlideLogistics(logisticsSlideIndex = n);
+        }
+
+        function showSlideLogistics(n) {
+            const slides = document.querySelectorAll('.logistics-slider .slider-image');
+            const dots = document.querySelectorAll('.logistics-slider .dot');
+            
+            if (n > slides.length) { logisticsSlideIndex = 1; }
+            if (n < 1) { logisticsSlideIndex = slides.length; }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[logisticsSlideIndex - 1].classList.add('active');
+            dots[logisticsSlideIndex - 1].classList.add('active');
+        }
+
+        // Auto-advance sliders every 4 seconds
+        setInterval(() => {
+            slideGov(1);
+            slideCorp(1);
+            slideNgo(1);
+            slideSchool(1);
+            slideLogistics(1);
+        }, 4000);
+
+        // Hero Carousel
+        let heroIndex = 0;
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const heroTotal = heroSlides.length;
+
+        function showHeroSlide() {
+            heroSlides.forEach(slide => slide.classList.remove('active'));
+            heroIndex = (heroIndex + 1) % heroTotal;
+            heroSlides[heroIndex].classList.add('active');
+        }
+
+        // Change hero slide every 6 seconds
+        setInterval(showHeroSlide, 6000);
+    </script>
+</body>
+</html>
