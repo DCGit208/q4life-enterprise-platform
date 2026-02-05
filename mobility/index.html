@@ -3,533 +3,821 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Q4-LIFE Mobility Division | Transaction infrastructure for African automotive markets - Vehicle Trading, Fleet Systems, Certified Services, Marketplace Platform, EV Integration, Mobility Fund">
-    <title>Q4-LIFE Mobility & Automotive Systems | Infrastructure-First Transportation</title>
+    <meta name="description" content="Q4-Life Mobility Infrastructure | Transaction systems for Africa's automotive economy">
+    <title>Q4-Life Mobility Infrastructure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/files/main_style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display+SC:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
-            --primary: #2563eb;
-            --mobility-orange: #f97316;
-            --mobility-emerald: #10b981;
-            --mobility-violet: #8b5cf6;
-            --dark-bg: #0f172a;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --text-muted: #64748b;
-            --border: rgba(248, 250, 252, 0.1);
+            --charcoal: #1a1a1a;
+            --off-white: #fafaf8;
+            --copper: #c17348;
+            --muted-copper: #a66141;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 50%, #1e293b 100%);
-            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 18px;
             line-height: 1.6;
+            color: var(--charcoal);
+            background: var(--off-white);
             overflow-x: hidden;
         }
 
-        .breadcrumb {
-            padding: 1rem 2rem;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            font-size: 0.875rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .breadcrumb a {
-            color: var(--mobility-orange);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .breadcrumb a:hover { color: #fb923c; }
-
-        /* Hero Section */
-        .hero {
-            padding: 6rem 2rem 4rem;
-            text-align: center;
-            background: radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+        /* CHAPTER 1: CINEMATIC HERO */
+        .hero-chapter {
+            height: 100vh;
+            min-height: 700px;
             position: relative;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=90');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-50px, 50px); }
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 0.5rem 1.25rem;
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(139, 92, 246, 0.2));
-            border: 1px solid rgba(249, 115, 22, 0.3);
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--mobility-orange);
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .hero h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            max-width: 900px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            animation: fadeInUp 0.8s ease-out 0.6s both;
-        }
-
-        .stat-item {
-            padding: 1.5rem;
-            background: rgba(30, 41, 59, 0.4);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-        }
-
-        .stat-item:hover {
-            background: rgba(30, 41, 59, 0.6);
-            border-color: var(--mobility-orange);
-            transform: translateY(-4px);
-        }
-
-        .stat-number {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--mobility-orange);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-
-        /* Division Grid */
-        .divisions-grid {
+        .hero-content {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 4rem 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2rem;
+            padding: 0 4rem;
+            color: var(--off-white);
         }
 
-        .division-card {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.4s ease;
+        .hero-content h1 {
+            font-family: 'Playfair Display SC', serif;
+            font-size: 110px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content .subtitle {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.01em;
+            line-height: 1.4;
+        }
+
+        .hero-content .systems {
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            letter-spacing: 0.08em;
+        }
+
+        .hero-content .tagline {
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 1.5rem;
+            max-width: 450px;
+            line-height: 1.6;
+        }
+
+        /* CHAPTER 2: PHILOSOPHY */
+        .philosophy-chapter {
+            background: var(--off-white);
+            padding: 12rem 4rem;
+            text-align: center;
+        }
+
+        .philosophy-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .philosophy-content p {
+            font-family: 'Playfair Display SC', serif;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--charcoal);
+            margin-bottom: 4rem;
+        }
+
+        .philosophy-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .philosophy-content .body-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.8;
+            color: rgba(26, 26, 26, 0.8);
+            margin-top: 3rem;
+        }
+
+        /* CHAPTER 3: ECOSYSTEM MAP */
+        .ecosystem-chapter {
+            background: var(--charcoal);
+            padding: 12rem 4rem 10rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .ecosystem-title {
+            font-family: 'Playfair Display SC', serif;
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--off-white);
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .ecosystem-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .ecosystem-diagram {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .ecosystem-core {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: var(--copper);
+            color: var(--charcoal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Playfair Display SC', serif;
+            font-size: 22px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin: 0 auto 8rem;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 0 80px rgba(193, 115, 72, 0.4);
+        }
+
+        .ecosystem-nodes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ecosystem-node {
+            background: transparent;
+            border: 1px solid rgba(193, 115, 72, 0.3);
+            padding: 3rem 2rem;
+            text-align: left;
+            color: var(--off-white);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 0.6s ease-out both;
         }
 
-        .division-card::before {
+        .ecosystem-node::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--mobility-orange), var(--mobility-violet));
-            opacity: 0;
-            transition: opacity 0.4s;
+            width: 100%;
+            height: 2px;
+            background: var(--copper);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .division-card:hover {
-            border-color: var(--mobility-orange);
+        .ecosystem-node:hover::before {
+            transform: scaleX(1);
+        }
+
+        .ecosystem-node:hover {
+            background: rgba(193, 115, 72, 0.08);
+            border-color: var(--copper);
             transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(249, 115, 22, 0.3);
         }
 
-        .division-card:hover::before { opacity: 1; }
-
-        .division-card:nth-child(1) { animation-delay: 0.1s; }
-        .division-card:nth-child(2) { animation-delay: 0.2s; }
-        .division-card:nth-child(3) { animation-delay: 0.3s; }
-        .division-card:nth-child(4) { animation-delay: 0.4s; }
-        .division-card:nth-child(5) { animation-delay: 0.5s; }
-        .division-card:nth-child(6) { animation-delay: 0.6s; }
-
-        .division-icon {
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(139, 92, 246, 0.2));
-            border-radius: 20px;
-            font-size: 2.5rem;
-            color: var(--mobility-orange);
-            margin-bottom: 1.5rem;
-            transition: all 0.3s;
-        }
-
-        .division-card:hover .division-icon {
-            transform: scale(1.1);
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.3), rgba(139, 92, 246, 0.3));
-        }
-
-        .division-card h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.75rem;
+        .ecosystem-node h3 {
+            font-family: 'Playfair Display SC', serif;
+            font-size: 24px;
             font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .division-card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .revenue-streams {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .revenue-streams h4 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--mobility-orange);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             margin-bottom: 0.75rem;
+            color: var(--off-white);
         }
 
-        .revenue-streams ul {
-            list-style: none;
-            padding: 0;
+        .ecosystem-node p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+            letter-spacing: 0.02em;
         }
 
-        .revenue-streams li {
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        /* CHAPTER 4: SIX SYSTEMS (FULL WIDTH PANELS) */
+        .system-panel {
+            min-height: 80vh;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            position: relative;
+            background-size: cover;
+            background-position: center;
         }
 
-        .revenue-streams li::before {
-            content: '→';
-            color: var(--mobility-emerald);
+        .system-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+        }
+
+        .system-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem;
+            width: 100%;
+        }
+
+        .system-content h2 {
+            font-family: 'Playfair Display SC', serif;
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--off-white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        .system-content .subtitle {
+            font-size: 24px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .system-content .description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .system-metric {
+            font-family: 'Playfair Display SC', serif;
+            font-size: 36px;
             font-weight: 700;
+            color: var(--copper);
+            margin-bottom: 2rem;
         }
 
-        .cta-section {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
-            border-top: 1px solid var(--border);
-        }
-
-        .cta-section h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary, .btn-secondary {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
+        .system-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            color: var(--off-white);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            border-bottom: 1px solid var(--copper);
+            padding-bottom: 0.25rem;
+            transition: all 0.3s;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--mobility-orange), #fb923c);
-            color: #000;
+        .system-link:hover {
+            color: var(--copper);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+        /* CHAPTER 5: ECONOMIC ENGINE */
+        .economics-chapter {
+            background: var(--off-white);
+            padding: 10rem 4rem;
         }
 
-        .btn-secondary {
-            background: rgba(249, 115, 22, 0.1);
-            color: var(--mobility-orange);
-            border: 1px solid var(--mobility-orange);
+        .economics-content {
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .btn-secondary:hover {
-            background: rgba(249, 115, 22, 0.2);
+        .economics-content h2 {
+            font-family: 'Playfair Display SC', serif;
+            font-size: 64px;
+            font-weight: 900;
+            color: var(--charcoal);
+            margin-bottom: 4rem;
+            text-align: center;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .revenue-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem 4rem;
+            margin-top: 4rem;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 1.125rem; }
-            .divisions-grid { grid-template-columns: 1fr; }
-            .cta-section h2 { font-size: 1.75rem; }
+        .revenue-item {
+            border-bottom: 1px solid rgba(26,26,26,0.1);
+            padding-bottom: 1.5rem;
+        }
+
+        .revenue-item .label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(26,26,26,0.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .revenue-item .value {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        /* CHAPTER 6: CERTIFIED SERVICES NARRATIVE */
+        .services-narrative {
+            background: var(--charcoal);
+            padding: 8rem 4rem;
+        }
+
+        .services-split {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .services-image {
+            width: 100%;
+            height: 600px;
+            background: url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=85');
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%);
+        }
+
+        .services-text h2 {
+            font-family: 'Playfair Display SC', serif;
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--off-white);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .services-text p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .services-metrics {
+            margin-top: 3rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .services-metrics div {
+            font-size: 16px;
+            color: rgba(255,255,255,0.6);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* CHAPTER 7: CULTURE */
+        .culture-chapter {
+            background: #0a0a0a;
+            padding: 8rem 4rem;
+        }
+
+        .culture-title {
+            font-family: 'Playfair Display SC', serif;
+            font-size: 64px;
+            font-weight: 900;
+            color: var(--off-white);
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .culture-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .culture-portrait {
+            text-align: center;
+        }
+
+        .culture-portrait .image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: rgba(255,255,255,0.05);
+            margin-bottom: 2rem;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%);
+        }
+
+        .culture-portrait .quote {
+            font-size: 18px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .culture-portrait .name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--copper);
+        }
+
+        .culture-portrait .role {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* CHAPTER 8: CAPITAL */
+        .capital-chapter {
+            background: var(--off-white);
+            padding: 10rem 4rem;
+        }
+
+        .capital-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .capital-content h2 {
+            font-family: 'Playfair Display SC', serif;
+            font-size: 64px;
+            font-weight: 900;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+        }
+
+        .capital-content .description {
+            font-size: 22px;
+            line-height: 1.8;
+            color: rgba(26,26,26,0.8);
+            margin-bottom: 4rem;
+        }
+
+        .capital-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .capital-metric {
+            padding: 2rem;
+            border: 1px solid rgba(26,26,26,0.1);
+        }
+
+        .capital-metric .value {
+            font-family: 'Playfair Display SC', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--copper);
+            margin-bottom: 0.5rem;
+        }
+
+        .capital-metric .label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(26,26,26,0.6);
+        }
+
+        /* FINAL CHAPTER: DECLARATION */
+        .declaration-chapter {
+            background: var(--charcoal);
+            padding: 12rem 4rem;
+            text-align: center;
+        }
+
+        .declaration-chapter h2 {
+            font-family: 'Playfair Display SC', serif;
+            font-size: 90px;
+            font-weight: 900;
+            color: var(--off-white);
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .declaration-chapter .subtitle {
+            font-size: 24px;
+            color: rgba(255,255,255,0.7);
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            line-height: 1.8;
+        }
+
+        .declaration-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: transparent;
+            border: 1px solid var(--copper);
+            color: var(--copper);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .declaration-button:hover {
+            background: var(--copper);
+            color: var(--off-white);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .hero-content h1 { font-size: 64px; }
+            .philosophy-content p { font-size: 32px; }
+            .ecosystem-title { font-size: 42px; }
+            .ecosystem-nodes { grid-template-columns: 1fr; }
+            .system-content h2 { font-size: 48px; }
+            .services-split { grid-template-columns: 1fr; }
+            .culture-grid { grid-template-columns: 1fr; }
+            .capital-metrics { grid-template-columns: 1fr; }
+            .declaration-chapter h2 { font-size: 56px; }
         }
     </style>
 </head>
 <body>
-    <div class="breadcrumb">
-        <a href="/">Home</a> / Mobility Division
-    </div>
 
-    <section class="hero">
-        <div class="hero-badge">
-            <i class="fas fa-layer-group"></i> Infrastructure-First Transportation
+    <!-- CHAPTER 1: CINEMATIC HERO -->
+    <section class="hero-chapter">
+        <div class="hero-content">
+            <h1>Q4-Life Mobility<br>Infrastructure</h1>
+            <p class="subtitle">Complete automotive solutions for business and enterprise.</p>
+            <p class="systems">Vehicles. Fleet Management. Certified Service. Energy.</p>
+            <p class="tagline">Every mobility need. One integrated platform.</p>
         </div>
-        <h1>Q4-LIFE Mobility<br>& Automotive Systems</h1>
-        <p class="hero-subtitle">
-            Transaction infrastructure for African automotive markets. We don't own cars — we own the rails that money flows through: financing, insurance, service networks, marketplace platforms, and fleet systems.
-        </p>
-        <div class="hero-stats">
-            <div class="stat-item">
-                <span class="stat-number">$3T+</span>
-                <span class="stat-label">Global Auto Economy</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">6</span>
-                <span class="stat-label">Revenue Streams per Vehicle</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">Zero</span>
-                <span class="stat-label">Inventory Risk</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">100%</span>
-                <span class="stat-label">Platform-Based</span>
+    </section>
+
+    <!-- CHAPTER 2: PHILOSOPHY -->
+    <section class="philosophy-chapter">
+        <div class="philosophy-content">
+            <p>Vehicle trading. Fleet operations. Certified maintenance.</p>
+            <p>One platform. Complete control.</p>
+            
+            <div class="body-text">
+                <p>Buy or sell vehicles with full support.<br>
+                Deploy professional drivers for your business.<br>
+                Access certified technicians across the network.</p>
             </div>
         </div>
     </section>
 
-    <section class="divisions-grid">
-        <!-- Division 1: Vehicle Trading -->
-        <div class="division-card">
-            <div class="division-icon">
-                <i class="fas fa-car"></i>
+    <!-- CHAPTER 3: ECOSYSTEM MAP -->
+    <section class="ecosystem-chapter">
+        <h2 class="ecosystem-title">Six Operating Systems</h2>
+        <p class="ecosystem-subtitle">Integrated infrastructure. Single command center.</p>
+        
+        <div class="ecosystem-diagram">
+            <div class="ecosystem-core">
+                MOBILITY<br>CORE
             </div>
+            
+            <div class="ecosystem-nodes">
+                <a href="vehicle-trading.html" class="ecosystem-node">
+                    <h3>Vehicle Trading</h3>
+                    <p>Buy and sell vehicles with verified inspections, financing, and registration</p>
+                </a>
+                <a href="fleet-systems.html" class="ecosystem-node">
+                    <h3>Fleet Management</h3>
+                    <p>Professional drivers and vehicle operations for your business</p>
+                </a>
+                <a href="certified-services.html" class="ecosystem-node">
+                    <h3>Certified Service</h3>
+                    <p>ASE-certified technicians for maintenance, repairs, and inspections</p>
+                </a>
+                <a href="marketplace-platform.html" class="ecosystem-node">
+                    <h3>Marketplace</h3>
+                    <p>Digital platform connecting buyers, sellers, and service providers</p>
+                </a>
+                <a href="energy-systems.html" class="ecosystem-node">
+                    <h3>Energy Solutions</h3>
+                    <p>Electric vehicle integration with charging and solar infrastructure</p>
+                </a>
+                <a href="mobility-fund.html" class="ecosystem-node">
+                    <h3>Fleet Financing</h3>
+                    <p>Capital solutions for vehicle acquisition and fleet expansion</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 4: SIX SYSTEMS -->
+    
+    <!-- Vehicle Transactions -->
+    <section class="system-panel" style="background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=90');">
+        <div class="system-content">
             <h2>Vehicle Trading</h2>
-            <p>
-                Transaction infrastructure connecting buyers, sellers, and financing partners. We facilitate deals, not inventory. Commission-based model eliminating capital requirements while controlling the transaction layer.
-            </p>
-            <div class="revenue-streams">
-                <h4>Revenue Streams</h4>
-                <ul>
-                    <li>Sales Commission: 3-7% per transaction</li>
-                    <li>Financing Referral: $500-$1,200 per financed vehicle</li>
-                    <li>Inspection Fees: $50 per vehicle</li>
-                    <li>Dealer Subscriptions: $100-$300/month</li>
-                </ul>
-            </div>
-            <a href="/mobility/vehicle-trading" class="btn-secondary" style="margin-top: 1rem;">
-                Explore Trading <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Division 2: Fleet Systems -->
-        <div class="division-card">
-            <div class="division-icon">
-                <i class="fas fa-shuttle-van"></i>
-            </div>
-            <h2>Fleet Systems</h2>
-            <p>
-                Driver-as-a-service and corporate fleet management. Vehicles deployed as income-generating assets. Corporate contracts for NGOs, schools, and enterprises requiring managed transportation.
-            </p>
-            <div class="revenue-streams">
-                <h4>Revenue Streams</h4>
-                <ul>
-                    <li>Driver Leasing: $700-$900 per vehicle/month</li>
-                    <li>Corporate Fleet Contracts: $500+/vehicle/month</li>
-                    <li>Fleet Management Software: Subscription-based</li>
-                    <li>Telematics & Analytics: Data licensing</li>
-                </ul>
-            </div>
-            <a href="/mobility/fleet-systems" class="btn-secondary" style="margin-top: 1rem;">
-                Explore Fleet <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Division 3: Certified Services -->
-        <div class="division-card">
-            <div class="division-icon">
-                <i class="fas fa-tools"></i>
-            </div>
-            <h2>Certified Services</h2>
-            <p>
-                ASE-certified mechanic network providing standardized maintenance. We control job routing, pricing, and quality standards. Zero workshop overhead — commission on every service transaction.
-            </p>
-            <div class="revenue-streams">
-                <h4>Revenue Streams</h4>
-                <ul>
-                    <li>Job Commission: 20-30% per service</li>
-                    <li>Parts Margin: 10-20% on all parts</li>
-                    <li>Corporate Contracts: Fleet maintenance</li>
-                    <li>Warranty Programs: Insurance-backed</li>
-                </ul>
-            </div>
-            <a href="/mobility/certified-services" class="btn-secondary" style="margin-top: 1rem;">
-                Explore Services <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Division 4: Marketplace Platform -->
-        <div class="division-card">
-            <div class="division-icon">
-                <i class="fas fa-store"></i>
-            </div>
-            <h2>Marketplace Platform</h2>
-            <p>
-                Digital infrastructure connecting buyers, sellers, financiers, insurers, and service providers. Multi-sided platform capturing value at every transaction point across the vehicle lifecycle.
-            </p>
-            <div class="revenue-streams">
-                <h4>Revenue Streams</h4>
-                <ul>
-                    <li>Transaction Fees: 3-7% on sales</li>
-                    <li>Insurance Brokerage: 15-25% annually</li>
-                    <li>Featured Listings: Premium placement</li>
-                    <li>Data Licensing: Institutional clients</li>
-                </ul>
-            </div>
-            <a href="/mobility/marketplace-platform" class="btn-secondary" style="margin-top: 1rem;">
-                Explore Platform <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Division 5: Energy (EV + Solar) -->
-        <div class="division-card">
-            <div class="division-icon">
-                <i class="fas fa-bolt"></i>
-            </div>
-            <h2>Energy (EV + Solar)</h2>
-            <p>
-                Electric vehicle integration with Q4-Life Power Division. Charging infrastructure, battery storage, and solar integration for fleet operations. Complete vertical: vehicles + energy systems.
-            </p>
-            <div class="revenue-streams">
-                <h4>Revenue Streams</h4>
-                <ul>
-                    <li>EV Sales: Same commission model</li>
-                    <li>Charging Infrastructure: Hardware + subscription</li>
-                    <li>Solar Fleet Charging: Energy services</li>
-                    <li>Battery Storage: Grid services revenue</li>
-                </ul>
-            </div>
-            <a href="/mobility/energy-systems" class="btn-secondary" style="margin-top: 1rem;">
-                Explore Energy <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Division 6: Mobility Fund -->
-        <div class="division-card">
-            <div class="division-icon">
-                <i class="fas fa-chart-line"></i>
-            </div>
-            <h2>Mobility Fund</h2>
-            <p>
-                Private equity vehicle for institutional capital deployment into fleet assets, imports, and EV infrastructure. Investors fund expansion while we control operations and transaction flow.
-            </p>
-            <div class="revenue-streams">
-                <h4>Revenue Streams</h4>
-                <ul>
-                    <li>Management Fee: 2-3% of AUM annually</li>
-                    <li>Performance Carry: 20% of profits</li>
-                    <li>Portfolio Returns: 15-25% target</li>
-                    <li>Strategic Deployment: Zero personal capital</li>
-                </ul>
-            </div>
-            <a href="/mobility/mobility-fund" class="btn-secondary" style="margin-top: 1rem;">
-                Explore Fund <i class="fas fa-arrow-right"></i>
-            </a>
+            <p class="subtitle">Buy and sell with complete support.</p>
+            <p class="description">Verified inspections. Financing options. Insurance connections. Full registration handling.</p>
+            <p class="system-metric">Complete transaction support</p>
+            <a href="vehicle-trading.html" class="system-link">Explore →</a>
         </div>
     </section>
 
-    <section class="cta-section">
-        <h2>The System is the Asset</h2>
-        <p>
-            Small players sell cars. Big players build infrastructure. We control transactions, labor networks, financing rails, service channels, and data flows. Zero inventory risk. Maximum leverage.
-        </p>
-        <div class="cta-buttons">
-            <a href="/mobility/strategy" class="btn-primary">
-                <i class="fas fa-book"></i> View Complete Strategy
-            </a>
-            <a href="/mobility/technical-architecture" class="btn-secondary">
-                <i class="fas fa-code"></i> Technical Architecture
-            </a>
-            <a href="https://api.whatsapp.com/send?phone=237680655903&text=I'm%20interested%20in%20Q4-LIFE%20Mobility%20Division" class="btn-secondary" target="_blank">
-                <i class="fab fa-whatsapp"></i> Partner with Us
-            </a>
+    <!-- Fleet Systems -->
+    <section class="system-panel" style="background-image: url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1920&q=90');">
+        <div class="system-content">
+            <h2>Fleet Management</h2>
+            <p class="subtitle">Professional drivers for your business.</p>
+            <p class="description">Corporate transportation. Executive services. Logistics operations. Full vehicle management.</p>
+            <p class="system-metric">$700–$900 monthly management</p>
+            <a href="fleet-systems.html" class="system-link">Explore →</a>
         </div>
     </section>
+
+    <!-- Certified Services -->
+    <section class="system-panel" style="background-image: url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1920&q=90');">
+        <div class="system-content">
+            <h2>Certified Service</h2>
+            <p class="subtitle">Professional maintenance and repairs.</p>
+            <p class="description">ASE-certified technicians. Quality guaranteed. Scheduled maintenance. Emergency repairs.</p>
+            <p class="system-metric">Certified network nationwide</p>
+            <a href="certified-services.html" class="system-link">Explore →</a>
+        </div>
+    </section>
+
+    <!-- Marketplace Platform -->
+    <section class="system-panel" style="background-image: url('https://images.unsplash.com/photo-1556155092-8707de31f9c4?w=1920&q=90');">
+        <div class="system-content">
+            <h2>Digital Marketplace</h2>
+            <p class="subtitle">Everything automotive in one place.</p>
+            <p class="description">Browse vehicles. Find services. Connect with verified sellers. Access financing and insurance.</p>
+            <p class="system-metric">Complete digital platform</p>
+            <a href="marketplace-platform.html" class="system-link">Explore →</a>
+        </div>
+    </section>
+
+    <!-- Energy Systems -->
+    <section class="system-panel" style="background-image: url('https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1920&q=90');">
+        <div class="system-content">
+            <h2>Electric Vehicles</h2>
+            <p class="subtitle">EV sales and charging solutions.</p>
+            <p class="description">Electric vehicle options. Charging station installation. Solar integration. Complete EV support.</p>
+            <p class="system-metric">Full electric transition</p>
+            <a href="energy-systems.html" class="system-link">Explore →</a>
+        </div>
+    </section>
+
+    <!-- Mobility Fund -->
+    <section class="system-panel" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=90');">
+        <div class="system-content">
+            <h2>Fleet Financing</h2>
+            <p class="subtitle">Capital for vehicle acquisition.</p>
+            <p class="description">Financing solutions for fleet expansion. Vehicle purchase programs. Flexible terms for businesses.</p>
+            <p class="system-metric">Customized financing options</p>
+            <a href="mobility-fund.html" class="system-link">Explore →</a>
+        </div>
+    </section>
+
+    <!-- CHAPTER 5: ECONOMIC ENGINE -->
+    <section class="economics-chapter">
+        <div class="economics-content">
+            <h2>Complete Service Portfolio</h2>
+            
+            <div class="revenue-grid">
+                <div class="revenue-item">
+                    <div class="label">Vehicle Trading</div>
+                    <div class="value">Buy & Sell</div>
+                </div>
+                <div class="revenue-item">
+                    <div class="label">Financing Assistance</div>
+                    <div class="value">Full Support</div>
+                </div>
+                <div class="revenue-item">
+                    <div class="label">Insurance Connections</div>
+                    <div class="value">Best Rates</div>
+                </div>
+                <div class="revenue-item">
+                    <div class="label">Maintenance Service</div>
+                    <div class="value">Certified Techs</div>
+                </div>
+                <div class="revenue-item">
+                    <div class="label">Fleet Management</div>
+                    <div class="value">$700+/vehicle/month</div>
+                </div>
+                <div class="revenue-item">
+                    <div class="label">Fleet Financing</div>
+                    <div class="value">Custom Terms</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 6: CERTIFIED SERVICES NARRATIVE -->
+    <section class="services-narrative">
+        <div class="services-split">
+            <div class="services-image"></div>
+            <div class="services-text">
+                <h2>Professional Service Network</h2>
+                <p>ASE-certified technicians.<br>
+                Quality guaranteed work.<br>
+                Transparent pricing.<br>
+                Scheduled maintenance.</p>
+                
+                <p>Professional automotive service you can trust.</p>
+                
+                <div class="services-metrics">
+                    <div>Certified technicians</div>
+                    <div>Quality guarantees</div>
+                    <div>OEM parts available</div>
+                    <div>Corporate accounts</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 7: CULTURE -->
+    <section class="culture-chapter">
+        <h2 class="culture-title">Our Team</h2>
+        
+        <div class="culture-grid">
+            <div class="culture-portrait">
+                <div class="image" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85');"></div>
+                <p class="quote">"Certified training means I deliver quality work every time."</p>
+                <p class="name">Emmanuel K.</p>
+                <p class="role">Certified Technician</p>
+            </div>
+            
+            <div class="culture-portrait">
+                <div class="image" style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=85');"></div>
+                <p class="quote">"Professional drivers help businesses run smoothly every day."</p>
+                <p class="name">Sarah M.</p>
+                <p class="role">Fleet Operations</p>
+            </div>
+            
+            <div class="culture-portrait">
+                <div class="image" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85');"></div>
+                <p class="quote">"We help businesses access financing for fleet growth."</p>
+                <p class="name">David O.</p>
+                <p class="role">Fleet Financing</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 8: CAPITAL -->
+    <section class="capital-chapter">
+        <div class="capital-content">
+            <h2>Fleet Financing Solutions</h2>
+            <p class="description">Flexible financing options for businesses looking to expand their vehicle fleets or acquire new vehicles.</p>
+            
+            <div class="capital-metrics">
+                <div class="capital-metric">
+                    <div class="value">Flexible</div>
+                    <div class="label">Payment Terms</div>
+                </div>
+                <div class="capital-metric">
+                    <div class="value">Competitive</div>
+                    <div class="label">Interest Rates</div>
+                </div>
+                <div class="capital-metric">
+                    <div class="value">Fast</div>
+                    <div class="label">Approval Process</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CHAPTER: DECLARATION -->
+    <section class="declaration-chapter">
+        <h2>Your Complete<br>Mobility Partner.</h2>
+        <p class="subtitle">Q4-Life Mobility delivers comprehensive automotive solutions for businesses across Africa.</p>
+        <a href="https://api.whatsapp.com/send?phone=237680655903&text=Business%20inquiry%20for%20Q4-Life%20Mobility" class="declaration-button">Get Started →</a>
+    </section>
+
 </body>
 </html>
