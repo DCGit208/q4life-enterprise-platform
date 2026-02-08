@@ -267,6 +267,8 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.2);
+            z-index: 3;
+            pointer-events: none;
         }
 
         .content-inner {
@@ -848,6 +850,53 @@
             line-height: 1.6;
         }
 
+        /* SPLIT IMAGE SLIDER */
+        .split-image.slider {
+            background-image: none !important;
+        }
+
+        .split-image-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+
+        .split-image-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        /* BANNER SLIDER */
+        .image-banner.slider {
+            background-image: none !important;
+        }
+
+        .banner-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0;
+            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+
+        .banner-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
         /* PRICING BOX */
         .pricing-section {
             max-width: 900px;
@@ -1016,18 +1065,18 @@
             changeSlide(nextSlide);
         }, slideInterval);
 
-        /LUXURY STATEMENT -->
-    <div class="luxury-statement">
-        <p class="luxury-statement-text">Urban/interurban luxury that you can only experience in a private jet</p>
-    </div>
-
-    <!-- / Dot navigation
+        // Dot navigation
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 changeSlide(index);
             });
         });
     </script>
+
+    <!-- LUXURY STATEMENT -->
+    <div class="luxury-statement">
+        <p class="luxury-statement-text">Urban/interurban luxury that you can only experience in a private jet</p>
+    </div>
 
     <!-- STATS -->
     <div class="stats-bar">
@@ -1317,7 +1366,14 @@
 
     <!-- LOGISTICS OPERATIONS -->
     <div class="split-section">
-        <div class="split-image" style="background-image: url('https://images.stockcake.com/public/1/7/c/17cf8830-8677-411a-8f8e-58e33784ee29_large/fleet-of-vans-stockcake.jpg');"></div>
+        <div class="split-image slider" id="logisticsImageSlider">
+            <div class="split-image-slide active" style="background-image: url('https://images.stockcake.com/public/1/7/c/17cf8830-8677-411a-8f8e-58e33784ee29_large/fleet-of-vans-stockcake.jpg');"></div>
+            <div class="split-image-slide" style="background-image: url('images/Delivery vans/first-brightdrop-ev600-vans-delivered-to-fedex_100821193_l.jpg');"></div>
+            <div class="split-image-slide" style="background-image: url('images/Delivery vans/64eb43ca042fae226d844077_cargo-vans-lined-up.webp');"></div>
+            <div class="split-image-slide" style="background-image: url('images/Delivery vans/Last-mile-delivery-trends-shyft-group.jpg');"></div>
+            <div class="split-image-slide" style="background-image: url('images/Delivery vans/hero-mobile-commercial-bridgestone-fleet-care-last-mile-delivery.webp');"></div>
+            <div class="split-image-slide" style="background-image: url('images/Delivery vans/20241102_163925[6].png');"></div>
+        </div>
         <div class="split-content">
             <div class="content-inner">
                 <div class="section-tag">Logistics Solutions</div>
@@ -1335,7 +1391,14 @@
     </div>
 
     <!-- FULL WIDTH BANNER -->
-    <div class="image-banner" style="background-image: url('https://images.stockcake.com/public/7/9/b/79b6c56a-bdab-47d8-a1b3-a16739c70bb3_large/truck-fleet-lined-stockcake.jpg');">
+    <div class="image-banner slider" id="professionalDriversBanner">
+        <div class="banner-slide active" style="background-image: url('images/Professional Drivers/mercedes-eqv-chauffeur-in-mayfair.jpg');"></div>
+        <div class="banner-slide" style="background-image: url('images/Professional Drivers/private-Chauffeur-private-drivers-household-staffing-3.webp');"></div>
+        <div class="banner-slide" style="background-image: url('images/Professional Drivers/SLC-mercedes-benz-v-class-madrid-puerta-de-alcala-plaza-real-prado-puerta-del-sol-retiro-temple-of-debod-thyssen-bornemisza-bernabeu-starr-luxury-cars-extoic-luxe-comfort.jpg');"></div>
+        <div class="banner-slide" style="background-image: url('images/Professional Drivers/Mercedes-V-Class.jpeg');"></div>
+        <div class="banner-slide" style="background-image: url('images/Professional Drivers/MERCEDES-V-CLASs.webp');"></div>
+        <div class="banner-slide" style="background-image: url('images/Professional Drivers/hq720.jpg');"></div>
+        <div class="banner-slide" style="background-image: url('images/Professional Drivers/167756918218.webp');"></div>
         <div class="banner-overlay"></div>
         <div class="banner-content">
             <h2>Professional Drivers</h2>
@@ -1443,5 +1506,47 @@
         <p>Contact us to discuss your corporate transportation needs and receive a customized fleet management proposal.</p>
         <a href="https://api.whatsapp.com/send?phone=237680655903&text=I'm%20interested%20in%20Q4-Life%20Fleet%20Management" class="cta-button">Request Proposal <i class="fas fa-arrow-right"></i></a>
     </div>
+
+    <script>
+        // Logistics image slider
+        const logisticsSlides = document.querySelectorAll('#logisticsImageSlider .split-image-slide');
+        let currentLogisticsIndex = 0;
+
+        console.log('Logistics slides found:', logisticsSlides.length);
+
+        function cycleLogisticsSlider() {
+            if (logisticsSlides.length > 0) {
+                logisticsSlides[currentLogisticsIndex].classList.remove('active');
+                currentLogisticsIndex = (currentLogisticsIndex + 1) % logisticsSlides.length;
+                logisticsSlides[currentLogisticsIndex].classList.add('active');
+                console.log('Logistics slider moved to slide:', currentLogisticsIndex);
+            }
+        }
+
+        if (logisticsSlides.length > 0) {
+            console.log('Starting logistics slider interval');
+            setInterval(cycleLogisticsSlider, 4000);
+        }
+
+        // Professional drivers banner slider
+        const bannerSlides = document.querySelectorAll('#professionalDriversBanner .banner-slide');
+        let currentBannerIndex = 0;
+
+        console.log('Banner slides found:', bannerSlides.length);
+
+        function cycleBannerSlider() {
+            if (bannerSlides.length > 0) {
+                bannerSlides[currentBannerIndex].classList.remove('active');
+                currentBannerIndex = (currentBannerIndex + 1) % bannerSlides.length;
+                bannerSlides[currentBannerIndex].classList.add('active');
+                console.log('Banner slider moved to slide:', currentBannerIndex);
+            }
+        }
+
+        if (bannerSlides.length > 0) {
+            console.log('Starting banner slider interval');
+            setInterval(cycleBannerSlider, 5000);
+        }
+    </script>
 </body>
 </html>
